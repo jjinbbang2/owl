@@ -1,0 +1,21 @@
+networks:
+  owl:
+
+services:
+  app:
+    container_name: "owl-app"
+    build:
+      context: ./dockerfiles
+      dockerfile: nginx.dockerfile
+      args:
+        - UID=1002
+        - GID=1002
+    environment:
+      TZ: "Asia/Seoul"
+    ports:
+      - "3333:80"
+    volumes:
+      - .:/var/www/html:delegated
+    networks:
+      - owl
+
