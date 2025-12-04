@@ -19,14 +19,6 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Install dependencies
-        run: npm install
-
-      - name: Install Puppeteer dependencies
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y libgbm-dev
-
       - name: Fetch ranking data
         run: node scripts/fetch-ranking.js
 
