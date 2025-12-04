@@ -1,0 +1,17 @@
+{
+  "updatedAt": "2025-06-04T00:00:00.000Z",
+  "characters": [
+    {
+      "name": "보노보노거인",
+      "rank": 48759,
+      "rankDisplay": "48,759위",
+      "server": "라사",
+      "class": "검술사",
+      "totalScore": 69450,
+      "totalScoreDisplay": "69,450",
+      "attackScore": 43158,
+      "defenseScore": 11241,
+      "lifeScore": 15051
+    }
+  ]
+}

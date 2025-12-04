@@ -91,6 +91,17 @@ body {
     border-color: var(--accent-blue);
 }
 
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.update-info {
+    font-size: 0.8rem;
+    color: #888;
+}
+
 /* 랭킹 테이블 */
 .ranking-table {
     width: 100%;
