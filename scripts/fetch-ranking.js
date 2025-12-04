@@ -1,6 +1,10 @@
-const puppeteer = require('puppeteer');
+const puppeteer = require('puppeteer-extra');
+const StealthPlugin = require('puppeteer-extra-plugin-stealth');
 const fs = require('fs');
 const path = require('path');
+
+// Stealth 플러그인 사용 (Cloudflare 우회)
+puppeteer.use(StealthPlugin());
 
 // 조회할 캐릭터명 배열
 const CHARACTER_NAMES = [
@@ -29,13 +33,13 @@ async function fetchCharacterRanking(page, characterName) {
         await page.keyboard.press('Backspace');
 
         // 새 검색어 입력
-        await page.type('input[name="search"]', characterName);
+        await page.type('input[name="search"]', characterName, { delay: 50 });
 
         // 검색 버튼 클릭
         await page.click('button.btn_search');
 
         // 결과 로딩 대기
-        await delay(2000);
+        await delay(3000);
 
         // 결과 파싱 - class="item on"인 요소 찾기
         const result = await page.evaluate((targetName) => {
@@ -111,27 +115,62 @@ async function main() {
             '--no-sandbox',
             '--disable-setuid-sandbox',
             '--disable-dev-shm-usage',
-            '--disable-gpu'
+            '--disable-gpu',
+            '--disable-features=IsolateOrigins,site-per-process',
+            '--window-size=1920,1080'
         ]
     });
 
     try {
         const page = await browser.newPage();
 
+        // 뷰포트 설정
+        await page.setViewport({ width: 1920, height: 1080 });
+
         // User-Agent 설정
         await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36');
+
+        // 언어 설정
+        await page.setExtraHTTPHeaders({
+            'Accept-Language': 'ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7'
+        });
 
         // 페이지 이동
         console.log('[접속] 랭킹 페이지 로딩 중...');
         await page.goto(RANKING_URL, { waitUntil: 'networkidle2', timeout: 60000 });
 
-        // Cloudflare 챌린지 통과 대기
-        console.log('[대기] Cloudflare 챌린지 통과 중...');
-        await delay(5000);
+        // Cloudflare 챌린지 통과 대기 (더 길게)
+        console.log('[대기] 페이지 로딩 대기 중...');
+        await delay(10000);
 
-        // 페이지 로딩 완료 확인
-        await page.waitForSelector('li.item', { timeout: 30000 });
-        console.log('[완료] 페이지 로딩 완료\n');
+        // 페이지 로딩 완료 확인 (여러 번 시도)
+        let attempts = 0;
+        const maxAttempts = 5;
+
+        while (attempts < maxAttempts) {
+            try {
+                await page.waitForSelector('li.item', { timeout: 10000 });
+                console.log('[완료] 페이지 로딩 완료\n');
+                break;
+            } catch (e) {
+                attempts++;
+                console.log(`[재시도] 페이지 로딩 대기 중... (${attempts}/${maxAttempts})`);
+
+                // 페이지 새로고침
+                if (attempts < maxAttempts) {
+                    await page.reload({ waitUntil: 'networkidle2' });
+                    await delay(5000);
+                }
+            }
+        }
+
+        if (attempts >= maxAttempts) {
+            // 디버그용 스크린샷 저장
+            await page.screenshot({ path: 'debug-screenshot.png', fullPage: true });
+            const html = await page.content();
+            console.log('[디버그] 페이지 내용 일부:', html.substring(0, 500));
+            throw new Error('페이지 로딩 실패: li.item을 찾을 수 없음');
+        }
 
         // 각 캐릭터 조회
         const results = [];
@@ -140,7 +179,7 @@ async function main() {
             if (data) {
                 results.push(data);
             }
-            await delay(1000); // 요청 간 딜레이
+            await delay(2000); // 요청 간 딜레이
         }
 
         // 결과 저장
