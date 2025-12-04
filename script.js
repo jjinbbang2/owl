@@ -72,8 +72,8 @@ function renderRankingTable() {
         <tr>
             <td class="rank ${index < 3 ? 'rank-' + (index + 1) : ''}">
                 ${index < 3
-                    ? `<span class="rank-badge">${member.rank.toLocaleString()}</span>`
-                    : member.rank.toLocaleString()}
+                    ? `<span class="rank-badge">${index + 1}</span>`
+                    : index + 1}
             </td>
             <td>
                 <div class="character-info">
@@ -87,9 +87,9 @@ function renderRankingTable() {
             <td class="total-score">${member.totalScoreDisplay}</td>
             <td class="hide-mobile">
                 <div class="score-detail">
-                    <span class="score-attack" title="공격">${formatNumber(member.attackScore)}</span>
-                    <span class="score-defense" title="방어">${formatNumber(member.defenseScore)}</span>
-                    <span class="score-life" title="생명">${formatNumber(member.lifeScore)}</span>
+                    <span class="score-attack">전투력 ${formatNumber(member.attackScore)}</span>
+                    <span class="score-defense">매력 ${formatNumber(member.defenseScore)}</span>
+                    <span class="score-life">생활력 ${formatNumber(member.lifeScore)}</span>
                 </div>
             </td>
             <td class="hide-mobile">
