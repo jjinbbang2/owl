@@ -1,0 +1,11 @@
+{
+  "name": "owl-ranking",
+  "version": "1.0.0",
+  "description": "부엉공화국 길드 랭킹",
+  "scripts": {
+    "fetch": "node scripts/fetch-ranking.js"
+  },
+  "dependencies": {
+    "puppeteer": "^21.6.1"
+  }
+}
