@@ -56,6 +56,12 @@ body {
     font-size: 0.9rem;
 }
 
+.last-updated {
+    color: #888;
+    font-size: 0.8rem;
+    margin-top: 10px;
+}
+
 /* 섹션 헤더 */
 .section-header {
     display: flex;

@@ -1,6 +1,6 @@
 // ===== 설정 =====
 const CONFIG = {
-    dataUrl: './data/ranking.json',
+    dataUrl   : './data/ranking.json',
     characters: ['풀뱅기사', '운정', '루야쫑쫑', '보노보노거인']
 };
 
@@ -16,20 +16,20 @@ function formatNumber(num) {
 // 클래스별 아이콘
 function getClassIcon(className) {
     const classIcons = {
-        '검술사': '⚔️',
+        '검술사' : '⚔️',
         '대검전사': '🗡️',
-        '전사': '🛡️',
+        '전사'  : '🛡️',
         '화염술사': '🔥',
         '빙결술사': '❄️',
         '전격술사': '⚡',
-        '마법사': '🔮',
+        '마법사' : '🔮',
         '석궁사수': '🏹',
-        '장궁병': '🎯',
-        '힐러': '💚',
-        '사제': '✨',
-        '악사': '🎵',
+        '장궁병' : '🎯',
+        '힐러'  : '💚',
+        '사제'  : '✨',
+        '악사'  : '🎵',
         '음유시인': '🎶',
-        '권술사': '👊'
+        '권술사' : '👊'
     };
     return classIcons[className] || '👤';
 }
@@ -59,8 +59,8 @@ function renderRankingTable() {
         <tr>
             <td class="rank ${index < 3 ? 'rank-' + (index + 1) : ''}">
                 ${index < 3
-                    ? `<span class="rank-badge">${index + 1}</span>`
-                    : index + 1}
+        ? `<span class="rank-badge">${index + 1}</span>`
+        : index + 1}
             </td>
             <td>
                 <div class="character-info">
@@ -86,6 +86,24 @@ function renderRankingTable() {
     `).join('');
 }
 
+// 마지막 업데이트 시간 표시
+function renderLastUpdated() {
+    const element = document.getElementById('last-updated');
+    if (!element || !lastUpdated) return;
+
+    const date = new Date(lastUpdated);
+    const options = {
+        year  : 'numeric',
+        month : 'long',
+        day   : 'numeric',
+        hour  : '2-digit',
+        minute: '2-digit',
+        hour12: false
+    };
+    const formattedDate = date.toLocaleDateString('ko-KR', options);
+    element.textContent = `마지막 업데이트: ${formattedDate}`;
+}
+
 // 세부 점수 랭킹 테이블 렌더링
 function renderDetailRankings() {
     renderDetailTable('combat-ranking-body', 'combatScore', 'score-attack');
@@ -103,8 +121,8 @@ function renderDetailTable(tbodyId, scoreKey, scoreClass) {
         <tr>
             <td class="rank ${index < 3 ? 'rank-' + (index + 1) : ''}">
                 ${index < 3
-                    ? `<span class="rank-badge">${index + 1}</span>`
-                    : index + 1}
+        ? `<span class="rank-badge">${index + 1}</span>`
+        : index + 1}
             </td>
             <td>
                 <div class="character-info">
@@ -137,6 +155,7 @@ async function loadRankingData() {
         console.log(`[완료] ${guildMembers.length}명의 캐릭터 정보 로드됨`);
         renderRankingTable();
         renderDetailRankings();
+        renderLastUpdated();
     } catch (error) {
         console.error('[오류] 데이터 로드 실패:', error);
 
@@ -154,7 +173,7 @@ async function loadRankingData() {
 }
 
 // 페이지 로드 시 실행
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     renderRankingTable();
     loadRankingData();
 });
