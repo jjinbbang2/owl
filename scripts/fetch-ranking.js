@@ -3,8 +3,15 @@ const fs = require('fs');
 const path = require('path');
 
 const CONFIG = {
-    baseUrl: 'https://mobinogi.net/user/6/',
-    characters: ['풀뱅기사', '운정', '루야쫑쫑', '보노보노거인'],
+    baseUrl   : 'https://mobinogi.net/user/6/',
+    characters: [
+        '풀뱅기사',
+        '루야쫑쫑',
+        '보노보노거인',
+        '차력거인',
+        '전퇴의거인',
+        '갑옷거인',
+    ],
     outputPath: path.join(__dirname, '../data/ranking.json')
 };
 
@@ -18,8 +25,8 @@ function fetchPage(characterName) {
 
         https.get(url, {
             headers: {
-                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
-                'Accept': 'text/html,application/xhtml+xml',
+                'User-Agent'     : 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
+                'Accept'         : 'text/html,application/xhtml+xml',
                 'Accept-Language': 'ko-KR,ko;q=0.9'
             }
         }, (res) => {
@@ -70,16 +77,16 @@ async function main() {
                 const totalScore = combatScore + lifeScore + charmScore;
 
                 members.push({
-                    name: user.user_id,
-                    rank: user.server_rank,
-                    rankDisplay: user.server_rank.toLocaleString() + '위',
-                    server: user.server_name,
-                    class: user.class_name,
-                    totalScore: totalScore,
+                    name             : user.user_id,
+                    rank             : user.server_rank,
+                    rankDisplay      : user.server_rank.toLocaleString() + '위',
+                    server           : user.server_name,
+                    class            : user.class_name,
+                    totalScore       : totalScore,
                     totalScoreDisplay: totalScore.toLocaleString(),
-                    combatScore: combatScore,
-                    lifeScore: lifeScore,
-                    charmScore: charmScore
+                    combatScore      : combatScore,
+                    lifeScore        : lifeScore,
+                    charmScore       : charmScore
                 });
 
                 console.log(`[성공] ${name} - ${user.class_name} (${user.server_rank}위)`);
@@ -94,7 +101,7 @@ async function main() {
     if (members.length > 0) {
         const result = {
             updatedAt: new Date().toISOString(),
-            members: members
+            members  : members
         };
 
         fs.writeFileSync(CONFIG.outputPath, JSON.stringify(result, null, 2), 'utf8');

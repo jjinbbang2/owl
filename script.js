@@ -1,14 +1,6 @@
 // ===== 설정 =====
 const CONFIG = {
-    dataUrl   : './data/ranking.json',
-    characters: [
-        '풀뱅기사',
-        '루야쫑쫑',
-        '보노보노거인',
-        '차력거인',
-        '전퇴의거인',
-        '갑옷거인',
-    ]
+    dataUrl: './data/ranking.json'
 };
 
 // ===== 메인 로직 =====
