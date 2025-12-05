@@ -4,5 +4,8 @@
   "description": "부엉공화국 길드 랭킹",
   "scripts": {
     "fetch": "node scripts/fetch-ranking.js"
+  },
+  "devDependencies": {
+    "sharp": "^0.34.5"
   }
 }
