@@ -61,7 +61,8 @@ async function main() {
             const ssrData = parseSSRData(html);
 
             if (ssrData && ssrData.userMetaData && ssrData.userMetaData.length > 0) {
-                const user = ssrData.userMetaData[0];
+                // 전투력(level)이 가장 높은 클래스 데이터 찾기
+                const user = ssrData.userMetaData.reduce((max, u) => u.level > max.level ? u : max);
 
                 members.push({
                     name: user.user_id,

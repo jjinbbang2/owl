@@ -1,15 +1,15 @@
 {
-  "updatedAt": "2025-12-05T02:14:10.411Z",
+  "updatedAt": "2025-12-05T02:19:15.681Z",
   "members": [
     {
       "name": "풀뱅기사",
       "rank": 8937,
       "rankDisplay": "8,937위",
       "server": "라사",
-      "class": "힐러",
+      "class": "화염술사",
       "totalScore": 99959,
       "totalScoreDisplay": "99,959",
-      "combatScore": 46062,
+      "combatScore": 52111,
       "lifeScore": 25603,
       "charmScore": 22245
     },
@@ -30,10 +30,10 @@
       "rank": 27851,
       "rankDisplay": "27,851위",
       "server": "라사",
-      "class": "전사",
+      "class": "대검전사",
       "totalScore": 82578,
       "totalScoreDisplay": "82,578",
-      "combatScore": 39870,
+      "combatScore": 56522,
       "lifeScore": 18712,
       "charmScore": 23996
     },
