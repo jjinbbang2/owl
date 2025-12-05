@@ -1,4 +1,53 @@
 {
-  "updatedAt": "2025-12-04T12:00:00.000Z",
-  "members": []
+  "updatedAt": "2025-12-05T01:57:57.834Z",
+  "members": [
+    {
+      "name": "풀뱅기사",
+      "rank": 8937,
+      "rankDisplay": "8,937위",
+      "server": "라사",
+      "class": "힐러",
+      "totalScore": 99959,
+      "totalScoreDisplay": "99,959",
+      "attackScore": 46062,
+      "defenseScore": 22245,
+      "lifeScore": 25603
+    },
+    {
+      "name": "운정",
+      "rank": 27179,
+      "rankDisplay": "27,179위",
+      "server": "라사",
+      "class": "마법사",
+      "totalScore": 83005,
+      "totalScoreDisplay": "83,005",
+      "attackScore": 56092,
+      "defenseScore": 9473,
+      "lifeScore": 17440
+    },
+    {
+      "name": "루야쫑쫑",
+      "rank": 27855,
+      "rankDisplay": "27,855위",
+      "server": "라사",
+      "class": "전사",
+      "totalScore": 82578,
+      "totalScoreDisplay": "82,578",
+      "attackScore": 39870,
+      "defenseScore": 23996,
+      "lifeScore": 18712
+    },
+    {
+      "name": "보노보노거인",
+      "rank": 48789,
+      "rankDisplay": "48,789위",
+      "server": "라사",
+      "class": "검술사",
+      "totalScore": 69486,
+      "totalScoreDisplay": "69,486",
+      "attackScore": 43188,
+      "defenseScore": 11244,
+      "lifeScore": 15054
+    }
+  ]
 }
