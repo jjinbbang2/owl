@@ -142,7 +142,7 @@ async function loadRankingData() {
     const tbody = document.getElementById('ranking-body');
 
     try {
-        const response = await fetch(CONFIG.dataUrl);
+        const response = await fetch(`${CONFIG.dataUrl}?t=${Date.now()}`);
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
