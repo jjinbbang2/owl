@@ -72,8 +72,8 @@ async function main() {
                     totalScore: user.evaluation_score,
                     totalScoreDisplay: user.evaluation_score.toLocaleString(),
                     combatScore: user.level,
-                    lifeScore: user.vitality,
-                    charmScore: user.attractiveness
+                    lifeScore: user.attractiveness,
+                    charmScore: user.vitality
                 });
 
                 console.log(`[성공] ${name} - ${user.class_name} (${user.server_rank}위)`);
