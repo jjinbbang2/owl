@@ -74,9 +74,9 @@ function renderRankingTable() {
             <td class="total-score">${member.totalScoreDisplay}</td>
             <td class="hide-mobile">
                 <div class="score-detail">
-                    <span class="score-attack">전투력 ${formatNumber(member.attackScore)}</span>
-                    <span class="score-defense">매력 ${formatNumber(member.defenseScore)}</span>
+                    <span class="score-attack">전투력 ${formatNumber(member.combatScore)}</span>
                     <span class="score-life">생활력 ${formatNumber(member.lifeScore)}</span>
+                    <span class="score-charm">매력 ${formatNumber(member.charmScore)}</span>
                 </div>
             </td>
             <td class="hide-mobile">
