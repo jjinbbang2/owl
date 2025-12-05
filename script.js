@@ -34,7 +34,7 @@ function getClassIcon(className) {
     return classIcons[className] || '👤';
 }
 
-// 랭킹 테이블 렌더링
+// 종합 랭킹 테이블 렌더링
 function renderRankingTable() {
     const tbody = document.getElementById('ranking-body');
 
@@ -52,8 +52,8 @@ function renderRankingTable() {
         return;
     }
 
-    // 순위순으로 정렬
-    const sortedMembers = [...guildMembers].sort((a, b) => a.rank - b.rank);
+    // 종합점수순으로 정렬
+    const sortedMembers = [...guildMembers].sort((a, b) => b.totalScore - a.totalScore);
 
     tbody.innerHTML = sortedMembers.map((member, index) => `
         <tr>
@@ -86,6 +86,40 @@ function renderRankingTable() {
     `).join('');
 }
 
+// 세부 점수 랭킹 테이블 렌더링
+function renderDetailRankings() {
+    renderDetailTable('combat-ranking-body', 'combatScore', 'score-attack');
+    renderDetailTable('life-ranking-body', 'lifeScore', 'score-life');
+    renderDetailTable('charm-ranking-body', 'charmScore', 'score-charm');
+}
+
+function renderDetailTable(tbodyId, scoreKey, scoreClass) {
+    const tbody = document.getElementById(tbodyId);
+    if (!tbody || guildMembers.length === 0) return;
+
+    const sortedMembers = [...guildMembers].sort((a, b) => b[scoreKey] - a[scoreKey]);
+
+    tbody.innerHTML = sortedMembers.map((member, index) => `
+        <tr>
+            <td class="rank ${index < 3 ? 'rank-' + (index + 1) : ''}">
+                ${index < 3
+                    ? `<span class="rank-badge">${index + 1}</span>`
+                    : index + 1}
+            </td>
+            <td>
+                <div class="character-info">
+                    <div class="character-avatar">${getClassIcon(member.class)}</div>
+                    <div>
+                        <div class="character-name">${member.name}</div>
+                        <div class="character-class">${member.class}</div>
+                    </div>
+                </div>
+            </td>
+            <td class="${scoreClass}">${formatNumber(member[scoreKey])}</td>
+        </tr>
+    `).join('');
+}
+
 // JSON 파일에서 데이터 로드
 async function loadRankingData() {
     const tbody = document.getElementById('ranking-body');
@@ -102,6 +136,7 @@ async function loadRankingData() {
 
         console.log(`[완료] ${guildMembers.length}명의 캐릭터 정보 로드됨`);
         renderRankingTable();
+        renderDetailRankings();
     } catch (error) {
         console.error('[오류] 데이터 로드 실패:', error);
 
