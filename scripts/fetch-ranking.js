@@ -64,17 +64,22 @@ async function main() {
                 // 전투력(level)이 가장 높은 클래스 데이터 찾기
                 const user = ssrData.userMetaData.reduce((max, u) => u.level > max.level ? u : max);
 
+                const combatScore = user.level;
+                const lifeScore = user.attractiveness;
+                const charmScore = user.vitality;
+                const totalScore = combatScore + lifeScore + charmScore;
+
                 members.push({
                     name: user.user_id,
                     rank: user.server_rank,
                     rankDisplay: user.server_rank.toLocaleString() + '위',
                     server: user.server_name,
                     class: user.class_name,
-                    totalScore: user.evaluation_score,
-                    totalScoreDisplay: user.evaluation_score.toLocaleString(),
-                    combatScore: user.level,
-                    lifeScore: user.attractiveness,
-                    charmScore: user.vitality
+                    totalScore: totalScore,
+                    totalScoreDisplay: totalScore.toLocaleString(),
+                    combatScore: combatScore,
+                    lifeScore: lifeScore,
+                    charmScore: charmScore
                 });
 
                 console.log(`[성공] ${name} - ${user.class_name} (${user.server_rank}위)`);

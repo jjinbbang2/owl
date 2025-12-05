@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2025-12-05T02:21:14.681Z",
+  "updatedAt": "2025-12-05T03:46:59.384Z",
   "members": [
     {
       "name": "풀뱅기사",
@@ -15,13 +15,13 @@
     },
     {
       "name": "운정",
-      "rank": 27179,
-      "rankDisplay": "27,179위",
+      "rank": 26962,
+      "rankDisplay": "26,962위",
       "server": "라사",
       "class": "마법사",
-      "totalScore": 83005,
-      "totalScoreDisplay": "83,005",
-      "combatScore": 56092,
+      "totalScore": 83145,
+      "totalScoreDisplay": "83,145",
+      "combatScore": 56232,
       "lifeScore": 9473,
       "charmScore": 17440
     },
@@ -31,8 +31,8 @@
       "rankDisplay": "27,851위",
       "server": "라사",
       "class": "대검전사",
-      "totalScore": 82578,
-      "totalScoreDisplay": "82,578",
+      "totalScore": 99230,
+      "totalScoreDisplay": "99,230",
       "combatScore": 56522,
       "lifeScore": 23996,
       "charmScore": 18712
