@@ -1,5 +1,53 @@
 {
-  "updatedAt" : "2025-12-05T02:19:15.681Z" ,
-  "members"   : [
+  "updatedAt": "2025-12-05T02:21:14.681Z",
+  "members": [
+    {
+      "name": "풀뱅기사",
+      "rank": 8937,
+      "rankDisplay": "8,937위",
+      "server": "라사",
+      "class": "화염술사",
+      "totalScore": 99959,
+      "totalScoreDisplay": "99,959",
+      "combatScore": 52111,
+      "lifeScore": 22245,
+      "charmScore": 25603
+    },
+    {
+      "name": "운정",
+      "rank": 27179,
+      "rankDisplay": "27,179위",
+      "server": "라사",
+      "class": "마법사",
+      "totalScore": 83005,
+      "totalScoreDisplay": "83,005",
+      "combatScore": 56092,
+      "lifeScore": 9473,
+      "charmScore": 17440
+    },
+    {
+      "name": "루야쫑쫑",
+      "rank": 27851,
+      "rankDisplay": "27,851위",
+      "server": "라사",
+      "class": "대검전사",
+      "totalScore": 82578,
+      "totalScoreDisplay": "82,578",
+      "combatScore": 56522,
+      "lifeScore": 23996,
+      "charmScore": 18712
+    },
+    {
+      "name": "보노보노거인",
+      "rank": 48789,
+      "rankDisplay": "48,789위",
+      "server": "라사",
+      "class": "검술사",
+      "totalScore": 69486,
+      "totalScoreDisplay": "69,486",
+      "combatScore": 43188,
+      "lifeScore": 11244,
+      "charmScore": 15054
+    }
   ]
 }
