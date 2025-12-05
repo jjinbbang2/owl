@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2025-12-05T05:31:01.608Z",
+  "updatedAt": "2025-12-05T05:35:44.776Z",
   "members": [
     {
       "name": "풀뱅기사",
@@ -12,18 +12,6 @@
       "combatScore": 52111,
       "lifeScore": 22245,
       "charmScore": 25603
-    },
-    {
-      "name": "운정",
-      "rank": 26962,
-      "rankDisplay": "26,962위",
-      "server": "라사",
-      "class": "마법사",
-      "totalScore": 83145,
-      "totalScoreDisplay": "83,145",
-      "combatScore": 56232,
-      "lifeScore": 9473,
-      "charmScore": 17440
     },
     {
       "name": "루야쫑쫑",
@@ -48,6 +36,42 @@
       "combatScore": 43188,
       "lifeScore": 11244,
       "charmScore": 15054
+    },
+    {
+      "name": "차력거인",
+      "rank": 31269,
+      "rankDisplay": "31,269위",
+      "server": "라사",
+      "class": "석궁사수",
+      "totalScore": 94115,
+      "totalScoreDisplay": "94,115",
+      "combatScore": 49102,
+      "lifeScore": 23801,
+      "charmScore": 21212
+    },
+    {
+      "name": "전퇴의거인",
+      "rank": 36838,
+      "rankDisplay": "36,838위",
+      "server": "라사",
+      "class": "빙결술사",
+      "totalScore": 90103,
+      "totalScoreDisplay": "90,103",
+      "combatScore": 52890,
+      "lifeScore": 18502,
+      "charmScore": 18711
+    },
+    {
+      "name": "갑옷거인",
+      "rank": 34604,
+      "rankDisplay": "34,604위",
+      "server": "라사",
+      "class": "대검전사",
+      "totalScore": 88948,
+      "totalScoreDisplay": "88,948",
+      "combatScore": 52802,
+      "lifeScore": 23102,
+      "charmScore": 13044
     }
   ]
 }
