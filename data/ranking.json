@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2025-12-07T09:08:02.927Z",
+  "updatedAt": "2025-12-07T12:12:42.821Z",
   "members": [
     {
       "name": "풀뱅기사",
@@ -63,14 +63,14 @@
     },
     {
       "name": "갑옷거인",
-      "rank": 35107,
-      "rankDisplay": "35,107위",
+      "rank": 34630,
+      "rankDisplay": "34,630위",
       "server": "라사",
       "class": "대검전사",
-      "totalScore": 88958,
-      "totalScoreDisplay": "88,958",
+      "totalScore": 89283,
+      "totalScoreDisplay": "89,283",
       "combatScore": 52802,
-      "lifeScore": 23112,
+      "lifeScore": 23437,
       "charmScore": 13044
     }
   ]
