@@ -261,6 +261,19 @@
             font-size: 0.85rem;
             margin-left: 10px;
         }
+        .btn-share {
+            background: rgba(250, 225, 0, 0.2);
+            color: #fae100;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            margin-left: 10px;
+        }
+        .btn-share:hover {
+            background: rgba(250, 225, 0, 0.3);
+        }
         .add-member-form {
             margin-top: 15px;
             padding: 15px;
@@ -405,6 +418,7 @@ function getTimeRemaining(targetDate) {
 // Flatpickr 초기화
 let schedulePicker;
 let selectedScheduleDate = null; // datetime 저장용
+let currentParties = []; // 파티 목록 저장용
 
 function initSchedulePicker() {
     schedulePicker = flatpickr("#newSchedule", {
@@ -445,6 +459,7 @@ async function loadParties() {
         return;
     }
 
+    currentParties = parties || [];
     renderParties(parties);
 }
 
@@ -505,6 +520,7 @@ function renderParties(parties) {
                 ${currentMembers < maxMembers
                     ? `<button class="btn-add-member" onclick="toggleAddMemberForm('${party.id}')">+ 참가하기</button>`
                     : '<span style="color: #4ade80; font-size: 0.85rem;">파티 모집 완료!</span>'}
+                <button class="btn-share" onclick="copyPartyInfo('${party.id}')">공유</button>
                 <button class="btn-delete-party" onclick="deleteParty('${party.id}')">파티 삭제</button>
             </div>
             <div id="addMemberForm-${party.id}" class="add-member-form hidden">
@@ -681,6 +697,58 @@ async function deleteParty(partyId) {
     }
 
     loadParties();
+}
+
+// 파티 정보 복사 (카카오톡 공유용)
+async function copyPartyInfo(partyId) {
+    const party = currentParties.find(p => p.id === partyId);
+    if (!party) {
+        alert('파티 정보를 찾을 수 없습니다.');
+        return;
+    }
+
+    const raidType = party.raid_type || '글라스기브넨';
+    const maxMembers = getMaxMembers(raidType);
+    const currentMembers = party.raid_members.length;
+    const scheduleDate = party.schedule ? new Date(party.schedule) : null;
+    const scheduleDisplay = scheduleDate ? formatSchedule(scheduleDate) : '-';
+
+    // 멤버 목록 텍스트 생성
+    const memberList = party.raid_members.map(member => {
+        let line = `- ${member.nickname}`;
+        if (member.combat_power) line += ` (${member.combat_power})`;
+        const roles = [];
+        if (member.is_tanker) roles.push('탱커');
+        if (member.is_healer) roles.push('힐러');
+        if (roles.length > 0) line += ` [${roles.join(', ')}]`;
+        return line;
+    }).join('\n');
+
+    const text = `[부엉공화국] 레이드 파티 모집
+
+일정: ${scheduleDisplay}
+레이드: ${raidType}
+난이도: ${party.difficulty || '어려움'}
+현재 인원: ${currentMembers}/${maxMembers}
+
+참가자:
+${memberList}
+
+참가하기: https://jjinbbang2.github.io/owl/raid.html`;
+
+    try {
+        await navigator.clipboard.writeText(text);
+        alert('파티 정보가 복사되었습니다!\n카카오톡에 붙여넣기 하세요.');
+    } catch (err) {
+        // 클립보드 API 실패 시 대체 방법
+        const textarea = document.createElement('textarea');
+        textarea.value = text;
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textarea);
+        alert('파티 정보가 복사되었습니다!\n카카오톡에 붙여넣기 하세요.');
+    }
 }
 
 // 남은 시간 업데이트 (1분마다)
