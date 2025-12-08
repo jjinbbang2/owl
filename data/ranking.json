@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2025-12-08T00:36:16.464Z",
+  "updatedAt": "2025-12-08T03:35:43.452Z",
   "members": [
     {
       "name": "풀뱅기사",
@@ -15,15 +15,15 @@
     },
     {
       "name": "루야쫑쫑",
-      "rank": 2661,
-      "rankDisplay": "2,661위",
+      "rank": 10391,
+      "rankDisplay": "10,391위",
       "server": "라사",
       "class": "대검전사",
-      "totalScore": 117872,
-      "totalScoreDisplay": "117,872",
+      "totalScore": 116857,
+      "totalScoreDisplay": "116,857",
       "combatScore": 56643,
-      "lifeScore": 24011,
-      "charmScore": 37218
+      "lifeScore": 24091,
+      "charmScore": 36123
     },
     {
       "name": "보노보노거인",
@@ -51,15 +51,15 @@
     },
     {
       "name": "전퇴의거인",
-      "rank": 37560,
-      "rankDisplay": "37,560위",
+      "rank": 37617,
+      "rankDisplay": "37,617위",
       "server": "라사",
       "class": "빙결술사",
-      "totalScore": 89794,
-      "totalScoreDisplay": "89,794",
+      "totalScore": 89796,
+      "totalScoreDisplay": "89,796",
       "combatScore": 52566,
       "lifeScore": 18505,
-      "charmScore": 18723
+      "charmScore": 18725
     },
     {
       "name": "갑옷거인",
