@@ -1,17 +1,17 @@
 {
-  "updatedAt": "2025-12-07T21:07:30.806Z",
+  "updatedAt": "2025-12-08T00:36:16.464Z",
   "members": [
     {
       "name": "풀뱅기사",
-      "rank": 9228,
-      "rankDisplay": "9,228위",
+      "rank": 9115,
+      "rankDisplay": "9,115위",
       "server": "라사",
       "class": "화염술사",
-      "totalScore": 100079,
-      "totalScoreDisplay": "100,079",
-      "combatScore": 52287,
-      "lifeScore": 22179,
-      "charmScore": 25613
+      "totalScore": 100305,
+      "totalScoreDisplay": "100,305",
+      "combatScore": 52507,
+      "lifeScore": 22182,
+      "charmScore": 25616
     },
     {
       "name": "루야쫑쫑",
@@ -27,27 +27,27 @@
     },
     {
       "name": "보노보노거인",
-      "rank": 49177,
-      "rankDisplay": "49,177위",
+      "rank": 49305,
+      "rankDisplay": "49,305위",
       "server": "라사",
       "class": "검술사",
-      "totalScore": 69593,
-      "totalScoreDisplay": "69,593",
-      "combatScore": 43264,
+      "totalScore": 69602,
+      "totalScoreDisplay": "69,602",
+      "combatScore": 43271,
       "lifeScore": 11269,
-      "charmScore": 15060
+      "charmScore": 15062
     },
     {
       "name": "차력거인",
-      "rank": 12341,
-      "rankDisplay": "12,341위",
+      "rank": 30391,
+      "rankDisplay": "30,391위",
       "server": "라사",
       "class": "석궁사수",
-      "totalScore": 95554,
-      "totalScoreDisplay": "95,554",
+      "totalScore": 94632,
+      "totalScoreDisplay": "94,632",
       "combatScore": 49518,
-      "lifeScore": 23818,
-      "charmScore": 22218
+      "lifeScore": 23893,
+      "charmScore": 21221
     },
     {
       "name": "전퇴의거인",
@@ -63,14 +63,14 @@
     },
     {
       "name": "갑옷거인",
-      "rank": 34689,
-      "rankDisplay": "34,689위",
+      "rank": 34718,
+      "rankDisplay": "34,718위",
       "server": "라사",
       "class": "대검전사",
-      "totalScore": 89283,
-      "totalScoreDisplay": "89,283",
+      "totalScore": 89286,
+      "totalScoreDisplay": "89,286",
       "combatScore": 52802,
-      "lifeScore": 23437,
+      "lifeScore": 23440,
       "charmScore": 13044
     }
   ]
