@@ -3,6 +3,12 @@ const CONFIG = {
     dataUrl: './data/ranking.json'
 };
 
+// ===== 네비게이션 =====
+function toggleNav() {
+    const navMenu = document.getElementById('navMenu');
+    navMenu.classList.toggle('active');
+}
+
 // ===== 메인 로직 =====
 let guildMembers = [];
 let lastUpdated = null;

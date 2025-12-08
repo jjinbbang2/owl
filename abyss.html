@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>어비스 파티 - 부엉공화국</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="부엉공화국 어비스 던전 파티 모집 게시판입니다.">
+    <meta name="keywords" content="마비노기 모바일, 부엉공화국, 어비스, 파티 모집">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="어비스 파티 - 부엉공화국">
+    <meta property="og:description" content="부엉공화국 어비스 던전 파티 모집 게시판입니다.">
+    <meta property="og:image" content="https://jjinbbang2.github.io/owl/og-image.png">
+    <meta property="og:url" content="https://jjinbbang2.github.io/owl/abyss.html">
+
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#4a3728">
+
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./styles.css?v=2025120801">
+</head>
+<body>
+<nav class="nav">
+    <div class="nav-container">
+        <a href="index.html" class="nav-logo">🦉</a>
+        <button class="nav-toggle" onclick="toggleNav()">☰</button>
+        <ul class="nav-menu" id="navMenu">
+            <li><a href="index.html">랭킹</a></li>
+            <li><a href="guide.html">이용안내</a></li>
+            <li><a href="abyss.html" class="active">어비스</a></li>
+            <li><a href="abyss-help.html">품앗이</a></li>
+            <li><a href="raid.html">레이드</a></li>
+        </ul>
+    </div>
+</nav>
+<div class="container">
+    <header class="header">
+        <div class="header-emblem">🌀</div>
+        <h1 class="header-title">어비스 파티</h1>
+        <p class="header-subtitle">어비스 던전 파티 모집</p>
+    </header>
+
+    <section>
+        <div class="section-header">
+            <h2 class="section-title">📝 파티 모집 현황</h2>
+        </div>
+        <div class="sheet-container">
+            <iframe
+                class="sheet-iframe"
+                src="https://docs.google.com/spreadsheets/d/1sNi8x_e0RDNsQrk0KbPC75G8L8Y-i9nD5JbB_KkufkE/edit?gid=2015772135#gid=2015772135"
+                title="어비스 파티 모집">
+            </iframe>
+        </div>
+        <p style="text-align: center; margin-top: 15px; color: #888; font-size: 0.85rem;">
+            시트를 직접 수정하여 파티에 참여하세요! |
+            <a href="https://docs.google.com/spreadsheets/d/1sNi8x_e0RDNsQrk0KbPC75G8L8Y-i9nD5JbB_KkufkE/edit?gid=2015772135#gid=2015772135"
+               target="_blank"
+               style="color: var(--accent-blue);">새 창에서 열기</a>
+        </p>
+    </section>
+</div>
+
+<script>
+function toggleNav() {
+    const navMenu = document.getElementById('navMenu');
+    navMenu.classList.toggle('active');
+}
+</script>
+</body>
+</html>
