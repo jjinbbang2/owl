@@ -275,10 +275,13 @@ function showStatus(elementId, message, type) {
     el.classList.remove('hidden');
 }
 
-// 캐릭터 존재 확인 (API 호출)
+// 캐릭터 존재 확인 (API 호출 - CORS 프록시 사용)
 async function verifyCharacterExists(characterName) {
     try {
-        const response = await fetch(`${VERIFY_API_URL}${encodeURIComponent(characterName)}`);
+        const url = `${VERIFY_API_URL}${encodeURIComponent(characterName)}`;
+        const proxyUrl = `https://api.allorigins.win/raw?url=${encodeURIComponent(url)}`;
+
+        const response = await fetch(proxyUrl);
         if (!response.ok) return false;
 
         const html = await response.text();
