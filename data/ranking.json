@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2025-12-09T10:06:52.674Z",
+  "updatedAt": "2025-12-09T11:05:18.435Z",
   "members": [
     {
       "name": "풀뱅기사",
@@ -144,18 +144,6 @@
       "combatScore": 58350,
       "lifeScore": 19463,
       "charmScore": 45286
-    },
-    {
-      "name": "시형",
-      "rank": 3220,
-      "rankDisplay": "3,220위",
-      "server": "라사",
-      "class": "전격술사",
-      "totalScore": 116091,
-      "totalScoreDisplay": "116,091",
-      "combatScore": 55025,
-      "lifeScore": 13373,
-      "charmScore": 47693
     }
   ]
 }
