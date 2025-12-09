@@ -11,6 +11,9 @@ const CONFIG = {
         '차력거인',
         '전퇴의거인',
         '갑옷거인',
+        '새벽숲부엉이',
+        '로거니우스',
+        '운정',
     ],
     outputPath: path.join(__dirname, '../data/ranking.json')
 };
