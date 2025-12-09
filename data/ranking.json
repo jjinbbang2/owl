@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2025-12-09T11:05:18.435Z",
+  "updatedAt": "2025-12-09T12:08:35.183Z",
   "members": [
     {
       "name": "풀뱅기사",
@@ -144,6 +144,30 @@
       "combatScore": 58350,
       "lifeScore": 19463,
       "charmScore": 45286
+    },
+    {
+      "name": "시우쇠",
+      "rank": 9,
+      "rankDisplay": "9위",
+      "server": "라사",
+      "class": "화염술사",
+      "totalScore": 142770,
+      "totalScoreDisplay": "142,770",
+      "combatScore": 57651,
+      "lifeScore": 35126,
+      "charmScore": 49993
+    },
+    {
+      "name": "고진",
+      "rank": 10793,
+      "rankDisplay": "10,793위",
+      "server": "라사",
+      "class": "검술사",
+      "totalScore": 97754,
+      "totalScoreDisplay": "97,754",
+      "combatScore": 53767,
+      "lifeScore": 19604,
+      "charmScore": 24383
     }
   ]
 }
