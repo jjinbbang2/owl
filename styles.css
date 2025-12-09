@@ -143,9 +143,16 @@ body {
 .ranking-table-wrapper th:nth-child(1),
 .ranking-table-wrapper td:nth-child(1) { width: 60px; }
 .ranking-table-wrapper th:nth-child(3),
-.ranking-table-wrapper td:nth-child(3) { width: 100px; text-align: right; }
+.ranking-table-wrapper td:nth-child(3) { width: 100px; }
 .ranking-table-wrapper th:nth-child(5),
-.ranking-table-wrapper td:nth-child(5) { width: 80px; text-align: right; }
+.ranking-table-wrapper td:nth-child(5) { width: 80px; }
+
+/* 헤더는 가운데 정렬 */
+.ranking-table-wrapper th { text-align: center; }
+
+/* 바디 종합점수, 전체순위 우측 정렬 */
+.ranking-table-wrapper td:nth-child(3),
+.ranking-table-wrapper td:nth-child(5) { text-align: right; }
 
 /* 랭킹 테이블 */
 .ranking-table {
