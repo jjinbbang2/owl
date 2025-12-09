@@ -177,6 +177,256 @@ async function loadRankingData() {
     }
 }
 
+// ===== 캐릭터 등록/삭제 기능 =====
+const DELETE_PASSWORD = '0328';
+const VERIFY_API_URL = 'https://mobinogi.net/user/6/';
+
+// GitHub 워크플로우 트리거
+async function triggerRankingUpdate() {
+    if (!GITHUB_CONFIG.pat) {
+        console.log('[알림] GitHub PAT가 설정되지 않아 자동 갱신을 건너뜁니다.');
+        return false;
+    }
+
+    try {
+        const response = await fetch(
+            `https://api.github.com/repos/${GITHUB_CONFIG.owner}/${GITHUB_CONFIG.repo}/actions/workflows/${GITHUB_CONFIG.workflowId}/dispatches`,
+            {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/vnd.github.v3+json',
+                    'Authorization': `Bearer ${GITHUB_CONFIG.pat}`,
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ ref: 'main' })
+            }
+        );
+
+        if (response.status === 204) {
+            console.log('[성공] 랭킹 업데이트 워크플로우가 시작되었습니다.');
+            return true;
+        } else {
+            console.error('[실패] 워크플로우 트리거 실패:', response.status);
+            return false;
+        }
+    } catch (error) {
+        console.error('[오류] 워크플로우 트리거 오류:', error);
+        return false;
+    }
+}
+
+// 모달 열기/닫기
+function openAddModal() {
+    document.getElementById('addModal').classList.remove('hidden');
+    document.getElementById('addCharacterName').value = '';
+    document.getElementById('addStatus').classList.add('hidden');
+    document.getElementById('addBtn').disabled = false;
+    document.getElementById('addBtn').textContent = '등록';
+}
+
+function closeAddModal() {
+    document.getElementById('addModal').classList.add('hidden');
+}
+
+async function openDeleteModal() {
+    document.getElementById('deleteModal').classList.remove('hidden');
+    document.getElementById('deletePassword').value = '';
+    document.getElementById('deleteStatus').classList.add('hidden');
+
+    // Supabase에서 캐릭터 목록 가져오기
+    const select = document.getElementById('deleteCharacterSelect');
+    select.innerHTML = '<option value="">캐릭터를 선택하세요</option>';
+
+    try {
+        const { data, error } = await supabase
+            .from('ranking_characters')
+            .select('id, name')
+            .order('name', { ascending: true });
+
+        if (error) throw error;
+
+        data.forEach(char => {
+            const option = document.createElement('option');
+            option.value = char.id;
+            option.textContent = char.name;
+            select.appendChild(option);
+        });
+    } catch (error) {
+        console.error('캐릭터 목록 로드 실패:', error);
+    }
+}
+
+function closeDeleteModal() {
+    document.getElementById('deleteModal').classList.add('hidden');
+}
+
+// 모달 외부 클릭 시 닫기
+document.addEventListener('click', function(e) {
+    if (e.target.classList.contains('modal')) {
+        e.target.classList.add('hidden');
+    }
+});
+
+// 상태 메시지 표시
+function showStatus(elementId, message, type) {
+    const el = document.getElementById(elementId);
+    el.textContent = message;
+    el.className = `status-message ${type}`;
+    el.classList.remove('hidden');
+}
+
+// 캐릭터 존재 확인 (API 호출)
+async function verifyCharacterExists(characterName) {
+    try {
+        const response = await fetch(`${VERIFY_API_URL}${encodeURIComponent(characterName)}`);
+        if (!response.ok) return false;
+
+        const html = await response.text();
+        const match = html.match(/window\.__SSR_DATA__\s*=\s*(\{[\s\S]*?\});/);
+        if (!match) return false;
+
+        const data = JSON.parse(match[1]);
+        return data.userMetaData && data.userMetaData.length > 0;
+    } catch (error) {
+        console.error('캐릭터 확인 오류:', error);
+        return false;
+    }
+}
+
+// 딜레이 함수
+function delay(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+// 캐릭터 등록
+async function addCharacter() {
+    const nameInput = document.getElementById('addCharacterName');
+    const characterName = nameInput.value.trim();
+    const btn = document.getElementById('addBtn');
+
+    if (!characterName) {
+        showStatus('addStatus', '캐릭터 닉네임을 입력해주세요.', 'error');
+        return;
+    }
+
+    btn.disabled = true;
+
+    // 이미 등록된 캐릭터인지 확인
+    try {
+        const { data: existing } = await supabase
+            .from('ranking_characters')
+            .select('id')
+            .eq('name', characterName)
+            .single();
+
+        if (existing) {
+            showStatus('addStatus', '이미 등록된 캐릭터입니다.', 'error');
+            btn.disabled = false;
+            return;
+        }
+    } catch (e) {
+        // 없으면 에러가 나므로 정상
+    }
+
+    // 캐릭터 존재 확인 (2초 간격 최대 10회)
+    let found = false;
+    for (let i = 1; i <= 10; i++) {
+        showStatus('addStatus', `캐릭터 확인 중... (${i}/10)`, 'info');
+        btn.textContent = `확인 중 (${i}/10)`;
+
+        found = await verifyCharacterExists(characterName);
+        if (found) break;
+
+        if (i < 10) {
+            await delay(2000);
+        }
+    }
+
+    if (!found) {
+        showStatus('addStatus', '캐릭터를 찾을 수 없습니다. 닉네임을 확인해주세요.', 'error');
+        btn.disabled = false;
+        btn.textContent = '등록';
+        return;
+    }
+
+    // Supabase에 등록
+    try {
+        const { error } = await supabase
+            .from('ranking_characters')
+            .insert({ name: characterName });
+
+        if (error) throw error;
+
+        showStatus('addStatus', '캐릭터가 등록되었습니다! 랭킹 데이터 갱신 중...', 'success');
+        btn.textContent = '완료!';
+
+        // 워크플로우 트리거
+        const triggered = await triggerRankingUpdate();
+        if (triggered) {
+            showStatus('addStatus', '캐릭터가 등록되었습니다! 잠시 후 랭킹에 반영됩니다.', 'success');
+        } else {
+            showStatus('addStatus', '캐릭터가 등록되었습니다! 다음 자동 업데이트 시 반영됩니다.', 'success');
+        }
+
+        setTimeout(() => {
+            closeAddModal();
+        }, 2500);
+
+    } catch (error) {
+        showStatus('addStatus', '등록 실패: ' + error.message, 'error');
+        btn.disabled = false;
+        btn.textContent = '등록';
+    }
+}
+
+// 캐릭터 삭제
+async function deleteCharacter() {
+    const select = document.getElementById('deleteCharacterSelect');
+    const password = document.getElementById('deletePassword').value;
+    const characterId = select.value;
+    const characterName = select.options[select.selectedIndex].text;
+
+    if (!characterId) {
+        showStatus('deleteStatus', '삭제할 캐릭터를 선택해주세요.', 'error');
+        return;
+    }
+
+    if (password !== DELETE_PASSWORD) {
+        showStatus('deleteStatus', '비밀번호가 올바르지 않습니다.', 'error');
+        return;
+    }
+
+    if (!confirm(`정말 "${characterName}" 캐릭터를 삭제하시겠습니까?`)) {
+        return;
+    }
+
+    try {
+        const { error } = await supabase
+            .from('ranking_characters')
+            .delete()
+            .eq('id', characterId);
+
+        if (error) throw error;
+
+        showStatus('deleteStatus', '캐릭터가 삭제되었습니다! 랭킹 데이터 갱신 중...', 'success');
+
+        // 워크플로우 트리거
+        const triggered = await triggerRankingUpdate();
+        if (triggered) {
+            showStatus('deleteStatus', '캐릭터가 삭제되었습니다! 잠시 후 랭킹에 반영됩니다.', 'success');
+        } else {
+            showStatus('deleteStatus', '캐릭터가 삭제되었습니다! 다음 자동 업데이트 시 반영됩니다.', 'success');
+        }
+
+        setTimeout(() => {
+            closeDeleteModal();
+        }, 2000);
+
+    } catch (error) {
+        showStatus('deleteStatus', '삭제 실패: ' + error.message, 'error');
+    }
+}
+
 // 페이지 로드 시 실행
 document.addEventListener('DOMContentLoaded', function () {
     renderRankingTable();

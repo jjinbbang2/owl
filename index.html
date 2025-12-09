@@ -35,7 +35,7 @@
     <meta name="theme-color" content="#4a3728">
 
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./styles.css?v=2025120801">
+    <link rel="stylesheet" href="./styles.css?v=2025120901">
 </head>
 <body>
 <nav class="nav">
@@ -62,6 +62,10 @@
     <section>
         <div class="section-header">
             <h2 class="section-title">🏆 종합 점수 랭킹</h2>
+            <div class="header-buttons">
+                <button class="btn-manage" onclick="openAddModal()">+ 캐릭터 등록</button>
+                <button class="btn-manage btn-danger" onclick="openDeleteModal()">- 캐릭터 삭제</button>
+            </div>
         </div>
         <table class="ranking-table">
             <thead>
@@ -133,6 +137,57 @@
     </div>
 </div>
 
-<script src="./script.js?v=2025120502"></script>
+<!-- 캐릭터 등록 모달 -->
+<div id="addModal" class="modal hidden">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3>캐릭터 등록</h3>
+            <button class="modal-close" onclick="closeAddModal()">&times;</button>
+        </div>
+        <div class="modal-body">
+            <div class="form-group">
+                <label>캐릭터 닉네임</label>
+                <input type="text" id="addCharacterName" placeholder="등록할 캐릭터 닉네임을 입력하세요">
+            </div>
+            <div id="addStatus" class="status-message hidden"></div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn-cancel" onclick="closeAddModal()">취소</button>
+            <button class="btn-submit" onclick="addCharacter()" id="addBtn">등록</button>
+        </div>
+    </div>
+</div>
+
+<!-- 캐릭터 삭제 모달 -->
+<div id="deleteModal" class="modal hidden">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3>캐릭터 삭제</h3>
+            <button class="modal-close" onclick="closeDeleteModal()">&times;</button>
+        </div>
+        <div class="modal-body">
+            <div class="form-group">
+                <label>삭제할 캐릭터</label>
+                <select id="deleteCharacterSelect">
+                    <option value="">캐릭터를 선택하세요</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>비밀번호</label>
+                <input type="password" id="deletePassword" placeholder="비밀번호를 입력하세요">
+            </div>
+            <div id="deleteStatus" class="status-message hidden"></div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn-cancel" onclick="closeDeleteModal()">취소</button>
+            <button class="btn-submit btn-danger" onclick="deleteCharacter()">삭제</button>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="./js/supabase-config.js"></script>
+<script src="./js/github-config.js"></script>
+<script src="./script.js?v=2025120902"></script>
 </body>
 </html>

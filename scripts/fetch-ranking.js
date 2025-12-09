@@ -1,20 +1,15 @@
 const https = require('https');
 const fs = require('fs');
 const path = require('path');
+const { createClient } = require('@supabase/supabase-js');
+
+// Supabase 설정
+const SUPABASE_URL = 'https://eukkokvfvbucloforsmn.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImV1a2tva3ZmdmJ1Y2xvZm9yc21uIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjUxNzg1NzUsImV4cCI6MjA4MDc1NDU3NX0.EJtp0Rj4XbVRW7KqTLvultLAV1psqnIWnQeA7YeBaHY';
+const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 const CONFIG = {
     baseUrl   : 'https://mobinogi.net/user/6/',
-    characters: [
-        '풀뱅기사',
-        '루야쫑쫑',
-        '보노보노거인',
-        '차력거인',
-        '전퇴의거인',
-        '갑옷거인',
-        '새벽숲부엉이',
-        '로거니우스',
-        '운정',
-    ],
     outputPath: path.join(__dirname, '../data/ranking.json')
 };
 
@@ -52,19 +47,44 @@ function parseSSRData(html) {
     }
 }
 
+// Supabase에서 캐릭터 목록 가져오기
+async function fetchCharacterList() {
+    const { data, error } = await supabase
+        .from('ranking_characters')
+        .select('name')
+        .order('created_at', { ascending: true });
+
+    if (error) {
+        console.error('[오류] Supabase에서 캐릭터 목록 조회 실패:', error.message);
+        return [];
+    }
+
+    return data.map(row => row.name);
+}
+
 async function main() {
     console.log('[시작] 랭킹 데이터 수집...');
 
+    // Supabase에서 캐릭터 목록 가져오기
+    const characters = await fetchCharacterList();
+
+    if (characters.length === 0) {
+        console.log('[경고] 등록된 캐릭터가 없습니다.');
+        process.exit(1);
+    }
+
+    console.log(`[정보] ${characters.length}명의 캐릭터 조회 예정`);
+
     const members = [];
 
-    for (let i = 0; i < CONFIG.characters.length; i++) {
-        const name = CONFIG.characters[i];
+    for (let i = 0; i < characters.length; i++) {
+        const name = characters[i];
 
         if (i > 0) {
             await delay(1500);
         }
 
-        console.log(`[조회] ${name} (${i + 1}/${CONFIG.characters.length})`);
+        console.log(`[조회] ${name} (${i + 1}/${characters.length})`);
 
         try {
             const html = await fetchPage(name);

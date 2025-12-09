@@ -5,6 +5,9 @@
   "scripts": {
     "fetch": "node scripts/fetch-ranking.js"
   },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.47.10"
+  },
   "devDependencies": {
     "canvas": "^3.2.0",
     "puppeteer": "^24.32.0",
