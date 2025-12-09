@@ -72,7 +72,7 @@ function renderRankingTable() {
                     <div class="character-avatar">${getClassIcon(member.class)}</div>
                     <div>
                         <div class="character-name">${member.name}</div>
-                        <div class="character-class">${member.class} · ${member.server}</div>
+                        <div class="character-class">${member.class}</div>
                     </div>
                 </div>
             </td>
