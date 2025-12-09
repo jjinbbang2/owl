@@ -389,16 +389,25 @@ body {
 
 .ranking-table-small {
     font-size: 0.9rem;
+}
+
+.ranking-table-small thead {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+    background: #15161e;
+}
+
+.ranking-table-small tbody {
     display: block;
-    max-height: 400px;
+    max-height: 350px;
     overflow-y: auto;
 }
 
-.ranking-table-small thead,
-.ranking-table-small tbody,
-.ranking-table-small tr {
+.ranking-table-small tbody tr {
     display: table;
     width: 100%;
+    table-layout: fixed;
 }
 
 .ranking-table-small th:first-child,
@@ -415,6 +424,10 @@ body {
 .ranking-table-small th,
 .ranking-table-small td {
     padding: 10px 8px;
+}
+
+.ranking-table-small th {
+    text-align: center;
 }
 
 .ranking-table-small .character-avatar {
