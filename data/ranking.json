@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2025-12-09T19:04:55.160Z",
+  "updatedAt": "2025-12-09T20:05:49.694Z",
   "members": [
     {
       "name": "풀뱅기사",
@@ -51,8 +51,8 @@
     },
     {
       "name": "갑옷거인",
-      "rank": 34875,
-      "rankDisplay": "34,875위",
+      "rank": 34923,
+      "rankDisplay": "34,923위",
       "server": "라사",
       "class": "대검전사",
       "totalScore": 89298,
@@ -147,8 +147,8 @@
     },
     {
       "name": "시우쇠",
-      "rank": 11,
-      "rankDisplay": "11위",
+      "rank": 10,
+      "rankDisplay": "10위",
       "server": "라사",
       "class": "화염술사",
       "totalScore": 142817,
