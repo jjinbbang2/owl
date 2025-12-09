@@ -139,6 +139,14 @@ body {
     table-layout: fixed;
 }
 
+/* 종합 랭킹 테이블 열 너비 */
+.ranking-table-wrapper th:nth-child(1),
+.ranking-table-wrapper td:nth-child(1) { width: 60px; }
+.ranking-table-wrapper th:nth-child(3),
+.ranking-table-wrapper td:nth-child(3) { width: 100px; text-align: right; }
+.ranking-table-wrapper th:nth-child(5),
+.ranking-table-wrapper td:nth-child(5) { width: 80px; text-align: right; }
+
 /* 랭킹 테이블 */
 .ranking-table {
     width: 100%;
@@ -322,6 +330,7 @@ body {
     font-weight: 700;
     font-size: 1.1rem;
     color: var(--primary-gold);
+    text-align: right;
 }
 
 /* 세부 점수 */
@@ -351,6 +360,8 @@ body {
 .rank-display {
     color: #888;
     font-size: 0.85rem;
+    text-align: right;
+    display: block;
 }
 
 /* 세부 랭킹 레이아웃 */
