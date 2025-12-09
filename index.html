@@ -35,7 +35,7 @@
     <meta name="theme-color" content="#4a3728">
 
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./styles.css?v=2025120901">
+    <link rel="stylesheet" href="./styles.css?v=2025120902">
 </head>
 <body>
 <nav class="nav">
@@ -67,20 +67,22 @@
                 <button class="btn-manage btn-danger" onclick="openDeleteModal()">- 캐릭터 삭제</button>
             </div>
         </div>
-        <table class="ranking-table">
-            <thead>
-            <tr>
-                <th>순위</th>
-                <th>캐릭터</th>
-                <th>종합점수</th>
-                <th class="hide-mobile">세부점수</th>
-                <th class="hide-mobile">전체순위</th>
-            </tr>
-            </thead>
-            <tbody id="ranking-body">
-            <!-- JavaScript로 동적 생성 -->
-            </tbody>
-        </table>
+        <div class="ranking-table-wrapper">
+            <table class="ranking-table">
+                <thead>
+                <tr>
+                    <th>순위</th>
+                    <th>캐릭터</th>
+                    <th>종합점수</th>
+                    <th class="hide-mobile">세부점수</th>
+                    <th class="hide-mobile">전체순위</th>
+                </tr>
+                </thead>
+                <tbody id="ranking-body">
+                <!-- JavaScript로 동적 생성 -->
+                </tbody>
+            </table>
+        </div>
     </section>
 
     <div class="detail-rankings">

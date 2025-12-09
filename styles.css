@@ -108,6 +108,24 @@ body {
     color: #888;
 }
 
+/* 랭킹 테이블 래퍼 (스크롤) */
+.ranking-table-wrapper {
+    max-height: 620px;
+    overflow-y: auto;
+    border-radius: 8px;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.5);
+}
+
+.ranking-table-wrapper .ranking-table {
+    box-shadow: none;
+}
+
+.ranking-table-wrapper thead {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
 /* 랭킹 테이블 */
 .ranking-table {
     width: 100%;
