@@ -110,24 +110,33 @@ body {
 
 /* 랭킹 테이블 래퍼 (스크롤) */
 .ranking-table-wrapper {
-    max-height: 620px;
-    overflow-y: auto;
     border-radius: 8px;
     box-shadow: 0 0 40px rgba(0, 0, 0, 0.5);
     background: rgba(26, 27, 38, 0.95);
+    overflow: hidden;
 }
 
 .ranking-table-wrapper .ranking-table {
     box-shadow: none;
-    border-collapse: separate;
-    border-spacing: 0;
 }
 
-.ranking-table-wrapper thead th {
-    position: sticky;
-    top: 0;
-    z-index: 1;
+.ranking-table-wrapper thead {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
     background: #15161e;
+}
+
+.ranking-table-wrapper tbody {
+    display: block;
+    max-height: 560px;
+    overflow-y: auto;
+}
+
+.ranking-table-wrapper tbody tr {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
 }
 
 /* 랭킹 테이블 */
