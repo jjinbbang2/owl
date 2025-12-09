@@ -114,21 +114,20 @@ body {
     overflow-y: auto;
     border-radius: 8px;
     box-shadow: 0 0 40px rgba(0, 0, 0, 0.5);
+    background: rgba(26, 27, 38, 0.95);
 }
 
 .ranking-table-wrapper .ranking-table {
     box-shadow: none;
-}
-
-.ranking-table-wrapper thead {
-    position: sticky;
-    top: 0;
-    z-index: 1;
-    background: #1a1b26;
+    border-collapse: separate;
+    border-spacing: 0;
 }
 
 .ranking-table-wrapper thead th {
-    background: #1a1b26;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background: #15161e;
 }
 
 /* 랭킹 테이블 */
