@@ -335,11 +335,11 @@
             <div class="form-row">
                 <div class="form-group">
                     <label>닉네임</label>
-                    <input type="text" id="newNickname" placeholder="캐릭터 닉네임">
+                    <input type="text" id="newNickname" placeholder="캐릭터 닉네임" onkeydown="handleNicknameKeydown(event, 'newPower')" onblur="fetchCombatPower('newNickname', 'newPower')">
                 </div>
-                <div class="form-group" style="max-width: 100px;">
+                <div class="form-group" style="max-width: 120px;">
                     <label>전투력</label>
-                    <input type="number" step="0.1" id="newPower" placeholder="5.2">
+                    <input type="number" id="newPower" placeholder="자동입력" readonly>
                 </div>
                 <div class="form-group">
                     <label>역할</label>
@@ -367,6 +367,66 @@
 <script>
 // 요일 배열
 const dayNames = ['일', '월', '화', '수', '목', '금', '토'];
+
+// 전투력 조회 함수 (최대 3회 재시도)
+async function fetchCombatPower(nicknameInputId, powerInputId, retryCount = 0) {
+    const nicknameInput = document.getElementById(nicknameInputId);
+    const powerInput = document.getElementById(powerInputId);
+    const nickname = nicknameInput.value.trim();
+
+    if (!nickname) {
+        powerInput.value = '';
+        powerInput.readOnly = true;
+        return;
+    }
+
+    powerInput.value = '';
+    powerInput.readOnly = true;
+    powerInput.placeholder = retryCount > 0 ? `재시도 ${retryCount}/3...` : '조회중...';
+
+    try {
+        const url = `https://mobinogi.net/user/6/${encodeURIComponent(nickname)}`;
+        const proxyUrl = `https://api.allorigins.win/raw?url=${encodeURIComponent(url)}`;
+
+        const response = await fetch(proxyUrl);
+        const html = await response.text();
+
+        const match = html.match(/window\.__SSR_DATA__\s*=\s*(\{[\s\S]*?\});/);
+        if (match) {
+            const ssrData = JSON.parse(match[1]);
+            if (ssrData.userMetaData && ssrData.userMetaData.length > 0) {
+                // 전투력(level)이 가장 높은 클래스 데이터 찾기
+                const user = ssrData.userMetaData.reduce((max, u) => u.level > max.level ? u : max);
+                powerInput.value = user.level;
+                powerInput.placeholder = '자동입력';
+                powerInput.readOnly = true;
+                return;
+            }
+        }
+        throw new Error('데이터 없음');
+    } catch (error) {
+        console.error(`전투력 조회 실패 (${retryCount + 1}/3):`, error);
+
+        if (retryCount < 2) {
+            // 1초 후 재시도
+            setTimeout(() => fetchCombatPower(nicknameInputId, powerInputId, retryCount + 1), 1000);
+        } else {
+            // 3회 실패 시 수기 입력 허용
+            powerInput.placeholder = '직접 입력';
+            powerInput.readOnly = false;
+            powerInput.focus();
+            alert('조회가 이뤄지지 않아 직접입력 또는 새로고침 후 재시도 부탁드립니다.');
+        }
+    }
+}
+
+// 닉네임 입력 엔터키 처리
+function handleNicknameKeydown(event, powerInputId) {
+    if (event.key === 'Enter') {
+        event.preventDefault();
+        event.target.blur();
+    }
+}
 
 // 날짜 포맷팅 함수: "2025-12-08 21:30(월)" 형식
 function formatSchedule(date) {
@@ -507,7 +567,7 @@ function renderParties(parties) {
                 ${party.raid_members.map(member => `
                     <div class="member-row">
                         <span class="member-nickname">${member.nickname}</span>
-                        <span class="member-power">${member.combat_power || '-'}</span>
+                        <span class="member-power">${member.combat_power ? member.combat_power.toLocaleString() : '-'}</span>
                         <div class="member-role">
                             ${member.is_tanker ? '<span class="role-badge role-tanker">탱커</span>' : ''}
                             ${member.is_healer ? '<span class="role-badge role-healer">힐러</span>' : ''}
@@ -527,11 +587,11 @@ function renderParties(parties) {
                 <div class="form-row">
                     <div class="form-group">
                         <label>닉네임</label>
-                        <input type="text" id="memberNickname-${party.id}" placeholder="캐릭터 닉네임">
+                        <input type="text" id="memberNickname-${party.id}" placeholder="캐릭터 닉네임" onkeydown="handleNicknameKeydown(event, 'memberPower-${party.id}')" onblur="fetchCombatPower('memberNickname-${party.id}', 'memberPower-${party.id}')">
                     </div>
-                    <div class="form-group" style="max-width: 100px;">
+                    <div class="form-group" style="max-width: 120px;">
                         <label>전투력</label>
-                        <input type="number" step="0.1" id="memberPower-${party.id}" placeholder="5.2">
+                        <input type="number" id="memberPower-${party.id}" placeholder="자동입력" readonly>
                     </div>
                     <div class="form-group">
                         <label>역할</label>
@@ -615,7 +675,7 @@ async function createParty() {
         .insert({
             party_id: party.id,
             nickname,
-            combat_power: combatPower || null,
+            combat_power: combatPower ? parseInt(combatPower, 10) : null,
             is_tanker: isTanker,
             is_healer: isHealer
         });
@@ -654,7 +714,7 @@ async function addMember(partyId) {
         .insert({
             party_id: partyId,
             nickname,
-            combat_power: combatPower || null,
+            combat_power: combatPower ? parseInt(combatPower, 10) : null,
             is_tanker: isTanker,
             is_healer: isHealer
         });
@@ -716,7 +776,7 @@ async function copyPartyInfo(partyId) {
     // 멤버 목록 텍스트 생성
     const memberList = party.raid_members.map(member => {
         let line = `- ${member.nickname}`;
-        if (member.combat_power) line += ` (${member.combat_power})`;
+        if (member.combat_power) line += ` (${member.combat_power.toLocaleString()})`;
         const roles = [];
         if (member.is_tanker) roles.push('탱커');
         if (member.is_healer) roles.push('힐러');
