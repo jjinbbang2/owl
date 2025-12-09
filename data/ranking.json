@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2025-12-09T07:07:04.046Z",
+  "updatedAt": "2025-12-09T08:07:38.426Z",
   "members": [
     {
       "name": "풀뱅기사",
@@ -51,8 +51,8 @@
     },
     {
       "name": "갑옷거인",
-      "rank": 34868,
-      "rankDisplay": "34,868위",
+      "rank": 34831,
+      "rankDisplay": "34,831위",
       "server": "라사",
       "class": "대검전사",
       "totalScore": 89293,
@@ -108,18 +108,6 @@
       "combatScore": 47241,
       "lifeScore": 8332,
       "charmScore": 22088
-    },
-    {
-      "name": "도루메",
-      "rank": 9497,
-      "rankDisplay": "9,497위",
-      "server": "라사",
-      "class": "빙결술사",
-      "totalScore": 99835,
-      "totalScoreDisplay": "99,835",
-      "combatScore": 56108,
-      "lifeScore": 20592,
-      "charmScore": 23135
     },
     {
       "name": "보노보노거인",
