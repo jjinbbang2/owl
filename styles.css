@@ -124,6 +124,11 @@ body {
     position: sticky;
     top: 0;
     z-index: 1;
+    background: #1a1b26;
+}
+
+.ranking-table-wrapper thead th {
+    background: #1a1b26;
 }
 
 /* 랭킹 테이블 */
