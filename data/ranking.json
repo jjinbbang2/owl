@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2025-12-09T05:05:50.249Z",
+  "updatedAt": "2025-12-09T06:07:59.197Z",
   "members": [
     {
       "name": "풀뱅기사",
@@ -144,6 +144,18 @@
       "combatScore": 49312,
       "lifeScore": 6853,
       "charmScore": 17446
+    },
+    {
+      "name": "초엣",
+      "rank": 1325,
+      "rankDisplay": "1,325위",
+      "server": "라사",
+      "class": "검술사",
+      "totalScore": 123099,
+      "totalScoreDisplay": "123,099",
+      "combatScore": 58350,
+      "lifeScore": 19463,
+      "charmScore": 45286
     }
   ]
 }
