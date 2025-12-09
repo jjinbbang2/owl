@@ -412,12 +412,12 @@ body {
 
 .ranking-table-small th:first-child,
 .ranking-table-small td:first-child {
-    width: 50px;
+    width: 40px;
 }
 
 .ranking-table-small th:last-child,
 .ranking-table-small td:last-child {
-    width: 80px;
+    width: 60px;
     text-align: right;
 }
 
