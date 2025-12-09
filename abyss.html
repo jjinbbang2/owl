@@ -26,29 +26,58 @@
         .party-header {
             display: flex;
             justify-content: space-between;
-            align-items: center;
+            align-items: flex-start;
+            gap: 10px;
             margin-bottom: 15px;
             padding-bottom: 15px;
             border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            flex-wrap: wrap;
+        }
+        .party-header > div {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
         }
         .party-schedule {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-weight: 700;
             color: var(--primary-gold);
+        }
+        .time-remaining {
+            font-size: 0.85rem;
+            color: #888;
+            display: block;
+            margin-top: 4px;
         }
         .party-difficulty {
             background: rgba(248, 113, 113, 0.2);
             color: #f87171;
             padding: 4px 12px;
             border-radius: 20px;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
+            white-space: nowrap;
         }
         .party-count {
             background: rgba(122, 162, 247, 0.2);
             color: var(--accent-blue);
             padding: 4px 12px;
             border-radius: 20px;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
+            white-space: nowrap;
+        }
+        @media (max-width: 480px) {
+            .party-header {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 8px;
+            }
+            .party-header > div {
+                justify-content: flex-start;
+            }
+            .party-schedule {
+                font-size: 1rem;
+            }
         }
         .members-list {
             display: flex;
@@ -500,7 +529,7 @@ function renderParties(parties) {
             <div class="party-header">
                 <div>
                     <span class="party-schedule">${scheduleDisplay}</span>
-                    <span class="time-remaining" style="margin-left: 10px; font-size: 0.85rem;">${timeRemaining}</span>
+                    <span class="time-remaining">${timeRemaining}</span>
                 </div>
                 <div>
                     <span class="party-count">${party.abyss_members.length}/4</span>
