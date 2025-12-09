@@ -23,6 +23,9 @@ jobs:
         with:
           node-version: '20'
 
+      - name: Install dependencies
+        run: npm install
+
       - name: Fetch ranking data
         run: node scripts/fetch-ranking.js
 
