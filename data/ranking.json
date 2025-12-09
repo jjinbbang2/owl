@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2025-12-09T13:16:41.983Z",
+  "updatedAt": "2025-12-09T14:05:45.613Z",
   "members": [
     {
       "name": "풀뱅기사",
@@ -15,15 +15,15 @@
     },
     {
       "name": "루야쫑쫑",
-      "rank": 11213,
-      "rankDisplay": "11,213위",
+      "rank": 2636,
+      "rankDisplay": "2,636위",
       "server": "라사",
       "class": "대검전사",
-      "totalScore": 116875,
-      "totalScoreDisplay": "116,875",
-      "combatScore": 56643,
-      "lifeScore": 24106,
-      "charmScore": 36126
+      "totalScore": 117978,
+      "totalScoreDisplay": "117,978",
+      "combatScore": 56644,
+      "lifeScore": 24108,
+      "charmScore": 37226
     },
     {
       "name": "차력거인",
@@ -75,8 +75,8 @@
     },
     {
       "name": "로거니우스",
-      "rank": 1452,
-      "rankDisplay": "1,452위",
+      "rank": 1464,
+      "rankDisplay": "1,464위",
       "server": "라사",
       "class": "장궁병",
       "totalScore": 122564,
@@ -123,8 +123,8 @@
     },
     {
       "name": "불도저츄러스",
-      "rank": 57973,
-      "rankDisplay": "57,973위",
+      "rank": 57980,
+      "rankDisplay": "57,980위",
       "server": "라사",
       "class": "대검전사",
       "totalScore": 72611,
@@ -147,8 +147,8 @@
     },
     {
       "name": "시우쇠",
-      "rank": 9,
-      "rankDisplay": "9위",
+      "rank": 11,
+      "rankDisplay": "11위",
       "server": "라사",
       "class": "화염술사",
       "totalScore": 142802,
