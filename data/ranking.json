@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2025-12-09T03:32:47.485Z",
+  "updatedAt": "2025-12-09T04:46:55.371Z",
   "members": [
     {
       "name": "풀뱅기사",
@@ -24,18 +24,6 @@
       "combatScore": 56643,
       "lifeScore": 24103,
       "charmScore": 36123
-    },
-    {
-      "name": "보노보노거인",
-      "rank": 49395,
-      "rankDisplay": "49,395위",
-      "server": "라사",
-      "class": "검술사",
-      "totalScore": 69602,
-      "totalScoreDisplay": "69,602",
-      "combatScore": 43271,
-      "lifeScore": 11269,
-      "charmScore": 15062
     },
     {
       "name": "차력거인",
@@ -108,6 +96,30 @@
       "combatScore": 56307,
       "lifeScore": 10488,
       "charmScore": 17446
+    },
+    {
+      "name": "풀뱅맹구",
+      "rank": 36818,
+      "rankDisplay": "36,818위",
+      "server": "라사",
+      "class": "힐러",
+      "totalScore": 77661,
+      "totalScoreDisplay": "77,661",
+      "combatScore": 47241,
+      "lifeScore": 8332,
+      "charmScore": 22088
+    },
+    {
+      "name": "도루메",
+      "rank": 9497,
+      "rankDisplay": "9,497위",
+      "server": "라사",
+      "class": "빙결술사",
+      "totalScore": 99835,
+      "totalScoreDisplay": "99,835",
+      "combatScore": 56108,
+      "lifeScore": 20592,
+      "charmScore": 23135
     }
   ]
 }
