@@ -57,9 +57,9 @@
         }
         .member-row {
             display: grid;
-            grid-template-columns: 1fr 80px 1fr 80px auto;
+            grid-template-columns: 1fr auto 1fr auto auto;
             align-items: center;
-            gap: 15px;
+            gap: 12px;
             padding: 12px;
             background: rgba(0, 0, 0, 0.2);
             border-radius: 8px;
@@ -67,24 +67,39 @@
         @media (max-width: 600px) {
             .member-row {
                 grid-template-columns: 1fr 1fr;
-                gap: 10px;
+                gap: 8px;
+                padding: 10px;
+            }
+            .member-row > div {
+                display: flex;
+                flex-direction: column;
+                gap: 2px;
             }
             .member-row .btn-delete {
                 grid-column: span 2;
                 justify-self: end;
+                margin-top: 4px;
+            }
+            .member-nickname {
+                font-size: 0.9rem;
+            }
+            .member-power {
+                font-size: 0.85rem;
             }
         }
         .member-label {
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             color: #888;
             display: block;
         }
         .member-nickname {
             font-weight: 500;
+            word-break: break-all;
         }
         .member-power {
             color: var(--accent-blue);
             font-weight: 600;
+            text-align: right;
         }
         .main-char {
             color: var(--primary-gold);
