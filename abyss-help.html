@@ -15,6 +15,10 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/themes/dark.css">
     <link rel="stylesheet" href="./styles.css?v=2025120802">
+    <!-- 카카오 SDK -->
+    <script src="https://t1.kakaocdn.net/kakao_js_sdk/2.7.2/kakao.min.js"
+            integrity="sha384-TiCUE00h649CAMonG018J2ujOgDKW/kVWlChEuu4jK2vxfAAD0eZxzCKakxg55G4"
+            crossorigin="anonymous"></script>
     <style>
         .party-card {
             background    : rgba(26, 27, 38, 0.95);
@@ -295,6 +299,55 @@
         .btn-share:hover {
             background : rgba(250, 225, 0, 0.3);
         }
+        .btn-share::after {
+            content     : '▼';
+            font-size   : 0.6rem;
+            margin-left : 4px;
+        }
+        /* 공유 드롭다운 */
+        .share-container {
+            position : relative;
+            display  : inline-block;
+        }
+        .share-dropdown {
+            position      : absolute;
+            top           : 100%;
+            right         : 0;
+            margin-top    : 5px;
+            background    : rgba(26, 27, 38, 0.98);
+            border        : 1px solid rgba(250, 225, 0, 0.3);
+            border-radius : 8px;
+            box-shadow    : 0 4px 12px rgba(0, 0, 0, 0.5);
+            min-width     : 150px;
+            z-index       : 1000;
+            overflow      : hidden;
+        }
+        .share-dropdown.hidden {
+            display : none;
+        }
+        .share-option {
+            padding       : 12px 16px;
+            cursor        : pointer;
+            transition    : background 0.2s;
+            display       : flex;
+            align-items   : center;
+            gap           : 8px;
+            color         : var(--text-light);
+            font-size     : 0.85rem;
+            border-bottom : 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .share-option:last-child {
+            border-bottom : none;
+        }
+        .share-option:hover {
+            background : rgba(250, 225, 0, 0.1);
+        }
+        .share-option.kakao {
+            color : #fae100;
+        }
+        .share-option.clipboard {
+            color : var(--accent-blue);
+        }
         .add-member-form {
             margin-top    : 15px;
             padding       : 15px;
@@ -399,6 +452,11 @@
 <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/ko.js"></script>
 <script src="./js/supabase-config.js"></script>
 <script src="./js/combat-power.js"></script>
+<script src="./js/party-share.js"></script>
+<script>
+// 카카오 SDK 초기화 (앱키를 여기에 입력)
+PartyShare.initKakaoSDK('8e0f458671cc8e81c30125532b95a245');
+</script>
 <script>
     // 요일 배열
     const dayNames = ['일', '월', '화', '수', '목', '금', '토'];
@@ -555,7 +613,13 @@
                 ${party.help_members.length < 4
                 ? `<button class="btn-add-member" onclick="toggleAddMemberForm('${party.id}')">+ 참가하기</button>`
                 : '<span style="color: #4ade80; font-size: 0.85rem;">파티 모집 완료!</span>'}
-                <button class="btn-share" onclick="copyPartyInfo('${party.id}')">공유</button>
+                <div class="share-container">
+                    <button class="btn-share" onclick="PartyShare.toggleShareDropdown('${party.id}')">공유</button>
+                    <div id="shareDropdown-${party.id}" class="share-dropdown hidden">
+                        <div class="share-option kakao" onclick="shareToKakaoWrapper('${party.id}')">💬 카카오톡</div>
+                        <div class="share-option clipboard" onclick="copyPartyInfoWrapper('${party.id}')">📋 클립보드</div>
+                    </div>
+                </div>
                 <button class="btn-delete-party" onclick="deleteParty('${party.id}')">파티 삭제</button>
             </div>
             <div id="addMemberForm-${party.id}" class="add-member-form hidden">
@@ -705,52 +769,25 @@
         loadParties();
     }
 
-    // 파티 정보 복사 (카카오톡 공유용)
-    async function copyPartyInfo(partyId) {
+    // 클립보드 복사 래퍼
+    function copyPartyInfoWrapper(partyId) {
         const party = currentParties.find(p => p.id === partyId);
         if (!party) {
             alert('파티 정보를 찾을 수 없습니다.');
             return;
         }
+        const { text } = PartyShare.generatePartyText(party, 'help');
+        PartyShare.copyToClipboard(text);
+    }
 
-        const scheduleDate = party.schedule ? new Date(party.schedule) : null;
-        const scheduleDisplay = scheduleDate ? formatSchedule(scheduleDate) : '-';
-
-        // 멤버 목록 텍스트 생성 (본캐/부캐 구분)
-        const memberList = party.help_members.map(member => {
-            let line = `- 본캐: ${member.main_nickname}`;
-            if (member.main_power) line += ` (${member.main_power.toLocaleString()})`;
-            if (member.sub_nickname) {
-                line += ` / 부캐: ${member.sub_nickname}`;
-                if (member.sub_power) line += ` (${member.sub_power.toLocaleString()})`;
-            }
-            return line;
-        }).join('\n');
-
-        const text = `[부엉공화국] 품앗이 파티 모집
-
-일정: ${scheduleDisplay}
-난이도: ${party.difficulty || '지옥 4'}
-현재 인원: ${party.help_members.length}/4
-
-참가자:
-${memberList}
-
-참가하기: https://jjinbbang2.github.io/owl/abyss-help.html`;
-
-        try {
-            await navigator.clipboard.writeText(text);
-            alert('파티 정보가 복사되었습니다!\n카카오톡에 붙여넣기 하세요.');
-        } catch (err) {
-            // 클립보드 API 실패 시 대체 방법
-            const textarea = document.createElement('textarea');
-            textarea.value = text;
-            document.body.appendChild(textarea);
-            textarea.select();
-            document.execCommand('copy');
-            document.body.removeChild(textarea);
-            alert('파티 정보가 복사되었습니다!\n카카오톡에 붙여넣기 하세요.');
+    // 카카오톡 공유 래퍼
+    function shareToKakaoWrapper(partyId) {
+        const party = currentParties.find(p => p.id === partyId);
+        if (!party) {
+            alert('파티 정보를 찾을 수 없습니다.');
+            return;
         }
+        PartyShare.shareToKakao(party, 'help');
     }
 
     // 남은 시간 업데이트 (1분마다)
