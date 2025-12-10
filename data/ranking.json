@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2025-12-10T08:07:11.126Z",
+  "updatedAt": "2025-12-10T09:07:43.514Z",
   "members": [
     {
       "name": "풀뱅기사",
@@ -63,15 +63,15 @@
     },
     {
       "name": "새벽숲부엉이",
-      "rank": 4379,
-      "rankDisplay": "4,379위",
+      "rank": 4329,
+      "rankDisplay": "4,329위",
       "server": "라사",
       "class": "듀얼블레이드",
-      "totalScore": 112370,
-      "totalScoreDisplay": "112,370",
-      "combatScore": 52641,
-      "lifeScore": 20117,
-      "charmScore": 39612
+      "totalScore": 112524,
+      "totalScoreDisplay": "112,524",
+      "combatScore": 52754,
+      "lifeScore": 20152,
+      "charmScore": 39618
     },
     {
       "name": "로거니우스",
@@ -147,8 +147,8 @@
     },
     {
       "name": "시우쇠",
-      "rank": 9,
-      "rankDisplay": "9위",
+      "rank": 10,
+      "rankDisplay": "10위",
       "server": "라사",
       "class": "화염술사",
       "totalScore": 142817,
