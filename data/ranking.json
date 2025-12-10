@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2025-12-10T01:34:24.354Z",
+  "updatedAt": "2025-12-10T02:38:17.954Z",
   "members": [
     {
       "name": "풀뱅기사",
@@ -75,15 +75,15 @@
     },
     {
       "name": "로거니우스",
-      "rank": 1464,
-      "rankDisplay": "1,464위",
+      "rank": 1394,
+      "rankDisplay": "1,394위",
       "server": "라사",
       "class": "장궁병",
-      "totalScore": 122564,
-      "totalScoreDisplay": "122,564",
-      "combatScore": 55084,
-      "lifeScore": 24543,
-      "charmScore": 42937
+      "totalScore": 122673,
+      "totalScoreDisplay": "122,673",
+      "combatScore": 55137,
+      "lifeScore": 24598,
+      "charmScore": 42938
     },
     {
       "name": "운정",
@@ -123,8 +123,8 @@
     },
     {
       "name": "불도저츄러스",
-      "rank": 57980,
-      "rankDisplay": "57,980위",
+      "rank": 58046,
+      "rankDisplay": "58,046위",
       "server": "라사",
       "class": "대검전사",
       "totalScore": 72611,
