@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2025-12-11T12:08:36.819Z",
+  "updatedAt": "2025-12-11T13:17:38.284Z",
   "members": [
     {
       "name": "풀뱅기사",
@@ -27,8 +27,8 @@
     },
     {
       "name": "차력거인",
-      "rank": 30429,
-      "rankDisplay": "30,429위",
+      "rank": 30428,
+      "rankDisplay": "30,428위",
       "server": "라사",
       "class": "석궁사수",
       "totalScore": 94731,
@@ -51,8 +51,8 @@
     },
     {
       "name": "갑옷거인",
-      "rank": 34775,
-      "rankDisplay": "34,775위",
+      "rank": 34774,
+      "rankDisplay": "34,774위",
       "server": "라사",
       "class": "대검전사",
       "totalScore": 89290,
@@ -87,8 +87,8 @@
     },
     {
       "name": "운정",
-      "rank": 26374,
-      "rankDisplay": "26,374위",
+      "rank": 26373,
+      "rankDisplay": "26,373위",
       "server": "라사",
       "class": "마법사",
       "totalScore": 84291,
@@ -99,8 +99,8 @@
     },
     {
       "name": "풀뱅맹구",
-      "rank": 36732,
-      "rankDisplay": "36,732위",
+      "rank": 36730,
+      "rankDisplay": "36,730위",
       "server": "라사",
       "class": "힐러",
       "totalScore": 77767,
@@ -111,8 +111,8 @@
     },
     {
       "name": "보노보노거인",
-      "rank": 46545,
-      "rankDisplay": "46,545위",
+      "rank": 46543,
+      "rankDisplay": "46,543위",
       "server": "라사",
       "class": "검술사",
       "totalScore": 71573,
@@ -171,8 +171,8 @@
     },
     {
       "name": "은월선비",
-      "rank": 32975,
-      "rankDisplay": "32,975위",
+      "rank": 32974,
+      "rankDisplay": "32,974위",
       "server": "라사",
       "class": "화염술사",
       "totalScore": 82453,
@@ -180,6 +180,30 @@
       "combatScore": 47925,
       "lifeScore": 20486,
       "charmScore": 14042
+    },
+    {
+      "name": "플라시엘",
+      "rank": 4111,
+      "rankDisplay": "4,111위",
+      "server": "라사",
+      "class": "수도사",
+      "totalScore": 113592,
+      "totalScoreDisplay": "113,592",
+      "combatScore": 56688,
+      "lifeScore": 29189,
+      "charmScore": 27715
+    },
+    {
+      "name": "빼주",
+      "rank": 4944,
+      "rankDisplay": "4,944위",
+      "server": "라사",
+      "class": "석궁사수",
+      "totalScore": 120304,
+      "totalScoreDisplay": "120,304",
+      "combatScore": 54659,
+      "lifeScore": 22649,
+      "charmScore": 42996
     }
   ]
 }
