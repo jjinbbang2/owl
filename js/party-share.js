@@ -169,6 +169,13 @@ ${memberList}
         return { text, url, scheduleDisplay, title, memberCount, maxMembers };
     }
 
+    // 레이드 보스별 이미지 URL 매핑
+    const raidImageMap = {
+        '글라스기브넨': 'https://jjinbbang2.github.io/owl/images/raids/og-glas.png',
+        '화이트 서큐버스': 'https://jjinbbang2.github.io/owl/images/raids/og-succubus.png',
+        '타바르타스': 'https://jjinbbang2.github.io/owl/images/raids/og-tavartas.png'
+    };
+
     // 카카오톡 피드 템플릿 공유
     function shareToKakao(party, pageType) {
         if (!window.Kakao || !window.Kakao.isInitialized()) {
@@ -177,7 +184,12 @@ ${memberList}
         }
 
         const { url, scheduleDisplay, title } = generatePartyText(party, pageType);
-        const imageUrl = 'https://jjinbbang2.github.io/owl/og-image.png';
+
+        // 레이드의 경우 보스별 이미지 사용, 그 외는 기본 이미지
+        let imageUrl = 'https://jjinbbang2.github.io/owl/og-image.png';
+        if (pageType === 'raid' && party.raid_type) {
+            imageUrl = raidImageMap[party.raid_type] || imageUrl;
+        }
 
         let description = '';
         switch(pageType) {
@@ -188,7 +200,7 @@ ${memberList}
                 description = `일정: ${scheduleDisplay}\n난이도: ${party.difficulty || '지옥 4'}`;
                 break;
             case 'raid':
-                description = `일정: ${scheduleDisplay}\n난이도: ${party.difficulty || '어려움'}`;
+                description = `일정: ${scheduleDisplay}\n레이드: ${party.raid_type || '글라스기브넨'}\n난이도: ${party.difficulty || '어려움'}`;
                 break;
         }
 

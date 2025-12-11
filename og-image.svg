@@ -1,62 +1,120 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
   <defs>
+    <!-- 그라데이션 배경 -->
     <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#4a3728"/>
-      <stop offset="100%" style="stop-color:#2d1f15"/>
+      <stop offset="0%" style="stop-color:#1a1a2e"/>
+      <stop offset="50%" style="stop-color:#16213e"/>
+      <stop offset="100%" style="stop-color:#0f0f23"/>
     </linearGradient>
+    <!-- 부엉이 눈 그라데이션 -->
     <linearGradient id="eyeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" style="stop-color:#ffd700"/>
       <stop offset="100%" style="stop-color:#ff8c00"/>
     </linearGradient>
+    <!-- 글로우 효과 -->
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <!-- 부드러운 그림자 -->
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#000" flood-opacity="0.3"/>
+    </filter>
   </defs>
 
-  <!-- Background -->
+  <!-- 배경 -->
   <rect width="1200" height="630" fill="url(#bgGrad)"/>
 
-  <!-- Decorative circles -->
-  <circle cx="100" cy="100" r="80" fill="#fff" opacity="0.03"/>
-  <circle cx="1100" cy="500" r="120" fill="#fff" opacity="0.03"/>
-  <circle cx="900" cy="100" r="60" fill="#fff" opacity="0.03"/>
+  <!-- 장식용 원들 (은은한 배경) -->
+  <circle cx="150" cy="100" r="200" fill="#ffd700" opacity="0.03"/>
+  <circle cx="1050" cy="530" r="250" fill="#4ecdc4" opacity="0.03"/>
+  <circle cx="600" cy="50" r="150" fill="#ff6b6b" opacity="0.02"/>
+  <circle cx="1100" cy="150" r="100" fill="#ffd700" opacity="0.02"/>
 
-  <!-- Owl -->
-  <g transform="translate(200, 315) scale(2.5)">
-    <!-- Body -->
-    <ellipse cx="0" cy="20" rx="45" ry="40" fill="#8b7355"/>
-    <!-- Head -->
-    <circle cx="0" cy="-15" r="40" fill="#a08060"/>
-    <!-- Ears -->
-    <polygon points="-30,-45 -20,-25 -38,-30" fill="#8b7355"/>
-    <polygon points="30,-45 20,-25 38,-30" fill="#8b7355"/>
-    <!-- Eye whites -->
-    <circle cx="-15" cy="-15" r="16" fill="#fff"/>
-    <circle cx="15" cy="-15" r="16" fill="#fff"/>
-    <!-- Eye colors -->
-    <circle cx="-15" cy="-15" r="12" fill="url(#eyeGrad)"/>
-    <circle cx="15" cy="-15" r="12" fill="url(#eyeGrad)"/>
-    <!-- Pupils -->
-    <circle cx="-15" cy="-15" r="5" fill="#1a1a1a"/>
-    <circle cx="15" cy="-15" r="5" fill="#1a1a1a"/>
-    <!-- Eye highlights -->
-    <circle cx="-18" cy="-18" r="3" fill="#fff" opacity="0.8"/>
-    <circle cx="12" cy="-18" r="3" fill="#fff" opacity="0.8"/>
-    <!-- Beak -->
-    <polygon points="0,-5 -8,8 8,8" fill="#ff8c00"/>
-    <!-- Chest pattern -->
-    <ellipse cx="0" cy="30" rx="22" ry="18" fill="#c4a574"/>
+  <!-- 작은 별 장식들 -->
+  <g fill="#ffd700" opacity="0.4">
+    <circle cx="100" cy="200" r="2"/>
+    <circle cx="200" cy="550" r="1.5"/>
+    <circle cx="350" cy="80" r="2"/>
+    <circle cx="1000" cy="100" r="2"/>
+    <circle cx="1100" cy="400" r="1.5"/>
+    <circle cx="950" cy="550" r="2"/>
+    <circle cx="800" cy="50" r="1.5"/>
   </g>
 
-  <!-- Title -->
-  <text x="420" y="280" font-family="'Noto Sans KR', sans-serif" font-size="90" font-weight="bold" fill="#ffd700">부엉공화국</text>
+  <!-- 부엉이 아이콘 (왼쪽) -->
+  <g transform="translate(200, 315)" filter="url(#shadow)">
+    <!-- 몸통 -->
+    <ellipse cx="0" cy="50" rx="90" ry="80" fill="#5c4a3d"/>
+    <!-- 머리 -->
+    <circle cx="0" cy="-20" r="80" fill="#7a6555"/>
+    <!-- 귀 -->
+    <polygon points="-60,-80 -40,-35 -76,-45" fill="#5c4a3d"/>
+    <polygon points="60,-80 40,-35 76,-45" fill="#5c4a3d"/>
+    <!-- 눈 흰자위 -->
+    <circle cx="-28" cy="-20" r="32" fill="#fff"/>
+    <circle cx="28" cy="-20" r="32" fill="#fff"/>
+    <!-- 눈동자 (노란색/주황색) -->
+    <circle cx="-28" cy="-20" r="24" fill="url(#eyeGrad)"/>
+    <circle cx="28" cy="-20" r="24" fill="url(#eyeGrad)"/>
+    <!-- 동공 -->
+    <circle cx="-28" cy="-20" r="10" fill="#1a1a1a"/>
+    <circle cx="28" cy="-20" r="10" fill="#1a1a1a"/>
+    <!-- 눈 하이라이트 -->
+    <circle cx="-34" cy="-26" r="6" fill="#fff" opacity="0.9"/>
+    <circle cx="22" cy="-26" r="6" fill="#fff" opacity="0.9"/>
+    <!-- 부리 -->
+    <polygon points="0,5 -16,30 16,30" fill="#ff8c00"/>
+    <!-- 가슴 무늬 -->
+    <ellipse cx="0" cy="60" rx="45" ry="35" fill="#c4a574"/>
+    <!-- 가슴 무늬 디테일 -->
+    <ellipse cx="0" cy="55" rx="30" ry="22" fill="#d4b584" opacity="0.6"/>
+  </g>
 
-  <!-- Subtitle -->
-  <text x="420" y="350" font-family="'Noto Sans KR', sans-serif" font-size="40" fill="#e8dcc8">마비노기 모바일 길드원 랭킹</text>
+  <!-- 메인 타이틀 -->
+  <g filter="url(#glow)">
+    <text x="420" y="260" font-family="Arial, 'Noto Sans KR', sans-serif" font-size="100" font-weight="bold" fill="#ffd700">
+      부엉이공화국
+    </text>
+  </g>
 
-  <!-- Categories -->
-  <text x="420" y="430" font-family="'Noto Sans KR', sans-serif" font-size="32" fill="#c4a574">⚔️ 전투력  ·  🌿 생활력  ·  💖 매력</text>
+  <!-- 부제목 -->
+  <text x="420" y="340" font-family="Arial, 'Noto Sans KR', sans-serif" font-size="44" fill="#e8e8e8" opacity="0.9">
+    랭킹, 파티매칭 시스템
+  </text>
 
-  <!-- Decorative line -->
-  <line x1="420" y1="470" x2="1100" y2="470" stroke="#ffd700" stroke-opacity="0.4" stroke-width="2"/>
+  <!-- 기능 아이콘들 -->
+  <g transform="translate(420, 420)">
+    <!-- 랭킹 아이콘 박스 -->
+    <rect x="0" y="0" width="140" height="50" rx="25" fill="#ffd700" opacity="0.15"/>
+    <text x="70" y="33" font-family="Arial, sans-serif" font-size="22" fill="#ffd700" text-anchor="middle">
+      ⚔ 전투력
+    </text>
 
-  <!-- Crown decoration -->
-  <text x="1050" y="280" font-size="60" fill="#ffd700" opacity="0.3">👑</text>
+    <!-- 파티매칭 아이콘 박스 -->
+    <rect x="160" y="0" width="160" height="50" rx="25" fill="#4ecdc4" opacity="0.15"/>
+    <text x="240" y="33" font-family="Arial, sans-serif" font-size="22" fill="#4ecdc4" text-anchor="middle">
+      👥 파티매칭
+    </text>
+
+    <!-- 레이드 아이콘 박스 -->
+    <rect x="340" y="0" width="130" height="50" rx="25" fill="#ff6b6b" opacity="0.15"/>
+    <text x="405" y="33" font-family="Arial, sans-serif" font-size="22" fill="#ff6b6b" text-anchor="middle">
+      🐉 레이드
+    </text>
+  </g>
+
+  <!-- 하단 구분선 -->
+  <line x1="420" y1="520" x2="1100" y2="520" stroke="#ffd700" stroke-opacity="0.3" stroke-width="2"/>
+
+  <!-- 하단 태그라인 -->
+  <text x="420" y="560" font-family="Arial, 'Noto Sans KR', sans-serif" font-size="24" fill="#888">
+    마비노기 모바일 길드 관리 시스템
+  </text>
+
+  <!-- 왕관 장식 -->
+  <text x="1020" y="260" font-size="70" fill="#ffd700" opacity="0.25">👑</text>
 </svg>
