@@ -169,12 +169,16 @@ ${memberList}
         return { text, url, scheduleDisplay, title, memberCount, maxMembers };
     }
 
-    // 레이드 보스별 이미지 URL 매핑
+    // 레이드 보스별 이미지 URL 매핑 (정사각형 800x800)
     const raidImageMap = {
-        '글라스기브넨': 'https://jjinbbang2.github.io/owl/images/raids/og-glas.png',
-        '화이트 서큐버스': 'https://jjinbbang2.github.io/owl/images/raids/og-succubus.png',
-        '타바르타스': 'https://jjinbbang2.github.io/owl/images/raids/og-tavartas.png'
+        '글라스기브넨': 'https://jjinbbang2.github.io/owl/images/raids/kakao-glas.png',
+        '화이트 서큐버스': 'https://jjinbbang2.github.io/owl/images/raids/kakao-succubus.png',
+        '타바르타스': 'https://jjinbbang2.github.io/owl/images/raids/kakao-tavartas.png'
     };
+
+    // 어비스/품앗이 이미지 URL
+    const abyssImageUrl = 'https://jjinbbang2.github.io/owl/images/abyss/kakao-abyss.png';
+    const helpImageUrl = 'https://jjinbbang2.github.io/owl/images/abyss/kakao-help.png';
 
     // 카카오톡 피드 템플릿 공유
     function shareToKakao(party, pageType) {
@@ -185,10 +189,20 @@ ${memberList}
 
         const { url, scheduleDisplay, title } = generatePartyText(party, pageType);
 
-        // 레이드의 경우 보스별 이미지 사용, 그 외는 기본 이미지
+        // 페이지 타입별 이미지 설정
         let imageUrl = 'https://jjinbbang2.github.io/owl/og-image.png';
-        if (pageType === 'raid' && party.raid_type) {
-            imageUrl = raidImageMap[party.raid_type] || imageUrl;
+        switch(pageType) {
+            case 'abyss':
+                imageUrl = abyssImageUrl;
+                break;
+            case 'help':
+                imageUrl = helpImageUrl;
+                break;
+            case 'raid':
+                if (party.raid_type) {
+                    imageUrl = raidImageMap[party.raid_type] || imageUrl;
+                }
+                break;
         }
 
         let description = '';
