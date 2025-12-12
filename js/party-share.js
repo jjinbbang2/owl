@@ -188,7 +188,7 @@ ${memberList}
                     const power = member.combat_power ? member.combat_power.toLocaleString() : '-';
                     return {
                         item: member.nickname,
-                        itemOp: className ? `${className} ${power}` : power
+                        itemOp: className ? `${power} ${className}` : power
                     };
                 });
                 break;
@@ -198,7 +198,7 @@ ${memberList}
                     const mainPower = member.main_power ? member.main_power.toLocaleString() : '-';
                     items.push({
                         item: member.main_nickname,
-                        itemOp: mainClass ? `${mainClass} ${mainPower}` : mainPower
+                        itemOp: mainClass ? `${mainPower} ${mainClass}` : mainPower
                     });
                 });
                 break;
@@ -208,7 +208,7 @@ ${memberList}
                     const power = member.combat_power ? member.combat_power.toLocaleString() : '-';
                     return {
                         item: member.nickname,
-                        itemOp: className ? `${className} ${power}` : power
+                        itemOp: className ? `${power} ${className}` : power
                     };
                 });
                 break;
