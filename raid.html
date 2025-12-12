@@ -733,6 +733,13 @@ async function addMember(partyId) {
         return;
     }
 
+    // 중복 닉네임 체크
+    const party = currentParties.find(p => p.id === partyId);
+    if (party && party.raid_members.some(m => m.nickname === nickname)) {
+        alert('이미 참가한 닉네임입니다.');
+        return;
+    }
+
     const { error } = await supabase
         .from('raid_members')
         .insert({

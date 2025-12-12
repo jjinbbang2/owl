@@ -751,6 +751,20 @@ PartyShare.initKakaoSDK('8e0f458671cc8e81c30125532b95a245');
             return;
         }
 
+        // 중복 닉네임 체크 (본캐/부캐 모두)
+        const party = currentParties.find(p => p.id === partyId);
+        if (party) {
+            const existingNicknames = party.help_members.flatMap(m => [m.main_nickname, m.sub_nickname]);
+            if (existingNicknames.includes(mainNickname)) {
+                alert(`본캐 닉네임(${mainNickname})이 이미 참가되어 있습니다.`);
+                return;
+            }
+            if (existingNicknames.includes(subNickname)) {
+                alert(`부캐 닉네임(${subNickname})이 이미 참가되어 있습니다.`);
+                return;
+            }
+        }
+
         const {error} = await supabase
             .from('help_members')
             .insert({
