@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2025-12-12T01:33:51.380Z",
+  "updatedAt": "2025-12-12T02:39:31.318Z",
   "members": [
     {
       "name": "풀뱅기사",
@@ -204,6 +204,174 @@
       "combatScore": 54659,
       "lifeScore": 22649,
       "charmScore": 42996
+    },
+    {
+      "name": "빼주야",
+      "rank": 13805,
+      "rankDisplay": "13,805위",
+      "server": "라사",
+      "class": "힐러",
+      "totalScore": 94226,
+      "totalScoreDisplay": "94,226",
+      "combatScore": 49788,
+      "lifeScore": 21192,
+      "charmScore": 23246
+    },
+    {
+      "name": "빼주현",
+      "rank": 11493,
+      "rankDisplay": "11,493위",
+      "server": "라사",
+      "class": "사제",
+      "totalScore": 96886,
+      "totalScoreDisplay": "96,886",
+      "combatScore": 52653,
+      "lifeScore": 20737,
+      "charmScore": 23496
+    },
+    {
+      "name": "이까연",
+      "rank": 10084,
+      "rankDisplay": "10,084위",
+      "server": "라사",
+      "class": "전격술사",
+      "totalScore": 98996,
+      "totalScoreDisplay": "98,996",
+      "combatScore": 53504,
+      "lifeScore": 20246,
+      "charmScore": 25246
+    },
+    {
+      "name": "빼쥬",
+      "rank": 31762,
+      "rankDisplay": "31,762위",
+      "server": "라사",
+      "class": "화염술사",
+      "totalScore": 95040,
+      "totalScoreDisplay": "95,040",
+      "combatScore": 52891,
+      "lifeScore": 20653,
+      "charmScore": 21496
+    },
+    {
+      "name": "도혜미",
+      "rank": 18285,
+      "rankDisplay": "18,285위",
+      "server": "라사",
+      "class": "수도사",
+      "totalScore": 90070,
+      "totalScoreDisplay": "90,070",
+      "combatScore": 52679,
+      "lifeScore": 18127,
+      "charmScore": 19264
+    },
+    {
+      "name": "보리굴비",
+      "rank": 4104,
+      "rankDisplay": "4,104위",
+      "server": "라사",
+      "class": "화염술사",
+      "totalScore": 113607,
+      "totalScoreDisplay": "113,607",
+      "combatScore": 54264,
+      "lifeScore": 15808,
+      "charmScore": 43535
+    },
+    {
+      "name": "바르다",
+      "rank": 13541,
+      "rankDisplay": "13,541위",
+      "server": "라사",
+      "class": "빙결술사",
+      "totalScore": 103393,
+      "totalScoreDisplay": "103,393",
+      "combatScore": 56257,
+      "lifeScore": 24207,
+      "charmScore": 22929
+    },
+    {
+      "name": "읏챠",
+      "rank": 32842,
+      "rankDisplay": "32,842위",
+      "server": "라사",
+      "class": "전사",
+      "totalScore": 80831,
+      "totalScoreDisplay": "80,831",
+      "combatScore": 48898,
+      "lifeScore": 15392,
+      "charmScore": 16541
+    },
+    {
+      "name": "위례",
+      "rank": 24126,
+      "rankDisplay": "24,126위",
+      "server": "라사",
+      "class": "힐러",
+      "totalScore": 85777,
+      "totalScoreDisplay": "85,777",
+      "combatScore": 49423,
+      "lifeScore": 13324,
+      "charmScore": 23030
+    },
+    {
+      "name": "항타기",
+      "rank": 39295,
+      "rankDisplay": "39,295위",
+      "server": "라사",
+      "class": "수도사",
+      "totalScore": 84275,
+      "totalScoreDisplay": "84,275",
+      "combatScore": 49644,
+      "lifeScore": 22752,
+      "charmScore": 11879
+    },
+    {
+      "name": "볼프강아마데우스",
+      "rank": 37950,
+      "rankDisplay": "37,950위",
+      "server": "라사",
+      "class": "석궁사수",
+      "totalScore": 84819,
+      "totalScoreDisplay": "84,819",
+      "combatScore": 49028,
+      "lifeScore": 22062,
+      "charmScore": 13729
+    },
+    {
+      "name": "악바르",
+      "rank": 44277,
+      "rankDisplay": "44,277위",
+      "server": "라사",
+      "class": "화염술사",
+      "totalScore": 82733,
+      "totalScoreDisplay": "82,733",
+      "combatScore": 48091,
+      "lifeScore": 22013,
+      "charmScore": 12629
+    },
+    {
+      "name": "번개술",
+      "rank": 42394,
+      "rankDisplay": "42,394위",
+      "server": "라사",
+      "class": "전격술사",
+      "totalScore": 80916,
+      "totalScoreDisplay": "80,916",
+      "combatScore": 45880,
+      "lifeScore": 21957,
+      "charmScore": 13079
+    },
+    {
+      "name": "류진원",
+      "rank": 30872,
+      "rankDisplay": "30,872위",
+      "server": "라사",
+      "class": "암흑술사",
+      "totalScore": 81474,
+      "totalScoreDisplay": "81,474",
+      "combatScore": 47081,
+      "lifeScore": 16905,
+      "charmScore": 17488
     }
   ]
 }
