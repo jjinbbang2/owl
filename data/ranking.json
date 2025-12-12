@@ -1,29 +1,29 @@
 {
-  "updatedAt": "2025-12-12T10:07:13.694Z",
+  "updatedAt": "2025-12-12T11:06:33.462Z",
   "members": [
     {
       "name": "풀뱅기사",
-      "rank": 7340,
-      "rankDisplay": "7,340위",
+      "rank": 7337,
+      "rankDisplay": "7,337위",
       "server": "라사",
       "class": "화염술사",
-      "totalScore": 104289,
-      "totalScoreDisplay": "104,289",
-      "combatScore": 52460,
-      "lifeScore": 22209,
-      "charmScore": 29620
+      "totalScore": 104296,
+      "totalScoreDisplay": "104,296",
+      "combatScore": 52456,
+      "lifeScore": 22212,
+      "charmScore": 29628
     },
     {
       "name": "루야쫑쫑",
-      "rank": 9300,
-      "rankDisplay": "9,300위",
+      "rank": 1759,
+      "rankDisplay": "1,759위",
       "server": "라사",
       "class": "대검전사",
-      "totalScore": 120186,
-      "totalScoreDisplay": "120,186",
-      "combatScore": 56644,
-      "lifeScore": 24116,
-      "charmScore": 39426
+      "totalScore": 121319,
+      "totalScoreDisplay": "121,319",
+      "combatScore": 56655,
+      "lifeScore": 24128,
+      "charmScore": 40536
     },
     {
       "name": "차력거인",
@@ -147,15 +147,15 @@
     },
     {
       "name": "시우쇠",
-      "rank": 10,
-      "rankDisplay": "10위",
+      "rank": 6,
+      "rankDisplay": "6위",
       "server": "라사",
       "class": "화염술사",
-      "totalScore": 142822,
-      "totalScoreDisplay": "142,822",
+      "totalScore": 142829,
+      "totalScoreDisplay": "142,829",
       "combatScore": 57664,
       "lifeScore": 35152,
-      "charmScore": 50006
+      "charmScore": 50013
     },
     {
       "name": "고진",
@@ -303,8 +303,8 @@
     },
     {
       "name": "위례",
-      "rank": 24126,
-      "rankDisplay": "24,126위",
+      "rank": 24168,
+      "rankDisplay": "24,168위",
       "server": "라사",
       "class": "힐러",
       "totalScore": 85777,
@@ -411,8 +411,8 @@
     },
     {
       "name": "카이릭스",
-      "rank": 5409,
-      "rankDisplay": "5,409위",
+      "rank": 5419,
+      "rankDisplay": "5,419위",
       "server": "라사",
       "class": "마법사",
       "totalScore": 109444,
