@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2025-12-12T02:39:31.318Z",
+  "updatedAt": "2025-12-12T03:33:28.721Z",
   "members": [
     {
       "name": "풀뱅기사",
@@ -372,6 +372,66 @@
       "combatScore": 47081,
       "lifeScore": 16905,
       "charmScore": 17488
+    },
+    {
+      "name": "린파란",
+      "rank": 1140,
+      "rankDisplay": "1,140위",
+      "server": "라사",
+      "class": "힐러",
+      "totalScore": 124255,
+      "totalScoreDisplay": "124,255",
+      "combatScore": 55878,
+      "lifeScore": 23506,
+      "charmScore": 44871
+    },
+    {
+      "name": "여니는여니여니해",
+      "rank": 914,
+      "rankDisplay": "914위",
+      "server": "라사",
+      "class": "댄서",
+      "totalScore": 125391,
+      "totalScoreDisplay": "125,391",
+      "combatScore": 56657,
+      "lifeScore": 27406,
+      "charmScore": 41328
+    },
+    {
+      "name": "유키노하라유키",
+      "rank": 12036,
+      "rankDisplay": "12,036위",
+      "server": "라사",
+      "class": "힐러",
+      "totalScore": 96206,
+      "totalScoreDisplay": "96,206",
+      "combatScore": 50891,
+      "lifeScore": 21163,
+      "charmScore": 24152
+    },
+    {
+      "name": "카이릭스",
+      "rank": 5409,
+      "rankDisplay": "5,409위",
+      "server": "라사",
+      "class": "마법사",
+      "totalScore": 109444,
+      "totalScoreDisplay": "109,444",
+      "combatScore": 53066,
+      "lifeScore": 14770,
+      "charmScore": 41608
+    },
+    {
+      "name": "준숙",
+      "rank": 16305,
+      "rankDisplay": "16,305위",
+      "server": "라사",
+      "class": "전사",
+      "totalScore": 91777,
+      "totalScoreDisplay": "91,777",
+      "combatScore": 52110,
+      "lifeScore": 20421,
+      "charmScore": 19246
     }
   ]
 }
