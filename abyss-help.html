@@ -134,6 +134,10 @@
             font-weight : 600;
             text-align  : right;
         }
+        .member-class {
+            color     : #a78bfa;
+            font-size : 0.8rem;
+        }
         .main-char {
             color : var(--primary-gold);
         }
@@ -418,22 +422,30 @@
             <div class="form-row">
                 <div class="form-group">
                     <label>본캐 닉네임</label>
-                    <input type="text" id="newMainNickname" placeholder="본캐 닉네임" onkeydown="handleNicknameKeydown(event)" onblur="fetchCombatPower('newMainNickname', 'newMainPower')">
+                    <input type="text" id="newMainNickname" placeholder="본캐 닉네임" onkeydown="handleNicknameKeydown(event)" onblur="fetchCombatPower('newMainNickname', 'newMainPower', 'newMainClass')">
                 </div>
                 <div class="form-group" style="max-width: 120px;">
                     <label>본캐 투력</label>
                     <input type="number" id="newMainPower" placeholder="자동입력" readonly>
+                </div>
+                <div class="form-group" style="max-width: 100px;">
+                    <label>본캐 클래스</label>
+                    <input type="text" id="newMainClass" placeholder="자동입력" readonly>
                 </div>
             </div>
             <div class="form-section-title">부캐 정보</div>
             <div class="form-row">
                 <div class="form-group">
                     <label>부캐 닉네임</label>
-                    <input type="text" id="newSubNickname" placeholder="부캐 닉네임" onkeydown="handleNicknameKeydown(event)" onblur="fetchCombatPower('newSubNickname', 'newSubPower')">
+                    <input type="text" id="newSubNickname" placeholder="부캐 닉네임" onkeydown="handleNicknameKeydown(event)" onblur="fetchCombatPower('newSubNickname', 'newSubPower', 'newSubClass')">
                 </div>
                 <div class="form-group" style="max-width: 120px;">
                     <label>부캐 투력</label>
                     <input type="number" id="newSubPower" placeholder="자동입력" readonly>
+                </div>
+                <div class="form-group" style="max-width: 100px;">
+                    <label>부캐 클래스</label>
+                    <input type="text" id="newSubClass" placeholder="자동입력" readonly>
                 </div>
             </div>
             <button class="btn-submit" onclick="createParty()">파티 생성</button>
@@ -592,6 +604,7 @@ PartyShare.initKakaoSDK('8e0f458671cc8e81c30125532b95a245');
                         <div>
                             <span class="member-label">본캐</span>
                             <span class="member-nickname main-char">${member.main_nickname}</span>
+                            <span class="member-class">${member.main_class || ''}</span>
                         </div>
                         <div>
                             <span class="member-label">투력</span>
@@ -600,6 +613,7 @@ PartyShare.initKakaoSDK('8e0f458671cc8e81c30125532b95a245');
                         <div>
                             <span class="member-label">부캐</span>
                             <span class="member-nickname sub-char">${member.sub_nickname || '-'}</span>
+                            <span class="member-class">${member.sub_class || ''}</span>
                         </div>
                         <div>
                             <span class="member-label">투력</span>
@@ -626,19 +640,29 @@ PartyShare.initKakaoSDK('8e0f458671cc8e81c30125532b95a245');
                 <div class="form-row">
                     <div class="form-group">
                         <label>본캐 닉네임</label>
-                        <input type="text" id="mainNickname-${party.id}" placeholder="본캐 닉네임" onkeydown="handleNicknameKeydown(event)" onblur="fetchCombatPower('mainNickname-${party.id}', 'mainPower-${party.id}')">
+                        <input type="text" id="mainNickname-${party.id}" placeholder="본캐 닉네임" onkeydown="handleNicknameKeydown(event)" onblur="fetchCombatPower('mainNickname-${party.id}', 'mainPower-${party.id}', 'mainClass-${party.id}')">
                     </div>
                     <div class="form-group" style="max-width: 120px;">
                         <label>본캐 투력</label>
                         <input type="number" id="mainPower-${party.id}" placeholder="자동입력" readonly>
                     </div>
+                    <div class="form-group" style="max-width: 100px;">
+                        <label>본캐 클래스</label>
+                        <input type="text" id="mainClass-${party.id}" placeholder="자동입력" readonly>
+                    </div>
+                </div>
+                <div class="form-row">
                     <div class="form-group">
                         <label>부캐 닉네임</label>
-                        <input type="text" id="subNickname-${party.id}" placeholder="부캐 닉네임" onkeydown="handleNicknameKeydown(event)" onblur="fetchCombatPower('subNickname-${party.id}', 'subPower-${party.id}')">
+                        <input type="text" id="subNickname-${party.id}" placeholder="부캐 닉네임" onkeydown="handleNicknameKeydown(event)" onblur="fetchCombatPower('subNickname-${party.id}', 'subPower-${party.id}', 'subClass-${party.id}')">
                     </div>
                     <div class="form-group" style="max-width: 120px;">
                         <label>부캐 투력</label>
                         <input type="number" id="subPower-${party.id}" placeholder="자동입력" readonly>
+                    </div>
+                    <div class="form-group" style="max-width: 100px;">
+                        <label>부캐 클래스</label>
+                        <input type="text" id="subClass-${party.id}" placeholder="자동입력" readonly>
                     </div>
                 </div>
                 <button class="btn-submit" onclick="addMember('${party.id}')" style="padding: 8px 20px; font-size: 0.9rem;">참가</button>
@@ -660,11 +684,13 @@ PartyShare.initKakaoSDK('8e0f458671cc8e81c30125532b95a245');
         const difficulty = document.getElementById('newDifficulty').value;
         const mainNickname = document.getElementById('newMainNickname').value.trim();
         const mainPower = document.getElementById('newMainPower').value;
+        const mainClass = document.getElementById('newMainClass').value.trim();
         const subNickname = document.getElementById('newSubNickname').value.trim();
         const subPower = document.getElementById('newSubPower').value;
+        const subClass = document.getElementById('newSubClass').value.trim();
 
-        if (!selectedScheduleDate || !mainNickname || !mainPower || !subNickname || !subPower) {
-            alert('요일·시간, 본캐/부캐 닉네임, 전투력을 모두 입력해주세요.');
+        if (!selectedScheduleDate || !mainNickname || !mainPower || !mainClass || !subNickname || !subPower || !subClass) {
+            alert('요일·시간, 본캐/부캐 닉네임, 전투력, 클래스를 모두 입력해주세요.');
             return;
         }
 
@@ -688,8 +714,10 @@ PartyShare.initKakaoSDK('8e0f458671cc8e81c30125532b95a245');
                 party_id     : party.id,
                 main_nickname: mainNickname,
                 main_power   : mainPower ? parseInt(mainPower, 10) : null,
+                main_class   : mainClass || null,
                 sub_nickname : subNickname || null,
-                sub_power    : subPower ? parseInt(subPower, 10) : null
+                sub_power    : subPower ? parseInt(subPower, 10) : null,
+                sub_class    : subClass || null
             });
 
         if (memberError) {
@@ -701,8 +729,10 @@ PartyShare.initKakaoSDK('8e0f458671cc8e81c30125532b95a245');
         selectedScheduleDate = null;
         document.getElementById('newMainNickname').value = '';
         document.getElementById('newMainPower').value = '';
+        document.getElementById('newMainClass').value = '';
         document.getElementById('newSubNickname').value = '';
         document.getElementById('newSubPower').value = '';
+        document.getElementById('newSubClass').value = '';
         document.getElementById('newPartyForm').classList.add('hidden');
 
         loadParties();
@@ -711,11 +741,13 @@ PartyShare.initKakaoSDK('8e0f458671cc8e81c30125532b95a245');
     async function addMember(partyId) {
         const mainNickname = document.getElementById(`mainNickname-${partyId}`).value.trim();
         const mainPower = document.getElementById(`mainPower-${partyId}`).value;
+        const mainClass = document.getElementById(`mainClass-${partyId}`).value.trim();
         const subNickname = document.getElementById(`subNickname-${partyId}`).value.trim();
         const subPower = document.getElementById(`subPower-${partyId}`).value;
+        const subClass = document.getElementById(`subClass-${partyId}`).value.trim();
 
-        if (!mainNickname || !mainPower || !subNickname || !subPower) {
-            alert('본캐/부캐 닉네임과 전투력을 모두 입력해주세요.');
+        if (!mainNickname || !mainPower || !mainClass || !subNickname || !subPower || !subClass) {
+            alert('본캐/부캐 닉네임, 전투력, 클래스를 모두 입력해주세요.');
             return;
         }
 
@@ -725,8 +757,10 @@ PartyShare.initKakaoSDK('8e0f458671cc8e81c30125532b95a245');
                 party_id     : partyId,
                 main_nickname: mainNickname,
                 main_power   : mainPower ? parseInt(mainPower, 10) : null,
+                main_class   : mainClass || null,
                 sub_nickname : subNickname || null,
-                sub_power    : subPower ? parseInt(subPower, 10) : null
+                sub_power    : subPower ? parseInt(subPower, 10) : null,
+                sub_class    : subClass || null
             });
 
         if (error) {

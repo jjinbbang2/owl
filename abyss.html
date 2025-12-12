@@ -90,7 +90,7 @@
         }
         .member-row {
             display: grid;
-            grid-template-columns: 1fr auto auto;
+            grid-template-columns: 1fr auto auto auto;
             align-items: center;
             gap: 12px;
             padding: 12px;
@@ -101,47 +101,41 @@
             font-weight: 500;
             word-break: break-all;
         }
-        .member-role {
-            display: flex;
-            gap: 6px;
-            flex-wrap: wrap;
+        .member-power {
+            color: var(--accent-blue);
+            font-weight: 600;
+            min-width: 60px;
+            text-align: right;
         }
-        .role-badge {
-            padding: 4px 8px;
-            border-radius: 12px;
-            font-size: 0.75rem;
-            white-space: nowrap;
+        .member-class {
+            color: #a78bfa;
+            font-size: 0.85rem;
+            min-width: 70px;
+            text-align: center;
         }
         @media (max-width: 480px) {
             .member-row {
-                grid-template-columns: 1fr auto;
+                grid-template-columns: 1fr 1fr;
                 gap: 8px;
             }
             .member-nickname {
                 grid-column: 1;
                 font-size: 0.9rem;
             }
-            .member-role {
+            .member-power {
                 grid-column: 2;
-                gap: 4px;
+                text-align: right;
+                font-size: 0.85rem;
+            }
+            .member-class {
+                grid-column: 1;
+                text-align: left;
+                font-size: 0.8rem;
             }
             .member-row .btn-delete {
-                grid-column: span 2;
+                grid-column: 2;
                 justify-self: end;
-                margin-top: 4px;
             }
-            .role-badge {
-                padding: 3px 6px;
-                font-size: 0.7rem;
-            }
-        }
-        .role-tanker {
-            background: rgba(96, 165, 250, 0.2);
-            color: #60a5fa;
-        }
-        .role-healer {
-            background: rgba(74, 222, 128, 0.2);
-            color: #4ade80;
         }
         .btn-delete {
             background: rgba(248, 113, 113, 0.2);
@@ -199,25 +193,6 @@
         .form-group input:focus, .form-group select:focus {
             outline: none;
             border-color: var(--primary-gold);
-        }
-        .checkbox-group {
-            display: flex;
-            gap: 20px;
-            align-items: center;
-        }
-        .checkbox-group label {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            cursor: pointer;
-            color: var(--text-light);
-        }
-        .checkbox-group input[type="checkbox"] {
-            width: 18px;
-            height: 18px;
-            cursor: pointer;
-            -webkit-appearance: checkbox;
-            appearance: checkbox;
         }
         .btn-submit {
             background: linear-gradient(145deg, var(--primary-gold), #b8960b);
@@ -434,14 +409,15 @@
             <div class="form-row">
                 <div class="form-group">
                     <label>닉네임</label>
-                    <input type="text" id="newNickname" placeholder="캐릭터 닉네임">
+                    <input type="text" id="newNickname" placeholder="캐릭터 닉네임" onkeydown="handleNicknameKeydown(event, 'newPower')" onblur="fetchCombatPower('newNickname', 'newPower', 'newClass')">
                 </div>
-                <div class="form-group">
-                    <label>역할</label>
-                    <div class="checkbox-group" style="margin-top: 8px;">
-                        <label><input type="checkbox" id="newTanker" onchange="handleRoleSelect(this, 'newHealer')"> 탱커</label>
-                        <label><input type="checkbox" id="newHealer" onchange="handleRoleSelect(this, 'newTanker')"> 힐러</label>
-                    </div>
+                <div class="form-group" style="max-width: 120px;">
+                    <label>전투력</label>
+                    <input type="number" id="newPower" placeholder="자동입력" readonly>
+                </div>
+                <div class="form-group" style="max-width: 100px;">
+                    <label>클래스</label>
+                    <input type="text" id="newClass" placeholder="자동입력" readonly>
                 </div>
             </div>
             <button class="btn-submit" onclick="createParty()">파티 생성</button>
@@ -460,6 +436,7 @@
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/ko.js"></script>
 <script src="./js/supabase-config.js"></script>
+<script src="./js/combat-power.js"></script>
 <script src="./js/party-share.js"></script>
 <script>
 // 카카오 SDK 초기화 (앱키를 여기에 입력)
@@ -600,10 +577,8 @@ function renderParties(parties) {
                 ${party.abyss_members.map(member => `
                     <div class="member-row">
                         <span class="member-nickname">${member.nickname}</span>
-                        <div class="member-role">
-                            ${member.is_tanker ? '<span class="role-badge role-tanker">탱커</span>' : ''}
-                            ${member.is_healer ? '<span class="role-badge role-healer">힐러</span>' : ''}
-                        </div>
+                        <span class="member-power">${member.combat_power ? member.combat_power.toLocaleString() : '-'}</span>
+                        <span class="member-class">${member.class_name || '-'}</span>
                         <button class="btn-delete" onclick="deleteMember('${member.id}')">삭제</button>
                     </div>
                 `).join('')}
@@ -625,14 +600,15 @@ function renderParties(parties) {
                 <div class="form-row">
                     <div class="form-group">
                         <label>닉네임</label>
-                        <input type="text" id="memberNickname-${party.id}" placeholder="캐릭터 닉네임">
+                        <input type="text" id="memberNickname-${party.id}" placeholder="캐릭터 닉네임" onkeydown="handleNicknameKeydown(event, 'memberPower-${party.id}')" onblur="fetchCombatPower('memberNickname-${party.id}', 'memberPower-${party.id}', 'memberClass-${party.id}')">
                     </div>
-                    <div class="form-group">
-                        <label>역할</label>
-                        <div class="checkbox-group" style="margin-top: 8px;">
-                            <label><input type="checkbox" id="memberTanker-${party.id}" onchange="handleRoleSelect(this, 'memberHealer-${party.id}')"> 탱커</label>
-                            <label><input type="checkbox" id="memberHealer-${party.id}" onchange="handleRoleSelect(this, 'memberTanker-${party.id}')"> 힐러</label>
-                        </div>
+                    <div class="form-group" style="max-width: 120px;">
+                        <label>전투력</label>
+                        <input type="number" id="memberPower-${party.id}" placeholder="자동입력" readonly>
+                    </div>
+                    <div class="form-group" style="max-width: 100px;">
+                        <label>클래스</label>
+                        <input type="text" id="memberClass-${party.id}" placeholder="자동입력" readonly>
                     </div>
                 </div>
                 <button class="btn-submit" onclick="addMember('${party.id}')" style="padding: 8px 20px; font-size: 0.9rem;">참가</button>
@@ -656,11 +632,11 @@ function toggleAddMemberForm(partyId) {
 async function createParty() {
     const difficulty = document.getElementById('newDifficulty').value;
     const nickname = document.getElementById('newNickname').value.trim();
-    const isTanker = document.getElementById('newTanker').checked;
-    const isHealer = document.getElementById('newHealer').checked;
+    const combatPower = document.getElementById('newPower').value;
+    const className = document.getElementById('newClass').value.trim();
 
-    if (!selectedScheduleDate || !nickname) {
-        alert('요일·시간과 닉네임을 입력해주세요.');
+    if (!selectedScheduleDate || !nickname || !combatPower || !className) {
+        alert('요일·시간, 닉네임, 전투력, 클래스를 모두 입력해주세요.');
         return;
     }
 
@@ -685,8 +661,8 @@ async function createParty() {
         .insert({
             party_id: party.id,
             nickname,
-            is_tanker: isTanker,
-            is_healer: isHealer
+            combat_power: combatPower ? parseInt(combatPower, 10) : null,
+            class_name: className || null
         });
 
     if (memberError) {
@@ -698,8 +674,8 @@ async function createParty() {
     schedulePicker.clear();
     selectedScheduleDate = null;
     document.getElementById('newNickname').value = '';
-    document.getElementById('newTanker').checked = false;
-    document.getElementById('newHealer').checked = false;
+    document.getElementById('newPower').value = '';
+    document.getElementById('newClass').value = '';
     document.getElementById('newPartyForm').classList.add('hidden');
 
     loadParties();
@@ -708,11 +684,11 @@ async function createParty() {
 // 멤버 추가
 async function addMember(partyId) {
     const nickname = document.getElementById(`memberNickname-${partyId}`).value.trim();
-    const isTanker = document.getElementById(`memberTanker-${partyId}`).checked;
-    const isHealer = document.getElementById(`memberHealer-${partyId}`).checked;
+    const combatPower = document.getElementById(`memberPower-${partyId}`).value;
+    const className = document.getElementById(`memberClass-${partyId}`).value.trim();
 
-    if (!nickname) {
-        alert('닉네임을 입력해주세요.');
+    if (!nickname || !combatPower || !className) {
+        alert('닉네임, 전투력, 클래스를 모두 입력해주세요.');
         return;
     }
 
@@ -721,8 +697,8 @@ async function addMember(partyId) {
         .insert({
             party_id: partyId,
             nickname,
-            is_tanker: isTanker,
-            is_healer: isHealer
+            combat_power: combatPower ? parseInt(combatPower, 10) : null,
+            class_name: className || null
         });
 
     if (error) {
@@ -799,13 +775,6 @@ function updateTimeRemaining() {
             }
         }
     });
-}
-
-// 역할 선택 (하나만 선택 가능, 해제도 가능)
-function handleRoleSelect(checkbox, otherId) {
-    if (checkbox.checked) {
-        document.getElementById(otherId).checked = false;
-    }
 }
 
 // 페이지 로드 시 실행
