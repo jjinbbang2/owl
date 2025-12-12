@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2025-12-12T11:06:33.462Z",
+  "updatedAt": "2025-12-12T12:09:15.570Z",
   "members": [
     {
       "name": "풀뱅기사",
@@ -39,15 +39,15 @@
     },
     {
       "name": "전퇴의거인",
-      "rank": 16747,
-      "rankDisplay": "16,747위",
+      "rank": 16670,
+      "rankDisplay": "16,670위",
       "server": "라사",
       "class": "빙결술사",
-      "totalScore": 91397,
-      "totalScoreDisplay": "91,397",
-      "combatScore": 53076,
-      "lifeScore": 18592,
-      "charmScore": 19729
+      "totalScore": 91515,
+      "totalScoreDisplay": "91,515",
+      "combatScore": 53187,
+      "lifeScore": 18597,
+      "charmScore": 19731
     },
     {
       "name": "갑옷거인",
@@ -147,15 +147,15 @@
     },
     {
       "name": "시우쇠",
-      "rank": 6,
-      "rankDisplay": "6위",
+      "rank": 8,
+      "rankDisplay": "8위",
       "server": "라사",
       "class": "화염술사",
-      "totalScore": 142829,
-      "totalScoreDisplay": "142,829",
+      "totalScore": 142832,
+      "totalScoreDisplay": "142,832",
       "combatScore": 57664,
       "lifeScore": 35152,
-      "charmScore": 50013
+      "charmScore": 50016
     },
     {
       "name": "고진",
@@ -291,14 +291,14 @@
     },
     {
       "name": "읏챠",
-      "rank": 32842,
-      "rankDisplay": "32,842위",
+      "rank": 32894,
+      "rankDisplay": "32,894위",
       "server": "라사",
       "class": "전사",
-      "totalScore": 80831,
-      "totalScoreDisplay": "80,831",
+      "totalScore": 80833,
+      "totalScoreDisplay": "80,833",
       "combatScore": 48898,
-      "lifeScore": 15392,
+      "lifeScore": 15394,
       "charmScore": 16541
     },
     {
