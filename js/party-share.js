@@ -88,10 +88,8 @@ const PartyShare = (function() {
                 memberCount = party.abyss_members.length;
                 memberList = party.abyss_members.map(member => {
                     let line = `- ${member.nickname}`;
-                    const roles = [];
-                    if (member.is_tanker) roles.push('탱커');
-                    if (member.is_healer) roles.push('힐러');
-                    if (roles.length > 0) line += ` [${roles.join(', ')}]`;
+                    if (member.class_name) line += ` (${member.class_name})`;
+                    if (member.combat_power) line += ` ${member.combat_power.toLocaleString()}`;
                     return line;
                 }).join('\n');
 
@@ -113,10 +111,12 @@ ${memberList}
                 memberCount = party.help_members.length;
                 memberList = party.help_members.map(member => {
                     let line = `- 본캐: ${member.main_nickname}`;
-                    if (member.main_power) line += ` (${member.main_power.toLocaleString()})`;
+                    if (member.main_class) line += ` (${member.main_class})`;
+                    if (member.main_power) line += ` ${member.main_power.toLocaleString()}`;
                     if (member.sub_nickname) {
                         line += ` / 부캐: ${member.sub_nickname}`;
-                        if (member.sub_power) line += ` (${member.sub_power.toLocaleString()})`;
+                        if (member.sub_class) line += ` (${member.sub_class})`;
+                        if (member.sub_power) line += ` ${member.sub_power.toLocaleString()}`;
                     }
                     return line;
                 }).join('\n');
@@ -142,11 +142,8 @@ ${memberList}
 
                 memberList = party.raid_members.map(member => {
                     let line = `- ${member.nickname}`;
-                    if (member.combat_power) line += ` (${member.combat_power.toLocaleString()})`;
-                    const roles = [];
-                    if (member.is_tanker) roles.push('탱커');
-                    if (member.is_healer) roles.push('힐러');
-                    if (roles.length > 0) line += ` [${roles.join(', ')}]`;
+                    if (member.class_name) line += ` (${member.class_name})`;
+                    if (member.combat_power) line += ` ${member.combat_power.toLocaleString()}`;
                     return line;
                 }).join('\n');
 
