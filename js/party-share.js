@@ -177,6 +177,57 @@ ${memberList}
     const abyssImageUrl = 'https://jjinbbang2.github.io/owl/images/abyss/kakao-abyss.png';
     const helpImageUrl = 'https://jjinbbang2.github.io/owl/images/abyss/kakao-help.png';
 
+    // 멤버 목록을 itemContent items 배열로 변환
+    function generateMemberItems(party, pageType) {
+        let items = [];
+
+        switch(pageType) {
+            case 'abyss':
+                items = party.abyss_members.map(member => {
+                    const className = member.class_name || '';
+                    const power = member.combat_power ? member.combat_power.toLocaleString() : '-';
+                    return {
+                        item: member.nickname,
+                        itemOp: className ? `${className} ${power}` : power
+                    };
+                });
+                break;
+            case 'help':
+                party.help_members.forEach(member => {
+                    const mainClass = member.main_class || '';
+                    const mainPower = member.main_power ? member.main_power.toLocaleString() : '-';
+                    items.push({
+                        item: member.main_nickname,
+                        itemOp: mainClass ? `${mainClass} ${mainPower}` : mainPower
+                    });
+                });
+                break;
+            case 'raid':
+                items = party.raid_members.map(member => {
+                    const className = member.class_name || '';
+                    const power = member.combat_power ? member.combat_power.toLocaleString() : '-';
+                    return {
+                        item: member.nickname,
+                        itemOp: className ? `${className} ${power}` : power
+                    };
+                });
+                break;
+        }
+
+        // 카카오 itemContent는 최대 5개 아이템 지원
+        // 5명 초과 시 4명까지 표시하고 5번째에 "외 N명..." 표시
+        if (items.length > 5) {
+            const remaining = items.length - 4;
+            items = items.slice(0, 4);
+            items.push({
+                item: `외 ${remaining}명...`,
+                itemOp: ''
+            });
+        }
+
+        return items;
+    }
+
     // 카카오톡 피드 템플릿 공유
     function shareToKakao(party, pageType) {
         if (!window.Kakao || !window.Kakao.isInitialized()) {
@@ -215,6 +266,9 @@ ${memberList}
                 break;
         }
 
+        // 멤버 목록 생성
+        const memberItems = generateMemberItems(party, pageType);
+
         try {
             window.Kakao.Share.sendDefault({
                 objectType: 'feed',
@@ -226,6 +280,10 @@ ${memberList}
                         mobileWebUrl: url,
                         webUrl: url
                     }
+                },
+                itemContent: {
+                    profileText: '참가자 목록',
+                    items: memberItems
                 },
                 buttons: [
                     {
