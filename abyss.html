@@ -216,6 +216,8 @@
             width: 18px;
             height: 18px;
             cursor: pointer;
+            -webkit-appearance: checkbox;
+            appearance: checkbox;
         }
         .btn-submit {
             background: linear-gradient(145deg, var(--primary-gold), #b8960b);
@@ -437,8 +439,8 @@
                 <div class="form-group">
                     <label>역할</label>
                     <div class="checkbox-group" style="margin-top: 8px;">
-                        <label><input type="checkbox" id="newTanker"> 탱커</label>
-                        <label><input type="checkbox" id="newHealer"> 힐러</label>
+                        <label><input type="checkbox" id="newTanker" onchange="handleRoleSelect(this, 'newHealer')"> 탱커</label>
+                        <label><input type="checkbox" id="newHealer" onchange="handleRoleSelect(this, 'newTanker')"> 힐러</label>
                     </div>
                 </div>
             </div>
@@ -628,8 +630,8 @@ function renderParties(parties) {
                     <div class="form-group">
                         <label>역할</label>
                         <div class="checkbox-group" style="margin-top: 8px;">
-                            <label><input type="checkbox" id="memberTanker-${party.id}"> 탱커</label>
-                            <label><input type="checkbox" id="memberHealer-${party.id}"> 힐러</label>
+                            <label><input type="checkbox" id="memberTanker-${party.id}" onchange="handleRoleSelect(this, 'memberHealer-${party.id}')"> 탱커</label>
+                            <label><input type="checkbox" id="memberHealer-${party.id}" onchange="handleRoleSelect(this, 'memberTanker-${party.id}')"> 힐러</label>
                         </div>
                     </div>
                 </div>
@@ -797,6 +799,13 @@ function updateTimeRemaining() {
             }
         }
     });
+}
+
+// 역할 선택 (하나만 선택 가능, 해제도 가능)
+function handleRoleSelect(checkbox, otherId) {
+    if (checkbox.checked) {
+        document.getElementById(otherId).checked = false;
+    }
 }
 
 // 페이지 로드 시 실행
