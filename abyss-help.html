@@ -663,8 +663,8 @@ PartyShare.initKakaoSDK('8e0f458671cc8e81c30125532b95a245');
         const subNickname = document.getElementById('newSubNickname').value.trim();
         const subPower = document.getElementById('newSubPower').value;
 
-        if (!selectedScheduleDate || !mainNickname) {
-            alert('요일·시간과 본캐 닉네임을 입력해주세요.');
+        if (!selectedScheduleDate || !mainNickname || !mainPower || !subNickname || !subPower) {
+            alert('요일·시간, 본캐/부캐 닉네임, 전투력을 모두 입력해주세요.');
             return;
         }
 
@@ -714,8 +714,8 @@ PartyShare.initKakaoSDK('8e0f458671cc8e81c30125532b95a245');
         const subNickname = document.getElementById(`subNickname-${partyId}`).value.trim();
         const subPower = document.getElementById(`subPower-${partyId}`).value;
 
-        if (!mainNickname) {
-            alert('본캐 닉네임을 입력해주세요.');
+        if (!mainNickname || !mainPower || !subNickname || !subPower) {
+            alert('본캐/부캐 닉네임과 전투력을 모두 입력해주세요.');
             return;
         }
 

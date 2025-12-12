@@ -721,8 +721,8 @@ async function createParty() {
     const isTanker = document.getElementById('newTanker').checked;
     const isHealer = document.getElementById('newHealer').checked;
 
-    if (!selectedScheduleDate || !nickname) {
-        alert('요일·시간과 닉네임을 입력해주세요.');
+    if (!selectedScheduleDate || !nickname || !combatPower) {
+        alert('요일·시간, 닉네임, 전투력을 모두 입력해주세요.');
         return;
     }
 
@@ -774,8 +774,8 @@ async function addMember(partyId) {
     const isTanker = document.getElementById(`memberTanker-${partyId}`).checked;
     const isHealer = document.getElementById(`memberHealer-${partyId}`).checked;
 
-    if (!nickname) {
-        alert('닉네임을 입력해주세요.');
+    if (!nickname || !combatPower) {
+        alert('닉네임과 전투력을 모두 입력해주세요.');
         return;
     }
 
