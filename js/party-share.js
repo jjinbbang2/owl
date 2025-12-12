@@ -214,7 +214,7 @@ ${memberList}
                 description = `일정: ${scheduleDisplay}\n난이도: ${party.difficulty || '지옥 4'}`;
                 break;
             case 'raid':
-                description = `일정: ${scheduleDisplay}\n레이드: ${party.raid_type || '글라스기브넨'}\n난이도: ${party.difficulty || '어려움'}`;
+                description = `일정: ${scheduleDisplay}\n난이도: ${party.difficulty || '어려움'}`;
                 break;
         }
 
