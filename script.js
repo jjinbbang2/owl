@@ -54,13 +54,16 @@ const CLASS_ICONS = {
     '듀얼블레이드': 'https://lwi.nexon.com/m_mabinogim/brand/info/class/thief_icon_4_A8450BD19314134E.png'
 };
 
+// 캐시 버스팅 버전 (아이콘 변경 시 숫자 증가)
+const ICON_VERSION = 'v2';
+
 function getClassIcon(className) {
     const iconUrl = CLASS_ICONS[className];
     if (iconUrl) {
-        return `<img src="${iconUrl}" alt="${className}" class="class-icon">`;
+        return `<img src="${iconUrl}?${ICON_VERSION}" alt="${className}" class="class-icon">`;
     }
     // 기본 아이콘 (알 수 없는 클래스)
-    return `<img src="./images/classes/default.svg" alt="${className}" class="class-icon">`;
+    return `<img src="./images/classes/default.svg?${ICON_VERSION}" alt="${className}" class="class-icon">`;
 }
 
 // 종합 랭킹 테이블 렌더링
