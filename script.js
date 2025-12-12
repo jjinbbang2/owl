@@ -18,25 +18,49 @@ function formatNumber(num) {
     return num.toLocaleString('ko-KR');
 }
 
-// 클래스별 아이콘
+// 클래스별 아이콘 (마비노기 모바일 공식 아이콘)
+const CLASS_ICONS = {
+    // 전사 계열
+    '견습 전사': 'https://lwi.nexon.com/m_mabinogim/brand/info/class/warrior_icon_1_65811EBD4BEC0285.png',
+    '전사'    : 'https://lwi.nexon.com/m_mabinogim/brand/info/class/warrior_icon_2_82FBE98DCDF420BB.png',
+    '대검전사' : 'https://lwi.nexon.com/m_mabinogim/brand/info/class/warrior_icon_3_753F0A05E1F5E2F8.png',
+    '검술사'  : 'https://lwi.nexon.com/m_mabinogim/brand/info/class/warrior_icon_4_C1812DE239AB0EC8.png',
+    // 궁수 계열
+    '견습 궁수': 'https://lwi.nexon.com/m_mabinogim/brand/info/class/archer_icon_1_6C95C482C969A5DA.png',
+    '궁수'    : 'https://lwi.nexon.com/m_mabinogim/brand/info/class/archer_icon_2_A336FF08A4F57E5A.png',
+    '석궁사수' : 'https://lwi.nexon.com/m_mabinogim/brand/info/class/archer_icon_3_3406C778F7F364AF.png',
+    '장궁병'  : 'https://lwi.nexon.com/m_mabinogim/brand/info/class/archer_icon_4_D99A386A246CC076.png',
+    // 마법사 계열
+    '견습 마법사': 'https://lwi.nexon.com/m_mabinogim/brand/info/class/mage_icon_1_3399B9475E5FD2BA.png',
+    '마법사'  : 'https://lwi.nexon.com/m_mabinogim/brand/info/class/mage_icon_2_8A3C50B41D1A1A9E.png',
+    '화염술사' : 'https://lwi.nexon.com/m_mabinogim/brand/info/class/mage_icon_3_A721D69252722705.png',
+    '빙결술사' : 'https://lwi.nexon.com/m_mabinogim/brand/info/class/mage_icon_4_A4B1DBBE4891A929.png',
+    '전격술사' : 'https://lwi.nexon.com/m_mabinogim/brand/info/class/mage_icon_5_EB114856CBE160D2.png',
+    // 힐러 계열
+    '견습 힐러': 'https://lwi.nexon.com/m_mabinogim/brand/info/class/healer_icon_1_697BB71C01BA77C7.png',
+    '힐러'    : 'https://lwi.nexon.com/m_mabinogim/brand/info/class/healer_icon_2_15972371DB794119.png',
+    '사제'    : 'https://lwi.nexon.com/m_mabinogim/brand/info/class/healer_icon_3_5F6E5C85FD70A719.png',
+    '수도사'  : 'https://lwi.nexon.com/m_mabinogim/brand/info/class/healer_icon_4_D9E416836A696233.png',
+    '암흑술사' : 'https://lwi.nexon.com/m_mabinogim/brand/info/class/healer_icon_5_589CF9A334A77B91.png',
+    // 음유시인 계열
+    '견습 음유시인': 'https://lwi.nexon.com/m_mabinogim/brand/info/class/bard_icon_1_410D309C3257989E.png',
+    '음유시인' : 'https://lwi.nexon.com/m_mabinogim/brand/info/class/bard_icon_2_AD3BA497BA26AFE8.png',
+    '댄서'    : 'https://lwi.nexon.com/m_mabinogim/brand/info/class/bard_icon_3_C866D0245C7D57D4.png',
+    '악사'    : 'https://lwi.nexon.com/m_mabinogim/brand/info/class/bard_icon_4_A3E490DA005190F0.png',
+    // 도적 계열
+    '견습 도적': 'https://lwi.nexon.com/m_mabinogim/brand/info/class/thief_icon_1_A8450BD19314134E.png',
+    '도적'    : 'https://lwi.nexon.com/m_mabinogim/brand/info/class/thief_icon_2_A8450BD19314134E.png',
+    '격투가'  : 'https://lwi.nexon.com/m_mabinogim/brand/info/class/thief_icon_3_A8450BD19314134E.png',
+    '듀얼블레이드': 'https://lwi.nexon.com/m_mabinogim/brand/info/class/thief_icon_4_A8450BD19314134E.png'
+};
+
 function getClassIcon(className) {
-    const classIcons = {
-        '검술사' : '⚔️',
-        '대검전사': '🗡️',
-        '전사'  : '🛡️',
-        '화염술사': '🔥',
-        '빙결술사': '❄️',
-        '전격술사': '⚡',
-        '마법사' : '🔮',
-        '석궁사수': '🏹',
-        '장궁병' : '🎯',
-        '힐러'  : '💚',
-        '사제'  : '✨',
-        '악사'  : '🎵',
-        '음유시인': '🎶',
-        '권술사' : '👊'
-    };
-    return classIcons[className] || '👤';
+    const iconUrl = CLASS_ICONS[className];
+    if (iconUrl) {
+        return `<img src="${iconUrl}" alt="${className}" class="class-icon">`;
+    }
+    // 기본 아이콘 (알 수 없는 클래스)
+    return `<img src="./images/classes/default.svg" alt="${className}" class="class-icon">`;
 }
 
 // 종합 랭킹 테이블 렌더링
