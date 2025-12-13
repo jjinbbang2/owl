@@ -1,10 +1,10 @@
 {
-  "updatedAt": "2025-12-13T01:34:19.477Z",
+  "updatedAt": "2025-12-13T02:36:43.446Z",
   "members": [
     {
       "name": "풀뱅기사",
-      "rank": 7380,
-      "rankDisplay": "7,380위",
+      "rank": 7376,
+      "rankDisplay": "7,376위",
       "server": "라사",
       "class": "화염술사",
       "totalScore": 104296,
@@ -63,8 +63,8 @@
     },
     {
       "name": "새벽숲부엉이",
-      "rank": 4450,
-      "rankDisplay": "4,450위",
+      "rank": 4453,
+      "rankDisplay": "4,453위",
       "server": "라사",
       "class": "듀얼블레이드",
       "totalScore": 112529,
@@ -75,15 +75,15 @@
     },
     {
       "name": "로거니우스",
-      "rank": 1446,
-      "rankDisplay": "1,446위",
+      "rank": 1467,
+      "rankDisplay": "1,467위",
       "server": "라사",
       "class": "장궁병",
-      "totalScore": 122739,
-      "totalScoreDisplay": "122,739",
+      "totalScore": 122736,
+      "totalScoreDisplay": "122,736",
       "combatScore": 55180,
-      "lifeScore": 24607,
-      "charmScore": 42952
+      "lifeScore": 24601,
+      "charmScore": 42955
     },
     {
       "name": "운정",
@@ -123,8 +123,8 @@
     },
     {
       "name": "불도저츄러스",
-      "rank": 58305,
-      "rankDisplay": "58,305위",
+      "rank": 58381,
+      "rankDisplay": "58,381위",
       "server": "라사",
       "class": "대검전사",
       "totalScore": 72611,
@@ -135,15 +135,15 @@
     },
     {
       "name": "초엣",
-      "rank": 1371,
-      "rankDisplay": "1,371위",
+      "rank": 1379,
+      "rankDisplay": "1,379위",
       "server": "라사",
       "class": "검술사",
-      "totalScore": 123115,
-      "totalScoreDisplay": "123,115",
+      "totalScore": 123118,
+      "totalScoreDisplay": "123,118",
       "combatScore": 58350,
       "lifeScore": 19465,
-      "charmScore": 45300
+      "charmScore": 45303
     },
     {
       "name": "시우쇠",
@@ -183,14 +183,14 @@
     },
     {
       "name": "플라시엘",
-      "rank": 4043,
-      "rankDisplay": "4,043위",
+      "rank": 4047,
+      "rankDisplay": "4,047위",
       "server": "라사",
       "class": "수도사",
-      "totalScore": 113817,
-      "totalScoreDisplay": "113,817",
+      "totalScore": 113810,
+      "totalScoreDisplay": "113,810",
       "combatScore": 56688,
-      "lifeScore": 29414,
+      "lifeScore": 29407,
       "charmScore": 27715
     },
     {
@@ -231,8 +231,8 @@
     },
     {
       "name": "이까연",
-      "rank": 10086,
-      "rankDisplay": "10,086위",
+      "rank": 10082,
+      "rankDisplay": "10,082위",
       "server": "라사",
       "class": "전격술사",
       "totalScore": 99120,
@@ -291,14 +291,14 @@
     },
     {
       "name": "읏챠",
-      "rank": 33084,
-      "rankDisplay": "33,084위",
+      "rank": 33102,
+      "rankDisplay": "33,102위",
       "server": "라사",
       "class": "전사",
-      "totalScore": 80781,
-      "totalScoreDisplay": "80,781",
+      "totalScore": 80788,
+      "totalScoreDisplay": "80,788",
       "combatScore": 48898,
-      "lifeScore": 15342,
+      "lifeScore": 15349,
       "charmScore": 16541
     },
     {
@@ -375,20 +375,20 @@
     },
     {
       "name": "린파란",
-      "rank": 1122,
-      "rankDisplay": "1,122위",
+      "rank": 1133,
+      "rankDisplay": "1,133위",
       "server": "라사",
       "class": "힐러",
-      "totalScore": 124290,
-      "totalScoreDisplay": "124,290",
-      "combatScore": 55890,
-      "lifeScore": 23529,
-      "charmScore": 44871
+      "totalScore": 124288,
+      "totalScoreDisplay": "124,288",
+      "combatScore": 55884,
+      "lifeScore": 23531,
+      "charmScore": 44873
     },
     {
       "name": "여니는여니여니해",
-      "rank": 907,
-      "rankDisplay": "907위",
+      "rank": 916,
+      "rankDisplay": "916위",
       "server": "라사",
       "class": "댄서",
       "totalScore": 125490,
@@ -411,8 +411,8 @@
     },
     {
       "name": "카이릭스",
-      "rank": 5417,
-      "rankDisplay": "5,417위",
+      "rank": 5445,
+      "rankDisplay": "5,445위",
       "server": "라사",
       "class": "마법사",
       "totalScore": 109479,
@@ -435,8 +435,8 @@
     },
     {
       "name": "Zi존아프로",
-      "rank": 497,
-      "rankDisplay": "497위",
+      "rank": 500,
+      "rankDisplay": "500위",
       "server": "라사",
       "class": "빙결술사",
       "totalScore": 128523,
