@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2025-12-13T11:05:33.163Z",
+  "updatedAt": "2025-12-13T12:08:46.855Z",
   "members": [
     {
       "name": "풀뱅기사",
@@ -15,15 +15,15 @@
     },
     {
       "name": "루야쫑쫑",
-      "rank": 9239,
-      "rankDisplay": "9,239위",
+      "rank": 9315,
+      "rankDisplay": "9,315위",
       "server": "라사",
       "class": "대검전사",
-      "totalScore": 120228,
-      "totalScoreDisplay": "120,228",
+      "totalScore": 120233,
+      "totalScoreDisplay": "120,233",
       "combatScore": 56655,
-      "lifeScore": 24133,
-      "charmScore": 39440
+      "lifeScore": 24136,
+      "charmScore": 39442
     },
     {
       "name": "차력거인",
@@ -147,15 +147,15 @@
     },
     {
       "name": "시우쇠",
-      "rank": 11,
-      "rankDisplay": "11위",
+      "rank": 10,
+      "rankDisplay": "10위",
       "server": "라사",
       "class": "화염술사",
-      "totalScore": 142914,
-      "totalScoreDisplay": "142,914",
+      "totalScore": 142948,
+      "totalScoreDisplay": "142,948",
       "combatScore": 57732,
-      "lifeScore": 35160,
-      "charmScore": 50022
+      "lifeScore": 35192,
+      "charmScore": 50024
     },
     {
       "name": "고진",
@@ -243,15 +243,15 @@
     },
     {
       "name": "빼쥬",
-      "rank": 12003,
-      "rankDisplay": "12,003위",
+      "rank": 31974,
+      "rankDisplay": "31,974위",
       "server": "라사",
       "class": "화염술사",
-      "totalScore": 96383,
-      "totalScoreDisplay": "96,383",
+      "totalScore": 95419,
+      "totalScoreDisplay": "95,419",
       "combatScore": 53152,
-      "lifeScore": 20728,
-      "charmScore": 22503
+      "lifeScore": 20760,
+      "charmScore": 21507
     },
     {
       "name": "도혜미",
