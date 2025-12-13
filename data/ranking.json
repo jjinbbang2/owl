@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2025-12-13T10:05:58.218Z",
+  "updatedAt": "2025-12-13T11:05:33.163Z",
   "members": [
     {
       "name": "풀뱅기사",
@@ -303,8 +303,8 @@
     },
     {
       "name": "위례",
-      "rank": 24362,
-      "rankDisplay": "24,362위",
+      "rank": 24552,
+      "rankDisplay": "24,552위",
       "server": "라사",
       "class": "힐러",
       "totalScore": 85777,
@@ -444,6 +444,18 @@
       "combatScore": 62133,
       "lifeScore": 22301,
       "charmScore": 44089
+    },
+    {
+      "name": "로키쿠",
+      "rank": 3276,
+      "rankDisplay": "3,276위",
+      "server": "라사",
+      "class": "음유시인",
+      "totalScore": 124444,
+      "totalScoreDisplay": "124,444",
+      "combatScore": 55374,
+      "lifeScore": 21732,
+      "charmScore": 47338
     }
   ]
 }
