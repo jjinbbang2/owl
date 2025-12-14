@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2025-12-14T01:34:35.610Z",
+  "updatedAt": "2025-12-14T10:06:07.237Z",
   "members": [
     {
       "name": "풀뱅기사",
@@ -15,8 +15,8 @@
     },
     {
       "name": "루야쫑쫑",
-      "rank": 1791,
-      "rankDisplay": "1,791위",
+      "rank": 1793,
+      "rankDisplay": "1,793위",
       "server": "라사",
       "class": "대검전사",
       "totalScore": 121356,
@@ -75,14 +75,14 @@
     },
     {
       "name": "로거니우스",
-      "rank": 1503,
-      "rankDisplay": "1,503위",
+      "rank": 1483,
+      "rankDisplay": "1,483위",
       "server": "라사",
       "class": "장궁병",
-      "totalScore": 122803,
-      "totalScoreDisplay": "122,803",
+      "totalScore": 122733,
+      "totalScoreDisplay": "122,733",
       "combatScore": 55180,
-      "lifeScore": 24668,
+      "lifeScore": 24598,
       "charmScore": 42955
     },
     {
@@ -123,8 +123,8 @@
     },
     {
       "name": "불도저츄러스",
-      "rank": 58585,
-      "rankDisplay": "58,585위",
+      "rank": 58608,
+      "rankDisplay": "58,608위",
       "server": "라사",
       "class": "대검전사",
       "totalScore": 72611,
@@ -135,38 +135,38 @@
     },
     {
       "name": "초엣",
-      "rank": 1426,
-      "rankDisplay": "1,426위",
+      "rank": 1373,
+      "rankDisplay": "1,373위",
       "server": "라사",
       "class": "검술사",
-      "totalScore": 123118,
-      "totalScoreDisplay": "123,118",
+      "totalScore": 123121,
+      "totalScoreDisplay": "123,121",
       "combatScore": 58350,
       "lifeScore": 19465,
-      "charmScore": 45303
+      "charmScore": 45306
     },
     {
       "name": "시우쇠",
-      "rank": 12,
-      "rankDisplay": "12위",
+      "rank": 11,
+      "rankDisplay": "11위",
       "server": "라사",
       "class": "화염술사",
-      "totalScore": 143006,
-      "totalScoreDisplay": "143,006",
-      "combatScore": 57738,
+      "totalScore": 143120,
+      "totalScoreDisplay": "143,120",
+      "combatScore": 57844,
       "lifeScore": 35244,
-      "charmScore": 50024
+      "charmScore": 50032
     },
     {
       "name": "고진",
-      "rank": 11015,
-      "rankDisplay": "11,015위",
+      "rank": 10866,
+      "rankDisplay": "10,866위",
       "server": "라사",
       "class": "검술사",
-      "totalScore": 97969,
-      "totalScoreDisplay": "97,969",
+      "totalScore": 98057,
+      "totalScoreDisplay": "98,057",
       "combatScore": 53823,
-      "lifeScore": 19760,
+      "lifeScore": 19848,
       "charmScore": 24386
     },
     {
@@ -375,8 +375,8 @@
     },
     {
       "name": "린파란",
-      "rank": 1100,
-      "rankDisplay": "1,100위",
+      "rank": 1106,
+      "rankDisplay": "1,106위",
       "server": "라사",
       "class": "힐러",
       "totalScore": 124528,
@@ -435,15 +435,15 @@
     },
     {
       "name": "Zi존아프로",
-      "rank": 523,
-      "rankDisplay": "523위",
+      "rank": 4419,
+      "rankDisplay": "4,419위",
       "server": "라사",
       "class": "빙결술사",
-      "totalScore": 128526,
-      "totalScoreDisplay": "128,526",
+      "totalScore": 127529,
+      "totalScoreDisplay": "127,529",
       "combatScore": 62133,
       "lifeScore": 22304,
-      "charmScore": 44089
+      "charmScore": 43092
     },
     {
       "name": "로키쿠",
