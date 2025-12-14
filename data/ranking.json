@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2025-12-14T22:05:40.146Z",
+  "updatedAt": "2025-12-14T23:06:08.649Z",
   "members": [
     {
       "name": "풀뱅기사",
@@ -111,14 +111,14 @@
     },
     {
       "name": "보노보노거인",
-      "rank": 46016,
-      "rankDisplay": "46,016위",
+      "rank": 45413,
+      "rankDisplay": "45,413위",
       "server": "라사",
       "class": "검술사",
-      "totalScore": 72338,
-      "totalScoreDisplay": "72,338",
-      "combatScore": 43928,
-      "lifeScore": 13331,
+      "totalScore": 72816,
+      "totalScoreDisplay": "72,816",
+      "combatScore": 43943,
+      "lifeScore": 13794,
       "charmScore": 15079
     },
     {
@@ -147,8 +147,8 @@
     },
     {
       "name": "시우쇠",
-      "rank": 11,
-      "rankDisplay": "11위",
+      "rank": 10,
+      "rankDisplay": "10위",
       "server": "라사",
       "class": "화염술사",
       "totalScore": 143124,
@@ -303,15 +303,15 @@
     },
     {
       "name": "위례",
-      "rank": 24793,
-      "rankDisplay": "24,793위",
+      "rank": 24944,
+      "rankDisplay": "24,944위",
       "server": "라사",
       "class": "힐러",
-      "totalScore": 85812,
-      "totalScoreDisplay": "85,812",
+      "totalScore": 85817,
+      "totalScoreDisplay": "85,817",
       "combatScore": 49431,
       "lifeScore": 13331,
-      "charmScore": 23050
+      "charmScore": 23055
     },
     {
       "name": "항타기",
@@ -363,15 +363,15 @@
     },
     {
       "name": "류진원",
-      "rank": 24840,
-      "rankDisplay": "24,840위",
+      "rank": 25120,
+      "rankDisplay": "25,120위",
       "server": "라사",
       "class": "암흑술사",
-      "totalScore": 85780,
-      "totalScoreDisplay": "85,780",
-      "combatScore": 47930,
-      "lifeScore": 17253,
-      "charmScore": 20597
+      "totalScore": 85702,
+      "totalScoreDisplay": "85,702",
+      "combatScore": 47960,
+      "lifeScore": 17142,
+      "charmScore": 20600
     },
     {
       "name": "린파란",
