@@ -7,6 +7,14 @@ const PartyShare = (function() {
     // 요일 이름
     const dayNames = ['일', '월', '화', '수', '목', '금', '토'];
 
+    // 전투력 만단위 포맷팅 (소수점 1자리, 버림)
+    // ex) 47532 → "4.7"
+    function formatPowerShort(power) {
+        if (!power) return '-';
+        const inManUnit = Math.floor(power / 1000) / 10; // 만단위, 소수점 1자리 버림
+        return inManUnit.toFixed(1);
+    }
+
     // 일정 포맷팅
     function formatSchedule(date) {
         const month = String(date.getMonth() + 1).padStart(2, '0');
@@ -89,7 +97,7 @@ const PartyShare = (function() {
                 memberList = party.abyss_members.map(member => {
                     let line = `- ${member.nickname}`;
                     if (member.class_name) line += ` (${member.class_name})`;
-                    if (member.combat_power) line += ` ${member.combat_power.toLocaleString()}`;
+                    if (member.combat_power) line += ` ${formatPowerShort(member.combat_power)}`;
                     return line;
                 }).join('\n');
 
@@ -112,11 +120,11 @@ ${memberList}
                 memberList = party.help_members.map(member => {
                     let line = `- 본캐: ${member.main_nickname}`;
                     if (member.main_class) line += ` (${member.main_class})`;
-                    if (member.main_power) line += ` ${member.main_power.toLocaleString()}`;
+                    if (member.main_power) line += ` ${formatPowerShort(member.main_power)}`;
                     if (member.sub_nickname) {
                         line += ` / 부캐: ${member.sub_nickname}`;
                         if (member.sub_class) line += ` (${member.sub_class})`;
-                        if (member.sub_power) line += ` ${member.sub_power.toLocaleString()}`;
+                        if (member.sub_power) line += ` ${formatPowerShort(member.sub_power)}`;
                     }
                     return line;
                 }).join('\n');
@@ -124,7 +132,7 @@ ${memberList}
                 text = `[부엉공화국] 품앗이 파티 모집
 
 일정: ${scheduleDisplay}
-난이도: ${party.difficulty || '지옥 4'}
+난이도: ${party.difficulty || '매우 어려움'}
 현재 인원: ${memberCount}/4
 
 참가자:
@@ -143,7 +151,7 @@ ${memberList}
                 memberList = party.raid_members.map(member => {
                     let line = `- ${member.nickname}`;
                     if (member.class_name) line += ` (${member.class_name})`;
-                    if (member.combat_power) line += ` ${member.combat_power.toLocaleString()}`;
+                    if (member.combat_power) line += ` ${formatPowerShort(member.combat_power)}`;
                     return line;
                 }).join('\n');
 
@@ -185,7 +193,7 @@ ${memberList}
             case 'abyss':
                 items = party.abyss_members.map(member => {
                     const className = member.class_name || '';
-                    const power = member.combat_power ? member.combat_power.toLocaleString() : '-';
+                    const power = formatPowerShort(member.combat_power);
                     return {
                         item: member.nickname,
                         itemOp: className ? `${power} ${className}` : power
@@ -195,7 +203,7 @@ ${memberList}
             case 'help':
                 party.help_members.forEach(member => {
                     const mainClass = member.main_class || '';
-                    const mainPower = member.main_power ? member.main_power.toLocaleString() : '-';
+                    const mainPower = formatPowerShort(member.main_power);
                     items.push({
                         item: member.main_nickname,
                         itemOp: mainClass ? `${mainPower} ${mainClass}` : mainPower
@@ -210,7 +218,7 @@ ${memberList}
                     // 처음 4명 표시
                     items = raidMembers.slice(0, 4).map(member => {
                         const className = member.class_name || '';
-                        const power = member.combat_power ? member.combat_power.toLocaleString() : '-';
+                        const power = formatPowerShort(member.combat_power);
                         return {
                             item: member.nickname,
                             itemOp: className ? `${power} ${className}` : power
@@ -228,12 +236,12 @@ ${memberList}
 
                     items.push({
                         item: `외 ${remainingMembers.length}명...`,
-                        itemOp: avgPower > 0 ? `${avgPower.toLocaleString()} (평균)` : ''
+                        itemOp: avgPower > 0 ? `${formatPowerShort(avgPower)} (평균)` : ''
                     });
                 } else {
                     items = raidMembers.map(member => {
                         const className = member.class_name || '';
-                        const power = member.combat_power ? member.combat_power.toLocaleString() : '-';
+                        const power = formatPowerShort(member.combat_power);
                         return {
                             item: member.nickname,
                             itemOp: className ? `${power} ${className}` : power
@@ -288,7 +296,7 @@ ${memberList}
                 description = `일정: ${scheduleDisplay}\n난이도: ${party.difficulty || '매우 어려움'}`;
                 break;
             case 'help':
-                description = `일정: ${scheduleDisplay}\n난이도: ${party.difficulty || '지옥 4'}`;
+                description = `일정: ${scheduleDisplay}\n난이도: ${party.difficulty || '매우 어려움'}`;
                 break;
             case 'raid':
                 description = `일정: ${scheduleDisplay}\n난이도: ${party.difficulty || '어려움'}`;

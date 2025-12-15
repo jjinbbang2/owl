@@ -107,8 +107,8 @@
 <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/ko.js"></script>
 <script src="./js/supabase-config.js?v=20251215"></script>
 <script src="./js/combat-power.js?v=20251215"></script>
-<script src="./js/party-share.js?v=20251215"></script>
-<script src="./js/party-common.js?v=20251215"></script>
+<script src="./js/party-share.js?v=20251215c"></script>
+<script src="./js/party-common.js?v=20251215b"></script>
 <script>
 // 카카오 SDK 초기화
 PartyShare.initKakaoSDK('8e0f458671cc8e81c30125532b95a245');
@@ -174,7 +174,7 @@ function renderParties(parties) {
                 ${party.raid_members.map(member => `
                     <div class="member-row">
                         <span class="member-nickname">${member.nickname}</span>
-                        <span class="member-power">${member.combat_power ? member.combat_power.toLocaleString() : '-'}</span>
+                        <span class="member-power">${PartyCommon.formatPowerShort(member.combat_power)}</span>
                         <span class="member-class">${member.class_name || '-'}</span>
                         <button class="btn-delete" onclick="deleteMember('${member.id}')">삭제</button>
                     </div>

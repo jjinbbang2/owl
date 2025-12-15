@@ -55,11 +55,19 @@
                 <div class="form-group">
                     <label>난이도</label>
                     <select id="newDifficulty">
-                        <option value="매우 어려움" selected>매우 어려움</option>
+                        <option value="입문">입문</option>
                         <option value="어려움">어려움</option>
-                        <option value="보통">보통</option>
-                        <option value="쉬움">쉬움</option>
-                        <option value="매우 쉬움">매우 쉬움</option>
+                        <option value="매우 어려움" selected>매우 어려움</option>
+                        <option value="지옥 1">지옥 1</option>
+                        <option value="지옥 2">지옥 2</option>
+                        <option value="지옥 3">지옥 3</option>
+                        <option value="지옥 4">지옥 4</option>
+                        <option value="지옥 5">지옥 5</option>
+                        <option value="지옥 6">지옥 6</option>
+                        <option value="지옥 7">지옥 7</option>
+                        <option value="지옥 8">지옥 8</option>
+                        <option value="지옥 9">지옥 9</option>
+                        <option value="지옥 10">지옥 10</option>
                     </select>
                 </div>
             </div>
@@ -94,8 +102,8 @@
 <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/ko.js"></script>
 <script src="./js/supabase-config.js?v=20251215"></script>
 <script src="./js/combat-power.js?v=20251215"></script>
-<script src="./js/party-share.js?v=20251215"></script>
-<script src="./js/party-common.js?v=20251215"></script>
+<script src="./js/party-share.js?v=20251215c"></script>
+<script src="./js/party-common.js?v=20251215b"></script>
 <script>
 // 카카오 SDK 초기화
 PartyShare.initKakaoSDK('8e0f458671cc8e81c30125532b95a245');
@@ -152,7 +160,7 @@ function renderParties(parties) {
                 ${party.abyss_members.map(member => `
                     <div class="member-row">
                         <span class="member-nickname">${member.nickname}</span>
-                        <span class="member-power">${member.combat_power ? member.combat_power.toLocaleString() : '-'}</span>
+                        <span class="member-power">${PartyCommon.formatPowerShort(member.combat_power)}</span>
                         <span class="member-class">${member.class_name || '-'}</span>
                         <button class="btn-delete" onclick="deleteMember('${member.id}')">삭제</button>
                     </div>

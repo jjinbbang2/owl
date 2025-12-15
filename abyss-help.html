@@ -62,10 +62,19 @@
                 <div class="form-group">
                     <label>난이도</label>
                     <select id="newDifficulty">
-                        <option value="지옥 4" selected>지옥 4</option>
-                        <option value="지옥 3">지옥 3</option>
-                        <option value="지옥 2">지옥 2</option>
+                        <option value="입문">입문</option>
+                        <option value="어려움">어려움</option>
+                        <option value="매우 어려움" selected>매우 어려움</option>
                         <option value="지옥 1">지옥 1</option>
+                        <option value="지옥 2">지옥 2</option>
+                        <option value="지옥 3">지옥 3</option>
+                        <option value="지옥 4">지옥 4</option>
+                        <option value="지옥 5">지옥 5</option>
+                        <option value="지옥 6">지옥 6</option>
+                        <option value="지옥 7">지옥 7</option>
+                        <option value="지옥 8">지옥 8</option>
+                        <option value="지옥 9">지옥 9</option>
+                        <option value="지옥 10">지옥 10</option>
                     </select>
                 </div>
             </div>
@@ -115,8 +124,8 @@
 <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/ko.js"></script>
 <script src="./js/supabase-config.js?v=20251215"></script>
 <script src="./js/combat-power.js?v=20251215"></script>
-<script src="./js/party-share.js?v=20251215"></script>
-<script src="./js/party-common.js?v=20251215"></script>
+<script src="./js/party-share.js?v=20251215c"></script>
+<script src="./js/party-common.js?v=20251215b"></script>
 <script>
 // 카카오 SDK 초기화
 PartyShare.initKakaoSDK('8e0f458671cc8e81c30125532b95a245');
@@ -166,7 +175,7 @@ function renderParties(parties) {
                 </div>
                 <div class="party-header-info">
                     <span class="party-count">${party.help_members.length}/4</span>
-                    <span class="party-difficulty">${party.difficulty || '지옥 4'}</span>
+                    <span class="party-difficulty">${party.difficulty || '매우 어려움'}</span>
                 </div>
             </div>
             <div class="members-list">
@@ -179,7 +188,7 @@ function renderParties(parties) {
                         </div>
                         <div>
                             <span class="member-label">투력</span>
-                            <span class="member-power">${member.main_power ? member.main_power.toLocaleString() : '-'}</span>
+                            <span class="member-power">${PartyCommon.formatPowerShort(member.main_power)}</span>
                         </div>
                         <div>
                             <span class="member-label">부캐</span>
@@ -188,7 +197,7 @@ function renderParties(parties) {
                         </div>
                         <div>
                             <span class="member-label">투력</span>
-                            <span class="member-power">${member.sub_power ? member.sub_power.toLocaleString() : '-'}</span>
+                            <span class="member-power">${PartyCommon.formatPowerShort(member.sub_power)}</span>
                         </div>
                         <button class="btn-delete" onclick="deleteMember('${member.id}')">삭제</button>
                     </div>
@@ -290,7 +299,7 @@ async function createParty() {
 
     // 폼 초기화
     PartyCommon.clearScheduleDate();
-    document.getElementById('newDifficulty').value = '지옥 4';
+    document.getElementById('newDifficulty').value = '매우 어려움';
     document.getElementById('newMainNickname').value = '';
     document.getElementById('newMainPower').value = '';
     document.getElementById('newMainClass').value = '';

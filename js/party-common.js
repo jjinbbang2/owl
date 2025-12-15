@@ -12,6 +12,16 @@ const PartyCommon = (function() {
     let selectedScheduleDate = null;
 
     /**
+     * 전투력 만단위 포맷팅 (소수점 1자리, 버림)
+     * ex) 47532 → "4.7"
+     */
+    function formatPowerShort(power) {
+        if (!power) return '-';
+        const inManUnit = Math.floor(power / 1000) / 10;
+        return inManUnit.toFixed(1);
+    }
+
+    /**
      * 날짜 포맷팅: "2025-12-08 21:30(월)" 형식
      */
     function formatSchedule(date) {
@@ -242,6 +252,7 @@ const PartyCommon = (function() {
 
     // 공개 API
     return {
+        formatPowerShort,
         formatSchedule,
         getTimeRemaining,
         sortParties,
