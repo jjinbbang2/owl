@@ -66,8 +66,14 @@ let browser = null;
 async function initBrowser() {
     if (!browser) {
         browser = await puppeteer.launch({
-            headless: true,
-            args: ['--no-sandbox', '--disable-setuid-sandbox']
+            headless: 'new',
+            args: [
+                '--no-sandbox',
+                '--disable-setuid-sandbox',
+                '--disable-blink-features=AutomationControlled',
+                '--disable-infobars',
+                '--window-size=1920,1080'
+            ]
         });
     }
     return browser;
@@ -85,13 +91,32 @@ async function fetchFromMabiMobi(characterName) {
     const page = await b.newPage();
 
     try {
+        // 봇 감지 우회 설정
+        await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36');
+        await page.setExtraHTTPHeaders({
+            'Accept-Language': 'ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7'
+        });
+
         const url = `${CONFIG.mabiMobiBaseUrl}?server=06&character_name=${encodeURIComponent(characterName)}&sort_by=combat&sort_order=desc&page=1&per_page=20`;
 
-        await page.goto(url, { waitUntil: 'networkidle0', timeout: 30000 });
+        await page.goto(url, { waitUntil: 'networkidle2', timeout: 60000 });
+
+        // Cloudflare 챌린지 대기 (최대 10초)
+        await delay(3000);
 
         // JSON 응답 파싱
         const content = await page.evaluate(() => document.body.innerText);
-        const data = JSON.parse(content);
+
+        // GTFO 또는 Cloudflare 페이지 감지
+        if (content.includes('GTFO') || content.includes('Just a moment')) {
+            console.log(`[mabimobi] Cloudflare 차단 감지, 재시도 대기...`);
+            await delay(5000);
+            await page.reload({ waitUntil: 'networkidle2' });
+            await delay(3000);
+        }
+
+        const retryContent = await page.evaluate(() => document.body.innerText);
+        const data = JSON.parse(retryContent);
 
         if (Array.isArray(data) && data.length > 0) {
             // 정확히 일치하는 캐릭터 찾기
