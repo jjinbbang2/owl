@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2025-12-15T22:06:43.956Z",
+  "updatedAt": "2025-12-15T23:07:25.875Z",
   "members": [
     {
       "name": "풀뱅기사",
@@ -120,8 +120,8 @@
     },
     {
       "name": "보노보노거인",
-      "rank": 45536,
-      "rankDisplay": "45,536위",
+      "rank": 45510,
+      "rankDisplay": "45,510위",
       "server": "라사",
       "class": "검술사",
       "totalScore": 72825,
@@ -185,14 +185,14 @@
     },
     {
       "name": "은월선비",
-      "rank": 25597,
-      "rankDisplay": "25,597위",
+      "rank": 24606,
+      "rankDisplay": "24,606위",
       "server": "라사",
       "class": "화염술사",
-      "totalScore": 85533,
-      "totalScoreDisplay": "85,533",
-      "combatScore": 48936,
-      "lifeScore": 20203,
+      "totalScore": 86192,
+      "totalScoreDisplay": "86,192",
+      "combatScore": 49069,
+      "lifeScore": 20729,
       "charmScore": 16394,
       "source": "mobinogi.net"
     },
@@ -328,15 +328,15 @@
     },
     {
       "name": "위례",
-      "rank": 24982,
-      "rankDisplay": "24,982위",
+      "rank": 25008,
+      "rankDisplay": "25,008위",
       "server": "라사",
       "class": "힐러",
-      "totalScore": 85922,
-      "totalScoreDisplay": "85,922",
-      "combatScore": 49516,
+      "totalScore": 85924,
+      "totalScoreDisplay": "85,924",
+      "combatScore": 49515,
       "lifeScore": 13351,
-      "charmScore": 23055,
+      "charmScore": 23058,
       "source": "mobinogi.net"
     },
     {
@@ -354,15 +354,15 @@
     },
     {
       "name": "볼프강아마데우스",
-      "rank": 38718,
-      "rankDisplay": "38,718위",
+      "rank": 38638,
+      "rankDisplay": "38,638위",
       "server": "라사",
       "class": "석궁사수",
-      "totalScore": 84883,
-      "totalScoreDisplay": "84,883",
+      "totalScore": 84884,
+      "totalScoreDisplay": "84,884",
       "combatScore": 49028,
       "lifeScore": 22116,
-      "charmScore": 13739,
+      "charmScore": 13740,
       "source": "mobinogi.net"
     },
     {
@@ -393,14 +393,14 @@
     },
     {
       "name": "류진원",
-      "rank": 24993,
-      "rankDisplay": "24,993위",
+      "rank": 25082,
+      "rankDisplay": "25,082위",
       "server": "라사",
       "class": "암흑술사",
-      "totalScore": 85990,
-      "totalScoreDisplay": "85,990",
+      "totalScore": 85879,
+      "totalScoreDisplay": "85,879",
       "combatScore": 47964,
-      "lifeScore": 17423,
+      "lifeScore": 17312,
       "charmScore": 20603,
       "source": "mobinogi.net"
     },
