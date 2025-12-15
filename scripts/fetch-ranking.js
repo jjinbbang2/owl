@@ -96,31 +96,39 @@ async function fetchFromMabiMobi(characterName) {
 
     try {
         // 봇 감지 우회 설정
-        await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36');
+        await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36');
         await page.setExtraHTTPHeaders({
-            'Accept-Language': 'ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7'
+            'Accept-Language': 'ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7',
+            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
         });
 
         const url = `${CONFIG.mabiMobiBaseUrl}?server=06&character_name=${encodeURIComponent(characterName)}&sort_by=combat&sort_order=desc&page=1&per_page=20`;
 
-        await page.goto(url, { waitUntil: 'networkidle2', timeout: 60000 });
+        await page.goto(url, { waitUntil: 'networkidle2', timeout: 90000 });
 
-        // Cloudflare 챌린지 대기 (최대 10초)
-        await delay(3000);
-
-        // JSON 응답 파싱
-        const content = await page.evaluate(() => document.body.innerText);
-
-        // GTFO 또는 Cloudflare 페이지 감지
-        if (content.includes('GTFO') || content.includes('Just a moment')) {
-            console.log(`[mabimobi] Cloudflare 차단 감지, 재시도 대기...`);
+        // Cloudflare 챌린지 통과 대기
+        let content = '';
+        for (let attempt = 0; attempt < 5; attempt++) {
             await delay(5000);
-            await page.reload({ waitUntil: 'networkidle2' });
-            await delay(3000);
+            content = await page.evaluate(() => document.body.innerText);
+
+            // JSON 응답 확인 (배열로 시작하면 성공)
+            if (content.trim().startsWith('[')) {
+                break;
+            }
+
+            // Cloudflare 챌린지 감지
+            if (content.includes('GTFO') || content.includes('Just a moment') || content.includes('Checking')) {
+                console.log(`[mabimobi] Cloudflare 챌린지 대기 중... (${attempt + 1}/5)`);
+                if (attempt < 4) {
+                    await page.reload({ waitUntil: 'networkidle2', timeout: 90000 });
+                }
+            } else {
+                break;
+            }
         }
 
-        const retryContent = await page.evaluate(() => document.body.innerText);
-        const data = JSON.parse(retryContent);
+        const data = JSON.parse(content);
 
         if (Array.isArray(data) && data.length > 0) {
             // 정확히 일치하는 캐릭터 찾기
@@ -178,25 +186,76 @@ async function main() {
 
     console.log(`[정보] ${characters.length}명의 캐릭터 조회 예정`);
 
-    const members = [];
+    let members = [];
     let failCount = 0;
     let useMabiMobi = false;
 
+    // 1차 시도: mobinogi.net
     for (let i = 0; i < characters.length; i++) {
         const name = characters[i];
 
         if (i > 0) {
-            await delay(useMabiMobi ? 2000 : 1500);
+            await delay(1500);
         }
 
         // 3회 이상 실패 시 mabimobi.life로 전환
-        if (!useMabiMobi && failCount >= 3) {
-            console.log(`\n[전환] mobinogi.net ${failCount}회 실패 → mabimobi.life로 전환`);
+        if (failCount >= 3) {
+            console.log(`\n[전환] mobinogi.net ${failCount}회 실패 → mabimobi.life로 전환 (처음부터 재시작)`);
             useMabiMobi = true;
+            break;
         }
 
-        if (useMabiMobi) {
-            // mabimobi.life 사용
+        console.log(`[조회] ${name} (${i + 1}/${characters.length}) - mobinogi.net`);
+
+        try {
+            const html = await fetchPage(name);
+            const ssrData = parseSSRData(html);
+
+            if (ssrData && ssrData.userMetaData && ssrData.userMetaData.length > 0) {
+                // 전투력(level)이 가장 높은 클래스 데이터 찾기
+                const user = ssrData.userMetaData.reduce((max, u) => u.level > max.level ? u : max);
+
+                const combatScore = user.level;
+                const lifeScore = user.attractiveness;
+                const charmScore = user.vitality;
+                const totalScore = combatScore + lifeScore + charmScore;
+
+                members.push({
+                    name             : user.user_id,
+                    rank             : user.server_rank,
+                    rankDisplay      : user.server_rank.toLocaleString() + '위',
+                    server           : user.server_name,
+                    class            : user.class_name,
+                    totalScore       : totalScore,
+                    totalScoreDisplay: totalScore.toLocaleString(),
+                    combatScore      : combatScore,
+                    lifeScore        : lifeScore,
+                    charmScore       : charmScore,
+                    source           : 'mobinogi.net'
+                });
+
+                console.log(`[성공] ${name} - ${user.class_name} (${user.server_rank}위) [mobinogi.net]`);
+            } else {
+                console.log(`[실패] ${name} - 데이터 없음`);
+                failCount++;
+            }
+        } catch (error) {
+            console.error(`[실패] ${name}:`, error.message);
+            failCount++;
+        }
+    }
+
+    // 2차 시도: mabimobi.life (3회 실패 시 처음부터 전체 재시도)
+    if (useMabiMobi) {
+        members = []; // 기존 데이터 초기화
+
+        for (let i = 0; i < characters.length; i++) {
+            const name = characters[i];
+
+            if (i > 0) {
+                await delay(2000);
+            }
+
             console.log(`[조회] ${name} (${i + 1}/${characters.length}) - mabimobi.life`);
 
             const result = await fetchFromMabiMobi(name);
@@ -206,51 +265,8 @@ async function main() {
             } else {
                 console.log(`[실패] ${name} - mabimobi.life 실패`);
             }
-        } else {
-            // mobinogi.net 사용
-            console.log(`[조회] ${name} (${i + 1}/${characters.length}) - mobinogi.net`);
-
-            try {
-                const html = await fetchPage(name);
-                const ssrData = parseSSRData(html);
-
-                if (ssrData && ssrData.userMetaData && ssrData.userMetaData.length > 0) {
-                    // 전투력(level)이 가장 높은 클래스 데이터 찾기
-                    const user = ssrData.userMetaData.reduce((max, u) => u.level > max.level ? u : max);
-
-                    const combatScore = user.level;
-                    const lifeScore = user.attractiveness;
-                    const charmScore = user.vitality;
-                    const totalScore = combatScore + lifeScore + charmScore;
-
-                    members.push({
-                        name             : user.user_id,
-                        rank             : user.server_rank,
-                        rankDisplay      : user.server_rank.toLocaleString() + '위',
-                        server           : user.server_name,
-                        class            : user.class_name,
-                        totalScore       : totalScore,
-                        totalScoreDisplay: totalScore.toLocaleString(),
-                        combatScore      : combatScore,
-                        lifeScore        : lifeScore,
-                        charmScore       : charmScore,
-                        source           : 'mobinogi.net'
-                    });
-
-                    console.log(`[성공] ${name} - ${user.class_name} (${user.server_rank}위) [mobinogi.net]`);
-                } else {
-                    console.log(`[실패] ${name} - 데이터 없음`);
-                    failCount++;
-                }
-            } catch (error) {
-                console.error(`[실패] ${name}:`, error.message);
-                failCount++;
-            }
         }
-    }
 
-    // 브라우저 정리
-    if (useMabiMobi) {
         await closeBrowser();
     }
 
