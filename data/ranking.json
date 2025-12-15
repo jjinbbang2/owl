@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2025-12-15T05:09:41.626Z",
+  "updatedAt": "2025-12-15T06:09:10.360Z",
   "members": [
     {
       "name": "풀뱅기사",
@@ -147,8 +147,8 @@
     },
     {
       "name": "시우쇠",
-      "rank": 10,
-      "rankDisplay": "10위",
+      "rank": 11,
+      "rankDisplay": "11위",
       "server": "라사",
       "class": "화염술사",
       "totalScore": 143124,
@@ -456,6 +456,30 @@
       "combatScore": 55716,
       "lifeScore": 21742,
       "charmScore": 48444
+    },
+    {
+      "name": "퉁이",
+      "rank": 3307,
+      "rankDisplay": "3,307위",
+      "server": "라사",
+      "class": "듀얼블레이드",
+      "totalScore": 116384,
+      "totalScoreDisplay": "116,384",
+      "combatScore": 56909,
+      "lifeScore": 15867,
+      "charmScore": 43608
+    },
+    {
+      "name": "통이",
+      "rank": 25634,
+      "rankDisplay": "25,634위",
+      "server": "라사",
+      "class": "화염술사",
+      "totalScore": 85353,
+      "totalScoreDisplay": "85,353",
+      "combatScore": 48189,
+      "lifeScore": 16288,
+      "charmScore": 20876
     }
   ]
 }
