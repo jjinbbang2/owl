@@ -15,7 +15,7 @@ const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 const CONFIG = {
     baseUrl        : 'https://mobinogi.net/user/6/',
-    mabiMobiBaseUrl: 'https://mabimobi.life/d/api/v1/search/rankings/v2',
+    mabiMobiBaseUrl: 'https://mabimobi.life/ranking',
     outputPath     : path.join(__dirname, '../data/ranking.json')
 };
 
@@ -102,53 +102,109 @@ async function fetchFromMabiMobi(characterName) {
             'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
         });
 
-        const url = `${CONFIG.mabiMobiBaseUrl}?server=06&character_name=${encodeURIComponent(characterName)}&sort_by=combat&sort_order=desc&page=1&per_page=20`;
+        const url = `${CONFIG.mabiMobiBaseUrl}?server=06&character_name=${encodeURIComponent(characterName)}&sort_by=combat&sort_order=desc`;
 
         await page.goto(url, { waitUntil: 'networkidle2', timeout: 90000 });
 
         // Cloudflare 챌린지 통과 대기
-        let content = '';
         for (let attempt = 0; attempt < 5; attempt++) {
-            await delay(5000);
-            content = await page.evaluate(() => document.body.innerText);
-
-            // JSON 응답 확인 (배열로 시작하면 성공)
-            if (content.trim().startsWith('[')) {
-                break;
-            }
+            await delay(3000);
+            const pageContent = await page.content();
 
             // Cloudflare 챌린지 감지
-            if (content.includes('GTFO') || content.includes('Just a moment') || content.includes('Checking')) {
+            if (pageContent.includes('Just a moment') || pageContent.includes('Checking your browser')) {
                 console.log(`[mabimobi] Cloudflare 챌린지 대기 중... (${attempt + 1}/5)`);
-                if (attempt < 4) {
-                    await page.reload({ waitUntil: 'networkidle2', timeout: 90000 });
-                }
             } else {
                 break;
             }
         }
 
-        const data = JSON.parse(content);
+        // 페이지 로딩 대기 (테이블 또는 데이터가 렌더링될 때까지)
+        await delay(3000);
 
-        if (Array.isArray(data) && data.length > 0) {
-            // 정확히 일치하는 캐릭터 찾기
-            const user = data.find(d => d.character_name === characterName);
-            if (user) {
+        // 페이지에서 캐릭터 데이터 추출
+        const userData = await page.evaluate((targetName) => {
+            // 테이블 행에서 캐릭터 찾기
+            const rows = document.querySelectorAll('table tbody tr, [class*="ranking"] [class*="row"], [class*="list"] [class*="item"]');
+
+            for (const row of rows) {
+                const text = row.innerText;
+                if (text.includes(targetName)) {
+                    // 텍스트에서 데이터 추출 시도
+                    const cells = row.querySelectorAll('td, [class*="cell"], [class*="col"]');
+                    if (cells.length >= 4) {
+                        return {
+                            found: true,
+                            name: targetName,
+                            rowText: text,
+                            cellCount: cells.length,
+                            cellTexts: Array.from(cells).map(c => c.innerText.trim())
+                        };
+                    }
+                }
+            }
+
+            // 전체 페이지 텍스트에서 찾기
+            const bodyText = document.body.innerText;
+            if (bodyText.includes(targetName)) {
+                return { found: true, name: targetName, bodyText: bodyText.substring(0, 2000) };
+            }
+
+            return { found: false };
+        }, characterName);
+
+        if (!userData.found) {
+            return null;
+        }
+
+        // 디버깅용 출력
+        console.log(`[mabimobi] 페이지 데이터:`, JSON.stringify(userData).substring(0, 500));
+
+        // 페이지에서 숫자 데이터 추출 시도
+        const extractedData = await page.evaluate((targetName) => {
+            const text = document.body.innerText;
+            const lines = text.split('\n');
+
+            for (let i = 0; i < lines.length; i++) {
+                if (lines[i].includes(targetName)) {
+                    // 주변 라인에서 숫자 추출
+                    const context = lines.slice(Math.max(0, i-2), Math.min(lines.length, i+5)).join(' ');
+                    const numbers = context.match(/[\d,]+/g) || [];
+                    return {
+                        context,
+                        numbers: numbers.map(n => parseInt(n.replace(/,/g, ''), 10)).filter(n => !isNaN(n))
+                    };
+                }
+            }
+            return null;
+        }, characterName);
+
+        if (extractedData && extractedData.numbers.length >= 3) {
+            // 숫자들 중 가장 큰 값들을 전투력, 매력, 생활력으로 추정
+            const nums = extractedData.numbers.filter(n => n > 100).sort((a, b) => b - a);
+
+            if (nums.length >= 1) {
+                const combatScore = nums[0] || 0;
+                const charmScore = nums[1] || 0;
+                const lifeScore = nums[2] || 0;
+                const totalScore = combatScore + charmScore + lifeScore;
+
                 return {
-                    name             : user.character_name,
-                    rank             : user.server_combat_rank,
-                    rankDisplay      : user.server_combat_rank.toLocaleString() + '위',
+                    name             : characterName,
+                    rank             : 0,
+                    rankDisplay      : '-',
                     server           : '라사',
-                    class            : CLASS_MAP[user.klass] || user.klass,
-                    totalScore       : user.total,
-                    totalScoreDisplay: user.total.toLocaleString(),
-                    combatScore      : user.combat,
-                    lifeScore        : user.life_skill,
-                    charmScore       : user.charm,
+                    class            : '-',
+                    totalScore       : totalScore,
+                    totalScoreDisplay: totalScore.toLocaleString(),
+                    combatScore      : combatScore,
+                    lifeScore        : lifeScore,
+                    charmScore       : charmScore,
                     source           : 'mabimobi.life'
                 };
             }
         }
+
         return null;
     } catch (e) {
         console.error(`[mabimobi 오류] ${characterName}:`, e.message);
