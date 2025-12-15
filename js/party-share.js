@@ -203,19 +203,48 @@ ${memberList}
                 });
                 break;
             case 'raid':
-                items = party.raid_members.map(member => {
-                    const className = member.class_name || '';
-                    const power = member.combat_power ? member.combat_power.toLocaleString() : '-';
-                    return {
-                        item: member.nickname,
-                        itemOp: className ? `${power} ${className}` : power
-                    };
-                });
+                const raidMembers = party.raid_members;
+
+                // 6명 이상일 경우 5번째에 "외 N명..." + 평균 전투력 표시
+                if (raidMembers.length > 5) {
+                    // 처음 4명 표시
+                    items = raidMembers.slice(0, 4).map(member => {
+                        const className = member.class_name || '';
+                        const power = member.combat_power ? member.combat_power.toLocaleString() : '-';
+                        return {
+                            item: member.nickname,
+                            itemOp: className ? `${power} ${className}` : power
+                        };
+                    });
+
+                    // 나머지 멤버들의 평균 전투력 계산
+                    const remainingMembers = raidMembers.slice(4);
+                    const remainingPowers = remainingMembers
+                        .filter(m => m.combat_power)
+                        .map(m => m.combat_power);
+                    const avgPower = remainingPowers.length > 0
+                        ? Math.round(remainingPowers.reduce((a, b) => a + b, 0) / remainingPowers.length)
+                        : 0;
+
+                    items.push({
+                        item: `외 ${remainingMembers.length}명...`,
+                        itemOp: avgPower > 0 ? `${avgPower.toLocaleString()}(평균)` : ''
+                    });
+                } else {
+                    items = raidMembers.map(member => {
+                        const className = member.class_name || '';
+                        const power = member.combat_power ? member.combat_power.toLocaleString() : '-';
+                        return {
+                            item: member.nickname,
+                            itemOp: className ? `${power} ${className}` : power
+                        };
+                    });
+                }
                 break;
         }
 
         // 카카오 itemContent는 최대 5개 아이템 지원
-        // 5명 초과 시 4명까지 표시하고 5번째에 "외 N명..." 표시
+        // 어비스/품앗이는 최대 4명이므로 해당 없음
         if (items.length > 5) {
             const remaining = items.length - 4;
             items = items.slice(0, 4);
