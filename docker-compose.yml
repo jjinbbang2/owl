@@ -19,3 +19,17 @@ services:
     networks:
       - owl
 
+  ranking:
+    container_name: "owl-ranking"
+    build:
+      context: .
+      dockerfile: dockerfiles/node.dockerfile
+    environment:
+      TZ: "Asia/Seoul"
+    volumes:
+      - ./data:/app/data
+    networks:
+      - owl
+    profiles:
+      - tools
+

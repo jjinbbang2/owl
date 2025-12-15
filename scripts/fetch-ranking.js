@@ -157,52 +157,32 @@ async function fetchFromMabiMobi(characterName) {
             return null;
         }
 
-        // 디버깅용 출력
-        console.log(`[mabimobi] 페이지 데이터:`, JSON.stringify(userData).substring(0, 500));
+        // cellTexts 배열에서 데이터 추출
+        // [0]: 전투순위, [1]: ?, [2]: ?, [3]: 닉네임, [4]: 서버, [5]: 직업, [6]: 직업, [7]: 전투력, [8]: 매력, [9]: 생활력, [10]: 종합
+        if (userData.cellTexts && userData.cellTexts.length >= 11) {
+            const cells = userData.cellTexts;
+            const parseNum = (s) => parseInt(String(s).replace(/,/g, ''), 10) || 0;
 
-        // 페이지에서 숫자 데이터 추출 시도
-        const extractedData = await page.evaluate((targetName) => {
-            const text = document.body.innerText;
-            const lines = text.split('\n');
+            const rank = parseNum(cells[0]);
+            const className = cells[5];
+            const combatScore = parseNum(cells[7]);
+            const charmScore = parseNum(cells[8]);
+            const lifeScore = parseNum(cells[9]);
+            const totalScore = parseNum(cells[10]);
 
-            for (let i = 0; i < lines.length; i++) {
-                if (lines[i].includes(targetName)) {
-                    // 주변 라인에서 숫자 추출
-                    const context = lines.slice(Math.max(0, i-2), Math.min(lines.length, i+5)).join(' ');
-                    const numbers = context.match(/[\d,]+/g) || [];
-                    return {
-                        context,
-                        numbers: numbers.map(n => parseInt(n.replace(/,/g, ''), 10)).filter(n => !isNaN(n))
-                    };
-                }
-            }
-            return null;
-        }, characterName);
-
-        if (extractedData && extractedData.numbers.length >= 3) {
-            // 숫자들 중 가장 큰 값들을 전투력, 매력, 생활력으로 추정
-            const nums = extractedData.numbers.filter(n => n > 100).sort((a, b) => b - a);
-
-            if (nums.length >= 1) {
-                const combatScore = nums[0] || 0;
-                const charmScore = nums[1] || 0;
-                const lifeScore = nums[2] || 0;
-                const totalScore = combatScore + charmScore + lifeScore;
-
-                return {
-                    name             : characterName,
-                    rank             : 0,
-                    rankDisplay      : '-',
-                    server           : '라사',
-                    class            : '-',
-                    totalScore       : totalScore,
-                    totalScoreDisplay: totalScore.toLocaleString(),
-                    combatScore      : combatScore,
-                    lifeScore        : lifeScore,
-                    charmScore       : charmScore,
-                    source           : 'mabimobi.life'
-                };
-            }
+            return {
+                name             : characterName,
+                rank             : rank,
+                rankDisplay      : rank.toLocaleString() + '위',
+                server           : '라사',
+                class            : className,
+                totalScore       : totalScore,
+                totalScoreDisplay: totalScore.toLocaleString(),
+                combatScore      : combatScore,
+                lifeScore        : lifeScore,
+                charmScore       : charmScore,
+                source           : 'mabimobi.life'
+            };
         }
 
         return null;
