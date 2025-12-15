@@ -228,7 +228,7 @@ ${memberList}
 
                     items.push({
                         item: `외 ${remainingMembers.length}명...`,
-                        itemOp: avgPower > 0 ? `${avgPower.toLocaleString()}(평균)` : ''
+                        itemOp: avgPower > 0 ? `${avgPower.toLocaleString()} (평균)` : ''
                     });
                 } else {
                     items = raidMembers.map(member => {
