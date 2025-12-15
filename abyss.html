@@ -556,7 +556,28 @@ function renderParties(parties) {
         return;
     }
 
-    container.innerHTML = parties.map(party => {
+    // 파티 정렬: 시간이 얼마 안 남은 순서대로, 종료된 파티는 제일 아래로
+    const now = new Date();
+    const sortedParties = [...parties].sort((a, b) => {
+        const aDate = a.schedule ? new Date(a.schedule) : null;
+        const bDate = b.schedule ? new Date(b.schedule) : null;
+        const aExpired = !aDate || aDate <= now;
+        const bExpired = !bDate || bDate <= now;
+
+        // 종료된 파티는 아래로
+        if (aExpired && !bExpired) return 1;
+        if (!aExpired && bExpired) return -1;
+
+        // 둘 다 종료되지 않은 경우: 시간이 가까운 순서대로
+        if (!aExpired && !bExpired) {
+            return aDate - bDate;
+        }
+
+        // 둘 다 종료된 경우: 최근 종료된 것 먼저
+        return bDate - aDate;
+    });
+
+    container.innerHTML = sortedParties.map(party => {
         // datetime을 포맷팅해서 표시
         const scheduleDate = party.schedule ? new Date(party.schedule) : null;
         const scheduleDisplay = scheduleDate ? formatSchedule(scheduleDate) : '-';
