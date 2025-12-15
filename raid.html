@@ -20,350 +20,10 @@
             integrity="sha384-TiCUE00h649CAMonG018J2ujOgDKW/kVWlChEuu4jK2vxfAAD0eZxzCKakxg55G4"
             crossorigin="anonymous"></script>
     <style>
-        .party-card {
-            background: rgba(26, 27, 38, 0.95);
-            border-radius: 12px;
-            padding: 20px;
-            margin-bottom: 20px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-        }
-        .party-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            gap: 10px;
-            margin-bottom: 15px;
-            padding-bottom: 15px;
-            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
-            flex-wrap: wrap;
-        }
-        .party-schedule {
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: var(--primary-gold);
-        }
-        .time-remaining {
-            font-size: 0.85rem;
-            color: #888;
-            display: block;
-            margin-top: 4px;
-        }
+        /* 레이드 전용: 난이도 색상 (오렌지) */
         .party-difficulty {
             background: rgba(251, 146, 60, 0.2);
             color: #fb923c;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            white-space: nowrap;
-        }
-        .party-count {
-            background: rgba(122, 162, 247, 0.2);
-            color: var(--accent-blue);
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            white-space: nowrap;
-        }
-        .party-raid-type {
-            background: rgba(168, 85, 247, 0.2);
-            color: #a855f7;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            white-space: nowrap;
-        }
-        .party-header-info {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            flex-wrap: wrap;
-        }
-        .party-header-info:last-child {
-            justify-content: flex-end;
-        }
-        @media (max-width: 480px) {
-            .party-header {
-                flex-direction: column;
-                align-items: stretch;
-                gap: 8px;
-            }
-            .party-header-info {
-                justify-content: flex-start;
-            }
-            .party-header-info:last-child {
-                justify-content: flex-start;
-            }
-            .party-schedule {
-                font-size: 1rem;
-            }
-        }
-        .members-list {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-        .member-row {
-            display: grid;
-            grid-template-columns: 1fr auto auto auto;
-            align-items: center;
-            gap: 12px;
-            padding: 12px;
-            background: rgba(0, 0, 0, 0.2);
-            border-radius: 8px;
-        }
-        .member-nickname {
-            font-weight: 500;
-            word-break: break-all;
-        }
-        .member-power {
-            color: var(--accent-blue);
-            font-weight: 600;
-            min-width: 60px;
-            text-align: right;
-        }
-        .member-class {
-            color: #a78bfa;
-            font-size: 0.85rem;
-            min-width: 70px;
-            text-align: center;
-        }
-        @media (max-width: 480px) {
-            .member-row {
-                grid-template-columns: 1fr 1fr;
-                gap: 8px;
-            }
-            .member-nickname {
-                grid-column: 1;
-                font-size: 0.9rem;
-            }
-            .member-power {
-                grid-column: 2;
-                text-align: right;
-                font-size: 0.85rem;
-            }
-            .member-class {
-                grid-column: 1;
-                text-align: left;
-                font-size: 0.8rem;
-            }
-            .member-row .btn-delete {
-                grid-column: 2;
-                justify-self: end;
-            }
-        }
-        .btn-delete {
-            background: rgba(248, 113, 113, 0.2);
-            color: #f87171;
-            border: none;
-            padding: 6px 10px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 0.8rem;
-        }
-        .btn-delete:hover {
-            background: rgba(248, 113, 113, 0.4);
-        }
-        .add-form {
-            background: rgba(26, 27, 38, 0.95);
-            border-radius: 12px;
-            padding: 25px;
-            margin-bottom: 30px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-        }
-        .form-title {
-            color: var(--primary-gold);
-            margin-bottom: 20px;
-            font-size: 1.1rem;
-        }
-        .form-row {
-            display: flex;
-            gap: 15px;
-            margin-bottom: 15px;
-            flex-wrap: wrap;
-        }
-        .form-group {
-            flex: 1;
-            min-width: 120px;
-        }
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-            color: #888;
-            font-size: 0.85rem;
-        }
-        .form-group input, .form-group select {
-            width: 100%;
-            height: 42px;
-            padding: 10px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
-            background: rgba(0, 0, 0, 0.3);
-            color: var(--text-light);
-            font-size: 16px;
-            box-sizing: border-box;
-            -webkit-appearance: none;
-            appearance: none;
-        }
-        .form-group input:focus, .form-group select:focus {
-            outline: none;
-            border-color: var(--primary-gold);
-        }
-        .btn-submit {
-            background: linear-gradient(145deg, var(--primary-gold), #b8960b);
-            color: #000;
-            border: none;
-            padding: 12px 30px;
-            border-radius: 8px;
-            font-weight: 600;
-            cursor: pointer;
-            font-size: 1rem;
-            transition: transform 0.2s;
-        }
-        .btn-submit:hover {
-            transform: translateY(-2px);
-        }
-        .btn-add-party {
-            background: rgba(122, 162, 247, 0.2);
-            color: var(--accent-blue);
-            border: 1px dashed var(--accent-blue);
-            padding: 15px;
-            border-radius: 12px;
-            width: 100%;
-            cursor: pointer;
-            font-size: 1rem;
-            margin-bottom: 20px;
-            transition: all 0.2s;
-        }
-        .btn-add-party:hover {
-            background: rgba(122, 162, 247, 0.3);
-        }
-        .empty-state {
-            text-align: center;
-            padding: 60px 20px;
-            color: #888;
-        }
-        .hidden {
-            display: none;
-        }
-        /* Flatpickr 커스텀 스타일 */
-        .flatpickr-calendar {
-            background: rgba(26, 27, 38, 0.98) !important;
-            border: 1px solid rgba(212, 175, 55, 0.3) !important;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5) !important;
-        }
-        .flatpickr-day.selected {
-            background: var(--primary-gold) !important;
-            border-color: var(--primary-gold) !important;
-            color: #000 !important;
-        }
-        .flatpickr-day:hover {
-            background: rgba(212, 175, 55, 0.3) !important;
-        }
-        .flatpickr-time input {
-            background: rgba(0, 0, 0, 0.3) !important;
-            color: var(--text-light) !important;
-        }
-        .flatpickr-time .flatpickr-am-pm {
-            background: rgba(0, 0, 0, 0.3) !important;
-            color: var(--text-light) !important;
-        }
-        .schedule-input {
-            cursor: pointer !important;
-        }
-        .party-actions {
-            margin-top: 15px;
-            padding-top: 15px;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-        }
-        .btn-add-member {
-            background: rgba(74, 222, 128, 0.2);
-            color: #4ade80;
-            border: none;
-            padding: 8px 16px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 0.85rem;
-        }
-        .btn-add-member:hover {
-            background: rgba(74, 222, 128, 0.3);
-        }
-        .btn-delete-party {
-            background: rgba(248, 113, 113, 0.2);
-            color: #f87171;
-            border: none;
-            padding: 8px 16px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 0.85rem;
-            margin-left: 10px;
-        }
-        .btn-share {
-            background: rgba(250, 225, 0, 0.2);
-            color: #fae100;
-            border: none;
-            padding: 8px 16px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 0.85rem;
-            margin-left: 10px;
-        }
-        .btn-share:hover {
-            background: rgba(250, 225, 0, 0.3);
-        }
-        .btn-share::after {
-            content: '▼';
-            font-size: 0.6rem;
-            margin-left: 4px;
-        }
-        /* 공유 드롭다운 */
-        .share-container {
-            position: relative;
-            display: inline-block;
-        }
-        .share-dropdown {
-            position: absolute;
-            top: 100%;
-            right: 0;
-            margin-top: 5px;
-            background: rgba(26, 27, 38, 0.98);
-            border: 1px solid rgba(250, 225, 0, 0.3);
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
-            min-width: 150px;
-            z-index: 1000;
-            overflow: hidden;
-        }
-        .share-dropdown.hidden {
-            display: none;
-        }
-        .share-option {
-            padding: 12px 16px;
-            cursor: pointer;
-            transition: background 0.2s;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            color: var(--text-light);
-            font-size: 0.85rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-        }
-        .share-option:last-child {
-            border-bottom: none;
-        }
-        .share-option:hover {
-            background: rgba(250, 225, 0, 0.1);
-        }
-        .share-option.kakao {
-            color: #fae100;
-        }
-        .share-option.clipboard {
-            color: var(--accent-blue);
-        }
-        .add-member-form {
-            margin-top: 15px;
-            padding: 15px;
-            background: rgba(0, 0, 0, 0.2);
-            border-radius: 8px;
         }
     </style>
 </head>
@@ -390,7 +50,7 @@
     </header>
 
     <section>
-        <button class="btn-add-party" onclick="toggleNewPartyForm()">+ 새 파티 만들기</button>
+        <button class="btn-add-party" onclick="PartyCommon.toggleNewPartyForm()">+ 새 파티 만들기</button>
 
         <div id="newPartyForm" class="add-form hidden">
             <h3 class="form-title">새 레이드 파티 생성</h3>
@@ -448,102 +108,29 @@
 <script src="./js/supabase-config.js?v=20251215"></script>
 <script src="./js/combat-power.js?v=20251215"></script>
 <script src="./js/party-share.js?v=20251215"></script>
+<script src="./js/party-common.js?v=20251215"></script>
 <script>
-// 카카오 SDK 초기화 (앱키를 여기에 입력)
+// 카카오 SDK 초기화
 PartyShare.initKakaoSDK('8e0f458671cc8e81c30125532b95a245');
-</script>
-<script>
-// 요일 배열
-const dayNames = ['일', '월', '화', '수', '목', '금', '토'];
 
-// 날짜 포맷팅 함수: "2025-12-08 21:30(월)" 형식
-function formatSchedule(date) {
-    const year = date.getFullYear();
-    const month = String(date.getMonth() + 1).padStart(2, '0');
-    const day = String(date.getDate()).padStart(2, '0');
-    const hour = String(date.getHours()).padStart(2, '0');
-    const minute = String(date.getMinutes()).padStart(2, '0');
-    const dayName = dayNames[date.getDay()];
-    return `${year}-${month}-${day} ${hour}:${minute}(${dayName})`;
+// 현재 파티 목록
+let currentParties = [];
+
+// 레이드별 정원
+function getMaxMembers(raidType) {
+    return raidType === '화이트 서큐버스' ? 4 : 8;
 }
 
-// 만료된 파티 삭제 (모집 시간 + 3시간 지난 파티)
-async function deleteExpiredParties() {
-    const threeHoursAgo = new Date(Date.now() - 3 * 60 * 60 * 1000).toISOString();
-
-    const { error } = await supabase
-        .from('raid_parties')
-        .delete()
-        .lt('schedule', threeHoursAgo);
-
-    if (error) {
-        console.error('만료 파티 삭제 실패:', error);
-    }
-}
-
-// 남은 시간 계산 함수
-function getTimeRemaining(targetDate) {
-    const now = new Date();
-    const diff = targetDate - now;
-
-    if (diff <= 0) {
-        return '<span style="color: #f87171;">종료됨</span>';
-    }
-
-    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-
-    if (days > 0) {
-        return `<span style="color: #4ade80;">${days}일 ${hours}시간 ${minutes}분 남음</span>`;
-    } else if (hours > 0) {
-        return `<span style="color: #fbbf24;">${hours}시간 ${minutes}분 남음</span>`;
-    } else {
-        return `<span style="color: #f87171;">${minutes}분 남음</span>`;
-    }
-}
-
-// Flatpickr 초기화
-let schedulePicker;
-let selectedScheduleDate = null; // datetime 저장용
-let currentParties = []; // 파티 목록 저장용
-
-function initSchedulePicker() {
-    schedulePicker = flatpickr("#newSchedule", {
-        locale: "ko",
-        enableTime: true,
-        noCalendar: false,
-        dateFormat: "Y-m-d H:i",
-        time_24hr: true,
-        minuteIncrement: 30,
-        defaultHour: 23,
-        minDate: "today",
-        onChange: function(selectedDates, dateStr, instance) {
-            if (selectedDates.length > 0) {
-                selectedScheduleDate = selectedDates[0]; // datetime 저장
-                instance.element.value = formatSchedule(selectedDates[0]);
-            }
-        }
-    });
-}
-
+// 파티 목록 로드
 async function loadParties() {
     const { data: parties, error } = await supabase
         .from('raid_parties')
-        .select(`
-            *,
-            raid_members (*)
-        `)
+        .select(`*, raid_members (*)`)
         .order('created_at', { ascending: false });
 
     if (error) {
         console.error('Error loading parties:', error);
-        document.getElementById('partyList').innerHTML = `
-            <div class="empty-state">
-                <p>데이터를 불러오는데 실패했습니다.</p>
-                <p style="font-size: 0.85rem; margin-top: 10px;">${error.message}</p>
-            </div>
-        `;
+        document.getElementById('partyList').innerHTML = PartyCommon.renderErrorState(error.message);
         return;
     }
 
@@ -551,53 +138,24 @@ async function loadParties() {
     renderParties(parties);
 }
 
-// 레이드별 정원
-function getMaxMembers(raidType) {
-    return raidType === '화이트 서큐버스' ? 4 : 8;
-}
-
+// 파티 렌더링
 function renderParties(parties) {
     const container = document.getElementById('partyList');
 
     if (!parties || parties.length === 0) {
-        container.innerHTML = `
-            <div class="empty-state">
-                <p>아직 등록된 파티가 없습니다.</p>
-                <p style="font-size: 0.85rem; margin-top: 10px;">새 파티를 만들어보세요!</p>
-            </div>
-        `;
+        container.innerHTML = PartyCommon.renderEmptyState();
         return;
     }
 
-    // 파티 정렬: 시간이 얼마 안 남은 순서대로, 종료된 파티는 제일 아래로
-    const now = new Date();
-    const sortedParties = [...parties].sort((a, b) => {
-        const aDate = a.schedule ? new Date(a.schedule) : null;
-        const bDate = b.schedule ? new Date(b.schedule) : null;
-        const aExpired = !aDate || aDate <= now;
-        const bExpired = !bDate || bDate <= now;
-
-        // 종료된 파티는 아래로
-        if (aExpired && !bExpired) return 1;
-        if (!aExpired && bExpired) return -1;
-
-        // 둘 다 종료되지 않은 경우: 시간이 가까운 순서대로
-        if (!aExpired && !bExpired) {
-            return aDate - bDate;
-        }
-
-        // 둘 다 종료된 경우: 최근 종료된 것 먼저
-        return bDate - aDate;
-    });
+    const sortedParties = PartyCommon.sortParties(parties);
 
     container.innerHTML = sortedParties.map(party => {
         const raidType = party.raid_type || '글라스기브넨';
         const maxMembers = getMaxMembers(raidType);
         const currentMembers = party.raid_members.length;
-        // datetime을 포맷팅해서 표시
         const scheduleDate = party.schedule ? new Date(party.schedule) : null;
-        const scheduleDisplay = scheduleDate ? formatSchedule(scheduleDate) : '-';
-        const timeRemaining = scheduleDate ? getTimeRemaining(scheduleDate) : '';
+        const scheduleDisplay = scheduleDate ? PartyCommon.formatSchedule(scheduleDate) : '-';
+        const timeRemaining = scheduleDate ? PartyCommon.getTimeRemaining(scheduleDate) : '';
 
         return `
         <div class="party-card" id="party-${party.id}" data-schedule="${party.schedule || ''}">
@@ -624,7 +182,7 @@ function renderParties(parties) {
             </div>
             <div class="party-actions">
                 ${currentMembers < maxMembers
-                    ? `<button class="btn-add-member" onclick="toggleAddMemberForm('${party.id}')">+ 참가하기</button>`
+                    ? `<button class="btn-add-member" onclick="PartyCommon.toggleAddMemberForm('${party.id}')">+ 참가하기</button>`
                     : '<span style="color: #4ade80; font-size: 0.85rem;">파티 모집 완료!</span>'}
                 <div class="share-container">
                     <button class="btn-share" onclick="PartyShare.toggleShareDropdown('${party.id}')">공유</button>
@@ -657,41 +215,21 @@ function renderParties(parties) {
     }).join('');
 }
 
-function toggleNewPartyForm() {
-    document.getElementById('newPartyForm').classList.toggle('hidden');
-}
-
-function toggleAddMemberForm(partyId) {
-    document.getElementById(`addMemberForm-${partyId}`).classList.toggle('hidden');
-}
-
 // 레이드 타입에 따라 난이도 옵션 변경
 function updateDifficultyOptions() {
     const raidType = document.getElementById('newRaidType').value;
     const difficultySelect = document.getElementById('newDifficulty');
 
-    let options = '';
+    const options = {
+        '글라스기브넨': '<option value="입문">입문</option><option value="어려움">어려움</option><option value="매우 어려움" selected>매우 어려움</option>',
+        '화이트 서큐버스': '<option value="어려움" selected>어려움</option>',
+        '타바르타스': '<option value="입문">입문</option><option value="어려움" selected>어려움</option>'
+    };
 
-    if (raidType === '글라스기브넨') {
-        options = `
-            <option value="입문">입문</option>
-            <option value="어려움">어려움</option>
-            <option value="매우 어려움" selected>매우 어려움</option>
-        `;
-    } else if (raidType === '화이트 서큐버스') {
-        options = `
-            <option value="어려움" selected>어려움</option>
-        `;
-    } else if (raidType === '타바르타스') {
-        options = `
-            <option value="입문">입문</option>
-            <option value="어려움" selected>어려움</option>
-        `;
-    }
-
-    difficultySelect.innerHTML = options;
+    difficultySelect.innerHTML = options[raidType] || options['글라스기브넨'];
 }
 
+// 파티 생성
 async function createParty() {
     const raidType = document.getElementById('newRaidType').value;
     const difficulty = document.getElementById('newDifficulty').value;
@@ -699,13 +237,12 @@ async function createParty() {
     const combatPower = document.getElementById('newPower').value;
     const className = document.getElementById('newClass').value.trim();
 
-    if (!selectedScheduleDate || !nickname || !combatPower || !className) {
+    if (!PartyCommon.getSelectedScheduleDate() || !nickname || !combatPower || !className) {
         alert('요일·시간, 닉네임, 전투력, 클래스를 모두 입력해주세요.');
         return;
     }
 
-    // datetime을 ISO 형식으로 변환
-    const schedule = selectedScheduleDate.toISOString();
+    const schedule = PartyCommon.getSelectedScheduleDate().toISOString();
 
     const { data: party, error: partyError } = await supabase
         .from('raid_parties')
@@ -732,8 +269,8 @@ async function createParty() {
         return;
     }
 
-    schedulePicker.clear();
-    selectedScheduleDate = null;
+    // 폼 초기화
+    PartyCommon.clearScheduleDate();
     document.getElementById('newRaidType').value = '글라스기브넨';
     updateDifficultyOptions();
     document.getElementById('newNickname').value = '';
@@ -744,6 +281,7 @@ async function createParty() {
     loadParties();
 }
 
+// 멤버 추가
 async function addMember(partyId) {
     const nickname = document.getElementById(`memberNickname-${partyId}`).value.trim();
     const combatPower = document.getElementById(`memberPower-${partyId}`).value;
@@ -754,7 +292,6 @@ async function addMember(partyId) {
         return;
     }
 
-    // 중복 닉네임 체크
     const party = currentParties.find(p => p.id === partyId);
     if (party && party.raid_members.some(m => m.nickname === nickname)) {
         alert('이미 참가한 닉네임입니다.');
@@ -778,6 +315,7 @@ async function addMember(partyId) {
     loadParties();
 }
 
+// 멤버 삭제
 async function deleteMember(memberId) {
     if (!confirm('정말 삭제하시겠습니까?')) return;
 
@@ -794,6 +332,7 @@ async function deleteMember(memberId) {
     loadParties();
 }
 
+// 파티 삭제
 async function deleteParty(partyId) {
     if (!confirm('파티 전체를 삭제하시겠습니까?')) return;
 
@@ -810,7 +349,7 @@ async function deleteParty(partyId) {
     loadParties();
 }
 
-// 클립보드 복사 래퍼
+// 공유 래퍼
 function copyPartyInfoWrapper(partyId) {
     const party = currentParties.find(p => p.id === partyId);
     if (!party) {
@@ -821,7 +360,6 @@ function copyPartyInfoWrapper(partyId) {
     PartyShare.copyToClipboard(text);
 }
 
-// 카카오톡 공유 래퍼
 function shareToKakaoWrapper(partyId) {
     const party = currentParties.find(p => p.id === partyId);
     if (!party) {
@@ -831,27 +369,15 @@ function shareToKakaoWrapper(partyId) {
     PartyShare.shareToKakao(party, 'raid');
 }
 
-// 남은 시간 업데이트 (1분마다)
-function updateTimeRemaining() {
-    document.querySelectorAll('.party-card').forEach(card => {
-        const schedule = card.dataset.schedule;
-        if (schedule) {
-            const timeRemainingEl = card.querySelector('.time-remaining');
-            if (timeRemainingEl) {
-                timeRemainingEl.innerHTML = getTimeRemaining(new Date(schedule));
-            }
-        }
-    });
-}
-
+// 초기화
 document.addEventListener('DOMContentLoaded', async function() {
-    await deleteExpiredParties(); // 만료된 파티 먼저 삭제
+    await PartyCommon.deleteExpiredParties('raid_parties');
     loadParties();
-    initSchedulePicker();
-    // 1분마다 남은 시간 업데이트 및 만료 파티 삭제
+    PartyCommon.initSchedulePicker('#newSchedule', 23);
+
     setInterval(async () => {
-        await deleteExpiredParties();
-        updateTimeRemaining();
+        await PartyCommon.deleteExpiredParties('raid_parties');
+        PartyCommon.updateTimeRemaining();
     }, 60000);
 });
 </script>

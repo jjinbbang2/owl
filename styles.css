@@ -784,6 +784,480 @@ body {
     display: none;
 }
 
+/* ========================================
+   파티 모집 공통 스타일
+   ======================================== */
+
+/* 파티 카드 */
+.party-card {
+    background: rgba(26, 27, 38, 0.95);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.party-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+    flex-wrap: wrap;
+}
+
+.party-header > div,
+.party-header-info {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.party-header-info:last-child {
+    justify-content: flex-end;
+}
+
+.party-schedule {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--primary-gold);
+}
+
+.time-remaining {
+    font-size: 0.85rem;
+    color: #888;
+    display: block;
+    margin-top: 4px;
+}
+
+/* 파티 뱃지 */
+.party-difficulty {
+    background: rgba(248, 113, 113, 0.2);
+    color: #f87171;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    white-space: nowrap;
+}
+
+.party-count {
+    background: rgba(122, 162, 247, 0.2);
+    color: var(--accent-blue);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    white-space: nowrap;
+}
+
+.party-raid-type {
+    background: rgba(168, 85, 247, 0.2);
+    color: #a855f7;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    white-space: nowrap;
+}
+
+/* 품앗이 난이도 (핑크) */
+.party-difficulty-help {
+    background: rgba(244, 114, 182, 0.2);
+    color: #f472b6;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    white-space: nowrap;
+}
+
+/* 멤버 목록 */
+.members-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.member-row {
+    display: grid;
+    grid-template-columns: 1fr auto auto auto;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+}
+
+.member-nickname {
+    font-weight: 500;
+    word-break: break-all;
+}
+
+.member-power {
+    color: var(--accent-blue);
+    font-weight: 600;
+    min-width: 60px;
+    text-align: right;
+}
+
+.member-class {
+    color: #a78bfa;
+    font-size: 0.85rem;
+    min-width: 70px;
+    text-align: center;
+}
+
+/* 품앗이 멤버 라벨 */
+.member-label {
+    font-size: 0.7rem;
+    color: #888;
+    display: block;
+}
+
+.main-char {
+    color: var(--primary-gold);
+}
+
+.sub-char {
+    color: #4ade80;
+}
+
+/* 파티 액션 버튼 */
+.party-actions {
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.btn-add-member {
+    background: rgba(74, 222, 128, 0.2);
+    color: #4ade80;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.85rem;
+}
+
+.btn-add-member:hover {
+    background: rgba(74, 222, 128, 0.3);
+}
+
+.btn-delete {
+    background: rgba(248, 113, 113, 0.2);
+    color: #f87171;
+    border: none;
+    padding: 6px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.8rem;
+}
+
+.btn-delete:hover {
+    background: rgba(248, 113, 113, 0.4);
+}
+
+.btn-delete-party {
+    background: rgba(248, 113, 113, 0.2);
+    color: #f87171;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    margin-left: 10px;
+}
+
+.btn-delete-party:hover {
+    background: rgba(248, 113, 113, 0.4);
+}
+
+/* 공유 버튼 및 드롭다운 */
+.btn-share {
+    background: rgba(250, 225, 0, 0.2);
+    color: #fae100;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    margin-left: 10px;
+}
+
+.btn-share:hover {
+    background: rgba(250, 225, 0, 0.3);
+}
+
+.btn-share::after {
+    content: '\25BC';
+    font-size: 0.6rem;
+    margin-left: 4px;
+}
+
+.share-container {
+    position: relative;
+    display: inline-block;
+}
+
+.share-dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    margin-top: 5px;
+    background: rgba(26, 27, 38, 0.98);
+    border: 1px solid rgba(250, 225, 0, 0.3);
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    min-width: 150px;
+    z-index: 1000;
+    overflow: hidden;
+}
+
+.share-dropdown.hidden {
+    display: none;
+}
+
+.share-option {
+    padding: 12px 16px;
+    cursor: pointer;
+    transition: background 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-light);
+    font-size: 0.85rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.share-option:last-child {
+    border-bottom: none;
+}
+
+.share-option:hover {
+    background: rgba(250, 225, 0, 0.1);
+}
+
+.share-option.kakao {
+    color: #fae100;
+}
+
+.share-option.clipboard {
+    color: var(--accent-blue);
+}
+
+/* 파티 생성 폼 */
+.add-form {
+    background: rgba(26, 27, 38, 0.95);
+    border-radius: 12px;
+    padding: 25px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.form-title {
+    color: var(--primary-gold);
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+}
+
+.form-row {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+}
+
+.form-group {
+    flex: 1;
+    min-width: 120px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #888;
+    font-size: 0.85rem;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    height: 42px;
+    padding: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    background: rgba(0, 0, 0, 0.3);
+    color: var(--text-light);
+    font-size: 16px;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: var(--primary-gold);
+}
+
+.form-section-title {
+    color: #888;
+    font-size: 0.85rem;
+    margin: 15px 0 10px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* 새 파티 버튼 */
+.btn-add-party {
+    background: rgba(122, 162, 247, 0.2);
+    color: var(--accent-blue);
+    border: 1px dashed var(--accent-blue);
+    padding: 15px;
+    border-radius: 12px;
+    width: 100%;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-bottom: 20px;
+    transition: all 0.2s;
+}
+
+.btn-add-party:hover {
+    background: rgba(122, 162, 247, 0.3);
+}
+
+/* 멤버 추가 인라인 폼 */
+.add-member-form {
+    margin-top: 15px;
+    padding: 15px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+}
+
+/* 날짜 선택기 */
+.schedule-input {
+    cursor: pointer !important;
+}
+
+/* Flatpickr 커스텀 스타일 */
+.flatpickr-calendar {
+    background: rgba(26, 27, 38, 0.98) !important;
+    border: 1px solid rgba(212, 175, 55, 0.3) !important;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5) !important;
+}
+
+.flatpickr-day.selected {
+    background: var(--primary-gold) !important;
+    border-color: var(--primary-gold) !important;
+    color: #000 !important;
+}
+
+.flatpickr-day:hover {
+    background: rgba(212, 175, 55, 0.3) !important;
+}
+
+.flatpickr-time input {
+    background: rgba(0, 0, 0, 0.3) !important;
+    color: var(--text-light) !important;
+}
+
+.flatpickr-time .flatpickr-am-pm {
+    background: rgba(0, 0, 0, 0.3) !important;
+    color: var(--text-light) !important;
+}
+
+/* 빈 상태 */
+.empty-state {
+    text-align: center;
+    padding: 60px 20px;
+    color: #888;
+}
+
+/* hidden 유틸리티 */
+.hidden {
+    display: none;
+}
+
+/* 파티 모바일 반응형 */
+@media (max-width: 480px) {
+    .party-header {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
+    }
+
+    .party-header > div,
+    .party-header-info {
+        justify-content: flex-start;
+    }
+
+    .party-header-info:last-child {
+        justify-content: flex-start;
+    }
+
+    .party-schedule {
+        font-size: 1rem;
+    }
+
+    .member-row {
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+    }
+
+    .member-nickname {
+        grid-column: 1;
+        font-size: 0.9rem;
+    }
+
+    .member-power {
+        grid-column: 2;
+        text-align: right;
+        font-size: 0.85rem;
+    }
+
+    .member-class {
+        grid-column: 1;
+        text-align: left;
+        font-size: 0.8rem;
+    }
+
+    .member-row .btn-delete {
+        grid-column: 2;
+        justify-self: end;
+    }
+}
+
+/* 품앗이 멤버 행 (5열) */
+.member-row-help {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr auto auto;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+}
+
+@media (max-width: 600px) {
+    .member-row-help {
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+        padding: 10px;
+    }
+
+    .member-row-help > div {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+    }
+
+    .member-row-help .btn-delete {
+        grid-column: span 2;
+        justify-self: end;
+        margin-top: 4px;
+    }
+}
+
 /* 반응형 */
 @media (max-width: 768px) {
     .container {
