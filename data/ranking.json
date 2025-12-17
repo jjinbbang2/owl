@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2025-12-17T18:09:44.780Z",
+  "updatedAt": "2025-12-17T19:07:39.065Z",
   "members": [
     {
       "name": "풀뱅기사",
@@ -237,15 +237,15 @@
     },
     {
       "name": "빼주현",
-      "rank": 29278,
-      "rankDisplay": "29,278위",
+      "rank": 11798,
+      "rankDisplay": "11,798위",
       "server": "라사",
       "class": "사제",
-      "totalScore": 96183,
-      "totalScoreDisplay": "96,183",
-      "combatScore": 52653,
-      "lifeScore": 21020,
-      "charmScore": 22510,
+      "totalScore": 97210,
+      "totalScoreDisplay": "97,210",
+      "combatScore": 52667,
+      "lifeScore": 21033,
+      "charmScore": 23510,
       "source": "mobinogi.net"
     },
     {
