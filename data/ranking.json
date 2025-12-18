@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2025-12-18T12:09:41.867Z",
+  "updatedAt": "2025-12-18T13:17:52.282Z",
   "members": [
     {
       "name": "풀뱅기사",
@@ -146,8 +146,8 @@
     },
     {
       "name": "초엣",
-      "rank": 1422,
-      "rankDisplay": "1,422위",
+      "rank": 1447,
+      "rankDisplay": "1,447위",
       "server": "라사",
       "class": "검술사",
       "totalScore": 123243,
@@ -159,8 +159,8 @@
     },
     {
       "name": "시우쇠",
-      "rank": 4,
-      "rankDisplay": "4위",
+      "rank": 5,
+      "rankDisplay": "5위",
       "server": "라사",
       "class": "화염술사",
       "totalScore": 148838,
@@ -198,8 +198,8 @@
     },
     {
       "name": "플라시엘",
-      "rank": 3961,
-      "rankDisplay": "3,961위",
+      "rank": 4000,
+      "rankDisplay": "4,000위",
       "server": "라사",
       "class": "수도사",
       "totalScore": 114120,
@@ -341,8 +341,8 @@
     },
     {
       "name": "항타기",
-      "rank": 39796,
-      "rankDisplay": "39,796위",
+      "rank": 39840,
+      "rankDisplay": "39,840위",
       "server": "라사",
       "class": "수도사",
       "totalScore": 85449,
@@ -354,8 +354,8 @@
     },
     {
       "name": "볼프강아마데우스",
-      "rank": 38415,
-      "rankDisplay": "38,415위",
+      "rank": 38390,
+      "rankDisplay": "38,390위",
       "server": "라사",
       "class": "석궁사수",
       "totalScore": 85089,
@@ -367,8 +367,8 @@
     },
     {
       "name": "악바르",
-      "rank": 44748,
-      "rankDisplay": "44,748위",
+      "rank": 44800,
+      "rankDisplay": "44,800위",
       "server": "라사",
       "class": "화염술사",
       "totalScore": 83179,
@@ -458,21 +458,21 @@
     },
     {
       "name": "준숙",
-      "rank": 16568,
-      "rankDisplay": "16,568위",
+      "rank": 16561,
+      "rankDisplay": "16,561위",
       "server": "라사",
       "class": "전사",
-      "totalScore": 92247,
-      "totalScoreDisplay": "92,247",
+      "totalScore": 92248,
+      "totalScoreDisplay": "92,248",
       "combatScore": 52243,
       "lifeScore": 20742,
-      "charmScore": 19262,
+      "charmScore": 19263,
       "source": "mobinogi.net"
     },
     {
       "name": "Zi존아프로",
-      "rank": 2821,
-      "rankDisplay": "2,821위",
+      "rank": 2855,
+      "rankDisplay": "2,855위",
       "server": "라사",
       "class": "빙결술사",
       "totalScore": 131833,
