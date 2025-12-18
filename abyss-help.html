@@ -219,7 +219,7 @@ function renderParties(parties) {
                 </div>
             </div>
             <div class="members-list">
-                ${party.help_members.map(member => `
+                ${[...party.help_members].sort((a, b) => (b.main_power || 0) - (a.main_power || 0)).map(member => `
                     <div class="member-row-help">
                         <div>
                             <span class="member-label">본캐</span>
@@ -235,7 +235,10 @@ function renderParties(parties) {
                                 <span class="member-label">부캐</span>
                                 <span class="main-only-text">본캐만 참여</span>
                             </div>
-                            <div></div>
+                            <div>
+                                <span class="member-label">투력</span>
+                                <span class="member-power">-</span>
+                            </div>
                         ` : `
                             <div>
                                 <span class="member-label">부캐</span>
