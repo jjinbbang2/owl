@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2025-12-18T09:10:01.151Z",
+  "updatedAt": "2025-12-18T10:07:29.660Z",
   "members": [
     {
       "name": "풀뱅기사",
@@ -42,28 +42,28 @@
     },
     {
       "name": "전퇴의거인",
-      "rank": 32276,
-      "rankDisplay": "32,276위",
+      "rank": 13765,
+      "rankDisplay": "13,765위",
       "server": "라사",
       "class": "빙결술사",
-      "totalScore": 93948,
-      "totalScoreDisplay": "93,948",
+      "totalScore": 94955,
+      "totalScoreDisplay": "94,955",
       "combatScore": 53233,
-      "lifeScore": 18973,
-      "charmScore": 21742,
+      "lifeScore": 18978,
+      "charmScore": 22744,
       "source": "mobinogi.net"
     },
     {
       "name": "갑옷거인",
-      "rank": 26965,
-      "rankDisplay": "26,965위",
+      "rank": 22257,
+      "rankDisplay": "22,257위",
       "server": "라사",
       "class": "대검전사",
-      "totalScore": 94986,
-      "totalScoreDisplay": "94,986",
+      "totalScore": 98339,
+      "totalScoreDisplay": "98,339",
       "combatScore": 53421,
-      "lifeScore": 23518,
-      "charmScore": 18047,
+      "lifeScore": 23521,
+      "charmScore": 21397,
       "source": "mobinogi.net"
     },
     {
@@ -159,15 +159,15 @@
     },
     {
       "name": "시우쇠",
-      "rank": 10,
-      "rankDisplay": "10위",
+      "rank": 2,
+      "rankDisplay": "2위",
       "server": "라사",
       "class": "화염술사",
-      "totalScore": 144195,
-      "totalScoreDisplay": "144,195",
-      "combatScore": 58880,
-      "lifeScore": 35262,
-      "charmScore": 50053,
+      "totalScore": 148084,
+      "totalScoreDisplay": "148,084",
+      "combatScore": 59095,
+      "lifeScore": 35927,
+      "charmScore": 53062,
       "source": "mobinogi.net"
     },
     {
@@ -302,8 +302,8 @@
     },
     {
       "name": "바르다",
-      "rank": 19488,
-      "rankDisplay": "19,488위",
+      "rank": 13408,
+      "rankDisplay": "13,408위",
       "server": "라사",
       "class": "빙결술사",
       "totalScore": 104233,
@@ -328,8 +328,8 @@
     },
     {
       "name": "위례",
-      "rank": 24892,
-      "rankDisplay": "24,892위",
+      "rank": 24987,
+      "rankDisplay": "24,987위",
       "server": "라사",
       "class": "힐러",
       "totalScore": 85924,
@@ -432,8 +432,8 @@
     },
     {
       "name": "유키노하라유키",
-      "rank": 11978,
-      "rankDisplay": "11,978위",
+      "rank": 11995,
+      "rankDisplay": "11,995위",
       "server": "라사",
       "class": "힐러",
       "totalScore": 97010,
