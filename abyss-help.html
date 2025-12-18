@@ -14,7 +14,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/themes/dark.css">
-    <link rel="stylesheet" href="./styles.css?v=20251215d">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <link rel="stylesheet" href="./styles.css?v=20251218a">
     <!-- 카카오 SDK -->
     <script src="https://t1.kakaocdn.net/kakao_js_sdk/2.7.2/kakao.min.js"
             integrity="sha384-TiCUE00h649CAMonG018J2ujOgDKW/kVWlChEuu4jK2vxfAAD0eZxzCKakxg55G4"
@@ -93,19 +94,27 @@
                     <input type="text" id="newMainClass" placeholder="자동입력" readonly>
                 </div>
             </div>
-            <h4 class="form-section-title">부캐 (도움 받는 캐릭터)</h4>
-            <div class="form-row">
-                <div class="form-group">
-                    <label>닉네임</label>
-                    <input type="text" id="newSubNickname" placeholder="부캐 닉네임" onkeydown="handleNicknameKeydown(event)" onblur="fetchCombatPower('newSubNickname', 'newSubPower', 'newSubClass')">
-                </div>
-                <div class="form-group" style="max-width: 120px;">
-                    <label>전투력</label>
-                    <input type="number" id="newSubPower" placeholder="자동입력" readonly>
-                </div>
-                <div class="form-group" style="max-width: 100px;">
-                    <label>클래스</label>
-                    <input type="text" id="newSubClass" placeholder="자동입력" readonly>
+            <div class="form-row" style="margin-bottom: 10px;">
+                <label class="checkbox-label">
+                    <input type="checkbox" id="newMainOnly" onchange="toggleSubCharSection('new')">
+                    <span>본캐만 참여 (도움만 주기)</span>
+                </label>
+            </div>
+            <div id="subCharSection-new">
+                <h4 class="form-section-title">부캐 (도움 받는 캐릭터)</h4>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>닉네임</label>
+                        <input type="text" id="newSubNickname" placeholder="부캐 닉네임" onkeydown="handleNicknameKeydown(event)" onblur="fetchCombatPower('newSubNickname', 'newSubPower', 'newSubClass')">
+                    </div>
+                    <div class="form-group" style="max-width: 120px;">
+                        <label>전투력</label>
+                        <input type="number" id="newSubPower" placeholder="자동입력" readonly>
+                    </div>
+                    <div class="form-group" style="max-width: 100px;">
+                        <label>클래스</label>
+                        <input type="text" id="newSubClass" placeholder="자동입력" readonly>
+                    </div>
                 </div>
             </div>
             <button class="btn-submit" onclick="createParty()">파티 생성</button>
@@ -119,13 +128,38 @@
     </section>
 </div>
 
+<!-- 파티편성 모달 -->
+<div id="teamSetupModal" class="modal hidden">
+    <div class="modal-content modal-large">
+        <div class="modal-header">
+            <h3>파티편성</h3>
+            <button class="modal-close" onclick="closeTeamSetupModal()">&times;</button>
+        </div>
+        <div class="modal-body">
+            <div class="team-setup-section">
+                <h4 id="teamFormTitle">새 팀 만들기</h4>
+                <div id="memberSelection" class="member-selection"></div>
+                <div class="team-form-buttons">
+                    <button id="btnSaveTeam" class="btn-submit" onclick="saveTeam()">팀 추가</button>
+                    <button id="btnCancelEdit" class="btn-cancel hidden" onclick="cancelEditTeam()">취소</button>
+                </div>
+            </div>
+            <div class="team-list-section">
+                <h4>편성된 팀 목록</h4>
+                <div id="teamList" class="team-list"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/ko.js"></script>
-<script src="./js/supabase-config.js?v=20251215d"></script>
-<script src="./js/combat-power.js?v=20251215d"></script>
-<script src="./js/party-share.js?v=20251215d"></script>
-<script src="./js/party-common.js?v=20251215d"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="./js/supabase-config.js?v=20251218a"></script>
+<script src="./js/combat-power.js?v=20251218a"></script>
+<script src="./js/party-share.js?v=20251218a"></script>
+<script src="./js/party-common.js?v=20251218a"></script>
 <script>
 // 카카오 SDK 초기화
 PartyShare.initKakaoSDK('8e0f458671cc8e81c30125532b95a245');
@@ -137,7 +171,7 @@ let currentParties = [];
 async function loadParties() {
     const { data: parties, error } = await supabase
         .from('help_parties')
-        .select(`*, help_members (*)`)
+        .select(`*, help_members (*), help_teams (id)`)
         .order('created_at', { ascending: false });
 
     if (error) {
@@ -146,8 +180,14 @@ async function loadParties() {
         return;
     }
 
-    currentParties = parties || [];
-    renderParties(parties);
+    // 각 파티에 팀 수 추가
+    const partiesWithTeamCount = (parties || []).map(party => ({
+        ...party,
+        team_count: party.help_teams ? party.help_teams.length : 0
+    }));
+
+    currentParties = partiesWithTeamCount;
+    renderParties(partiesWithTeamCount);
 }
 
 // 파티 렌더링
@@ -190,15 +230,23 @@ function renderParties(parties) {
                             <span class="member-label">투력</span>
                             <span class="member-power">${PartyCommon.formatPowerShort(member.main_power)}</span>
                         </div>
-                        <div>
-                            <span class="member-label">부캐</span>
-                            <span class="member-nickname sub-char">${member.sub_nickname || '-'}</span>
-                            <span class="member-class">${member.sub_class || ''}</span>
-                        </div>
-                        <div>
-                            <span class="member-label">투력</span>
-                            <span class="member-power">${PartyCommon.formatPowerShort(member.sub_power)}</span>
-                        </div>
+                        ${member.is_main_only ? `
+                            <div>
+                                <span class="member-label">부캐</span>
+                                <span class="main-only-text">본캐만 참여</span>
+                            </div>
+                            <div></div>
+                        ` : `
+                            <div>
+                                <span class="member-label">부캐</span>
+                                <span class="member-nickname sub-char">${member.sub_nickname || '-'}</span>
+                                <span class="member-class">${member.sub_class || ''}</span>
+                            </div>
+                            <div>
+                                <span class="member-label">투력</span>
+                                <span class="member-power">${PartyCommon.formatPowerShort(member.sub_power)}</span>
+                            </div>
+                        `}
                         <button class="btn-delete" onclick="deleteMember('${member.id}')">삭제</button>
                     </div>
                 `).join('')}
@@ -214,6 +262,7 @@ function renderParties(parties) {
                         <div class="share-option clipboard" onclick="copyPartyInfoWrapper('${party.id}')">📋 클립보드</div>
                     </div>
                 </div>
+                <button class="btn-team-setup" onclick="openTeamSetupModal('${party.id}')">파티편성${party.team_count > 0 ? ` (${party.team_count})` : ''}</button>
                 <button class="btn-delete-party" onclick="deleteParty('${party.id}')">파티 삭제</button>
             </div>
             <div id="addMemberForm-${party.id}" class="add-member-form hidden">
@@ -231,18 +280,26 @@ function renderParties(parties) {
                         <input type="text" id="mainClass-${party.id}" placeholder="자동입력" readonly>
                     </div>
                 </div>
-                <div class="form-row">
-                    <div class="form-group">
-                        <label>부캐 닉네임</label>
-                        <input type="text" id="subNickname-${party.id}" placeholder="부캐 닉네임" onkeydown="handleNicknameKeydown(event)" onblur="fetchCombatPower('subNickname-${party.id}', 'subPower-${party.id}', 'subClass-${party.id}')">
-                    </div>
-                    <div class="form-group" style="max-width: 120px;">
-                        <label>부캐 투력</label>
-                        <input type="number" id="subPower-${party.id}" placeholder="자동입력" readonly>
-                    </div>
-                    <div class="form-group" style="max-width: 100px;">
-                        <label>부캐 클래스</label>
-                        <input type="text" id="subClass-${party.id}" placeholder="자동입력" readonly>
+                <div class="form-row" style="margin: 10px 0;">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="mainOnly-${party.id}" onchange="toggleSubCharSection('${party.id}')">
+                        <span>본캐만 참여</span>
+                    </label>
+                </div>
+                <div id="subCharSection-${party.id}">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>부캐 닉네임</label>
+                            <input type="text" id="subNickname-${party.id}" placeholder="부캐 닉네임" onkeydown="handleNicknameKeydown(event)" onblur="fetchCombatPower('subNickname-${party.id}', 'subPower-${party.id}', 'subClass-${party.id}')">
+                        </div>
+                        <div class="form-group" style="max-width: 120px;">
+                            <label>부캐 투력</label>
+                            <input type="number" id="subPower-${party.id}" placeholder="자동입력" readonly>
+                        </div>
+                        <div class="form-group" style="max-width: 100px;">
+                            <label>부캐 클래스</label>
+                            <input type="text" id="subClass-${party.id}" placeholder="자동입력" readonly>
+                        </div>
                     </div>
                 </div>
                 <button class="btn-submit" onclick="addMember('${party.id}')" style="padding: 8px 20px; font-size: 0.9rem;">참가</button>
@@ -258,12 +315,26 @@ async function createParty() {
     const mainNickname = document.getElementById('newMainNickname').value.trim();
     const mainPower = document.getElementById('newMainPower').value;
     const mainClass = document.getElementById('newMainClass').value.trim();
+    const isMainOnly = document.getElementById('newMainOnly').checked;
     const subNickname = document.getElementById('newSubNickname').value.trim();
     const subPower = document.getElementById('newSubPower').value;
     const subClass = document.getElementById('newSubClass').value.trim();
 
-    if (!PartyCommon.getSelectedScheduleDate() || !mainNickname || !mainPower || !mainClass || !subNickname || !subPower || !subClass) {
-        alert('요일·시간, 본캐/부캐 닉네임, 전투력, 클래스를 모두 입력해주세요.');
+    // 본캐 필수 입력 확인
+    if (!PartyCommon.getSelectedScheduleDate() || !mainNickname || !mainPower || !mainClass) {
+        alert2('요일·시간, 본캐 닉네임, 전투력, 클래스를 모두 입력해주세요.');
+        return;
+    }
+
+    // 부캐 필수 입력 확인 (본캐만 참여가 아닌 경우)
+    if (!isMainOnly && (!subNickname || !subPower || !subClass)) {
+        alert2('부캐 닉네임, 전투력, 클래스를 모두 입력해주세요.');
+        return;
+    }
+
+    // 본캐와 부캐 닉네임 동일 여부 확인
+    if (!isMainOnly && mainNickname === subNickname) {
+        alert2('본캐와 부캐 닉네임은 같을 수 없습니다.');
         return;
     }
 
@@ -276,7 +347,7 @@ async function createParty() {
         .single();
 
     if (partyError) {
-        alert('파티 생성 실패: ' + partyError.message);
+        alert2('파티 생성 실패: ' + partyError.message, 'error');
         return;
     }
 
@@ -287,13 +358,14 @@ async function createParty() {
             main_nickname: mainNickname,
             main_power: mainPower ? parseInt(mainPower, 10) : null,
             main_class: mainClass || null,
-            sub_nickname: subNickname,
-            sub_power: subPower ? parseInt(subPower, 10) : null,
-            sub_class: subClass || null
+            sub_nickname: isMainOnly ? null : subNickname,
+            sub_power: isMainOnly ? null : (subPower ? parseInt(subPower, 10) : null),
+            sub_class: isMainOnly ? null : (subClass || null),
+            is_main_only: isMainOnly
         });
 
     if (memberError) {
-        alert('멤버 추가 실패: ' + memberError.message);
+        alert2('멤버 추가 실패: ' + memberError.message, 'error');
         return;
     }
 
@@ -303,6 +375,8 @@ async function createParty() {
     document.getElementById('newMainNickname').value = '';
     document.getElementById('newMainPower').value = '';
     document.getElementById('newMainClass').value = '';
+    document.getElementById('newMainOnly').checked = false;
+    document.getElementById('subCharSection-new').classList.remove('hidden');
     document.getElementById('newSubNickname').value = '';
     document.getElementById('newSubPower').value = '';
     document.getElementById('newSubClass').value = '';
@@ -316,18 +390,32 @@ async function addMember(partyId) {
     const mainNickname = document.getElementById(`mainNickname-${partyId}`).value.trim();
     const mainPower = document.getElementById(`mainPower-${partyId}`).value;
     const mainClass = document.getElementById(`mainClass-${partyId}`).value.trim();
+    const isMainOnly = document.getElementById(`mainOnly-${partyId}`).checked;
     const subNickname = document.getElementById(`subNickname-${partyId}`).value.trim();
     const subPower = document.getElementById(`subPower-${partyId}`).value;
     const subClass = document.getElementById(`subClass-${partyId}`).value.trim();
 
-    if (!mainNickname || !mainPower || !mainClass || !subNickname || !subPower || !subClass) {
-        alert('본캐/부캐 닉네임, 전투력, 클래스를 모두 입력해주세요.');
+    // 본캐 필수 입력 확인
+    if (!mainNickname || !mainPower || !mainClass) {
+        alert2('본캐 닉네임, 전투력, 클래스를 모두 입력해주세요.');
+        return;
+    }
+
+    // 부캐 필수 입력 확인 (본캐만 참여가 아닌 경우)
+    if (!isMainOnly && (!subNickname || !subPower || !subClass)) {
+        alert2('부캐 닉네임, 전투력, 클래스를 모두 입력해주세요.');
+        return;
+    }
+
+    // 본캐와 부캐 닉네임 동일 여부 확인
+    if (!isMainOnly && mainNickname === subNickname) {
+        alert2('본캐와 부캐 닉네임은 같을 수 없습니다.');
         return;
     }
 
     const party = currentParties.find(p => p.id === partyId);
-    if (party && party.help_members.some(m => m.main_nickname === mainNickname || m.sub_nickname === subNickname)) {
-        alert('이미 참가한 닉네임입니다.');
+    if (party && party.help_members.some(m => m.main_nickname === mainNickname || (!isMainOnly && m.sub_nickname === subNickname))) {
+        alert2('이미 참가한 닉네임입니다.');
         return;
     }
 
@@ -338,13 +426,14 @@ async function addMember(partyId) {
             main_nickname: mainNickname,
             main_power: mainPower ? parseInt(mainPower, 10) : null,
             main_class: mainClass || null,
-            sub_nickname: subNickname,
-            sub_power: subPower ? parseInt(subPower, 10) : null,
-            sub_class: subClass || null
+            sub_nickname: isMainOnly ? null : subNickname,
+            sub_power: isMainOnly ? null : (subPower ? parseInt(subPower, 10) : null),
+            sub_class: isMainOnly ? null : (subClass || null),
+            is_main_only: isMainOnly
         });
 
     if (error) {
-        alert('참가 실패: ' + error.message);
+        alert2('참가 실패: ' + error.message, 'error');
         return;
     }
 
@@ -361,7 +450,7 @@ async function deleteMember(memberId) {
         .eq('id', memberId);
 
     if (error) {
-        alert('삭제 실패: ' + error.message);
+        alert2('삭제 실패: ' + error.message, 'error');
         return;
     }
 
@@ -378,18 +467,323 @@ async function deleteParty(partyId) {
         .eq('id', partyId);
 
     if (error) {
-        alert('삭제 실패: ' + error.message);
+        alert2('삭제 실패: ' + error.message, 'error');
         return;
     }
 
     loadParties();
 }
 
+// 부캐 섹션 토글
+function toggleSubCharSection(partyId) {
+    const checkboxId = partyId === 'new' ? 'newMainOnly' : `mainOnly-${partyId}`;
+    const sectionId = partyId === 'new' ? 'subCharSection-new' : `subCharSection-${partyId}`;
+    const checkbox = document.getElementById(checkboxId);
+    const section = document.getElementById(sectionId);
+
+    if (checkbox.checked) {
+        section.classList.add('hidden');
+        // 부캐 필드 초기화
+        if (partyId === 'new') {
+            document.getElementById('newSubNickname').value = '';
+            document.getElementById('newSubPower').value = '';
+            document.getElementById('newSubClass').value = '';
+        } else {
+            document.getElementById(`subNickname-${partyId}`).value = '';
+            document.getElementById(`subPower-${partyId}`).value = '';
+            document.getElementById(`subClass-${partyId}`).value = '';
+        }
+    } else {
+        section.classList.remove('hidden');
+    }
+}
+
+// ========================================
+// 파티편성 관련 함수
+// ========================================
+let currentTeamSetupPartyId = null;
+let editingTeamId = null;  // 편집 중인 팀 ID
+
+// 파티편성 모달 열기
+async function openTeamSetupModal(partyId) {
+    currentTeamSetupPartyId = partyId;
+    const party = currentParties.find(p => p.id === partyId);
+    if (!party) return;
+
+    renderMemberSelection(party.help_members);
+    await loadTeams(partyId);
+
+    document.getElementById('teamSetupModal').classList.remove('hidden');
+}
+
+// 모달 닫기
+function closeTeamSetupModal() {
+    document.getElementById('teamSetupModal').classList.add('hidden');
+    currentTeamSetupPartyId = null;
+    cancelEditTeam();  // 편집 상태 초기화
+}
+
+// 멤버 선택 목록 렌더링 (본캐/부캐 개별 선택)
+function renderMemberSelection(members) {
+    const container = document.getElementById('memberSelection');
+    if (members.length === 0) {
+        container.innerHTML = '<p style="color: #888; text-align: center;">등록된 파티원이 없습니다.</p>';
+        return;
+    }
+
+    let html = '';
+    members.forEach(member => {
+        // 본캐 항목
+        html += `
+            <label class="member-checkbox">
+                <input type="checkbox" value="${member.id}" data-char-type="main" data-nickname="${member.main_nickname}">
+                <span class="member-info">
+                    <span class="char-type-badge main">본캐</span>
+                    <span class="main-char">${member.main_nickname}</span>
+                </span>
+            </label>
+        `;
+        // 부캐 항목 (본캐만 참여가 아닌 경우)
+        if (!member.is_main_only && member.sub_nickname) {
+            html += `
+                <label class="member-checkbox">
+                    <input type="checkbox" value="${member.id}" data-char-type="sub" data-nickname="${member.sub_nickname}">
+                    <span class="member-info">
+                        <span class="char-type-badge sub">부캐</span>
+                        <span class="sub-char">${member.sub_nickname}</span>
+                    </span>
+                </label>
+            `;
+        }
+    });
+    container.innerHTML = html;
+}
+
+// 팀 저장 (생성 또는 수정)
+async function saveTeam() {
+    const checkboxes = document.querySelectorAll('#memberSelection input[type="checkbox"]:checked');
+    if (checkboxes.length === 0) {
+        alert2('최소 1명 이상의 파티원을 선택해주세요.');
+        return;
+    }
+
+    // 선택된 멤버 정보 수집 (member_id + char_type)
+    const selectedMembers = Array.from(checkboxes).map(cb => ({
+        memberId: cb.value,
+        charType: cb.dataset.charType,
+        nickname: cb.dataset.nickname
+    }));
+
+    // 같은 캐릭터 중복 체크 (member_id + char_type 조합)
+    const uniqueKeys = selectedMembers.map(m => `${m.memberId}-${m.charType}`);
+    if (new Set(uniqueKeys).size !== uniqueKeys.length) {
+        alert2('같은 팀에 동일한 캐릭터를 중복 선택할 수 없습니다.');
+        return;
+    }
+
+    let teamId;
+
+    if (editingTeamId) {
+        // 편집 모드: 기존 멤버 삭제 후 새로 추가
+        teamId = editingTeamId;
+
+        // 기존 팀 멤버 삭제
+        const { error: deleteError } = await supabase
+            .from('help_team_members')
+            .delete()
+            .eq('team_id', teamId);
+
+        if (deleteError) {
+            alert2('팀 수정 실패: ' + deleteError.message, 'error');
+            return;
+        }
+    } else {
+        // 생성 모드: 새 팀 생성
+        const { data: team, error: teamError } = await supabase
+            .from('help_teams')
+            .insert({ party_id: currentTeamSetupPartyId })
+            .select()
+            .single();
+
+        if (teamError) {
+            alert2('팀 생성 실패: ' + teamError.message, 'error');
+            return;
+        }
+        teamId = team.id;
+    }
+
+    // 팀-멤버 연결 (char_type 포함)
+    const teamMembers = selectedMembers.map(m => ({
+        team_id: teamId,
+        member_id: m.memberId,
+        char_type: m.charType
+    }));
+
+    const { error: memberError } = await supabase
+        .from('help_team_members')
+        .insert(teamMembers);
+
+    if (memberError) {
+        alert2('팀 멤버 추가 실패: ' + memberError.message, 'error');
+        return;
+    }
+
+    // 편집 모드 초기화
+    cancelEditTeam();
+
+    // 팀 목록 새로고침
+    await loadTeams(currentTeamSetupPartyId);
+
+    // 파티 목록 새로고침 (팀 수 업데이트)
+    await loadParties();
+}
+
+// 팀 편집 모드로 전환
+async function editTeam(teamId) {
+    editingTeamId = teamId;
+
+    // 팀 데이터 로드
+    const { data: team, error } = await supabase
+        .from('help_teams')
+        .select(`
+            *,
+            help_team_members (
+                member_id,
+                char_type
+            )
+        `)
+        .eq('id', teamId)
+        .single();
+
+    if (error) {
+        alert2('팀 정보 로드 실패: ' + error.message, 'error');
+        return;
+    }
+
+    // 모든 체크박스 해제
+    document.querySelectorAll('#memberSelection input[type="checkbox"]').forEach(cb => {
+        cb.checked = false;
+    });
+
+    // 팀 멤버에 해당하는 체크박스 체크
+    team.help_team_members.forEach(tm => {
+        const checkbox = document.querySelector(
+            `#memberSelection input[value="${tm.member_id}"][data-char-type="${tm.char_type}"]`
+        );
+        if (checkbox) {
+            checkbox.checked = true;
+        }
+    });
+
+    // UI 업데이트 (편집 모드)
+    document.getElementById('teamFormTitle').textContent = '팀 수정';
+    document.getElementById('btnSaveTeam').textContent = '수정';
+    document.getElementById('btnCancelEdit').classList.remove('hidden');
+}
+
+// 팀 편집 취소 (폼 초기화)
+function cancelEditTeam() {
+    editingTeamId = null;
+
+    // 체크박스 모두 해제
+    document.querySelectorAll('#memberSelection input[type="checkbox"]').forEach(cb => {
+        cb.checked = false;
+    });
+
+    // UI 초기화 (생성 모드)
+    document.getElementById('teamFormTitle').textContent = '새 팀 만들기';
+    document.getElementById('btnSaveTeam').textContent = '팀 추가';
+    document.getElementById('btnCancelEdit').classList.add('hidden');
+}
+
+// 팀 목록 로드
+async function loadTeams(partyId) {
+    const { data: teams, error } = await supabase
+        .from('help_teams')
+        .select(`
+            *,
+            help_team_members (
+                id,
+                member_id,
+                char_type,
+                help_members (
+                    main_nickname,
+                    sub_nickname,
+                    is_main_only
+                )
+            )
+        `)
+        .eq('party_id', partyId)
+        .order('created_at', { ascending: true });
+
+    if (error) {
+        console.error('팀 로드 실패:', error);
+        return;
+    }
+
+    renderTeamList(teams || []);
+}
+
+// 팀 목록 렌더링
+function renderTeamList(teams) {
+    const container = document.getElementById('teamList');
+
+    if (teams.length === 0) {
+        container.innerHTML = '<p class="empty-team-text">편성된 팀이 없습니다.</p>';
+        return;
+    }
+
+    container.innerHTML = teams.map((team, index) => `
+        <div class="team-card">
+            <div class="team-header">
+                <span class="team-number">${index + 1}팀</span>
+                <div class="team-header-buttons">
+                    <button class="btn-edit-small" onclick="editTeam('${team.id}')">편집</button>
+                    <button class="btn-delete-small" onclick="deleteTeam('${team.id}')">삭제</button>
+                </div>
+            </div>
+            <div class="team-members">
+                ${team.help_team_members.map(tm => {
+                    const member = tm.help_members;
+                    const charType = tm.char_type || 'main';
+                    const nickname = charType === 'sub' ? member.sub_nickname : member.main_nickname;
+                    const charClass = charType === 'sub' ? 'sub-char' : 'main-char';
+                    const typeBadge = charType === 'sub' ? '부' : '본';
+                    return `
+                        <div class="team-member-item">
+                            <span class="char-type-badge-small ${charType}">${typeBadge}</span>
+                            <span class="${charClass}">${nickname}</span>
+                        </div>
+                    `;
+                }).join('')}
+            </div>
+        </div>
+    `).join('');
+}
+
+// 팀 삭제
+async function deleteTeam(teamId) {
+    if (!confirm('이 팀을 삭제하시겠습니까?')) return;
+
+    const { error } = await supabase
+        .from('help_teams')
+        .delete()
+        .eq('id', teamId);
+
+    if (error) {
+        alert2('삭제 실패: ' + error.message, 'error');
+        return;
+    }
+
+    await loadTeams(currentTeamSetupPartyId);
+    await loadParties();
+}
+
 // 공유 래퍼
 function copyPartyInfoWrapper(partyId) {
     const party = currentParties.find(p => p.id === partyId);
     if (!party) {
-        alert('파티 정보를 찾을 수 없습니다.');
+        alert2('파티 정보를 찾을 수 없습니다.', 'error');
         return;
     }
     const { text } = PartyShare.generatePartyText(party, 'help');
@@ -399,7 +793,7 @@ function copyPartyInfoWrapper(partyId) {
 function shareToKakaoWrapper(partyId) {
     const party = currentParties.find(p => p.id === partyId);
     if (!party) {
-        alert('파티 정보를 찾을 수 없습니다.');
+        alert2('파티 정보를 찾을 수 없습니다.', 'error');
         return;
     }
     PartyShare.shareToKakao(party, 'help');

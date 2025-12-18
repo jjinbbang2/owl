@@ -1258,6 +1258,274 @@ body {
     }
 }
 
+/* ========================================
+   본캐만 참여 체크박스 스타일
+   ======================================== */
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    color: var(--text-light);
+    font-size: 0.9rem;
+}
+
+.checkbox-label input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--primary-gold);
+    cursor: pointer;
+}
+
+.main-only-text {
+    color: #888;
+    font-size: 0.85rem;
+    font-style: italic;
+}
+
+/* ========================================
+   파티편성 버튼 및 모달 스타일
+   ======================================== */
+.btn-team-setup {
+    background: rgba(168, 85, 247, 0.2);
+    color: #a855f7;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    margin-left: 10px;
+    transition: all 0.2s;
+}
+
+.btn-team-setup:hover {
+    background: rgba(168, 85, 247, 0.3);
+}
+
+/* 큰 모달 */
+.modal-large {
+    max-width: 600px;
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+/* 팀 설정 섹션 */
+.team-setup-section {
+    margin-bottom: 25px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.team-setup-section h4,
+.team-list-section h4 {
+    color: var(--primary-gold);
+    font-size: 1rem;
+    margin-bottom: 15px;
+}
+
+/* 멤버 선택 영역 */
+.member-selection {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 15px;
+    max-height: 200px;
+    overflow-y: auto;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+}
+
+/* 팀 폼 버튼 영역 */
+.team-form-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.member-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 12px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.member-checkbox:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.member-checkbox input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--accent-blue);
+}
+
+.member-checkbox .member-info {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.member-checkbox .sub-info {
+    color: #888;
+    font-size: 0.85rem;
+}
+
+/* 본캐/부캐 타입 배지 */
+.char-type-badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    margin-right: 6px;
+}
+
+.char-type-badge.main {
+    background: rgba(212, 175, 55, 0.3);
+    color: var(--primary-gold);
+}
+
+.char-type-badge.sub {
+    background: rgba(74, 222, 128, 0.3);
+    color: #4ade80;
+}
+
+/* 팀 목록 내 작은 배지 */
+.char-type-badge-small {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    line-height: 18px;
+    text-align: center;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    margin-right: 4px;
+}
+
+.char-type-badge-small.main {
+    background: rgba(212, 175, 55, 0.3);
+    color: var(--primary-gold);
+}
+
+.char-type-badge-small.sub {
+    background: rgba(74, 222, 128, 0.3);
+    color: #4ade80;
+}
+
+/* 팀 목록 */
+.team-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.empty-team-text {
+    color: #888;
+    text-align: center;
+    padding: 20px;
+}
+
+/* 팀 카드 */
+.team-card {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    padding: 15px;
+    border-left: 3px solid var(--accent-blue);
+}
+
+.team-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.team-number {
+    color: var(--accent-blue);
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.btn-delete-small {
+    background: rgba(248, 113, 113, 0.2);
+    color: #f87171;
+    border: none;
+    padding: 4px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.75rem;
+}
+
+.btn-delete-small:hover {
+    background: rgba(248, 113, 113, 0.4);
+}
+
+.team-header-buttons {
+    display: flex;
+    gap: 6px;
+}
+
+.btn-edit-small {
+    background: rgba(122, 162, 247, 0.2);
+    color: var(--accent-blue);
+    border: none;
+    padding: 4px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.75rem;
+}
+
+.btn-edit-small:hover {
+    background: rgba(122, 162, 247, 0.4);
+}
+
+/* 팀 멤버 목록 */
+.team-members {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.team-member-item {
+    display: flex;
+    gap: 4px;
+    padding: 6px 12px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    font-size: 0.85rem;
+}
+
+.team-member-item .main-char {
+    color: var(--primary-gold);
+}
+
+.team-member-item .sub-char {
+    color: #4ade80;
+    font-size: 0.8rem;
+}
+
+/* 모바일 반응형 - 파티편성 모달 */
+@media (max-width: 600px) {
+    .modal-large {
+        width: 95%;
+        max-height: 90vh;
+    }
+
+    .member-selection {
+        max-height: 150px;
+    }
+
+    .team-members {
+        flex-direction: column;
+    }
+}
+
 /* 반응형 */
 @media (max-width: 768px) {
     .container {

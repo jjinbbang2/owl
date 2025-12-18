@@ -3,7 +3,7 @@
  * 클립보드 복사 및 카카오톡 공유 기능
  */
 
-const PartyShare = (function() {
+const PartyShare = (function () {
     // 요일 이름
     const dayNames = ['일', '월', '화', '수', '목', '금', '토'];
 
@@ -49,7 +49,7 @@ const PartyShare = (function() {
     }
 
     // 외부 클릭 시 드롭다운 닫기
-    document.addEventListener('click', function(e) {
+    document.addEventListener('click', function (e) {
         if (!e.target.closest('.share-container')) {
             document.querySelectorAll('.share-dropdown').forEach(d => {
                 d.classList.add('hidden');
@@ -61,7 +61,7 @@ const PartyShare = (function() {
     async function copyToClipboard(text) {
         try {
             await navigator.clipboard.writeText(text);
-            alert('파티 정보가 복사되었습니다!\n카카오톡에 붙여넣기 하세요.');
+            alert2('파티 정보가 복사되었습니다! 카카오톡에 붙여넣기 하세요.', 'success');
         } catch (err) {
             // 클립보드 API 실패 시 대체 방법
             const textarea = document.createElement('textarea');
@@ -70,7 +70,7 @@ const PartyShare = (function() {
             textarea.select();
             document.execCommand('copy');
             document.body.removeChild(textarea);
-            alert('파티 정보가 복사되었습니다!\n카카오톡에 붙여넣기 하세요.');
+            alert2('파티 정보가 복사되었습니다! 카카오톡에 붙여넣기 하세요.', 'success');
         }
 
         // 드롭다운 닫기
@@ -91,7 +91,7 @@ const PartyShare = (function() {
         let memberCount = 0;
         let maxMembers = 4;
 
-        switch(pageType) {
+        switch (pageType) {
             case 'abyss':
                 memberCount = party.abyss_members.length;
                 memberList = party.abyss_members.map(member => {
@@ -121,7 +121,9 @@ ${memberList}
                     let line = `- 본캐: ${member.main_nickname}`;
                     if (member.main_class) line += ` (${member.main_class})`;
                     if (member.main_power) line += ` ${formatPowerShort(member.main_power)}`;
-                    if (member.sub_nickname) {
+                    if (member.is_main_only) {
+                        line += ` [본캐만]`;
+                    } else if (member.sub_nickname) {
                         line += ` / 부캐: ${member.sub_nickname}`;
                         if (member.sub_class) line += ` (${member.sub_class})`;
                         if (member.sub_power) line += ` ${formatPowerShort(member.sub_power)}`;
@@ -171,14 +173,14 @@ ${memberList}
                 break;
         }
 
-        return { text, url, scheduleDisplay, title, memberCount, maxMembers };
+        return {text, url, scheduleDisplay, title, memberCount, maxMembers};
     }
 
     // 레이드 보스별 이미지 URL 매핑 (정사각형 800x800)
     const raidImageMap = {
-        '글라스기브넨': 'https://jjinbbang2.github.io/owl/images/raids/kakao-glas.png',
+        '글라스기브넨'  : 'https://jjinbbang2.github.io/owl/images/raids/kakao-glas.png',
         '화이트 서큐버스': 'https://jjinbbang2.github.io/owl/images/raids/kakao-succubus.png',
-        '타바르타스': 'https://jjinbbang2.github.io/owl/images/raids/kakao-tavartas.png'
+        '타바르타스'   : 'https://jjinbbang2.github.io/owl/images/raids/kakao-tavartas.png'
     };
 
     // 어비스/품앗이 이미지 URL
@@ -189,13 +191,13 @@ ${memberList}
     function generateMemberItems(party, pageType) {
         let items = [];
 
-        switch(pageType) {
+        switch (pageType) {
             case 'abyss':
                 items = party.abyss_members.map(member => {
                     const className = member.class_name || '';
                     const power = formatPowerShort(member.combat_power);
                     return {
-                        item: member.nickname,
+                        item  : member.nickname,
                         itemOp: className ? `${power} ${className}` : power
                     };
                 });
@@ -204,8 +206,10 @@ ${memberList}
                 party.help_members.forEach(member => {
                     const mainClass = member.main_class || '';
                     const mainPower = formatPowerShort(member.main_power);
+                    // const suffix = member.is_main_only ? ' [본캐만]' : '';
+                    const suffix = '';
                     items.push({
-                        item: member.main_nickname,
+                        item  : member.main_nickname + suffix,
                         itemOp: mainClass ? `${mainPower} ${mainClass}` : mainPower
                     });
                 });
@@ -220,7 +224,7 @@ ${memberList}
                         const className = member.class_name || '';
                         const power = formatPowerShort(member.combat_power);
                         return {
-                            item: member.nickname,
+                            item  : member.nickname,
                             itemOp: className ? `${power} ${className}` : power
                         };
                     });
@@ -235,7 +239,7 @@ ${memberList}
                         : 0;
 
                     items.push({
-                        item: `외 ${remainingMembers.length}명...`,
+                        item  : `외 ${remainingMembers.length}명...`,
                         itemOp: avgPower > 0 ? `${formatPowerShort(avgPower)} (평균)` : ''
                     });
                 } else {
@@ -243,7 +247,7 @@ ${memberList}
                         const className = member.class_name || '';
                         const power = formatPowerShort(member.combat_power);
                         return {
-                            item: member.nickname,
+                            item  : member.nickname,
                             itemOp: className ? `${power} ${className}` : power
                         };
                     });
@@ -257,7 +261,7 @@ ${memberList}
             const remaining = items.length - 4;
             items = items.slice(0, 4);
             items.push({
-                item: `외 ${remaining}명...`,
+                item  : `외 ${remaining}명...`,
                 itemOp: ''
             });
         }
@@ -268,15 +272,15 @@ ${memberList}
     // 카카오톡 피드 템플릿 공유
     function shareToKakao(party, pageType) {
         if (!window.Kakao || !window.Kakao.isInitialized()) {
-            alert('카카오 SDK가 초기화되지 않았습니다.');
+            alert2('카카오 SDK가 초기화되지 않았습니다.', 'error');
             return;
         }
 
-        const { url, scheduleDisplay, title } = generatePartyText(party, pageType);
+        const {url, scheduleDisplay, title} = generatePartyText(party, pageType);
 
         // 페이지 타입별 이미지 설정
         let imageUrl = 'https://jjinbbang2.github.io/owl/og-image.png';
-        switch(pageType) {
+        switch (pageType) {
             case 'abyss':
                 imageUrl = abyssImageUrl;
                 break;
@@ -291,7 +295,7 @@ ${memberList}
         }
 
         let description = '';
-        switch(pageType) {
+        switch (pageType) {
             case 'abyss':
                 description = `일정: ${scheduleDisplay}\n난이도: ${party.difficulty || '매우 어려움'}`;
                 break;
@@ -308,33 +312,33 @@ ${memberList}
 
         try {
             window.Kakao.Share.sendDefault({
-                objectType: 'feed',
-                content: {
-                    title: title,
+                objectType : 'feed',
+                content    : {
+                    title      : title,
                     description: description,
-                    imageUrl: imageUrl,
-                    link: {
+                    imageUrl   : imageUrl,
+                    link       : {
                         mobileWebUrl: url,
-                        webUrl: url
+                        webUrl      : url
                     }
                 },
                 itemContent: {
                     profileText: '참가자 목록',
-                    items: memberItems
+                    items      : memberItems
                 },
-                buttons: [
+                buttons    : [
                     {
                         title: '참가하기',
-                        link: {
+                        link : {
                             mobileWebUrl: url,
-                            webUrl: url
+                            webUrl      : url
                         }
                     }
                 ]
             });
         } catch (error) {
             console.error('카카오톡 공유 실패:', error);
-            alert('카카오톡 공유에 실패했습니다.\n클립보드 복사를 사용해주세요.');
+            alert2('카카오톡 공유에 실패했습니다. 클립보드 복사를 사용해주세요.', 'error');
         }
 
         // 드롭다운 닫기
