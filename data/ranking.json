@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2025-12-18T13:17:52.282Z",
+  "updatedAt": "2025-12-18T14:07:41.393Z",
   "members": [
     {
       "name": "풀뱅기사",
@@ -120,8 +120,8 @@
     },
     {
       "name": "보노보노거인",
-      "rank": 45410,
-      "rankDisplay": "45,410위",
+      "rank": 45404,
+      "rankDisplay": "45,404위",
       "server": "라사",
       "class": "검술사",
       "totalScore": 72999,
@@ -159,8 +159,8 @@
     },
     {
       "name": "시우쇠",
-      "rank": 5,
-      "rankDisplay": "5위",
+      "rank": 7,
+      "rankDisplay": "7위",
       "server": "라사",
       "class": "화염술사",
       "totalScore": 148838,
@@ -341,8 +341,8 @@
     },
     {
       "name": "항타기",
-      "rank": 39840,
-      "rankDisplay": "39,840위",
+      "rank": 39848,
+      "rankDisplay": "39,848위",
       "server": "라사",
       "class": "수도사",
       "totalScore": 85449,
