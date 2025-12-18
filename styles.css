@@ -1306,6 +1306,16 @@ body {
 .modal-large {
     max-width: 600px;
     max-height: 80vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-large .modal-header {
+    flex-shrink: 0;
+}
+
+.modal-large .modal-body {
+    flex: 1;
     overflow-y: auto;
 }
 
