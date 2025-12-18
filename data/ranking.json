@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2025-12-18T06:09:05.185Z",
+  "updatedAt": "2025-12-18T07:08:08.157Z",
   "members": [
     {
       "name": "풀뱅기사",
@@ -16,15 +16,15 @@
     },
     {
       "name": "루야쫑쫑",
-      "rank": 28621,
-      "rankDisplay": "28,621위",
+      "rank": 7888,
+      "rankDisplay": "7,888위",
       "server": "라사",
       "class": "대검전사",
-      "totalScore": 101666,
-      "totalScoreDisplay": "101,666",
-      "combatScore": 56673,
+      "totalScore": 103799,
+      "totalScoreDisplay": "103,799",
+      "combatScore": 55806,
       "lifeScore": 24235,
-      "charmScore": 20758,
+      "charmScore": 23758,
       "source": "mobinogi.net"
     },
     {
@@ -558,6 +558,19 @@
       "combatScore": 52905,
       "lifeScore": 22767,
       "charmScore": 22091,
+      "source": "mobinogi.net"
+    },
+    {
+      "name": "피리새",
+      "rank": 15447,
+      "rankDisplay": "15,447위",
+      "server": "라사",
+      "class": "도적",
+      "totalScore": 93252,
+      "totalScoreDisplay": "93,252",
+      "combatScore": 53531,
+      "lifeScore": 22380,
+      "charmScore": 17341,
       "source": "mobinogi.net"
     }
   ]
