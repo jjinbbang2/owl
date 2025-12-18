@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2025-12-18T20:07:03.301Z",
+  "updatedAt": "2025-12-18T21:06:41.378Z",
   "members": [
     {
       "name": "풀뱅기사",
@@ -159,8 +159,8 @@
     },
     {
       "name": "시우쇠",
-      "rank": 12,
-      "rankDisplay": "12위",
+      "rank": 13,
+      "rankDisplay": "13위",
       "server": "라사",
       "class": "화염술사",
       "totalScore": 148907,
@@ -354,8 +354,8 @@
     },
     {
       "name": "볼프강아마데우스",
-      "rank": 38390,
-      "rankDisplay": "38,390위",
+      "rank": 38600,
+      "rankDisplay": "38,600위",
       "server": "라사",
       "class": "석궁사수",
       "totalScore": 85089,
@@ -367,8 +367,8 @@
     },
     {
       "name": "악바르",
-      "rank": 44800,
-      "rankDisplay": "44,800위",
+      "rank": 45005,
+      "rankDisplay": "45,005위",
       "server": "라사",
       "class": "화염술사",
       "totalScore": 83179,
@@ -536,8 +536,8 @@
     },
     {
       "name": "힐러보노",
-      "rank": 119092,
-      "rankDisplay": "119,092위",
+      "rank": 119206,
+      "rankDisplay": "119,206위",
       "server": "라사",
       "class": "힐러",
       "totalScore": 38512,
