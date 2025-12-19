@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2025-12-19T20:07:10.902Z",
+  "updatedAt": "2025-12-19T21:06:29.392Z",
   "members": [
     {
       "name": "풀뱅기사",
@@ -133,15 +133,15 @@
     },
     {
       "name": "불도저츄러스",
-      "rank": 43142,
-      "rankDisplay": "43,142위",
+      "rank": 70350,
+      "rankDisplay": "70,350위",
       "server": "라사",
       "class": "대검전사",
-      "totalScore": 74618,
-      "totalScoreDisplay": "74,618",
+      "totalScore": 73673,
+      "totalScoreDisplay": "73,673",
       "combatScore": 50313,
-      "lifeScore": 6853,
-      "charmScore": 17452,
+      "lifeScore": 6906,
+      "charmScore": 16454,
       "source": "mobinogi.net"
     },
     {
@@ -159,8 +159,8 @@
     },
     {
       "name": "시우쇠",
-      "rank": 11,
-      "rankDisplay": "11위",
+      "rank": 12,
+      "rankDisplay": "12위",
       "server": "라사",
       "class": "화염술사",
       "totalScore": 149033,
@@ -237,15 +237,15 @@
     },
     {
       "name": "빼주현",
-      "rank": 25236,
-      "rankDisplay": "25,236위",
+      "rank": 11093,
+      "rankDisplay": "11,093위",
       "server": "라사",
       "class": "사제",
-      "totalScore": 96222,
-      "totalScoreDisplay": "96,222",
-      "combatScore": 52667,
-      "lifeScore": 21040,
-      "charmScore": 22515,
+      "totalScore": 99032,
+      "totalScoreDisplay": "99,032",
+      "combatScore": 54440,
+      "lifeScore": 21077,
+      "charmScore": 23515,
       "source": "mobinogi.net"
     },
     {
@@ -497,13 +497,13 @@
     },
     {
       "name": "퉁이",
-      "rank": 3496,
-      "rankDisplay": "3,496위",
+      "rank": 3625,
+      "rankDisplay": "3,625위",
       "server": "라사",
       "class": "듀얼블레이드",
-      "totalScore": 116694,
-      "totalScoreDisplay": "116,694",
-      "combatScore": 57179,
+      "totalScore": 116748,
+      "totalScoreDisplay": "116,748",
+      "combatScore": 57233,
       "lifeScore": 15904,
       "charmScore": 43611,
       "source": "mobinogi.net"
