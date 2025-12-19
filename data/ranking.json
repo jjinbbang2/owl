@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2025-12-19T01:34:51.276Z",
+  "updatedAt": "2025-12-19T02:39:25.217Z",
   "members": [
     {
       "name": "풀뱅기사",
@@ -55,8 +55,8 @@
     },
     {
       "name": "갑옷거인",
-      "rank": 22550,
-      "rankDisplay": "22,550위",
+      "rank": 22477,
+      "rankDisplay": "22,477위",
       "server": "라사",
       "class": "대검전사",
       "totalScore": 98341,
@@ -120,8 +120,8 @@
     },
     {
       "name": "보노보노거인",
-      "rank": 45322,
-      "rankDisplay": "45,322위",
+      "rank": 45336,
+      "rankDisplay": "45,336위",
       "server": "라사",
       "class": "검술사",
       "totalScore": 73209,
@@ -159,8 +159,8 @@
     },
     {
       "name": "시우쇠",
-      "rank": 10,
-      "rankDisplay": "10위",
+      "rank": 8,
+      "rankDisplay": "8위",
       "server": "라사",
       "class": "화염술사",
       "totalScore": 148907,
@@ -198,15 +198,15 @@
     },
     {
       "name": "플라시엘",
-      "rank": 498,
-      "rankDisplay": "498위",
+      "rank": 488,
+      "rankDisplay": "488위",
       "server": "라사",
       "class": "수도사",
-      "totalScore": 131205,
-      "totalScoreDisplay": "131,205",
+      "totalScore": 131207,
+      "totalScoreDisplay": "131,207",
       "combatScore": 57661,
       "lifeScore": 29616,
-      "charmScore": 43928,
+      "charmScore": 43930,
       "source": "mobinogi.net"
     },
     {
