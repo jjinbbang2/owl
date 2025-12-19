@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2025-12-19T09:08:24.251Z",
+  "updatedAt": "2025-12-19T10:07:41.244Z",
   "members": [
     {
       "name": "풀뱅기사",
@@ -210,19 +210,6 @@
       "source": "mobinogi.net"
     },
     {
-      "name": "빼주",
-      "rank": 4810,
-      "rankDisplay": "4,810위",
-      "server": "라사",
-      "class": "석궁사수",
-      "totalScore": 122792,
-      "totalScoreDisplay": "122,792",
-      "combatScore": 55978,
-      "lifeScore": 23051,
-      "charmScore": 43763,
-      "source": "mobinogi.net"
-    },
-    {
       "name": "빼주야",
       "rank": 28603,
       "rankDisplay": "28,603위",
@@ -327,19 +314,6 @@
       "source": "mobinogi.net"
     },
     {
-      "name": "위례",
-      "rank": 25263,
-      "rankDisplay": "25,263위",
-      "server": "라사",
-      "class": "힐러",
-      "totalScore": 85924,
-      "totalScoreDisplay": "85,924",
-      "combatScore": 49515,
-      "lifeScore": 13351,
-      "charmScore": 23058,
-      "source": "mobinogi.net"
-    },
-    {
       "name": "항타기",
       "rank": 40063,
       "rankDisplay": "40,063위",
@@ -367,15 +341,15 @@
     },
     {
       "name": "악바르",
-      "rank": 45005,
-      "rankDisplay": "45,005위",
+      "rank": 43508,
+      "rankDisplay": "43,508위",
       "server": "라사",
       "class": "화염술사",
-      "totalScore": 83179,
-      "totalScoreDisplay": "83,179",
+      "totalScore": 83186,
+      "totalScoreDisplay": "83,186",
       "combatScore": 48240,
-      "lifeScore": 22289,
-      "charmScore": 12650,
+      "lifeScore": 22294,
+      "charmScore": 12652,
       "source": "mobinogi.net"
     },
     {
@@ -536,14 +510,14 @@
     },
     {
       "name": "힐러보노",
-      "rank": 119206,
-      "rankDisplay": "119,206위",
+      "rank": 117577,
+      "rankDisplay": "117,577위",
       "server": "라사",
       "class": "힐러",
-      "totalScore": 38512,
-      "totalScoreDisplay": "38,512",
-      "combatScore": 19654,
-      "lifeScore": 11275,
+      "totalScore": 39050,
+      "totalScoreDisplay": "39,050",
+      "combatScore": 20184,
+      "lifeScore": 11283,
       "charmScore": 7583,
       "source": "mobinogi.net"
     },
