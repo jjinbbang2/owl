@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2025-12-19T00:21:21.457Z",
+  "updatedAt": "2025-12-19T01:34:51.276Z",
   "members": [
     {
       "name": "풀뱅기사",
@@ -159,8 +159,8 @@
     },
     {
       "name": "시우쇠",
-      "rank": 9,
-      "rankDisplay": "9위",
+      "rank": 10,
+      "rankDisplay": "10위",
       "server": "라사",
       "class": "화염술사",
       "totalScore": 148907,
@@ -354,8 +354,8 @@
     },
     {
       "name": "볼프강아마데우스",
-      "rank": 38600,
-      "rankDisplay": "38,600위",
+      "rank": 38592,
+      "rankDisplay": "38,592위",
       "server": "라사",
       "class": "석궁사수",
       "totalScore": 85089,
@@ -445,8 +445,8 @@
     },
     {
       "name": "카이릭스",
-      "rank": 5493,
-      "rankDisplay": "5,493위",
+      "rank": 5468,
+      "rankDisplay": "5,468위",
       "server": "라사",
       "class": "마법사",
       "totalScore": 110558,
@@ -458,8 +458,8 @@
     },
     {
       "name": "준숙",
-      "rank": 35075,
-      "rankDisplay": "35,075위",
+      "rank": 35065,
+      "rankDisplay": "35,065위",
       "server": "라사",
       "class": "전사",
       "totalScore": 91256,
@@ -497,8 +497,8 @@
     },
     {
       "name": "퉁이",
-      "rank": 3479,
-      "rankDisplay": "3,479위",
+      "rank": 3446,
+      "rankDisplay": "3,446위",
       "server": "라사",
       "class": "듀얼블레이드",
       "totalScore": 116656,
