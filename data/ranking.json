@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2025-12-19T21:06:29.392Z",
+  "updatedAt": "2025-12-19T22:07:19.527Z",
   "members": [
     {
       "name": "풀뱅기사",
@@ -42,15 +42,15 @@
     },
     {
       "name": "전퇴의거인",
-      "rank": 29819,
-      "rankDisplay": "29,819위",
+      "rank": 28956,
+      "rankDisplay": "28,956위",
       "server": "라사",
       "class": "빙결술사",
-      "totalScore": 94707,
-      "totalScoreDisplay": "94,707",
+      "totalScore": 95460,
+      "totalScoreDisplay": "95,460",
       "combatScore": 53978,
-      "lifeScore": 18983,
-      "charmScore": 21746,
+      "lifeScore": 18986,
+      "charmScore": 22496,
       "source": "mobinogi.net"
     },
     {
@@ -159,14 +159,14 @@
     },
     {
       "name": "시우쇠",
-      "rank": 12,
-      "rankDisplay": "12위",
+      "rank": 13,
+      "rankDisplay": "13위",
       "server": "라사",
       "class": "화염술사",
-      "totalScore": 149033,
-      "totalScoreDisplay": "149,033",
+      "totalScore": 149003,
+      "totalScoreDisplay": "149,003",
       "combatScore": 59683,
-      "lifeScore": 36274,
+      "lifeScore": 36244,
       "charmScore": 53076,
       "source": "mobinogi.net"
     },
@@ -536,14 +536,14 @@
     },
     {
       "name": "힐러보노",
-      "rank": 117577,
-      "rankDisplay": "117,577위",
+      "rank": 116898,
+      "rankDisplay": "116,898위",
       "server": "라사",
       "class": "힐러",
-      "totalScore": 39050,
-      "totalScoreDisplay": "39,050",
-      "combatScore": 20184,
-      "lifeScore": 11283,
+      "totalScore": 39295,
+      "totalScoreDisplay": "39,295",
+      "combatScore": 20410,
+      "lifeScore": 11302,
       "charmScore": 7583,
       "source": "mobinogi.net"
     },
