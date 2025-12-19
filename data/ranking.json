@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2025-12-19T10:07:41.244Z",
+  "updatedAt": "2025-12-19T11:07:16.023Z",
   "members": [
     {
       "name": "풀뱅기사",
@@ -210,6 +210,19 @@
       "source": "mobinogi.net"
     },
     {
+      "name": "빼주",
+      "rank": 4810,
+      "rankDisplay": "4,810위",
+      "server": "라사",
+      "class": "석궁사수",
+      "totalScore": 122792,
+      "totalScoreDisplay": "122,792",
+      "combatScore": 55978,
+      "lifeScore": 23051,
+      "charmScore": 43763,
+      "source": "mobinogi.net"
+    },
+    {
       "name": "빼주야",
       "rank": 28603,
       "rankDisplay": "28,603위",
@@ -311,6 +324,19 @@
       "combatScore": 50287,
       "lifeScore": 15620,
       "charmScore": 16543,
+      "source": "mobinogi.net"
+    },
+    {
+      "name": "위례",
+      "rank": 25263,
+      "rankDisplay": "25,263위",
+      "server": "라사",
+      "class": "힐러",
+      "totalScore": 85924,
+      "totalScoreDisplay": "85,924",
+      "combatScore": 49515,
+      "lifeScore": 13351,
+      "charmScore": 23058,
       "source": "mobinogi.net"
     },
     {
