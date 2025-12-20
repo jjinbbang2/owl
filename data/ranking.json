@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2025-12-20T22:05:55.452Z",
+  "updatedAt": "2025-12-20T23:06:48.306Z",
   "members": [
     {
       "name": "풀뱅기사",
@@ -29,8 +29,8 @@
     },
     {
       "name": "차력거인",
-      "rank": 11157,
-      "rankDisplay": "11,157위",
+      "rank": 11234,
+      "rankDisplay": "11,234위",
       "server": "라사",
       "class": "석궁사수",
       "totalScore": 99234,
@@ -55,15 +55,15 @@
     },
     {
       "name": "갑옷거인",
-      "rank": 23458,
-      "rankDisplay": "23,458위",
+      "rank": 10880,
+      "rankDisplay": "10,880위",
       "server": "라사",
       "class": "대검전사",
-      "totalScore": 98391,
-      "totalScoreDisplay": "98,391",
-      "combatScore": 53421,
-      "lifeScore": 23573,
-      "charmScore": 21397,
+      "totalScore": 99749,
+      "totalScoreDisplay": "99,749",
+      "combatScore": 53700,
+      "lifeScore": 23652,
+      "charmScore": 22397,
       "source": "mobinogi.net"
     },
     {
@@ -549,8 +549,8 @@
     },
     {
       "name": "시울림",
-      "rank": 12059,
-      "rankDisplay": "12,059위",
+      "rank": 12127,
+      "rankDisplay": "12,127위",
       "server": "라사",
       "class": "검술사",
       "totalScore": 97990,
