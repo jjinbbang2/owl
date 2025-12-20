@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2025-12-20T09:06:55.731Z",
+  "updatedAt": "2025-12-20T10:06:45.466Z",
   "members": [
     {
       "name": "풀뱅기사",
@@ -42,8 +42,8 @@
     },
     {
       "name": "전퇴의거인",
-      "rank": 28956,
-      "rankDisplay": "28,956위",
+      "rank": 29328,
+      "rankDisplay": "29,328위",
       "server": "라사",
       "class": "빙결술사",
       "totalScore": 95460,
@@ -107,8 +107,8 @@
     },
     {
       "name": "풀뱅맹구",
-      "rank": 35656,
-      "rankDisplay": "35,656위",
+      "rank": 35972,
+      "rankDisplay": "35,972위",
       "server": "라사",
       "class": "힐러",
       "totalScore": 79508,
@@ -315,8 +315,8 @@
     },
     {
       "name": "읏챠",
-      "rank": 30876,
-      "rankDisplay": "30,876위",
+      "rank": 31215,
+      "rankDisplay": "31,215위",
       "server": "라사",
       "class": "듀얼블레이드",
       "totalScore": 82550,
@@ -367,8 +367,8 @@
     },
     {
       "name": "악바르",
-      "rank": 42418,
-      "rankDisplay": "42,418위",
+      "rank": 42683,
+      "rankDisplay": "42,683위",
       "server": "라사",
       "class": "화염술사",
       "totalScore": 83202,
@@ -380,8 +380,8 @@
     },
     {
       "name": "번개술",
-      "rank": 43210,
-      "rankDisplay": "43,210위",
+      "rank": 43493,
+      "rankDisplay": "43,493위",
       "server": "라사",
       "class": "전격술사",
       "totalScore": 81732,
@@ -536,8 +536,8 @@
     },
     {
       "name": "힐러보노",
-      "rank": 116898,
-      "rankDisplay": "116,898위",
+      "rank": 116963,
+      "rankDisplay": "116,963위",
       "server": "라사",
       "class": "힐러",
       "totalScore": 39295,
@@ -562,14 +562,14 @@
     },
     {
       "name": "피리새",
-      "rank": 16139,
-      "rankDisplay": "16,139위",
+      "rank": 16357,
+      "rankDisplay": "16,357위",
       "server": "라사",
       "class": "도적",
-      "totalScore": 93268,
-      "totalScoreDisplay": "93,268",
+      "totalScore": 93313,
+      "totalScoreDisplay": "93,313",
       "combatScore": 53531,
-      "lifeScore": 22390,
+      "lifeScore": 22435,
       "charmScore": 17347,
       "source": "mobinogi.net"
     }
