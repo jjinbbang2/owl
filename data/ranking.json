@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2025-12-20T08:07:29.678Z",
+  "updatedAt": "2025-12-20T09:06:55.731Z",
   "members": [
     {
       "name": "풀뱅기사",
@@ -133,8 +133,8 @@
     },
     {
       "name": "불도저츄러스",
-      "rank": 70350,
-      "rankDisplay": "70,350위",
+      "rank": 70429,
+      "rankDisplay": "70,429위",
       "server": "라사",
       "class": "대검전사",
       "totalScore": 73673,
@@ -159,13 +159,13 @@
     },
     {
       "name": "시우쇠",
-      "rank": 10,
-      "rankDisplay": "10위",
+      "rank": 11,
+      "rankDisplay": "11위",
       "server": "라사",
       "class": "화염술사",
-      "totalScore": 149033,
-      "totalScoreDisplay": "149,033",
-      "combatScore": 59683,
+      "totalScore": 149041,
+      "totalScoreDisplay": "149,041",
+      "combatScore": 59691,
       "lifeScore": 36274,
       "charmScore": 53076,
       "source": "mobinogi.net"
@@ -289,15 +289,15 @@
     },
     {
       "name": "보리굴비",
-      "rank": 3257,
-      "rankDisplay": "3,257위",
+      "rank": 3373,
+      "rankDisplay": "3,373위",
       "server": "라사",
       "class": "화염술사",
-      "totalScore": 117919,
-      "totalScoreDisplay": "117,919",
+      "totalScore": 117922,
+      "totalScoreDisplay": "117,922",
       "combatScore": 58152,
       "lifeScore": 16185,
-      "charmScore": 43582,
+      "charmScore": 43585,
       "source": "mobinogi.net"
     },
     {
@@ -523,8 +523,8 @@
     },
     {
       "name": "RIZ",
-      "rank": 19,
-      "rankDisplay": "19위",
+      "rank": 20,
+      "rankDisplay": "20위",
       "server": "라사",
       "class": "힐러",
       "totalScore": 146597,
