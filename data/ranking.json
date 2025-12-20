@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2025-12-20T12:08:51.708Z",
+  "updatedAt": "2025-12-20T13:13:28.574Z",
   "members": [
     {
       "name": "풀뱅기사",
@@ -571,6 +571,45 @@
       "combatScore": 53531,
       "lifeScore": 22435,
       "charmScore": 17347,
+      "source": "mobinogi.net"
+    },
+    {
+      "name": "귤설",
+      "rank": 15068,
+      "rankDisplay": "15,068위",
+      "server": "라사",
+      "class": "수도사",
+      "totalScore": 94562,
+      "totalScoreDisplay": "94,562",
+      "combatScore": 52973,
+      "lifeScore": 23125,
+      "charmScore": 18464,
+      "source": "mobinogi.net"
+    },
+    {
+      "name": "깡설",
+      "rank": 18540,
+      "rankDisplay": "18,540위",
+      "server": "라사",
+      "class": "석궁사수",
+      "totalScore": 91463,
+      "totalScoreDisplay": "91,463",
+      "combatScore": 52980,
+      "lifeScore": 22329,
+      "charmScore": 16154,
+      "source": "mobinogi.net"
+    },
+    {
+      "name": "프네",
+      "rank": 22259,
+      "rankDisplay": "22,259위",
+      "server": "라사",
+      "class": "악사",
+      "totalScore": 88605,
+      "totalScoreDisplay": "88,605",
+      "combatScore": 48827,
+      "lifeScore": 15180,
+      "charmScore": 24598,
       "source": "mobinogi.net"
     }
   ]
