@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2025-12-20T20:07:01.655Z",
+  "updatedAt": "2025-12-20T21:06:06.211Z",
   "members": [
     {
       "name": "풀뱅기사",
@@ -133,15 +133,15 @@
     },
     {
       "name": "불도저츄러스",
-      "rank": 70429,
-      "rankDisplay": "70,429위",
+      "rank": 42131,
+      "rankDisplay": "42,131위",
       "server": "라사",
       "class": "대검전사",
-      "totalScore": 73673,
-      "totalScoreDisplay": "73,673",
-      "combatScore": 50313,
+      "totalScore": 75809,
+      "totalScoreDisplay": "75,809",
+      "combatScore": 51447,
       "lifeScore": 6906,
-      "charmScore": 16454,
+      "charmScore": 17456,
       "source": "mobinogi.net"
     },
     {
