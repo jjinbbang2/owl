@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2025-12-21T15:06:21.099Z",
+  "updatedAt": "2025-12-21T16:07:23.051Z",
   "members": [
     {
       "name": "풀뱅기사",
@@ -51,6 +51,19 @@
       "combatScore": 53996,
       "lifeScore": 19085,
       "charmScore": 23501,
+      "source": "mobinogi.net"
+    },
+    {
+      "name": "갑옷거인",
+      "rank": 10849,
+      "rankDisplay": "10,849위",
+      "server": "라사",
+      "class": "대검전사",
+      "totalScore": 99932,
+      "totalScoreDisplay": "99,932",
+      "combatScore": 53805,
+      "lifeScore": 23727,
+      "charmScore": 22400,
       "source": "mobinogi.net"
     },
     {
