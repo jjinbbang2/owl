@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2025-12-21T13:13:33.513Z",
+  "updatedAt": "2025-12-21T14:06:24.893Z",
   "members": [
     {
       "name": "풀뱅기사",
@@ -159,8 +159,8 @@
     },
     {
       "name": "시우쇠",
-      "rank": 6,
-      "rankDisplay": "6위",
+      "rank": 5,
+      "rankDisplay": "5위",
       "server": "라사",
       "class": "화염술사",
       "totalScore": 150773,
@@ -523,8 +523,8 @@
     },
     {
       "name": "RIZ",
-      "rank": 22,
-      "rankDisplay": "22위",
+      "rank": 20,
+      "rankDisplay": "20위",
       "server": "라사",
       "class": "힐러",
       "totalScore": 146824,
