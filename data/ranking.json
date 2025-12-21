@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2025-12-21T21:06:14.472Z",
+  "updatedAt": "2025-12-21T22:06:28.518Z",
   "members": [
     {
       "name": "풀뱅기사",
@@ -315,14 +315,14 @@
     },
     {
       "name": "읏챠",
-      "rank": 30835,
-      "rankDisplay": "30,835위",
+      "rank": 31133,
+      "rankDisplay": "31,133위",
       "server": "라사",
       "class": "듀얼블레이드",
-      "totalScore": 83113,
-      "totalScoreDisplay": "83,113",
+      "totalScore": 83105,
+      "totalScoreDisplay": "83,105",
       "combatScore": 50463,
-      "lifeScore": 16107,
+      "lifeScore": 16099,
       "charmScore": 16543,
       "source": "mobinogi.net"
     },
@@ -367,8 +367,8 @@
     },
     {
       "name": "악바르",
-      "rank": 43162,
-      "rankDisplay": "43,162위",
+      "rank": 43376,
+      "rankDisplay": "43,376위",
       "server": "라사",
       "class": "화염술사",
       "totalScore": 83230,
@@ -510,13 +510,13 @@
     },
     {
       "name": "통이",
-      "rank": 24189,
-      "rankDisplay": "24,189위",
+      "rank": 24435,
+      "rankDisplay": "24,435위",
       "server": "라사",
       "class": "화염술사",
-      "totalScore": 87529,
-      "totalScoreDisplay": "87,529",
-      "combatScore": 50196,
+      "totalScore": 87530,
+      "totalScoreDisplay": "87,530",
+      "combatScore": 50197,
       "lifeScore": 16436,
       "charmScore": 20897,
       "source": "mobinogi.net"
@@ -536,15 +536,15 @@
     },
     {
       "name": "힐러보노",
-      "rank": 117187,
-      "rankDisplay": "117,187위",
+      "rank": 111308,
+      "rankDisplay": "111,308위",
       "server": "라사",
       "class": "힐러",
-      "totalScore": 39295,
-      "totalScoreDisplay": "39,295",
-      "combatScore": 20410,
-      "lifeScore": 11302,
-      "charmScore": 7583,
+      "totalScore": 41207,
+      "totalScoreDisplay": "41,207",
+      "combatScore": 22307,
+      "lifeScore": 11312,
+      "charmScore": 7588,
       "source": "mobinogi.net"
     },
     {
@@ -601,15 +601,15 @@
     },
     {
       "name": "프네",
-      "rank": 22727,
-      "rankDisplay": "22,727위",
+      "rank": 41314,
+      "rankDisplay": "41,314위",
       "server": "라사",
       "class": "악사",
-      "totalScore": 88563,
-      "totalScoreDisplay": "88,563",
+      "totalScore": 87583,
+      "totalScoreDisplay": "87,583",
       "combatScore": 48827,
-      "lifeScore": 15125,
-      "charmScore": 24611,
+      "lifeScore": 15145,
+      "charmScore": 23611,
       "source": "mobinogi.net"
     }
   ]
