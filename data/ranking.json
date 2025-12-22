@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2025-12-22T03:36:20.948Z",
+  "updatedAt": "2025-12-22T04:21:31.284Z",
   "members": [
     {
       "name": "풀뱅기사",
@@ -159,8 +159,8 @@
     },
     {
       "name": "시우쇠",
-      "rank": 4,
-      "rankDisplay": "4위",
+      "rank": 6,
+      "rankDisplay": "6위",
       "server": "라사",
       "class": "화염술사",
       "totalScore": 150767,
@@ -406,15 +406,15 @@
     },
     {
       "name": "린파란",
-      "rank": 1368,
-      "rankDisplay": "1,368위",
+      "rank": 1337,
+      "rankDisplay": "1,337위",
       "server": "라사",
       "class": "힐러",
-      "totalScore": 126592,
-      "totalScoreDisplay": "126,592",
+      "totalScore": 126595,
+      "totalScoreDisplay": "126,595",
       "combatScore": 57352,
       "lifeScore": 24320,
-      "charmScore": 44920,
+      "charmScore": 44923,
       "source": "mobinogi.net"
     },
     {
@@ -523,14 +523,14 @@
     },
     {
       "name": "RIZ",
-      "rank": 13,
-      "rankDisplay": "13위",
+      "rank": 18,
+      "rankDisplay": "18위",
       "server": "라사",
       "class": "힐러",
-      "totalScore": 147247,
-      "totalScoreDisplay": "147,247",
+      "totalScore": 147249,
+      "totalScoreDisplay": "147,249",
       "combatScore": 64217,
-      "lifeScore": 33076,
+      "lifeScore": 33078,
       "charmScore": 49954,
       "source": "mobinogi.net"
     },
