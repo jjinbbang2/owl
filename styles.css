@@ -1612,8 +1612,13 @@ body {
         display: none;
     }
 
-    /* 종합점수, 세부점수 컬럼 폭 */
-    .total-score,
+    /* 종합점수 컬럼 폭 */
+    .total-score {
+        width: 75px;
+        max-width: 75px;
+    }
+
+    /* 세부점수 컬럼 폭 */
     .detail-col {
         width: 90px;
         max-width: 90px;
