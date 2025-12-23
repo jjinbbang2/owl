@@ -104,14 +104,14 @@ function renderRankingTable() {
                 </div>
             </td>
             <td class="total-score">${member.totalScoreDisplay}</td>
-            <td class="hide-mobile">
+            <td class="detail-col">
                 <div class="score-detail">
-                    <span class="score-attack">전투력 ${formatNumber(member.combatScore)}</span>
-                    <span class="score-life">생활력 ${formatNumber(member.lifeScore)}</span>
-                    <span class="score-charm">매력 ${formatNumber(member.charmScore)}</span>
+                    <span class="score-attack"><span class="score-label">전투력</span> ${formatNumber(member.combatScore)}</span>
+                    <span class="score-life"><span class="score-label">생활력</span> ${formatNumber(member.lifeScore)}</span>
+                    <span class="score-charm"><span class="score-label">매력</span> ${formatNumber(member.charmScore)}</span>
                 </div>
             </td>
-            <td class="hide-mobile">
+            <td class="rank-col">
                 <span class="rank-display">${member.rankDisplay}</span>
             </td>
         </tr>

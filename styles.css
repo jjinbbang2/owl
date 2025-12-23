@@ -1554,6 +1554,10 @@ body {
         font-size: 1.5rem;
     }
 
+    .ranking-table {
+        table-layout: fixed;
+    }
+
     .ranking-table th,
     .ranking-table td {
         padding: 10px 8px;
@@ -1571,9 +1575,48 @@ body {
         font-size: 0.7rem;
     }
 
-    /* 모바일에서 일부 컬럼 숨김 */
-    .hide-mobile {
+    /* 모바일에서 세부점수 세로 3줄 배치 (종합점수와 비슷한 크기) */
+    .detail-col .score-detail {
+        flex-direction: column;
+        gap: 2px;
+        align-items: flex-start;
+    }
+
+    .detail-col .score-detail span {
+        font-size: 0.75rem;
+        padding: 2px 4px;
+    }
+
+    /* 모바일에서 텍스트 라벨 숨기고 아이콘으로 대체 */
+    .detail-col .score-label {
         display: none;
+    }
+
+    .detail-col .score-attack::before {
+        content: '⚔️';
+        margin-right: 2px;
+    }
+
+    .detail-col .score-life::before {
+        content: '🌿';
+        margin-right: 2px;
+    }
+
+    .detail-col .score-charm::before {
+        content: '💖';
+        margin-right: 2px;
+    }
+
+    /* 모바일에서 전체순위 숨김 */
+    .rank-col {
+        display: none;
+    }
+
+    /* 종합점수, 세부점수 컬럼 폭 */
+    .total-score,
+    .detail-col {
+        width: 90px;
+        max-width: 90px;
     }
 
     /* 모바일 섹션 헤더 */
