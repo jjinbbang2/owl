@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2025-12-24T03:34:01.182Z",
+  "updatedAt": "2025-12-24T04:17:24.128Z",
   "members": [
     {
       "name": "풀뱅기사",
@@ -471,13 +471,13 @@
     },
     {
       "name": "Zi존아프로",
-      "rank": 315,
-      "rankDisplay": "315위",
+      "rank": 317,
+      "rankDisplay": "317위",
       "server": "라사",
       "class": "빙결술사",
-      "totalScore": 135617,
-      "totalScoreDisplay": "135,617",
-      "combatScore": 64807,
+      "totalScore": 135684,
+      "totalScoreDisplay": "135,684",
+      "combatScore": 64874,
       "lifeScore": 23646,
       "charmScore": 47164,
       "source": "mobinogi.net"
