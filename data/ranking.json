@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2025-12-24T20:07:21.757Z",
+  "updatedAt": "2025-12-24T21:06:14.907Z",
   "members": [
     {
       "name": "풀뱅기사",
@@ -120,14 +120,14 @@
     },
     {
       "name": "보노보노거인",
-      "rank": 42005,
-      "rankDisplay": "42,005위",
+      "rank": 42001,
+      "rankDisplay": "42,001위",
       "server": "라사",
       "class": "검술사",
-      "totalScore": 76274,
-      "totalScoreDisplay": "76,274",
+      "totalScore": 76371,
+      "totalScoreDisplay": "76,371",
       "combatScore": 45823,
-      "lifeScore": 14011,
+      "lifeScore": 14108,
       "charmScore": 16440,
       "source": "mobinogi.net"
     },
@@ -393,15 +393,15 @@
     },
     {
       "name": "류진원",
-      "rank": 21018,
-      "rankDisplay": "21,018위",
+      "rank": 20722,
+      "rankDisplay": "20,722위",
       "server": "라사",
       "class": "암흑술사",
-      "totalScore": 90018,
-      "totalScoreDisplay": "90,018",
-      "combatScore": 51210,
-      "lifeScore": 18197,
-      "charmScore": 20611,
+      "totalScore": 90438,
+      "totalScoreDisplay": "90,438",
+      "combatScore": 51211,
+      "lifeScore": 18614,
+      "charmScore": 20613,
       "source": "mobinogi.net"
     },
     {
