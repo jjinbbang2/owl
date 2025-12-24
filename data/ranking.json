@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2025-12-24T15:07:17.708Z",
+  "updatedAt": "2025-12-24T16:08:18.700Z",
   "members": [
     {
       "name": "풀뱅기사",
@@ -163,10 +163,10 @@
       "rankDisplay": "6위",
       "server": "라사",
       "class": "화염술사",
-      "totalScore": 151318,
-      "totalScoreDisplay": "151,318",
-      "combatScore": 61035,
-      "lifeScore": 37184,
+      "totalScore": 151331,
+      "totalScoreDisplay": "151,331",
+      "combatScore": 61045,
+      "lifeScore": 37187,
       "charmScore": 53099,
       "source": "mobinogi.net"
     },
@@ -523,8 +523,8 @@
     },
     {
       "name": "RIZ",
-      "rank": 21,
-      "rankDisplay": "21위",
+      "rank": 25,
+      "rankDisplay": "25위",
       "server": "라사",
       "class": "힐러",
       "totalScore": 147293,
