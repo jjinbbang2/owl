@@ -82,7 +82,8 @@ const PartyShare = (function () {
     // 파티 정보 텍스트 생성
     function generatePartyText(party, pageType) {
         const scheduleDate = party.schedule ? new Date(party.schedule) : null;
-        const scheduleDisplay = scheduleDate ? formatSchedule(scheduleDate) : '-';
+        const isQuickRecruit = party.is_quick_recruit;
+        const scheduleDisplay = isQuickRecruit ? '빠른모집' : (scheduleDate ? formatSchedule(scheduleDate) : '-');
 
         let text = '';
         let memberList = '';

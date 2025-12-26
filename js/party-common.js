@@ -112,6 +112,7 @@ const PartyCommon = (function() {
             minuteIncrement: 30,
             defaultHour: defaultHour,
             minDate: "today",
+            disableMobile: true,
             onChange: function(selectedDates, dateStr, instance) {
                 if (selectedDates.length > 0) {
                     selectedScheduleDate = selectedDates[0];

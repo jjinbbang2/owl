@@ -14,7 +14,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/themes/dark.css">
-    <link rel="stylesheet" href="./styles.css?v=20251215d">
+    <link rel="stylesheet" href="./styles.css?v=20251226a">
     <!-- 카카오 SDK -->
     <script src="https://t1.kakaocdn.net/kakao_js_sdk/2.7.2/kakao.min.js"
             integrity="sha384-TiCUE00h649CAMonG018J2ujOgDKW/kVWlChEuu4jK2vxfAAD0eZxzCKakxg55G4"
@@ -58,13 +58,17 @@
                 <div class="form-group">
                     <label>요일·시간</label>
                     <input type="text" id="newSchedule" class="schedule-input" placeholder="날짜와 시간을 선택하세요" readonly>
+                    <label class="checkbox-label quick-recruit-label">
+                        <input type="checkbox" id="newQuickRecruit" onchange="toggleQuickRecruit()">
+                        <span>빠른모집</span>
+                    </label>
                 </div>
                 <div class="form-group">
                     <label>레이드</label>
                     <select id="newRaidType" onchange="updateDifficultyOptions()">
                         <option value="글라스기브넨">글라스기브넨 (8인)</option>
                         <option value="화이트 서큐버스">화이트 서큐버스 (4인)</option>
-                        <option value="타바르타스">타바르타스 (8인)</option>
+                        <option value="타바르타스" selected>타바르타스 (8인)</option>
                     </select>
                 </div>
                 <div class="form-group">
@@ -105,10 +109,10 @@
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/ko.js"></script>
-<script src="./js/supabase-config.js?v=20251215d"></script>
-<script src="./js/combat-power.js?v=20251215d"></script>
-<script src="./js/party-share.js?v=20251215d"></script>
-<script src="./js/party-common.js?v=20251215d"></script>
+<script src="./js/supabase-config.js?v=20251226a"></script>
+<script src="./js/combat-power.js?v=20251226a"></script>
+<script src="./js/party-share.js?v=20251226a"></script>
+<script src="./js/party-common.js?v=20251226a"></script>
 <script>
 // 카카오 SDK 초기화
 PartyShare.initKakaoSDK('8e0f458671cc8e81c30125532b95a245');
@@ -154,11 +158,12 @@ function renderParties(parties) {
         const maxMembers = getMaxMembers(raidType);
         const currentMembers = party.raid_members.length;
         const scheduleDate = party.schedule ? new Date(party.schedule) : null;
-        const scheduleDisplay = scheduleDate ? PartyCommon.formatSchedule(scheduleDate) : '-';
-        const timeRemaining = scheduleDate ? PartyCommon.getTimeRemaining(scheduleDate) : '';
+        const isQuickRecruit = party.is_quick_recruit;
+        const scheduleDisplay = isQuickRecruit ? '<span class="quick-recruit-badge">빠른모집</span>' : (scheduleDate ? PartyCommon.formatSchedule(scheduleDate) : '-');
+        const timeRemaining = isQuickRecruit ? '' : (scheduleDate ? PartyCommon.getTimeRemaining(scheduleDate) : '');
 
         return `
-        <div class="party-card" id="party-${party.id}" data-schedule="${party.schedule || ''}">
+        <div class="party-card" id="party-${party.id}" data-schedule="${party.schedule || ''}" data-quick-recruit="${isQuickRecruit || false}">
             <div class="party-header">
                 <div class="party-header-info">
                     <span class="party-schedule">${scheduleDisplay}</span>
@@ -215,6 +220,23 @@ function renderParties(parties) {
     }).join('');
 }
 
+// 빠른모집 토글
+function toggleQuickRecruit() {
+    const checkbox = document.getElementById('newQuickRecruit');
+    const scheduleInput = document.getElementById('newSchedule');
+
+    if (checkbox.checked) {
+        scheduleInput.disabled = true;
+        scheduleInput.value = '빠른모집 (현재시간)';
+        scheduleInput.classList.add('disabled');
+    } else {
+        scheduleInput.disabled = false;
+        scheduleInput.value = '';
+        scheduleInput.classList.remove('disabled');
+        PartyCommon.clearScheduleDate();
+    }
+}
+
 // 레이드 타입에 따라 난이도 옵션 변경
 function updateDifficultyOptions() {
     const raidType = document.getElementById('newRaidType').value;
@@ -231,22 +253,28 @@ function updateDifficultyOptions() {
 
 // 파티 생성
 async function createParty() {
+    const isQuickRecruit = document.getElementById('newQuickRecruit').checked;
     const raidType = document.getElementById('newRaidType').value;
     const difficulty = document.getElementById('newDifficulty').value;
     const nickname = document.getElementById('newNickname').value.trim();
     const combatPower = document.getElementById('newPower').value;
     const className = document.getElementById('newClass').value.trim();
 
-    if (!PartyCommon.getSelectedScheduleDate() || !nickname || !combatPower || !className) {
-        alert('요일·시간, 닉네임, 전투력, 클래스를 모두 입력해주세요.');
+    if (!isQuickRecruit && !PartyCommon.getSelectedScheduleDate()) {
+        alert('요일·시간을 선택하거나 빠른모집을 체크해주세요.');
         return;
     }
 
-    const schedule = PartyCommon.getSelectedScheduleDate().toISOString();
+    if (!nickname || !combatPower || !className) {
+        alert('닉네임, 전투력, 클래스를 모두 입력해주세요.');
+        return;
+    }
+
+    const schedule = isQuickRecruit ? new Date().toISOString() : PartyCommon.getSelectedScheduleDate().toISOString();
 
     const { data: party, error: partyError } = await supabase
         .from('raid_parties')
-        .insert({ schedule, difficulty, raid_type: raidType })
+        .insert({ schedule, difficulty, raid_type: raidType, is_quick_recruit: isQuickRecruit })
         .select()
         .single();
 
@@ -271,7 +299,10 @@ async function createParty() {
 
     // 폼 초기화
     PartyCommon.clearScheduleDate();
-    document.getElementById('newRaidType').value = '글라스기브넨';
+    document.getElementById('newQuickRecruit').checked = false;
+    document.getElementById('newSchedule').disabled = false;
+    document.getElementById('newSchedule').classList.remove('disabled');
+    document.getElementById('newRaidType').value = '타바르타스';
     updateDifficultyOptions();
     document.getElementById('newNickname').value = '';
     document.getElementById('newPower').value = '';

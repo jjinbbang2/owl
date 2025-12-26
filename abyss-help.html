@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/themes/dark.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
-    <link rel="stylesheet" href="./styles.css?v=20251218a">
+    <link rel="stylesheet" href="./styles.css?v=20251226a">
     <!-- 카카오 SDK -->
     <script src="https://t1.kakaocdn.net/kakao_js_sdk/2.7.2/kakao.min.js"
             integrity="sha384-TiCUE00h649CAMonG018J2ujOgDKW/kVWlChEuu4jK2vxfAAD0eZxzCKakxg55G4"
@@ -59,10 +59,15 @@
                 <div class="form-group">
                     <label>요일·시간</label>
                     <input type="text" id="newSchedule" class="schedule-input" placeholder="날짜와 시간을 선택하세요" readonly>
+                    <label class="checkbox-label quick-recruit-label">
+                        <input type="checkbox" id="newQuickRecruit" onchange="toggleQuickRecruit()">
+                        <span>빠른모집</span>
+                    </label>
                 </div>
                 <div class="form-group">
                     <label>난이도</label>
                     <select id="newDifficulty">
+                        <option value="어비스구멍">어비스구멍</option>
                         <option value="입문">입문</option>
                         <option value="어려움">어려움</option>
                         <option value="매우 어려움" selected>매우 어려움</option>
@@ -156,10 +161,10 @@
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/ko.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script src="./js/supabase-config.js?v=20251218a"></script>
-<script src="./js/combat-power.js?v=20251218a"></script>
-<script src="./js/party-share.js?v=20251218a"></script>
-<script src="./js/party-common.js?v=20251218a"></script>
+<script src="./js/supabase-config.js?v=20251226a"></script>
+<script src="./js/combat-power.js?v=20251226a"></script>
+<script src="./js/party-share.js?v=20251226a"></script>
+<script src="./js/party-common.js?v=20251226a"></script>
 <script>
 // 카카오 SDK 초기화
 PartyShare.initKakaoSDK('8e0f458671cc8e81c30125532b95a245');
@@ -203,11 +208,12 @@ function renderParties(parties) {
 
     container.innerHTML = sortedParties.map(party => {
         const scheduleDate = party.schedule ? new Date(party.schedule) : null;
-        const scheduleDisplay = scheduleDate ? PartyCommon.formatSchedule(scheduleDate) : '-';
-        const timeRemaining = scheduleDate ? PartyCommon.getTimeRemaining(scheduleDate) : '';
+        const isQuickRecruit = party.is_quick_recruit;
+        const scheduleDisplay = isQuickRecruit ? '<span class="quick-recruit-badge">빠른모집</span>' : (scheduleDate ? PartyCommon.formatSchedule(scheduleDate) : '-');
+        const timeRemaining = isQuickRecruit ? '' : (scheduleDate ? PartyCommon.getTimeRemaining(scheduleDate) : '');
 
         return `
-        <div class="party-card" id="party-${party.id}" data-schedule="${party.schedule || ''}">
+        <div class="party-card" id="party-${party.id}" data-schedule="${party.schedule || ''}" data-quick-recruit="${isQuickRecruit || false}">
             <div class="party-header">
                 <div class="party-header-info">
                     <span class="party-schedule">${scheduleDisplay}</span>
@@ -312,8 +318,26 @@ function renderParties(parties) {
     }).join('');
 }
 
+// 빠른모집 토글
+function toggleQuickRecruit() {
+    const checkbox = document.getElementById('newQuickRecruit');
+    const scheduleInput = document.getElementById('newSchedule');
+
+    if (checkbox.checked) {
+        scheduleInput.disabled = true;
+        scheduleInput.value = '빠른모집 (현재시간)';
+        scheduleInput.classList.add('disabled');
+    } else {
+        scheduleInput.disabled = false;
+        scheduleInput.value = '';
+        scheduleInput.classList.remove('disabled');
+        PartyCommon.clearScheduleDate();
+    }
+}
+
 // 파티 생성
 async function createParty() {
+    const isQuickRecruit = document.getElementById('newQuickRecruit').checked;
     const difficulty = document.getElementById('newDifficulty').value;
     const mainNickname = document.getElementById('newMainNickname').value.trim();
     const mainPower = document.getElementById('newMainPower').value;
@@ -323,9 +347,15 @@ async function createParty() {
     const subPower = document.getElementById('newSubPower').value;
     const subClass = document.getElementById('newSubClass').value.trim();
 
+    // 요일·시간 또는 빠른모집 확인
+    if (!isQuickRecruit && !PartyCommon.getSelectedScheduleDate()) {
+        alert2('요일·시간을 선택하거나 빠른모집을 체크해주세요.');
+        return;
+    }
+
     // 본캐 필수 입력 확인
-    if (!PartyCommon.getSelectedScheduleDate() || !mainNickname || !mainPower || !mainClass) {
-        alert2('요일·시간, 본캐 닉네임, 전투력, 클래스를 모두 입력해주세요.');
+    if (!mainNickname || !mainPower || !mainClass) {
+        alert2('본캐 닉네임, 전투력, 클래스를 모두 입력해주세요.');
         return;
     }
 
@@ -341,11 +371,11 @@ async function createParty() {
         return;
     }
 
-    const schedule = PartyCommon.getSelectedScheduleDate().toISOString();
+    const schedule = isQuickRecruit ? new Date().toISOString() : PartyCommon.getSelectedScheduleDate().toISOString();
 
     const { data: party, error: partyError } = await supabase
         .from('help_parties')
-        .insert({ schedule, difficulty })
+        .insert({ schedule, difficulty, is_quick_recruit: isQuickRecruit })
         .select()
         .single();
 
@@ -374,6 +404,9 @@ async function createParty() {
 
     // 폼 초기화
     PartyCommon.clearScheduleDate();
+    document.getElementById('newQuickRecruit').checked = false;
+    document.getElementById('newSchedule').disabled = false;
+    document.getElementById('newSchedule').classList.remove('disabled');
     document.getElementById('newDifficulty').value = '매우 어려움';
     document.getElementById('newMainNickname').value = '';
     document.getElementById('newMainPower').value = '';
