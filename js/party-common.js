@@ -159,6 +159,9 @@ const PartyCommon = (function() {
      */
     function updateTimeRemaining() {
         document.querySelectorAll('.party-card').forEach(card => {
+            const isQuickRecruit = card.dataset.quickRecruit === 'true';
+            if (isQuickRecruit) return; // 빠른모집은 종료됨 표시 안함
+
             const schedule = card.dataset.schedule;
             if (schedule) {
                 const timeRemainingEl = card.querySelector('.time-remaining');
