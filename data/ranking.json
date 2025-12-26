@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2025-12-26T07:08:23.580Z",
+  "updatedAt": "2025-12-26T08:08:52.181Z",
   "members": [
     {
       "name": "풀뱅기사",
@@ -159,8 +159,8 @@
     },
     {
       "name": "시우쇠",
-      "rank": 6,
-      "rankDisplay": "6위",
+      "rank": 5,
+      "rankDisplay": "5위",
       "server": "라사",
       "class": "화염술사",
       "totalScore": 151350,
@@ -601,8 +601,8 @@
     },
     {
       "name": "프네",
-      "rank": 46266,
-      "rankDisplay": "46,266위",
+      "rank": 46270,
+      "rankDisplay": "46,270위",
       "server": "라사",
       "class": "악사",
       "totalScore": 87742,
