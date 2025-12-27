@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2025-12-27T15:06:56.492Z",
+  "updatedAt": "2025-12-27T16:07:35.853Z",
   "members": [
     {
       "name": "풀뱅기사",
@@ -159,14 +159,14 @@
     },
     {
       "name": "시우쇠",
-      "rank": 6,
-      "rankDisplay": "6위",
+      "rank": 9,
+      "rankDisplay": "9위",
       "server": "라사",
       "class": "화염술사",
-      "totalScore": 151499,
-      "totalScoreDisplay": "151,499",
+      "totalScore": 151456,
+      "totalScoreDisplay": "151,456",
       "combatScore": 61120,
-      "lifeScore": 37269,
+      "lifeScore": 37226,
       "charmScore": 53110,
       "source": "mobinogi.net"
     },
