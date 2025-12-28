@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2025-12-28T22:07:10.549Z",
+  "updatedAt": "2025-12-28T23:06:44.117Z",
   "members": [
     {
       "name": "풀뱅기사",
@@ -211,8 +211,8 @@
     },
     {
       "name": "빼주",
-      "rank": 3536,
-      "rankDisplay": "3,536위",
+      "rank": 3513,
+      "rankDisplay": "3,513위",
       "server": "라사",
       "class": "석궁사수",
       "totalScore": 130893,
@@ -419,8 +419,8 @@
     },
     {
       "name": "여니는여니여니해",
-      "rank": 929,
-      "rankDisplay": "929위",
+      "rank": 935,
+      "rankDisplay": "935위",
       "server": "라사",
       "class": "댄서",
       "totalScore": 130550,
@@ -445,8 +445,8 @@
     },
     {
       "name": "카이릭스",
-      "rank": 5660,
-      "rankDisplay": "5,660위",
+      "rank": 5663,
+      "rankDisplay": "5,663위",
       "server": "라사",
       "class": "마법사",
       "totalScore": 112701,
@@ -471,15 +471,15 @@
     },
     {
       "name": "Zi존아프로",
-      "rank": 334,
-      "rankDisplay": "334위",
+      "rank": 363,
+      "rankDisplay": "363위",
       "server": "라사",
       "class": "빙결술사",
-      "totalScore": 136468,
-      "totalScoreDisplay": "136,468",
+      "totalScore": 136471,
+      "totalScoreDisplay": "136,471",
       "combatScore": 64969,
       "lifeScore": 24315,
-      "charmScore": 47184,
+      "charmScore": 47187,
       "source": "mobinogi.net"
     },
     {
@@ -536,15 +536,15 @@
     },
     {
       "name": "힐러보노",
-      "rank": 111302,
-      "rankDisplay": "111,302위",
+      "rank": 107986,
+      "rankDisplay": "107,986위",
       "server": "라사",
       "class": "힐러",
-      "totalScore": 41564,
-      "totalScoreDisplay": "41,564",
-      "combatScore": 22307,
-      "lifeScore": 11667,
-      "charmScore": 7590,
+      "totalScore": 42720,
+      "totalScoreDisplay": "42,720",
+      "combatScore": 23132,
+      "lifeScore": 11969,
+      "charmScore": 7619,
       "source": "mobinogi.net"
     },
     {
