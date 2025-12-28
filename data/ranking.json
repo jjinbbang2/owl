@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2025-12-28T10:07:17.539Z",
+  "updatedAt": "2025-12-28T11:06:22.517Z",
   "members": [
     {
       "name": "풀뱅기사",
@@ -81,14 +81,14 @@
     },
     {
       "name": "로거니우스",
-      "rank": 903,
-      "rankDisplay": "903위",
+      "rank": 864,
+      "rankDisplay": "864위",
       "server": "라사",
       "class": "장궁병",
-      "totalScore": 130721,
-      "totalScoreDisplay": "130,721",
-      "combatScore": 57585,
-      "lifeScore": 26105,
+      "totalScore": 130734,
+      "totalScoreDisplay": "130,734",
+      "combatScore": 57595,
+      "lifeScore": 26108,
       "charmScore": 47031,
       "source": "mobinogi.net"
     },
@@ -198,15 +198,15 @@
     },
     {
       "name": "플라시엘",
-      "rank": 231,
-      "rankDisplay": "231위",
+      "rank": 227,
+      "rankDisplay": "227위",
       "server": "라사",
       "class": "수도사",
-      "totalScore": 138530,
-      "totalScoreDisplay": "138,530",
+      "totalScore": 138387,
+      "totalScoreDisplay": "138,387",
       "combatScore": 59768,
-      "lifeScore": 31791,
-      "charmScore": 46971,
+      "lifeScore": 31640,
+      "charmScore": 46979,
       "source": "mobinogi.net"
     },
     {
@@ -289,8 +289,8 @@
     },
     {
       "name": "보리굴비",
-      "rank": 3725,
-      "rankDisplay": "3,725위",
+      "rank": 3727,
+      "rankDisplay": "3,727위",
       "server": "라사",
       "class": "화염술사",
       "totalScore": 118128,
@@ -419,8 +419,8 @@
     },
     {
       "name": "여니는여니여니해",
-      "rank": 894,
-      "rankDisplay": "894위",
+      "rank": 895,
+      "rankDisplay": "895위",
       "server": "라사",
       "class": "댄서",
       "totalScore": 130509,
@@ -471,15 +471,15 @@
     },
     {
       "name": "Zi존아프로",
-      "rank": 332,
-      "rankDisplay": "332위",
+      "rank": 334,
+      "rankDisplay": "334위",
       "server": "라사",
       "class": "빙결술사",
-      "totalScore": 136463,
-      "totalScoreDisplay": "136,463",
+      "totalScore": 136468,
+      "totalScoreDisplay": "136,468",
       "combatScore": 64969,
-      "lifeScore": 24313,
-      "charmScore": 47181,
+      "lifeScore": 24315,
+      "charmScore": 47184,
       "source": "mobinogi.net"
     },
     {
@@ -536,8 +536,8 @@
     },
     {
       "name": "힐러보노",
-      "rank": 111197,
-      "rankDisplay": "111,197위",
+      "rank": 111302,
+      "rankDisplay": "111,302위",
       "server": "라사",
       "class": "힐러",
       "totalScore": 41564,
