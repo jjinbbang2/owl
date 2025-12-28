@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2025-12-28T07:07:34.923Z",
+  "updatedAt": "2025-12-28T08:07:55.644Z",
   "members": [
     {
       "name": "풀뱅기사",
@@ -159,14 +159,14 @@
     },
     {
       "name": "시우쇠",
-      "rank": 7,
-      "rankDisplay": "7위",
+      "rank": 8,
+      "rankDisplay": "8위",
       "server": "라사",
       "class": "화염술사",
-      "totalScore": 151504,
-      "totalScoreDisplay": "151,504",
-      "combatScore": 61120,
-      "lifeScore": 37269,
+      "totalScore": 151520,
+      "totalScoreDisplay": "151,520",
+      "combatScore": 61133,
+      "lifeScore": 37272,
       "charmScore": 53115,
       "source": "mobinogi.net"
     },
@@ -471,15 +471,15 @@
     },
     {
       "name": "Zi존아프로",
-      "rank": 362,
-      "rankDisplay": "362위",
+      "rank": 332,
+      "rankDisplay": "332위",
       "server": "라사",
       "class": "빙결술사",
-      "totalScore": 136373,
-      "totalScoreDisplay": "136,373",
+      "totalScore": 136463,
+      "totalScoreDisplay": "136,463",
       "combatScore": 64969,
-      "lifeScore": 24226,
-      "charmScore": 47178,
+      "lifeScore": 24313,
+      "charmScore": 47181,
       "source": "mobinogi.net"
     },
     {
