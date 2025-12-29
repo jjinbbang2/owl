@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2025-12-29T07:10:48.831Z",
+  "updatedAt": "2025-12-29T08:09:17.648Z",
   "members": [
     {
       "name": "풀뱅기사",
@@ -159,8 +159,8 @@
     },
     {
       "name": "시우쇠",
-      "rank": 10,
-      "rankDisplay": "10위",
+      "rank": 9,
+      "rankDisplay": "9위",
       "server": "라사",
       "class": "화염술사",
       "totalScore": 151538,
@@ -445,8 +445,8 @@
     },
     {
       "name": "카이릭스",
-      "rank": 5663,
-      "rankDisplay": "5,663위",
+      "rank": 5658,
+      "rankDisplay": "5,658위",
       "server": "라사",
       "class": "마법사",
       "totalScore": 112701,
