@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2025-12-29T19:06:30.747Z",
+  "updatedAt": "2025-12-29T20:07:33.612Z",
   "members": [
     {
       "name": "풀뱅기사",
@@ -445,15 +445,15 @@
     },
     {
       "name": "카이릭스",
-      "rank": 5650,
-      "rankDisplay": "5,650위",
+      "rank": 5706,
+      "rankDisplay": "5,706위",
       "server": "라사",
       "class": "마법사",
-      "totalScore": 112701,
-      "totalScoreDisplay": "112,701",
-      "combatScore": 54813,
+      "totalScore": 112745,
+      "totalScoreDisplay": "112,745",
+      "combatScore": 54856,
       "lifeScore": 16269,
-      "charmScore": 41619,
+      "charmScore": 41620,
       "source": "mobinogi.net"
     },
     {
