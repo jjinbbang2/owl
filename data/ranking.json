@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2025-12-29T16:07:39.842Z",
+  "updatedAt": "2025-12-29T17:07:05.635Z",
   "members": [
     {
       "name": "풀뱅기사",
@@ -159,8 +159,8 @@
     },
     {
       "name": "시우쇠",
-      "rank": 7,
-      "rankDisplay": "7위",
+      "rank": 5,
+      "rankDisplay": "5위",
       "server": "라사",
       "class": "화염술사",
       "totalScore": 152139,
@@ -198,13 +198,13 @@
     },
     {
       "name": "플라시엘",
-      "rank": 223,
-      "rankDisplay": "223위",
+      "rank": 236,
+      "rankDisplay": "236위",
       "server": "라사",
       "class": "수도사",
-      "totalScore": 138929,
-      "totalScoreDisplay": "138,929",
-      "combatScore": 60147,
+      "totalScore": 138928,
+      "totalScoreDisplay": "138,928",
+      "combatScore": 60146,
       "lifeScore": 31801,
       "charmScore": 46981,
       "source": "mobinogi.net"
