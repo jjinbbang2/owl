@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2025-12-30T09:09:29.441Z",
+  "updatedAt": "2025-12-30T10:07:28.644Z",
   "members": [
     {
       "name": "풀뱅기사",
@@ -68,8 +68,8 @@
     },
     {
       "name": "새벽숲부엉이",
-      "rank": 5435,
-      "rankDisplay": "5,435위",
+      "rank": 5258,
+      "rankDisplay": "5,258위",
       "server": "라사",
       "class": "듀얼블레이드",
       "totalScore": 113492,
@@ -81,14 +81,14 @@
     },
     {
       "name": "로거니우스",
-      "rank": 937,
-      "rankDisplay": "937위",
+      "rank": 848,
+      "rankDisplay": "848위",
       "server": "라사",
       "class": "장궁병",
-      "totalScore": 130944,
-      "totalScoreDisplay": "130,944",
+      "totalScore": 130947,
+      "totalScoreDisplay": "130,947",
       "combatScore": 57801,
-      "lifeScore": 26110,
+      "lifeScore": 26113,
       "charmScore": 47033,
       "source": "mobinogi.net"
     },
@@ -159,8 +159,8 @@
     },
     {
       "name": "시우쇠",
-      "rank": 4,
-      "rankDisplay": "4위",
+      "rank": 5,
+      "rankDisplay": "5위",
       "server": "라사",
       "class": "화염술사",
       "totalScore": 152139,
@@ -328,15 +328,15 @@
     },
     {
       "name": "위례",
-      "rank": 20835,
-      "rankDisplay": "20,835위",
+      "rank": 19665,
+      "rankDisplay": "19,665위",
       "server": "라사",
       "class": "힐러",
-      "totalScore": 91293,
-      "totalScoreDisplay": "91,293",
-      "combatScore": 53115,
-      "lifeScore": 13533,
-      "charmScore": 24645,
+      "totalScore": 91929,
+      "totalScoreDisplay": "91,929",
+      "combatScore": 53126,
+      "lifeScore": 14150,
+      "charmScore": 24653,
       "source": "mobinogi.net"
     },
     {
@@ -406,15 +406,15 @@
     },
     {
       "name": "린파란",
-      "rank": 1324,
-      "rankDisplay": "1,324위",
+      "rank": 3659,
+      "rankDisplay": "3,659위",
       "server": "라사",
       "class": "힐러",
-      "totalScore": 128445,
-      "totalScoreDisplay": "128,445",
+      "totalScore": 127445,
+      "totalScoreDisplay": "127,445",
       "combatScore": 58821,
       "lifeScore": 24659,
-      "charmScore": 44965,
+      "charmScore": 43965,
       "source": "mobinogi.net"
     },
     {
@@ -614,15 +614,15 @@
     },
     {
       "name": "시형",
-      "rank": 2186,
-      "rankDisplay": "2,186위",
+      "rank": 2034,
+      "rankDisplay": "2,034위",
       "server": "라사",
       "class": "전격술사",
-      "totalScore": 124328,
-      "totalScoreDisplay": "124,328",
+      "totalScore": 124366,
+      "totalScoreDisplay": "124,366",
       "combatScore": 57457,
-      "lifeScore": 16250,
-      "charmScore": 50621,
+      "lifeScore": 16277,
+      "charmScore": 50632,
       "source": "mobinogi.net"
     }
   ]
