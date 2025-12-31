@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2025-12-30T23:07:09.722Z",
+  "updatedAt": "2025-12-31T00:22:09.995Z",
   "members": [
     {
       "name": "풀뱅기사",
@@ -159,8 +159,8 @@
     },
     {
       "name": "시우쇠",
-      "rank": 6,
-      "rankDisplay": "6위",
+      "rank": 4,
+      "rankDisplay": "4위",
       "server": "라사",
       "class": "화염술사",
       "totalScore": 152222,
