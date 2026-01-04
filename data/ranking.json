@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-01-04T04:25:43.679Z",
+  "updatedAt": "2026-01-04T05:12:23.571Z",
   "members": [
     {
       "name": "풀뱅기사",
@@ -159,8 +159,8 @@
     },
     {
       "name": "시우쇠",
-      "rank": 9,
-      "rankDisplay": "9위",
+      "rank": 8,
+      "rankDisplay": "8위",
       "server": "라사",
       "class": "화염술사",
       "totalScore": 152858,
@@ -198,8 +198,8 @@
     },
     {
       "name": "플라시엘",
-      "rank": 223,
-      "rankDisplay": "223위",
+      "rank": 220,
+      "rankDisplay": "220위",
       "server": "라사",
       "class": "수도사",
       "totalScore": 139151,
