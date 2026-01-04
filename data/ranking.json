@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-01-04T16:07:25.230Z",
+  "updatedAt": "2026-01-04T17:06:21.390Z",
   "members": [
     {
       "name": "풀뱅기사",
@@ -536,14 +536,14 @@
     },
     {
       "name": "힐러보노",
-      "rank": 107179,
-      "rankDisplay": "107,179위",
+      "rank": 103362,
+      "rankDisplay": "103,362위",
       "server": "라사",
       "class": "힐러",
-      "totalScore": 43357,
-      "totalScoreDisplay": "43,357",
-      "combatScore": 23738,
-      "lifeScore": 11998,
+      "totalScore": 44799,
+      "totalScoreDisplay": "44,799",
+      "combatScore": 25034,
+      "lifeScore": 12144,
       "charmScore": 7621,
       "source": "mobinogi.net"
     },
