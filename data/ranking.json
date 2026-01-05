@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-01-05T09:11:42.383Z",
+  "updatedAt": "2026-01-05T09:53:23.977Z",
   "members": [
     {
       "name": "풀뱅기사",
@@ -623,6 +623,19 @@
       "combatScore": 58253,
       "lifeScore": 16987,
       "charmScore": 50665,
+      "source": "mobinogi.net"
+    },
+    {
+      "name": "갓보노",
+      "rank": 155784,
+      "rankDisplay": "155,784위",
+      "server": "라사",
+      "class": "전격술사",
+      "totalScore": 29636,
+      "totalScoreDisplay": "29,636",
+      "combatScore": 12744,
+      "lifeScore": 10352,
+      "charmScore": 6540,
       "source": "mobinogi.net"
     }
   ]
