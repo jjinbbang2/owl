@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-01-05T03:40:10.356Z",
+  "updatedAt": "2026-01-05T04:29:54.092Z",
   "members": [
     {
       "name": "풀뱅기사",
@@ -120,14 +120,14 @@
     },
     {
       "name": "보노보노거인",
-      "rank": 35999,
-      "rankDisplay": "35,999위",
+      "rank": 36062,
+      "rankDisplay": "36,062위",
       "server": "라사",
       "class": "검술사",
-      "totalScore": 81543,
-      "totalScoreDisplay": "81,543",
-      "combatScore": 49429,
-      "lifeScore": 14893,
+      "totalScore": 81621,
+      "totalScoreDisplay": "81,621",
+      "combatScore": 49487,
+      "lifeScore": 14913,
       "charmScore": 17221,
       "source": "mobinogi.net"
     },
@@ -159,8 +159,8 @@
     },
     {
       "name": "시우쇠",
-      "rank": 8,
-      "rankDisplay": "8위",
+      "rank": 7,
+      "rankDisplay": "7위",
       "server": "라사",
       "class": "화염술사",
       "totalScore": 152861,
@@ -250,8 +250,8 @@
     },
     {
       "name": "이까연",
-      "rank": 21864,
-      "rankDisplay": "21,864위",
+      "rank": 21888,
+      "rankDisplay": "21,888위",
       "server": "라사",
       "class": "전격술사",
       "totalScore": 102444,
@@ -315,8 +315,8 @@
     },
     {
       "name": "읏챠",
-      "rank": 47070,
-      "rankDisplay": "47,070위",
+      "rank": 47190,
+      "rankDisplay": "47,190위",
       "server": "라사",
       "class": "듀얼블레이드",
       "totalScore": 85609,
@@ -536,14 +536,14 @@
     },
     {
       "name": "힐러보노",
-      "rank": 103362,
-      "rankDisplay": "103,362위",
+      "rank": 103397,
+      "rankDisplay": "103,397위",
       "server": "라사",
       "class": "힐러",
-      "totalScore": 44799,
-      "totalScoreDisplay": "44,799",
+      "totalScore": 44804,
+      "totalScoreDisplay": "44,804",
       "combatScore": 25034,
-      "lifeScore": 12144,
+      "lifeScore": 12149,
       "charmScore": 7621,
       "source": "mobinogi.net"
     },
