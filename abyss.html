@@ -166,7 +166,7 @@ function renderParties(parties) {
                 ${party.abyss_members.map(member => `
                     <div class="member-row">
                         <span class="member-nickname">${member.nickname}</span>
-                        <span class="member-power">${PartyCommon.formatPowerShort(member.combat_power)}</span>
+                        <span class="member-power">${getDisplayPower(member.nickname, member.combat_power)}</span>
                         <span class="member-class">${member.class_name || '-'}</span>
                         <button class="btn-delete" onclick="deleteMember('${member.id}')">삭제</button>
                     </div>
@@ -373,6 +373,7 @@ function shareToKakaoWrapper(partyId) {
 
 // 초기화
 document.addEventListener('DOMContentLoaded', async function() {
+    await loadRankingData();  // 전투력 비공개 설정 확인용
     await PartyCommon.deleteExpiredParties('abyss_parties');
     loadParties();
     PartyCommon.initSchedulePicker('#newSchedule', 21);

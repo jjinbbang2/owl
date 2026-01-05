@@ -234,7 +234,7 @@ function renderParties(parties) {
                         </div>
                         <div>
                             <span class="member-label">투력</span>
-                            <span class="member-power">${PartyCommon.formatPowerShort(member.main_power)}</span>
+                            <span class="member-power">${getDisplayPower(member.main_nickname, member.main_power)}</span>
                         </div>
                         ${member.is_main_only ? `
                             <div>
@@ -253,7 +253,7 @@ function renderParties(parties) {
                             </div>
                             <div>
                                 <span class="member-label">투력</span>
-                                <span class="member-power">${PartyCommon.formatPowerShort(member.sub_power)}</span>
+                                <span class="member-power">${getDisplayPower(member.sub_nickname, member.sub_power)}</span>
                             </div>
                         `}
                         <button class="btn-delete" onclick="deleteMember('${member.id}')">삭제</button>
@@ -842,6 +842,7 @@ function shareToKakaoWrapper(partyId) {
 
 // 초기화
 document.addEventListener('DOMContentLoaded', async function() {
+    await loadRankingData();  // 전투력 비공개 설정 확인용
     await PartyCommon.deleteExpiredParties('help_parties');
     loadParties();
     PartyCommon.initSchedulePicker('#newSchedule', 21);

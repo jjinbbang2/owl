@@ -198,7 +198,7 @@ async function fetchFromMabiMobi(characterName) {
 async function fetchCharacterList() {
     const { data, error } = await supabase
         .from('ranking_characters')
-        .select('name')
+        .select('name, show_ranking, show_combat_power')
         .order('created_at', { ascending: true });
 
     if (error) {
@@ -206,7 +206,11 @@ async function fetchCharacterList() {
         return [];
     }
 
-    return data.map(row => row.name);
+    return data.map(row => ({
+        name: row.name,
+        showRanking: row.show_ranking !== false,
+        showCombatPower: row.show_combat_power !== false
+    }));
 }
 
 async function main() {
@@ -228,7 +232,8 @@ async function main() {
 
     // 1차 시도: mobinogi.net
     for (let i = 0; i < characters.length; i++) {
-        const name = characters[i];
+        const charInfo = characters[i];
+        const name = charInfo.name;
 
         if (i > 0) {
             await delay(1500);
@@ -267,7 +272,9 @@ async function main() {
                     combatScore      : combatScore,
                     lifeScore        : lifeScore,
                     charmScore       : charmScore,
-                    source           : 'mobinogi.net'
+                    source           : 'mobinogi.net',
+                    showRanking      : charInfo.showRanking,
+                    showCombatPower  : charInfo.showCombatPower
                 });
 
                 console.log(`[성공] ${name} - ${user.class_name} (${user.server_rank}위) [mobinogi.net]`);
@@ -286,7 +293,8 @@ async function main() {
         members = []; // 기존 데이터 초기화
 
         for (let i = 0; i < characters.length; i++) {
-            const name = characters[i];
+            const charInfo = characters[i];
+            const name = charInfo.name;
 
             if (i > 0) {
                 await delay(2000);
@@ -296,6 +304,9 @@ async function main() {
 
             const result = await fetchFromMabiMobi(name);
             if (result) {
+                // 설정값 추가
+                result.showRanking = charInfo.showRanking;
+                result.showCombatPower = charInfo.showCombatPower;
                 members.push(result);
                 console.log(`[성공] ${name} - ${result.class} (${result.rank}위) [mabimobi.life]`);
             } else {

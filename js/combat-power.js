@@ -33,10 +33,26 @@ function findInRanking(nickname) {
     if (member) {
         return {
             combatPower: member.combatScore,
-            className: member.class
+            className: member.class,
+            showCombatPower: member.showCombatPower !== false
         };
     }
     return null;
+}
+
+// 파티 페이지용: 전투력 비공개 여부 확인하여 표시값 반환
+function getDisplayPower(nickname, combatPower) {
+    // ranking.json에서 해당 닉네임의 설정 조회
+    if (rankingCache && rankingCache.members) {
+        const member = rankingCache.members.find(m => m.name === nickname);
+        if (member && member.showCombatPower === false) {
+            return '비공개';
+        }
+    }
+    // 설정이 없거나 공개인 경우 정상 표시
+    if (!combatPower) return '-';
+    const inManUnit = Math.floor(combatPower / 1000) / 10;
+    return inManUnit.toFixed(1);
 }
 
 // API에서 전투력과 클래스 조회 (5초 타임아웃)

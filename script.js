@@ -84,10 +84,15 @@ function renderRankingTable() {
         return;
     }
 
-    // 종합점수순으로 정렬
-    const sortedMembers = [...guildMembers].sort((a, b) => b.totalScore - a.totalScore);
+    // showRanking이 true인 멤버만 필터링 후 종합점수순으로 정렬
+    const visibleMembers = guildMembers.filter(m => m.showRanking !== false);
+    const sortedMembers = [...visibleMembers].sort((a, b) => b.totalScore - a.totalScore);
 
-    tbody.innerHTML = sortedMembers.map((member, index) => `
+    tbody.innerHTML = sortedMembers.map((member, index) => {
+        const combatDisplay = member.showCombatPower !== false
+            ? formatNumber(member.combatScore)
+            : '비공개';
+        return `
         <tr>
             <td class="rank ${index < 3 ? 'rank-' + (index + 1) : ''}">
                 ${index < 3
@@ -106,7 +111,7 @@ function renderRankingTable() {
             <td class="total-score">${member.totalScoreDisplay}</td>
             <td class="detail-col">
                 <div class="score-detail">
-                    <span class="score-attack"><span class="score-label">전투력</span> ${formatNumber(member.combatScore)}</span>
+                    <span class="score-attack"><span class="score-label">전투력</span> ${combatDisplay}</span>
                     <span class="score-life"><span class="score-label">생활력</span> ${formatNumber(member.lifeScore)}</span>
                     <span class="score-charm"><span class="score-label">매력</span> ${formatNumber(member.charmScore)}</span>
                 </div>
@@ -115,7 +120,8 @@ function renderRankingTable() {
                 <span class="rank-display">${member.rankDisplay}</span>
             </td>
         </tr>
-    `).join('');
+    `;
+    }).join('');
 }
 
 // 마지막 업데이트 시간 표시
@@ -147,7 +153,15 @@ function renderDetailTable(tbodyId, scoreKey, scoreClass) {
     const tbody = document.getElementById(tbodyId);
     if (!tbody || guildMembers.length === 0) return;
 
-    const sortedMembers = [...guildMembers].sort((a, b) => b[scoreKey] - a[scoreKey]);
+    // showRanking이 true인 멤버만 필터링
+    let visibleMembers = guildMembers.filter(m => m.showRanking !== false);
+
+    // 전투력 랭킹의 경우 showCombatPower도 체크
+    if (scoreKey === 'combatScore') {
+        visibleMembers = visibleMembers.filter(m => m.showCombatPower !== false);
+    }
+
+    const sortedMembers = [...visibleMembers].sort((a, b) => b[scoreKey] - a[scoreKey]);
 
     tbody.innerHTML = sortedMembers.map((member, index) => `
         <tr>
@@ -246,6 +260,8 @@ async function triggerRankingUpdate() {
 function openAddModal() {
     document.getElementById('addModal').classList.remove('hidden');
     document.getElementById('addCharacterName').value = '';
+    document.getElementById('addShowRanking').checked = true;
+    document.getElementById('addShowCombatPower').checked = true;
     document.getElementById('addStatus').classList.add('hidden');
     document.getElementById('addBtn').disabled = false;
     document.getElementById('addBtn').textContent = '등록';
@@ -332,6 +348,8 @@ function delay(ms) {
 async function addCharacter() {
     const nameInput = document.getElementById('addCharacterName');
     const characterName = nameInput.value.trim();
+    const showRanking = document.getElementById('addShowRanking').checked;
+    const showCombatPower = document.getElementById('addShowCombatPower').checked;
     const btn = document.getElementById('addBtn');
 
     if (!characterName) {
@@ -383,7 +401,11 @@ async function addCharacter() {
     try {
         const { error } = await supabase
             .from('ranking_characters')
-            .insert({ name: characterName });
+            .insert({
+                name: characterName,
+                show_ranking: showRanking,
+                show_combat_power: showCombatPower
+            });
 
         if (error) throw error;
 
