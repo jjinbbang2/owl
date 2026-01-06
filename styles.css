@@ -2242,6 +2242,7 @@ body {
 
     .member-card-mobile .member-guild {
         margin-left: auto;
+        margin-right: 5px;
     }
 }
 
