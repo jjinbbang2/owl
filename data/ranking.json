@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-01-05T23:07:49.260Z",
+  "updatedAt": "2026-01-06T01:35:26.022Z",
   "members": [
     {
       "name": "풀뱅기사",
@@ -12,7 +12,9 @@
       "combatScore": 57066,
       "lifeScore": 27243,
       "charmScore": 31227,
-      "source": "mobinogi.net"
+      "source": "mobinogi.net",
+      "showRanking": true,
+      "showCombatPower": true
     },
     {
       "name": "루야쫑쫑",
@@ -25,7 +27,9 @@
       "combatScore": 59344,
       "lifeScore": 24979,
       "charmScore": 37585,
-      "source": "mobinogi.net"
+      "source": "mobinogi.net",
+      "showRanking": true,
+      "showCombatPower": true
     },
     {
       "name": "차력거인",
@@ -38,7 +42,9 @@
       "combatScore": 53365,
       "lifeScore": 24756,
       "charmScore": 21335,
-      "source": "mobinogi.net"
+      "source": "mobinogi.net",
+      "showRanking": true,
+      "showCombatPower": true
     },
     {
       "name": "전퇴의거인",
@@ -51,7 +57,9 @@
       "combatScore": 53457,
       "lifeScore": 19976,
       "charmScore": 23540,
-      "source": "mobinogi.net"
+      "source": "mobinogi.net",
+      "showRanking": true,
+      "showCombatPower": true
     },
     {
       "name": "갑옷거인",
@@ -64,7 +72,9 @@
       "combatScore": 53897,
       "lifeScore": 24361,
       "charmScore": 22179,
-      "source": "mobinogi.net"
+      "source": "mobinogi.net",
+      "showRanking": true,
+      "showCombatPower": true
     },
     {
       "name": "새벽숲부엉이",
@@ -77,7 +87,9 @@
       "combatScore": 54137,
       "lifeScore": 20439,
       "charmScore": 39681,
-      "source": "mobinogi.net"
+      "source": "mobinogi.net",
+      "showRanking": true,
+      "showCombatPower": true
     },
     {
       "name": "로거니우스",
@@ -90,7 +102,9 @@
       "combatScore": 58326,
       "lifeScore": 25952,
       "charmScore": 47064,
-      "source": "mobinogi.net"
+      "source": "mobinogi.net",
+      "showRanking": true,
+      "showCombatPower": true
     },
     {
       "name": "운정",
@@ -103,7 +117,9 @@
       "combatScore": 58837,
       "lifeScore": 10365,
       "charmScore": 18998,
-      "source": "mobinogi.net"
+      "source": "mobinogi.net",
+      "showRanking": true,
+      "showCombatPower": true
     },
     {
       "name": "풀뱅맹구",
@@ -116,7 +132,9 @@
       "combatScore": 51523,
       "lifeScore": 11809,
       "charmScore": 26087,
-      "source": "mobinogi.net"
+      "source": "mobinogi.net",
+      "showRanking": true,
+      "showCombatPower": true
     },
     {
       "name": "보노보노거인",
@@ -129,7 +147,9 @@
       "combatScore": 49487,
       "lifeScore": 14656,
       "charmScore": 17221,
-      "source": "mobinogi.net"
+      "source": "mobinogi.net",
+      "showRanking": true,
+      "showCombatPower": true
     },
     {
       "name": "불도저츄러스",
@@ -142,7 +162,9 @@
       "combatScore": 51574,
       "lifeScore": 7011,
       "charmScore": 18466,
-      "source": "mobinogi.net"
+      "source": "mobinogi.net",
+      "showRanking": true,
+      "showCombatPower": true
     },
     {
       "name": "초엣",
@@ -155,12 +177,14 @@
       "combatScore": 58469,
       "lifeScore": 19465,
       "charmScore": 45309,
-      "source": "mobinogi.net"
+      "source": "mobinogi.net",
+      "showRanking": true,
+      "showCombatPower": true
     },
     {
       "name": "시우쇠",
-      "rank": 7,
-      "rankDisplay": "7위",
+      "rank": 8,
+      "rankDisplay": "8위",
       "server": "라사",
       "class": "화염술사",
       "totalScore": 152910,
@@ -168,7 +192,9 @@
       "combatScore": 62272,
       "lifeScore": 37474,
       "charmScore": 53164,
-      "source": "mobinogi.net"
+      "source": "mobinogi.net",
+      "showRanking": true,
+      "showCombatPower": true
     },
     {
       "name": "고진",
@@ -181,7 +207,9 @@
       "combatScore": 54916,
       "lifeScore": 20687,
       "charmScore": 24401,
-      "source": "mobinogi.net"
+      "source": "mobinogi.net",
+      "showRanking": true,
+      "showCombatPower": true
     },
     {
       "name": "은월선비",
@@ -194,7 +222,9 @@
       "combatScore": 51984,
       "lifeScore": 21316,
       "charmScore": 18648,
-      "source": "mobinogi.net"
+      "source": "mobinogi.net",
+      "showRanking": true,
+      "showCombatPower": true
     },
     {
       "name": "플라시엘",
@@ -207,7 +237,9 @@
       "combatScore": 60331,
       "lifeScore": 31828,
       "charmScore": 47009,
-      "source": "mobinogi.net"
+      "source": "mobinogi.net",
+      "showRanking": true,
+      "showCombatPower": true
     },
     {
       "name": "빼주",
@@ -220,7 +252,9 @@
       "combatScore": 59310,
       "lifeScore": 24933,
       "charmScore": 48791,
-      "source": "mobinogi.net"
+      "source": "mobinogi.net",
+      "showRanking": true,
+      "showCombatPower": true
     },
     {
       "name": "빼주야",
@@ -233,7 +267,9 @@
       "combatScore": 53157,
       "lifeScore": 22869,
       "charmScore": 23291,
-      "source": "mobinogi.net"
+      "source": "mobinogi.net",
+      "showRanking": true,
+      "showCombatPower": true
     },
     {
       "name": "빼주현",
@@ -246,7 +282,9 @@
       "combatScore": 56071,
       "lifeScore": 22404,
       "charmScore": 22541,
-      "source": "mobinogi.net"
+      "source": "mobinogi.net",
+      "showRanking": true,
+      "showCombatPower": true
     },
     {
       "name": "이까연",
@@ -259,7 +297,9 @@
       "combatScore": 56505,
       "lifeScore": 21648,
       "charmScore": 24291,
-      "source": "mobinogi.net"
+      "source": "mobinogi.net",
+      "showRanking": true,
+      "showCombatPower": true
     },
     {
       "name": "빼쥬",
@@ -272,7 +312,9 @@
       "combatScore": 56447,
       "lifeScore": 22081,
       "charmScore": 23541,
-      "source": "mobinogi.net"
+      "source": "mobinogi.net",
+      "showRanking": true,
+      "showCombatPower": true
     },
     {
       "name": "도혜미",
@@ -285,7 +327,9 @@
       "combatScore": 53957,
       "lifeScore": 19724,
       "charmScore": 20703,
-      "source": "mobinogi.net"
+      "source": "mobinogi.net",
+      "showRanking": true,
+      "showCombatPower": true
     },
     {
       "name": "보리굴비",
@@ -298,7 +342,9 @@
       "combatScore": 59111,
       "lifeScore": 19123,
       "charmScore": 46673,
-      "source": "mobinogi.net"
+      "source": "mobinogi.net",
+      "showRanking": true,
+      "showCombatPower": true
     },
     {
       "name": "바르다",
@@ -311,7 +357,9 @@
       "combatScore": 58018,
       "lifeScore": 25371,
       "charmScore": 24999,
-      "source": "mobinogi.net"
+      "source": "mobinogi.net",
+      "showRanking": true,
+      "showCombatPower": true
     },
     {
       "name": "읏챠",
@@ -324,7 +372,9 @@
       "combatScore": 51685,
       "lifeScore": 18388,
       "charmScore": 16543,
-      "source": "mobinogi.net"
+      "source": "mobinogi.net",
+      "showRanking": true,
+      "showCombatPower": true
     },
     {
       "name": "위례",
@@ -337,7 +387,9 @@
       "combatScore": 53212,
       "lifeScore": 14511,
       "charmScore": 24670,
-      "source": "mobinogi.net"
+      "source": "mobinogi.net",
+      "showRanking": true,
+      "showCombatPower": true
     },
     {
       "name": "항타기",
@@ -350,7 +402,9 @@
       "combatScore": 52885,
       "lifeScore": 23975,
       "charmScore": 14449,
-      "source": "mobinogi.net"
+      "source": "mobinogi.net",
+      "showRanking": true,
+      "showCombatPower": true
     },
     {
       "name": "볼프강아마데우스",
@@ -363,7 +417,9 @@
       "combatScore": 52596,
       "lifeScore": 23170,
       "charmScore": 16549,
-      "source": "mobinogi.net"
+      "source": "mobinogi.net",
+      "showRanking": true,
+      "showCombatPower": true
     },
     {
       "name": "악바르",
@@ -376,7 +432,9 @@
       "combatScore": 50217,
       "lifeScore": 23151,
       "charmScore": 14699,
-      "source": "mobinogi.net"
+      "source": "mobinogi.net",
+      "showRanking": true,
+      "showCombatPower": true
     },
     {
       "name": "번개술",
@@ -389,7 +447,9 @@
       "combatScore": 49420,
       "lifeScore": 23070,
       "charmScore": 16149,
-      "source": "mobinogi.net"
+      "source": "mobinogi.net",
+      "showRanking": true,
+      "showCombatPower": true
     },
     {
       "name": "류진원",
@@ -402,7 +462,9 @@
       "combatScore": 52332,
       "lifeScore": 20394,
       "charmScore": 20646,
-      "source": "mobinogi.net"
+      "source": "mobinogi.net",
+      "showRanking": true,
+      "showCombatPower": true
     },
     {
       "name": "린파란",
@@ -415,7 +477,9 @@
       "combatScore": 59834,
       "lifeScore": 24830,
       "charmScore": 45004,
-      "source": "mobinogi.net"
+      "source": "mobinogi.net",
+      "showRanking": true,
+      "showCombatPower": true
     },
     {
       "name": "여니는여니여니해",
@@ -428,7 +492,9 @@
       "combatScore": 59726,
       "lifeScore": 28882,
       "charmScore": 42167,
-      "source": "mobinogi.net"
+      "source": "mobinogi.net",
+      "showRanking": true,
+      "showCombatPower": true
     },
     {
       "name": "유키노하라유키",
@@ -441,7 +507,9 @@
       "combatScore": 55896,
       "lifeScore": 21898,
       "charmScore": 26189,
-      "source": "mobinogi.net"
+      "source": "mobinogi.net",
+      "showRanking": true,
+      "showCombatPower": true
     },
     {
       "name": "카이릭스",
@@ -454,7 +522,9 @@
       "combatScore": 55051,
       "lifeScore": 16420,
       "charmScore": 41627,
-      "source": "mobinogi.net"
+      "source": "mobinogi.net",
+      "showRanking": true,
+      "showCombatPower": true
     },
     {
       "name": "준숙",
@@ -467,7 +537,9 @@
       "combatScore": 54815,
       "lifeScore": 22350,
       "charmScore": 19791,
-      "source": "mobinogi.net"
+      "source": "mobinogi.net",
+      "showRanking": true,
+      "showCombatPower": true
     },
     {
       "name": "Zi존아프로",
@@ -480,7 +552,9 @@
       "combatScore": 65327,
       "lifeScore": 24024,
       "charmScore": 47232,
-      "source": "mobinogi.net"
+      "source": "mobinogi.net",
+      "showRanking": true,
+      "showCombatPower": true
     },
     {
       "name": "로키쿠",
@@ -493,7 +567,9 @@
       "combatScore": 58786,
       "lifeScore": 23138,
       "charmScore": 48058,
-      "source": "mobinogi.net"
+      "source": "mobinogi.net",
+      "showRanking": true,
+      "showCombatPower": true
     },
     {
       "name": "퉁이",
@@ -506,7 +582,9 @@
       "combatScore": 57534,
       "lifeScore": 16049,
       "charmScore": 43651,
-      "source": "mobinogi.net"
+      "source": "mobinogi.net",
+      "showRanking": true,
+      "showCombatPower": true
     },
     {
       "name": "통이",
@@ -519,7 +597,9 @@
       "combatScore": 52457,
       "lifeScore": 16628,
       "charmScore": 20680,
-      "source": "mobinogi.net"
+      "source": "mobinogi.net",
+      "showRanking": true,
+      "showCombatPower": true
     },
     {
       "name": "RIZ",
@@ -532,7 +612,9 @@
       "combatScore": 64106,
       "lifeScore": 33220,
       "charmScore": 50040,
-      "source": "mobinogi.net"
+      "source": "mobinogi.net",
+      "showRanking": true,
+      "showCombatPower": true
     },
     {
       "name": "힐러보노",
@@ -545,7 +627,9 @@
       "combatScore": 25034,
       "lifeScore": 12149,
       "charmScore": 7621,
-      "source": "mobinogi.net"
+      "source": "mobinogi.net",
+      "showRanking": true,
+      "showCombatPower": true
     },
     {
       "name": "시울림",
@@ -558,7 +642,9 @@
       "combatScore": 53744,
       "lifeScore": 22912,
       "charmScore": 22124,
-      "source": "mobinogi.net"
+      "source": "mobinogi.net",
+      "showRanking": true,
+      "showCombatPower": true
     },
     {
       "name": "피리새",
@@ -571,7 +657,9 @@
       "combatScore": 54109,
       "lifeScore": 22271,
       "charmScore": 17375,
-      "source": "mobinogi.net"
+      "source": "mobinogi.net",
+      "showRanking": true,
+      "showCombatPower": true
     },
     {
       "name": "귤설",
@@ -584,7 +672,9 @@
       "combatScore": 53709,
       "lifeScore": 22665,
       "charmScore": 18216,
-      "source": "mobinogi.net"
+      "source": "mobinogi.net",
+      "showRanking": true,
+      "showCombatPower": true
     },
     {
       "name": "깡설",
@@ -597,7 +687,9 @@
       "combatScore": 54925,
       "lifeScore": 22457,
       "charmScore": 15904,
-      "source": "mobinogi.net"
+      "source": "mobinogi.net",
+      "showRanking": true,
+      "showCombatPower": true
     },
     {
       "name": "프네",
@@ -610,7 +702,9 @@
       "combatScore": 50949,
       "lifeScore": 15150,
       "charmScore": 25378,
-      "source": "mobinogi.net"
+      "source": "mobinogi.net",
+      "showRanking": true,
+      "showCombatPower": true
     },
     {
       "name": "시형",
@@ -623,7 +717,9 @@
       "combatScore": 58329,
       "lifeScore": 18741,
       "charmScore": 50665,
-      "source": "mobinogi.net"
+      "source": "mobinogi.net",
+      "showRanking": true,
+      "showCombatPower": true
     },
     {
       "name": "갓보노",
@@ -636,7 +732,9 @@
       "combatScore": 12744,
       "lifeScore": 10352,
       "charmScore": 6540,
-      "source": "mobinogi.net"
+      "source": "mobinogi.net",
+      "showRanking": false,
+      "showCombatPower": false
     }
   ]
 }
