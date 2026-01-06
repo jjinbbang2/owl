@@ -303,8 +303,18 @@ function openAddModal() {
     document.getElementById('addBtn').textContent = '등록';
 }
 
+// 캐릭터 등록 취소용 컨트롤러
+let addCharacterController = null;
+
 function closeAddModal() {
+    // 진행 중인 캐릭터 확인 취소
+    if (addCharacterController) {
+        addCharacterController.abort();
+        addCharacterController = null;
+    }
     document.getElementById('addModal').classList.add('hidden');
+    document.getElementById('addBtn').disabled = false;
+    document.getElementById('addBtn').textContent = '등록';
 }
 
 async function openDeleteModal() {
@@ -342,7 +352,12 @@ function closeDeleteModal() {
 // 모달 외부 클릭 시 닫기
 document.addEventListener('click', function(e) {
     if (e.target.classList.contains('modal')) {
-        e.target.classList.add('hidden');
+        // addModal인 경우 진행 중인 작업 취소
+        if (e.target.id === 'addModal') {
+            closeAddModal();
+        } else {
+            e.target.classList.add('hidden');
+        }
     }
 });
 
@@ -355,9 +370,14 @@ function showStatus(elementId, message, type) {
 }
 
 // 캐릭터 존재 확인 (API 호출 - CORS 프록시 사용, 5초 타임아웃)
-async function verifyCharacterExists(characterName) {
+async function verifyCharacterExists(characterName, signal) {
     const controller = new AbortController();
     const timeoutId = setTimeout(() => controller.abort(), 5000);
+
+    // 외부 signal이 abort되면 내부 controller도 abort
+    if (signal) {
+        signal.addEventListener('abort', () => controller.abort());
+    }
 
     try {
         const url = `${VERIFY_API_URL}${encodeURIComponent(characterName)}`;
@@ -376,7 +396,8 @@ async function verifyCharacterExists(characterName) {
     } catch (error) {
         clearTimeout(timeoutId);
         if (error.name === 'AbortError') {
-            console.error('캐릭터 확인 타임아웃 (5초)');
+            console.log('캐릭터 확인 취소됨');
+            throw error; // 취소는 상위로 전파
         } else {
             console.error('캐릭터 확인 오류:', error);
         }
@@ -384,9 +405,17 @@ async function verifyCharacterExists(characterName) {
     }
 }
 
-// 딜레이 함수
-function delay(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
+// 취소 가능한 딜레이 함수
+function delay(ms, signal) {
+    return new Promise((resolve, reject) => {
+        const timeoutId = setTimeout(resolve, ms);
+        if (signal) {
+            signal.addEventListener('abort', () => {
+                clearTimeout(timeoutId);
+                reject(new DOMException('Delay cancelled', 'AbortError'));
+            });
+        }
+    });
 }
 
 // 캐릭터 등록
@@ -404,6 +433,10 @@ async function addCharacter() {
 
     btn.disabled = true;
 
+    // 취소용 컨트롤러 생성
+    addCharacterController = new AbortController();
+    const signal = addCharacterController.signal;
+
     // 이미 등록된 캐릭터인지 확인
     try {
         const { data: existing } = await supabase
@@ -415,6 +448,7 @@ async function addCharacter() {
         if (existing) {
             showStatus('addStatus', '이미 등록된 캐릭터입니다.', 'error');
             btn.disabled = false;
+            addCharacterController = null;
             return;
         }
     } catch (e) {
@@ -423,15 +457,25 @@ async function addCharacter() {
 
     // 캐릭터 존재 확인 (2초 간격 최대 10회)
     let found = false;
-    for (let i = 1; i <= 10; i++) {
-        showStatus('addStatus', `캐릭터 확인 중... (${i}/10)`, 'info');
-        btn.textContent = `확인 중 (${i}/10)`;
+    try {
+        for (let i = 1; i <= 10; i++) {
+            if (signal.aborted) break;
 
-        found = await verifyCharacterExists(characterName);
-        if (found) break;
+            showStatus('addStatus', `캐릭터 확인 중... (${i}/10)`, 'info');
+            btn.textContent = `확인 중 (${i}/10)`;
 
-        if (i < 10) {
-            await delay(2000);
+            found = await verifyCharacterExists(characterName, signal);
+            if (found) break;
+
+            if (i < 10) {
+                await delay(2000, signal);
+            }
+        }
+    } catch (error) {
+        if (error.name === 'AbortError') {
+            console.log('캐릭터 등록 취소됨');
+            addCharacterController = null;
+            return;
         }
     }
 
@@ -439,6 +483,7 @@ async function addCharacter() {
         showStatus('addStatus', '캐릭터를 찾을 수 없습니다. 닉네임을 확인해주세요.', 'error');
         btn.disabled = false;
         btn.textContent = '등록';
+        addCharacterController = null;
         return;
     }
 
@@ -455,6 +500,7 @@ async function addCharacter() {
 
         showStatus('addStatus', '캐릭터가 등록되었습니다! 랭킹 데이터 갱신 중...', 'success');
         btn.textContent = '완료!';
+        addCharacterController = null;
 
         // 워크플로우 트리거
         const triggered = await triggerRankingUpdate();
@@ -472,6 +518,7 @@ async function addCharacter() {
         showStatus('addStatus', '등록 실패: ' + error.message, 'error');
         btn.disabled = false;
         btn.textContent = '등록';
+        addCharacterController = null;
     }
 }
 
