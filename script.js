@@ -1,6 +1,6 @@
 // ===== 설정 =====
 const CONFIG = {
-    dataUrl: './data/ranking.json'
+    dataUrl: './data/ranking.json' // 백업용
 };
 
 // ===== 네비게이션 =====
@@ -184,26 +184,61 @@ function renderDetailTable(tbodyId, scoreKey, scoreClass) {
     `).join('');
 }
 
-// JSON 파일에서 데이터 로드
+// DB에서 데이터 로드
 async function loadRankingData() {
     const tbody = document.getElementById('ranking-body');
 
     try {
-        const response = await fetch(`${CONFIG.dataUrl}?t=${Date.now()}`);
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
+        // rankings 테이블과 ranking_characters 테이블 조인하여 visibility 가져오기
+        const { data: rankings, error: rankError } = await supabase
+            .from('rankings')
+            .select('*');
+
+        if (rankError) throw rankError;
+
+        const { data: characters, error: charError } = await supabase
+            .from('ranking_characters')
+            .select('name, visibility');
+
+        if (charError) throw charError;
+
+        // visibility 매핑
+        const visibilityMap = {};
+        characters.forEach(c => {
+            visibilityMap[c.name] = c.visibility ?? 0;
+        });
+
+        // 데이터 변환
+        guildMembers = rankings.map(r => ({
+            name: r.name,
+            rank: r.rank,
+            rankDisplay: r.rank ? r.rank.toLocaleString() + '위' : '-',
+            server: r.server,
+            class: r.class,
+            totalScore: r.total_score,
+            totalScoreDisplay: r.total_score ? r.total_score.toLocaleString() : '-',
+            combatScore: r.combat_score,
+            lifeScore: r.life_score,
+            charmScore: r.charm_score,
+            source: r.source,
+            visibility: visibilityMap[r.name] ?? 0
+        }));
+
+        // 가장 최근 updated_at 찾기
+        if (rankings.length > 0) {
+            const latestUpdate = rankings.reduce((max, r) =>
+                new Date(r.updated_at) > new Date(max) ? r.updated_at : max,
+                rankings[0].updated_at
+            );
+            lastUpdated = latestUpdate;
         }
 
-        const data = await response.json();
-        guildMembers = data.members || [];
-        lastUpdated = data.updatedAt;
-
-        console.log(`[완료] ${guildMembers.length}명의 캐릭터 정보 로드됨`);
+        console.log(`[완료] ${guildMembers.length}명의 캐릭터 정보 로드됨 (DB)`);
         renderRankingTable();
         renderDetailRankings();
         renderLastUpdated();
     } catch (error) {
-        console.error('[오류] 데이터 로드 실패:', error);
+        console.error('[오류] DB 데이터 로드 실패:', error);
 
         if (tbody) {
             tbody.innerHTML = `

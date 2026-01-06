@@ -78,7 +78,7 @@ document.addEventListener('DOMContentLoaded', async function() {
 // ===== 데이터 로드 =====
 async function loadAllData() {
     try {
-        rankingData = await loadRankingJson();
+        rankingData = await loadRankingsFromDB();
         profilesData = await loadMemberProfiles();
         const visibilityData = await loadVisibilityData();
         allMembers = mergeData(rankingData?.members || [], profilesData, visibilityData);
@@ -89,19 +89,38 @@ async function loadAllData() {
     }
 }
 
-async function loadRankingJson() {
+async function loadRankingsFromDB() {
     try {
-        const basePath = window.location.pathname.includes('/owl/')
-            ? '/owl/data/ranking.json'
-            : './data/ranking.json';
-        const response = await fetch(basePath + '?t=' + Date.now());
-        if (response.ok) {
-            return await response.json();
+        const { data, error } = await supabase
+            .from('rankings')
+            .select('*');
+
+        if (error) {
+            console.error('[rankings] DB 로드 실패:', error);
+            return { members: [] };
         }
+
+        // DB 데이터를 기존 형식으로 변환
+        const members = data.map(r => ({
+            name: r.name,
+            rank: r.rank,
+            rankDisplay: r.rank ? r.rank.toLocaleString() + '위' : '-',
+            server: r.server,
+            class: r.class,
+            totalScore: r.total_score,
+            totalScoreDisplay: r.total_score ? r.total_score.toLocaleString() : '-',
+            combatScore: r.combat_score,
+            lifeScore: r.life_score,
+            charmScore: r.charm_score,
+            source: r.source
+        }));
+
+        console.log('[rankings] DB 로드 성공:', members.length, '명');
+        return { members };
     } catch (error) {
-        console.warn('[ranking.json] 로드 실패:', error.message);
+        console.error('[rankings] DB 로드 실패:', error);
+        return { members: [] };
     }
-    return null;
 }
 
 async function loadMemberProfiles() {

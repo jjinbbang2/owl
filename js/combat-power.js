@@ -1,31 +1,52 @@
 // 전투력 조회 유틸리티
-// 1. ranking.json에서 먼저 조회
+// 1. DB(rankings 테이블)에서 먼저 조회
 // 2. 없으면 API에서 조회
 
 let rankingCache = null;
 
-// ranking.json 데이터 로드 (캐시)
+// DB에서 랭킹 데이터 로드 (캐시)
 async function loadRankingData() {
     if (rankingCache) return rankingCache;
 
     try {
-        // 절대 경로로 시도
-        const basePath = window.location.pathname.includes('/owl/')
-            ? '/owl/data/ranking.json'
-            : './data/ranking.json';
-        const response = await fetch(basePath + '?t=' + Date.now());
-        if (response.ok) {
-            rankingCache = await response.json();
-            console.log('[ranking.json] 로드 성공:', rankingCache.members?.length || 0, '명');
-            return rankingCache;
-        }
+        // rankings 테이블에서 로드
+        const { data: rankings, error: rankError } = await supabase
+            .from('rankings')
+            .select('name, combat_score, class');
+
+        if (rankError) throw rankError;
+
+        // ranking_characters 테이블에서 visibility 로드
+        const { data: characters, error: charError } = await supabase
+            .from('ranking_characters')
+            .select('name, visibility');
+
+        if (charError) throw charError;
+
+        // visibility 매핑
+        const visibilityMap = {};
+        characters.forEach(c => {
+            visibilityMap[c.name] = c.visibility ?? 0;
+        });
+
+        // 데이터 변환
+        const members = rankings.map(r => ({
+            name: r.name,
+            combatScore: r.combat_score,
+            class: r.class,
+            visibility: visibilityMap[r.name] ?? 0
+        }));
+
+        rankingCache = { members };
+        console.log('[rankings DB] 로드 성공:', members.length, '명');
+        return rankingCache;
     } catch (error) {
-        console.warn('[ranking.json] 로드 실패:', error.message);
+        console.warn('[rankings DB] 로드 실패:', error.message);
     }
     return null;
 }
 
-// ranking.json에서 전투력과 클래스 찾기
+// DB 캐시에서 전투력과 클래스 찾기
 function findInRanking(nickname) {
     if (!rankingCache || !rankingCache.members) return null;
 
@@ -43,7 +64,7 @@ function findInRanking(nickname) {
 
 // 파티 페이지용: 전투력 비공개 여부 확인하여 표시값 반환
 function getDisplayPower(nickname, combatPower) {
-    // ranking.json에서 해당 닉네임의 설정 조회
+    // DB 캐시에서 해당 닉네임의 설정 조회
     // visibility: 0=모두공개, 1=전투력만공개, 2=비공개
     if (rankingCache && rankingCache.members) {
         const member = rankingCache.members.find(m => m.name === nickname);
@@ -134,7 +155,7 @@ async function fetchCombatPower(nicknameInputId, powerInputId, classInputId = nu
         if (classInput && cachedData.className) {
             classInput.value = cachedData.className;
         }
-        console.log(`[전투력] ${nickname}: ranking.json에서 조회 (${cachedData.combatPower}, ${cachedData.className}, visibility: ${cachedData.visibility})`);
+        console.log(`[전투력] ${nickname}: DB에서 조회 (${cachedData.combatPower}, ${cachedData.className}, visibility: ${cachedData.visibility})`);
         return;
     }
 

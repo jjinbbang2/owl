@@ -316,13 +316,40 @@ async function main() {
     }
 
     if (members.length > 0) {
+        // DB에 저장
+        console.log('\n[DB 저장] rankings 테이블에 저장 중...');
+
+        for (const member of members) {
+            const { error } = await supabase
+                .from('rankings')
+                .upsert({
+                    name: member.name,
+                    rank: member.rank,
+                    server: member.server,
+                    class: member.class,
+                    combat_score: member.combatScore,
+                    life_score: member.lifeScore,
+                    charm_score: member.charmScore,
+                    total_score: member.totalScore,
+                    source: member.source,
+                    updated_at: new Date().toISOString()
+                }, { onConflict: 'name' });
+
+            if (error) {
+                console.error(`[DB 오류] ${member.name}:`, error.message);
+            }
+        }
+
+        console.log(`[DB 완료] ${members.length}명 저장됨`);
+
+        // JSON 백업도 유지 (선택적)
         const result = {
             updatedAt: new Date().toISOString(),
             members  : members
         };
 
         fs.writeFileSync(CONFIG.outputPath, JSON.stringify(result, null, 2), 'utf8');
-        console.log(`\n[완료] ${members.length}명 저장됨: ${CONFIG.outputPath}`);
+        console.log(`[JSON 백업] ${CONFIG.outputPath}`);
     } else {
         console.log('[경고] 데이터를 가져오지 못했습니다.');
         process.exit(1);
