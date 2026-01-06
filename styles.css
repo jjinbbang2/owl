@@ -1780,7 +1780,6 @@ body {
 .radio-label {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
     cursor: pointer;
     font-size: 0.95rem;
     line-height: 1;
@@ -1803,11 +1802,7 @@ body {
 }
 
 .radio-label input[type="radio"] {
-    width: 16px;
-    height: 16px;
-    margin: 0;
-    accent-color: var(--primary-gold);
-    cursor: pointer;
+    display: none;
 }
 
 .radio-label span {
