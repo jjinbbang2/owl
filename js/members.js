@@ -525,12 +525,19 @@ async function saveProfile() {
 
         if (profileError) throw profileError;
 
-        const { error: visibilityError } = await supabase
+        console.log('[저장] visibility 업데이트 시도:', characterName, visibility);
+        const { data: visData, error: visibilityError } = await supabase
             .from('ranking_characters')
             .update({ visibility: visibility })
-            .eq('name', characterName);
+            .eq('name', characterName)
+            .select();
+
+        console.log('[저장] visibility 업데이트 결과:', visData, visibilityError);
 
         if (visibilityError) throw visibilityError;
+        if (!visData || visData.length === 0) {
+            console.warn('[저장] visibility 업데이트된 행 없음 - ranking_characters에 캐릭터가 없을 수 있음');
+        }
 
         await loadAllData();
         renderMembersList();
