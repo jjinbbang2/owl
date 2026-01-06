@@ -339,32 +339,27 @@ function renderClassPowerChart() {
     const canvas = document.getElementById('classPowerChart');
     if (!canvas) return;
 
-    // 모든 직업 목록 (최종 전직 기준)
-    const ALL_CLASSES = [
-        '검술사', '장궁병', '빙결술사', '화염술사', '전격술사',
-        '암흑술사', '수도사', '악사', '댄서', '듀얼블레이드', '격투가'
-    ];
-
+    // visibility !== 2인 멤버만 포함 (전투력 공개된 멤버)
     const visibleMembers = allMembers.filter(m => m.visibility !== 2 && m.combatScore);
     const classStats = {};
 
-    // 모든 직업 초기화
-    ALL_CLASSES.forEach(cls => {
-        classStats[cls] = { total: 0, count: 0 };
-    });
-
+    // 데이터에 있는 모든 직업 수집
     visibleMembers.forEach(member => {
         if (!member.class) return;
-        if (classStats[member.class]) {
-            classStats[member.class].total += member.combatScore;
-            classStats[member.class].count++;
+        if (!classStats[member.class]) {
+            classStats[member.class] = { total: 0, count: 0 };
         }
+        classStats[member.class].total += member.combatScore;
+        classStats[member.class].count++;
     });
 
-    const labels = ALL_CLASSES;
-    const averages = labels.map(cls =>
-        classStats[cls].count > 0 ? Math.round(classStats[cls].total / classStats[cls].count) : 0
+    // 평균 전투력 기준 내림차순 정렬
+    const sortedClasses = Object.keys(classStats).sort((a, b) =>
+        (classStats[b].total / classStats[b].count) - (classStats[a].total / classStats[a].count)
     );
+
+    const labels = sortedClasses;
+    const averages = labels.map(cls => Math.round(classStats[cls].total / classStats[cls].count));
 
     const ctx = canvas.getContext('2d');
     if (classPowerChart) classPowerChart.destroy();
