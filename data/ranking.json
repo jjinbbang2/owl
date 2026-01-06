@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-01-06T10:07:42.482Z",
+  "updatedAt": "2026-01-06T11:06:54.343Z",
   "members": [
     {
       "name": "풀뱅기사",
@@ -171,15 +171,15 @@
     },
     {
       "name": "시우쇠",
-      "rank": 6,
-      "rankDisplay": "6위",
+      "rank": 7,
+      "rankDisplay": "7위",
       "server": "라사",
       "class": "화염술사",
-      "totalScore": 152913,
-      "totalScoreDisplay": "152,913",
+      "totalScore": 152916,
+      "totalScoreDisplay": "152,916",
       "combatScore": 62272,
       "lifeScore": 37474,
-      "charmScore": 53167,
+      "charmScore": 53170,
       "source": "mobinogi.net",
       "visibility": 0
     },
@@ -574,20 +574,6 @@
       "charmScore": 50043,
       "source": "mobinogi.net",
       "visibility": 0
-    },
-    {
-      "name": "힐러보노",
-      "rank": 103505,
-      "rankDisplay": "103,505위",
-      "server": "라사",
-      "class": "힐러",
-      "totalScore": 44804,
-      "totalScoreDisplay": "44,804",
-      "combatScore": 25034,
-      "lifeScore": 12149,
-      "charmScore": 7621,
-      "source": "mobinogi.net",
-      "visibility": 2
     },
     {
       "name": "시울림",
