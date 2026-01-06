@@ -58,20 +58,26 @@
     <!-- 통계 섹션 -->
     <section class="stats-section">
         <h2 class="section-title">📊 통계</h2>
-        <div class="charts-grid">
-            <div class="chart-container">
-                <h3 class="chart-title">시간대별 활동 가능 인원</h3>
-                <canvas id="timeChart"></canvas>
-            </div>
-            <div class="chart-container">
+
+        <!-- 시간대별 활동 가능 인원 (전체 너비) -->
+        <div class="chart-container chart-full">
+            <h3 class="chart-title">시간대별 활동 가능 인원</h3>
+            <canvas id="timeChart"></canvas>
+        </div>
+
+        <!-- 직업별 평균 전투력 (전체 너비) -->
+        <div class="chart-container chart-full">
+            <h3 class="chart-title">직업별 평균 전투력</h3>
+            <canvas id="classPowerChart"></canvas>
+        </div>
+
+        <!-- 선호 태그 분포 + 직업 분포 (PC: 한 행, 모바일: 각각) -->
+        <div class="charts-row">
+            <div class="chart-container chart-half">
                 <h3 class="chart-title">선호 태그 분포</h3>
                 <canvas id="tagChart"></canvas>
             </div>
-            <div class="chart-container">
-                <h3 class="chart-title">직업별 평균 전투력</h3>
-                <canvas id="classPowerChart"></canvas>
-            </div>
-            <div class="chart-container">
+            <div class="chart-container chart-half">
                 <h3 class="chart-title">직업 분포</h3>
                 <canvas id="classDistChart"></canvas>
             </div>

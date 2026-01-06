@@ -1828,17 +1828,28 @@ body {
     margin-bottom: 40px;
 }
 
-.charts-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-}
-
 .chart-container {
     background: rgba(26, 27, 38, 0.95);
     border-radius: 12px;
     padding: 20px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* 전체 너비 차트 */
+.chart-full {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+/* 반반 차트 행 (PC: 한 행에 2개, 모바일: 각각) */
+.charts-row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.chart-half {
+    width: 100%;
 }
 
 .chart-title {
@@ -2179,7 +2190,7 @@ body {
 
 /* 명단 페이지 반응형 */
 @media (max-width: 768px) {
-    .charts-grid {
+    .charts-row {
         grid-template-columns: 1fr;
     }
 
