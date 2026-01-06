@@ -438,21 +438,17 @@ async function addCharacter() {
     const signal = addCharacterController.signal;
 
     // 이미 등록된 캐릭터인지 확인
-    try {
-        const { data: existing } = await supabase
-            .from('ranking_characters')
-            .select('id')
-            .eq('name', characterName)
-            .single();
+    const { data: existing } = await supabase
+        .from('ranking_characters')
+        .select('id')
+        .eq('name', characterName)
+        .maybeSingle();
 
-        if (existing) {
-            showStatus('addStatus', '이미 등록된 캐릭터입니다.', 'error');
-            btn.disabled = false;
-            addCharacterController = null;
-            return;
-        }
-    } catch (e) {
-        // 없으면 에러가 나므로 정상
+    if (existing) {
+        showStatus('addStatus', '이미 등록된 캐릭터입니다.', 'error');
+        btn.disabled = false;
+        addCharacterController = null;
+        return;
     }
 
     // 캐릭터 존재 확인 (2초 간격 최대 10회)
