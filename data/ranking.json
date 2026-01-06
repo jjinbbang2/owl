@@ -1,20 +1,6 @@
 {
-  "updatedAt": "2026-01-06T08:38:19.270Z",
+  "updatedAt": "2026-01-06T09:09:53.188Z",
   "members": [
-    {
-      "name": "로거니우스",
-      "rank": 913,
-      "rankDisplay": "913위",
-      "server": "라사",
-      "class": "장궁병",
-      "totalScore": 131342,
-      "totalScoreDisplay": "131,342",
-      "combatScore": 58326,
-      "lifeScore": 25952,
-      "charmScore": 47064,
-      "source": "mobinogi.net",
-      "visibility": 0
-    },
     {
       "name": "운정",
       "rank": 25935,
@@ -110,6 +96,20 @@
       "combatScore": 54137,
       "lifeScore": 20368,
       "charmScore": 39683,
+      "source": "mobinogi.net",
+      "visibility": 0
+    },
+    {
+      "name": "로거니우스",
+      "rank": 913,
+      "rankDisplay": "913위",
+      "server": "라사",
+      "class": "장궁병",
+      "totalScore": 131342,
+      "totalScoreDisplay": "131,342",
+      "combatScore": 58326,
+      "lifeScore": 25952,
+      "charmScore": 47064,
       "source": "mobinogi.net",
       "visibility": 0
     },
@@ -587,7 +587,7 @@
       "lifeScore": 12149,
       "charmScore": 7621,
       "source": "mobinogi.net",
-      "visibility": 1
+      "visibility": 2
     },
     {
       "name": "시울림",
@@ -688,16 +688,16 @@
       "visibility": 2
     },
     {
-      "name": "별고양이",
-      "rank": 2,
-      "rankDisplay": "2위",
+      "name": "감자면이조아",
+      "rank": 3,
+      "rankDisplay": "3위",
       "server": "라사",
-      "class": "수도사",
-      "totalScore": 156152,
-      "totalScoreDisplay": "156,152",
-      "combatScore": 70377,
-      "lifeScore": 32475,
-      "charmScore": 53300,
+      "class": "화염술사",
+      "totalScore": 155331,
+      "totalScoreDisplay": "155,331",
+      "combatScore": 66558,
+      "lifeScore": 35268,
+      "charmScore": 53505,
       "source": "mobinogi.net",
       "visibility": 0
     }
