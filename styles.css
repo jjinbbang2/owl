@@ -1778,18 +1778,25 @@ body {
 }
 
 .radio-label {
-    display: flex;
+    display: inline-flex;
     align-items: center;
     gap: 6px;
     cursor: pointer;
     font-size: 0.95rem;
+    line-height: 1;
 }
 
 .radio-label input[type="radio"] {
-    width: 18px;
-    height: 18px;
+    width: 16px;
+    height: 16px;
+    margin: 0;
     accent-color: var(--primary-gold);
     cursor: pointer;
+    vertical-align: middle;
+}
+
+.radio-label span {
+    vertical-align: middle;
 }
 
 .radio-hint {
