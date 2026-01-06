@@ -1841,10 +1841,6 @@ body {
     margin-bottom: 20px;
 }
 
-/* 직업별 평균 전투력 차트 (가로 막대) */
-#classPowerChart {
-    min-height: 400px;
-}
 
 /* 반반 차트 행 (PC: 한 행에 2개, 모바일: 각각) */
 .charts-row {

@@ -361,6 +361,11 @@ function renderClassPowerChart() {
     const labels = sortedClasses;
     const averages = labels.map(cls => Math.round(classStats[cls].total / classStats[cls].count));
 
+    // 직업 개수에 따라 차트 높이 동적 설정 (직업당 35px)
+    const chartHeight = Math.max(150, labels.length * 35);
+    canvas.style.height = chartHeight + 'px';
+    canvas.parentElement.style.height = (chartHeight + 60) + 'px'; // 제목 공간 포함
+
     const ctx = canvas.getContext('2d');
     if (classPowerChart) classPowerChart.destroy();
 
