@@ -84,12 +84,12 @@ function renderRankingTable() {
         return;
     }
 
-    // showRanking이 true인 멤버만 필터링 후 종합점수순으로 정렬
-    const visibleMembers = guildMembers.filter(m => m.showRanking !== false);
+    // visibility === 0(모두공개)인 멤버만 필터링 후 종합점수순으로 정렬
+    const visibleMembers = guildMembers.filter(m => m.visibility === 0);
     const sortedMembers = [...visibleMembers].sort((a, b) => b.totalScore - a.totalScore);
 
     tbody.innerHTML = sortedMembers.map((member, index) => {
-        const combatDisplay = member.showCombatPower !== false
+        const combatDisplay = member.visibility !== 2
             ? formatNumber(member.combatScore)
             : '비공개';
         return `
@@ -153,12 +153,12 @@ function renderDetailTable(tbodyId, scoreKey, scoreClass) {
     const tbody = document.getElementById(tbodyId);
     if (!tbody || guildMembers.length === 0) return;
 
-    // showRanking이 true인 멤버만 필터링
-    let visibleMembers = guildMembers.filter(m => m.showRanking !== false);
+    // visibility === 0(모두공개)인 멤버만 필터링
+    let visibleMembers = guildMembers.filter(m => m.visibility === 0);
 
-    // 전투력 랭킹의 경우 showCombatPower도 체크
+    // 전투력 랭킹의 경우 visibility !== 2(비공개)도 체크
     if (scoreKey === 'combatScore') {
-        visibleMembers = visibleMembers.filter(m => m.showCombatPower !== false);
+        visibleMembers = visibleMembers.filter(m => m.visibility !== 2);
     }
 
     const sortedMembers = [...visibleMembers].sort((a, b) => b[scoreKey] - a[scoreKey]);
@@ -260,8 +260,9 @@ async function triggerRankingUpdate() {
 function openAddModal() {
     document.getElementById('addModal').classList.remove('hidden');
     document.getElementById('addCharacterName').value = '';
-    document.getElementById('addShowRanking').checked = true;
-    document.getElementById('addShowCombatPower').checked = true;
+    // 라디오 버튼 초기화 (모두공개 선택)
+    const defaultRadio = document.querySelector('input[name="addVisibility"][value="0"]');
+    if (defaultRadio) defaultRadio.checked = true;
     document.getElementById('addStatus').classList.add('hidden');
     document.getElementById('addBtn').disabled = false;
     document.getElementById('addBtn').textContent = '등록';
@@ -348,8 +349,8 @@ function delay(ms) {
 async function addCharacter() {
     const nameInput = document.getElementById('addCharacterName');
     const characterName = nameInput.value.trim();
-    const showRanking = document.getElementById('addShowRanking').checked;
-    const showCombatPower = document.getElementById('addShowCombatPower').checked;
+    const visibilityRadio = document.querySelector('input[name="addVisibility"]:checked');
+    const visibility = visibilityRadio ? parseInt(visibilityRadio.value) : 0;
     const btn = document.getElementById('addBtn');
 
     if (!characterName) {
@@ -403,8 +404,7 @@ async function addCharacter() {
             .from('ranking_characters')
             .insert({
                 name: characterName,
-                show_ranking: showRanking,
-                show_combat_power: showCombatPower
+                visibility: visibility
             });
 
         if (error) throw error;

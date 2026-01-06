@@ -31,10 +31,11 @@ function findInRanking(nickname) {
 
     const member = rankingCache.members.find(m => m.name === nickname);
     if (member) {
+        // visibility: 0=모두공개, 1=전투력만공개, 2=비공개
         return {
             combatPower: member.combatScore,
             className: member.class,
-            showCombatPower: member.showCombatPower !== false
+            visibility: member.visibility ?? 0
         };
     }
     return null;
@@ -43,9 +44,10 @@ function findInRanking(nickname) {
 // 파티 페이지용: 전투력 비공개 여부 확인하여 표시값 반환
 function getDisplayPower(nickname, combatPower) {
     // ranking.json에서 해당 닉네임의 설정 조회
+    // visibility: 0=모두공개, 1=전투력만공개, 2=비공개
     if (rankingCache && rankingCache.members) {
         const member = rankingCache.members.find(m => m.name === nickname);
-        if (member && member.showCombatPower === false) {
+        if (member && member.visibility === 2) {
             return '비공개';
         }
     }
@@ -115,8 +117,8 @@ async function fetchCombatPower(nicknameInputId, powerInputId, classInputId = nu
     const cachedData = findInRanking(nickname);
 
     if (cachedData) {
-        // 전투력 비공개 설정 확인
-        if (cachedData.showCombatPower === false) {
+        // 전투력 비공개 설정 확인 (visibility: 2=비공개)
+        if (cachedData.visibility === 2) {
             powerInput.type = 'text';
             powerInput.value = '비공개';
             powerInput.placeholder = '비공개';
@@ -132,7 +134,7 @@ async function fetchCombatPower(nicknameInputId, powerInputId, classInputId = nu
         if (classInput && cachedData.className) {
             classInput.value = cachedData.className;
         }
-        console.log(`[전투력] ${nickname}: ranking.json에서 조회 (${cachedData.combatPower}, ${cachedData.className}, 공개: ${cachedData.showCombatPower})`);
+        console.log(`[전투력] ${nickname}: ranking.json에서 조회 (${cachedData.combatPower}, ${cachedData.className}, visibility: ${cachedData.visibility})`);
         return;
     }
 

@@ -198,7 +198,7 @@ async function fetchFromMabiMobi(characterName) {
 async function fetchCharacterList() {
     const { data, error } = await supabase
         .from('ranking_characters')
-        .select('name, show_ranking, show_combat_power')
+        .select('name, visibility')
         .order('created_at', { ascending: true });
 
     if (error) {
@@ -206,10 +206,10 @@ async function fetchCharacterList() {
         return [];
     }
 
+    // visibility: 0=모두공개, 1=전투력만공개, 2=비공개
     return data.map(row => ({
         name: row.name,
-        showRanking: row.show_ranking !== false,
-        showCombatPower: row.show_combat_power !== false
+        visibility: row.visibility ?? 0
     }));
 }
 
@@ -273,8 +273,7 @@ async function main() {
                     lifeScore        : lifeScore,
                     charmScore       : charmScore,
                     source           : 'mobinogi.net',
-                    showRanking      : charInfo.showRanking,
-                    showCombatPower  : charInfo.showCombatPower
+                    visibility       : charInfo.visibility
                 });
 
                 console.log(`[성공] ${name} - ${user.class_name} (${user.server_rank}위) [mobinogi.net]`);
@@ -305,8 +304,7 @@ async function main() {
             const result = await fetchFromMabiMobi(name);
             if (result) {
                 // 설정값 추가
-                result.showRanking = charInfo.showRanking;
-                result.showCombatPower = charInfo.showCombatPower;
+                result.visibility = charInfo.visibility;
                 members.push(result);
                 console.log(`[성공] ${name} - ${result.class} (${result.rank}위) [mabimobi.life]`);
             } else {

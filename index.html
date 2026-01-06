@@ -151,19 +151,23 @@
                 <label>캐릭터 닉네임</label>
                 <input type="text" id="addCharacterName" placeholder="등록할 캐릭터 닉네임을 입력하세요">
             </div>
-            <div class="form-group checkbox-group">
-                <label class="checkbox-label">
-                    <input type="checkbox" id="addShowRanking" checked>
-                    <span>랭킹 공개</span>
-                </label>
-                <p class="checkbox-hint">비활성화 시 랭킹 페이지에 표시되지 않습니다</p>
-            </div>
-            <div class="form-group checkbox-group">
-                <label class="checkbox-label">
-                    <input type="checkbox" id="addShowCombatPower" checked>
-                    <span>전투력 공개</span>
-                </label>
-                <p class="checkbox-hint">비활성화 시 전투력이 "비공개"로 표시됩니다</p>
+            <div class="form-group radio-group">
+                <label>공개 설정</label>
+                <div class="radio-options">
+                    <label class="radio-label">
+                        <input type="radio" name="addVisibility" value="0" checked>
+                        <span>모두공개</span>
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="addVisibility" value="1">
+                        <span>전투력만공개</span>
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="addVisibility" value="2">
+                        <span>비공개</span>
+                    </label>
+                </div>
+                <p class="radio-hint">모두공개: 랭킹+전투력 표시 / 전투력만공개: 랭킹X, 전투력O / 비공개: 모두X</p>
             </div>
             <div id="addStatus" class="status-message hidden"></div>
         </div>
