@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-01-06T12:10:09.993Z",
+  "updatedAt": "2026-01-06T13:18:31.806Z",
   "members": [
     {
       "name": "차력거인",
@@ -171,14 +171,14 @@
     },
     {
       "name": "시우쇠",
-      "rank": 7,
-      "rankDisplay": "7위",
+      "rank": 6,
+      "rankDisplay": "6위",
       "server": "라사",
       "class": "화염술사",
-      "totalScore": 152919,
-      "totalScoreDisplay": "152,919",
+      "totalScore": 152934,
+      "totalScoreDisplay": "152,934",
       "combatScore": 62273,
-      "lifeScore": 37476,
+      "lifeScore": 37491,
       "charmScore": 53170,
       "source": "mobinogi.net",
       "visibility": 0
