@@ -630,10 +630,37 @@ function toggleAccordion(id) {
 
 function getFilteredMembers() {
     const guildFilter = document.getElementById('filterGuild')?.value || '';
+    const classFilter = document.getElementById('filterClass')?.value || '';
+    const timeFilter = document.getElementById('filterTime')?.value || '';
     const tagFilter = document.getElementById('filterTag')?.value || '';
 
     return allMembers.filter(m => {
+        // 길드 필터
         if (guildFilter && m.guild !== guildFilter) return false;
+
+        // 직업 필터
+        if (classFilter && m.class !== classFilter) return false;
+
+        // 시간대 필터
+        if (timeFilter) {
+            const [startRange, endRange] = timeFilter.split('-').map(Number);
+            const hasTimeInRange = m.preferredTimes?.some(pt => {
+                if (!pt.start || !pt.end) return false;
+                const startHour = parseInt(pt.start.split(':')[0]);
+                const endHour = parseInt(pt.end.split(':')[0]);
+
+                // 시간대가 필터 범위와 겹치는지 확인
+                if (startHour <= endHour) {
+                    return startHour < endRange && endHour >= startRange;
+                } else {
+                    // 자정을 넘는 경우 (예: 22:00 ~ 02:00)
+                    return startHour < endRange || endHour >= startRange;
+                }
+            });
+            if (!hasTimeInRange) return false;
+        }
+
+        // 태그 필터
         if (tagFilter) {
             const hasThatTag = m.preferredTimes?.some(pt =>
                 pt.tags && pt.tags.includes(tagFilter)
@@ -646,15 +673,44 @@ function getFilteredMembers() {
 
 function setupFilters() {
     const guildSelect = document.getElementById('filterGuild');
+    const classSelect = document.getElementById('filterClass');
+    const timeSelect = document.getElementById('filterTime');
     const tagSelect = document.getElementById('filterTag');
 
+    // 직업 필터 동적 생성
+    populateClassFilter();
+
     if (guildSelect) guildSelect.addEventListener('change', renderMembersList);
+    if (classSelect) classSelect.addEventListener('change', renderMembersList);
+    if (timeSelect) timeSelect.addEventListener('change', renderMembersList);
     if (tagSelect) tagSelect.addEventListener('change', renderMembersList);
 
     let resizeTimeout;
     window.addEventListener('resize', () => {
         clearTimeout(resizeTimeout);
         resizeTimeout = setTimeout(renderMembersList, 100);
+    });
+}
+
+function populateClassFilter() {
+    const classSelect = document.getElementById('filterClass');
+    if (!classSelect) return;
+
+    // 데이터에서 모든 직업 수집
+    const classes = new Set();
+    allMembers.forEach(m => {
+        if (m.class) classes.add(m.class);
+    });
+
+    // 가나다순 정렬
+    const sortedClasses = Array.from(classes).sort((a, b) => a.localeCompare(b, 'ko'));
+
+    // 옵션 추가
+    sortedClasses.forEach(cls => {
+        const option = document.createElement('option');
+        option.value = cls;
+        option.textContent = cls;
+        classSelect.appendChild(option);
     });
 }
 
