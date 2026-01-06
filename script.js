@@ -368,10 +368,10 @@ function showStatus(elementId, message, type) {
     el.classList.remove('hidden');
 }
 
-// 캐릭터 존재 확인 (API 호출 - CORS 프록시 사용, 5초 타임아웃)
+// 캐릭터 존재 확인 (API 호출 - CORS 프록시 사용, 10초 타임아웃)
 async function verifyCharacterExists(characterName, signal) {
     const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), 5000);
+    const timeoutId = setTimeout(() => controller.abort(), 10000);
     let userCancelled = false;
 
     // 외부 signal이 abort되면 내부 controller도 abort
@@ -403,7 +403,7 @@ async function verifyCharacterExists(characterName, signal) {
                 console.log('캐릭터 확인 취소됨 (사용자)');
                 throw error; // 사용자 취소만 상위로 전파
             } else {
-                console.log('캐릭터 확인 타임아웃 (5초)');
+                console.log('캐릭터 확인 타임아웃 (10초)');
             }
         } else {
             console.error('캐릭터 확인 오류:', error);
