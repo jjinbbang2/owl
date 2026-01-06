@@ -555,7 +555,6 @@ function renderTimeRanges(ranges) {
     container.innerHTML = '';
 
     if (!ranges || ranges.length === 0) {
-        addTimeRange();
         return;
     }
 
