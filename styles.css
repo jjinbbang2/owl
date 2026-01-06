@@ -1899,7 +1899,7 @@ body {
 
 .member-main {
     display: grid;
-    grid-template-columns: 40px 1fr 80px 180px 90px 90px 60px;
+    grid-template-columns: 40px 1fr 80px auto 80px 60px;
     align-items: center;
     gap: 12px;
 }
@@ -1973,6 +1973,32 @@ body {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+
+.member-times-tags {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.time-tag-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+
+.time-range {
+    font-size: 0.85rem;
+    color: var(--text-light);
+    white-space: nowrap;
+}
+
+.tag-badge {
+    font-size: 0.7rem;
+    padding: 2px 6px;
+    border-radius: 8px;
+    white-space: nowrap;
 }
 
 .member-tag {

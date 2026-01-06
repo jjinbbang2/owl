@@ -189,8 +189,7 @@ function renderMembersList() {
 }
 
 function renderDesktopCard(member) {
-    const timesDisplay = formatPreferredTimes(member.preferredTimes);
-    const tagsDisplay = formatAllTags(member.preferredTimes);
+    const timesWithTags = formatTimesWithTagsDesktop(member.preferredTimes);
     const visibilityText = getVisibilityText(member.visibility);
     const guildClass = member.guild === '부엉이' ? 'guild-owl' : member.guild === '부엉국' ? 'guild-nation' : 'guild-none';
 
@@ -203,8 +202,7 @@ function renderDesktopCard(member) {
                 <span class="member-class">${member.class || '-'}</span>
             </div>
             <span class="member-guild ${guildClass}">${member.guild}</span>
-            <span class="member-times" title="${timesDisplay || '미설정'}">${timesDisplay || '-'}</span>
-            <span class="member-tags-cell">${tagsDisplay || '-'}</span>
+            <div class="member-times-tags">${timesWithTags || '-'}</div>
             <span class="member-visibility">${visibilityText}</span>
             <button class="btn-edit-member" onclick="openEditModal('${escapeHtml(member.name)}')">수정</button>
         </div>
@@ -645,6 +643,17 @@ function formatPreferredTimesWithTags(times) {
         const tagsStr = t.tags && t.tags.length > 0 ? `(${t.tags.join(',')})` : '';
         return `${t.start}~${t.end}${tagsStr}`;
     }).join('<br>');
+}
+
+function formatTimesWithTagsDesktop(times) {
+    if (!times || times.length === 0) return '';
+    return times.map(t => {
+        const timeStr = `${t.start}~${t.end}`;
+        const tagsStr = t.tags && t.tags.length > 0
+            ? t.tags.map(tag => `<span class="tag-badge tag-${tag}">${tag}</span>`).join('')
+            : '';
+        return `<div class="time-tag-row"><span class="time-range">${timeStr}</span>${tagsStr}</div>`;
+    }).join('');
 }
 
 function formatAllTags(times) {
