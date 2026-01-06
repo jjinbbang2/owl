@@ -1900,6 +1900,17 @@ body {
     align-items: center;
     justify-content: center;
     font-size: 1.2rem;
+    overflow: hidden;
+}
+
+.member-avatar .class-icon {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+}
+
+.member-avatar .class-icon-placeholder {
+    font-size: 1.2rem;
 }
 
 .member-info {
@@ -1936,6 +1947,11 @@ body {
 .guild-nation {
     background: rgba(122, 162, 247, 0.2);
     color: var(--accent-blue);
+}
+
+.guild-none {
+    background: rgba(255, 255, 255, 0.1);
+    color: #888;
 }
 
 .member-times {

@@ -17,19 +17,54 @@ let classDistChart = null;
 // 태그 목록
 const TAG_OPTIONS = ['무관', '평일', '주말', '공휴일제외', '공휴일만'];
 
-// 직업 아이콘 매핑
+// 길드 옵션
+const GUILD_OPTIONS = ['미설정', '부엉이', '부엉국'];
+
+// 직업 아이콘 매핑 (랭킹 페이지와 동일)
 const CLASS_ICONS = {
-    '전사': '⚔️',
-    '마법사': '🔮',
-    '궁수': '🏹',
-    '장궁병': '🎯',
-    '음유시인': '🎵',
-    '성기사': '🛡️',
-    '다크나이트': '⚫',
-    '비스트': '🐾',
-    '자이언트': '👊',
-    '인형술사': '🪆'
+    // 전사 계열
+    '견습 전사': 'https://lwi.nexon.com/m_mabinogim/brand/info/class/warrior_icon_1_65811EBD4BEC0285.png',
+    '전사'    : 'https://lwi.nexon.com/m_mabinogim/brand/info/class/warrior_icon_2_82FBE98DCDF420BB.png',
+    '대검전사' : 'https://lwi.nexon.com/m_mabinogim/brand/info/class/warrior_icon_3_753F0A05E1F5E2F8.png',
+    '검술사'  : 'https://lwi.nexon.com/m_mabinogim/brand/info/class/warrior_icon_4_C1812DE239AB0EC8.png',
+    // 궁수 계열
+    '견습 궁수': 'https://lwi.nexon.com/m_mabinogim/brand/info/class/archer_icon_1_6C95C482C969A5DA.png',
+    '궁수'    : 'https://lwi.nexon.com/m_mabinogim/brand/info/class/archer_icon_2_A336FF08A4F57E5A.png',
+    '석궁사수' : 'https://lwi.nexon.com/m_mabinogim/brand/info/class/archer_icon_3_3406C778F7F364AF.png',
+    '장궁병'  : 'https://lwi.nexon.com/m_mabinogim/brand/info/class/archer_icon_4_D99A386A246CC076.png',
+    // 마법사 계열
+    '견습 마법사': 'https://lwi.nexon.com/m_mabinogim/brand/info/class/mage_icon_1_3399B9475E5FD2BA.png',
+    '마법사'  : 'https://lwi.nexon.com/m_mabinogim/brand/info/class/mage_icon_2_8A3C50B41D1A1A9E.png',
+    '화염술사' : 'https://lwi.nexon.com/m_mabinogim/brand/info/class/mage_icon_3_A721D69252722705.png',
+    '빙결술사' : 'https://lwi.nexon.com/m_mabinogim/brand/info/class/mage_icon_4_A4B1DBBE4891A929.png',
+    '전격술사' : 'https://lwi.nexon.com/m_mabinogim/brand/info/class/mage_icon_5_EB114856CBE160D2.png',
+    // 힐러 계열
+    '견습 힐러': 'https://lwi.nexon.com/m_mabinogim/brand/info/class/healer_icon_1_697BB71C01BA77C7.png',
+    '힐러'    : 'https://lwi.nexon.com/m_mabinogim/brand/info/class/healer_icon_2_15972371DB794119.png',
+    '사제'    : 'https://lwi.nexon.com/m_mabinogim/brand/info/class/healer_icon_3_5F6E5C85FD70A719.png',
+    '수도사'  : 'https://lwi.nexon.com/m_mabinogim/brand/info/class/healer_icon_4_D9E416836A696233.png',
+    '암흑술사' : 'https://lwi.nexon.com/m_mabinogim/brand/info/class/healer_icon_5_589CF9A334A77B91.png',
+    // 음유시인 계열
+    '견습 음유시인': 'https://lwi.nexon.com/m_mabinogim/brand/info/class/bard_icon_1_410D309C3257989E.png',
+    '음유시인' : 'https://lwi.nexon.com/m_mabinogim/brand/info/class/bard_icon_2_AD3BA497BA26AFE8.png',
+    '댄서'    : 'https://lwi.nexon.com/m_mabinogim/brand/info/class/bard_icon_3_C866D0245C7D57D4.png',
+    '악사'    : 'https://lwi.nexon.com/m_mabinogim/brand/info/class/bard_icon_4_A3E490DA005190F0.png',
+    // 도적 계열
+    '견습 도적': 'https://lwi.nexon.com/m_mabinogim/brand/info/class/thief_icon_1_A8450BD19314134E.png',
+    '도적'    : 'https://lwi.nexon.com/m_mabinogim/brand/info/class/thief_icon_2_A8450BD19314134E.png',
+    '격투가'  : 'https://lwi.nexon.com/m_mabinogim/brand/info/class/thief_icon_3_A8450BD19314134E.png',
+    '듀얼블레이드': 'https://lwi.nexon.com/m_mabinogim/brand/info/class/thief_icon_4_A8450BD19314134E.png'
 };
+
+const ICON_VERSION = 'v2';
+
+function getClassIcon(className) {
+    const iconUrl = CLASS_ICONS[className];
+    if (iconUrl) {
+        return `<img src="${iconUrl}?${ICON_VERSION}" alt="${className}" class="class-icon">`;
+    }
+    return `<span class="class-icon-placeholder">👤</span>`;
+}
 
 // ===== 초기화 =====
 document.addEventListener('DOMContentLoaded', async function() {
@@ -85,15 +120,17 @@ async function loadMemberProfiles() {
 }
 
 function mergeData(rankingMembers, profiles) {
-    return rankingMembers.map(member => {
+    const merged = rankingMembers.map(member => {
         const profile = profiles.find(p => p.character_name === member.name);
         return {
             ...member,
-            guild: profile?.guild || '부엉이',
+            guild: profile?.guild || '미설정',
             preferredTimes: profile?.preferred_times || [],
             hasProfile: !!profile
         };
     });
+    // 가나다순 정렬
+    return merged.sort((a, b) => a.name.localeCompare(b.name, 'ko'));
 }
 
 // ===== 명단 렌더링 =====
@@ -117,17 +154,17 @@ function renderDesktopCard(member) {
     const timesDisplay = formatPreferredTimes(member.preferredTimes);
     const tagsDisplay = formatAllTags(member.preferredTimes);
     const visibilityText = getVisibilityText(member.visibility);
-    const classIcon = CLASS_ICONS[member.class] || '👤';
+    const guildClass = member.guild === '부엉이' ? 'guild-owl' : member.guild === '부엉국' ? 'guild-nation' : 'guild-none';
 
     return `
     <div class="member-card">
         <div class="member-main">
-            <div class="member-avatar">${classIcon}</div>
+            <div class="member-avatar">${getClassIcon(member.class)}</div>
             <div class="member-info">
                 <span class="member-name">${escapeHtml(member.name)}</span>
                 <span class="member-class">${member.class || '-'}</span>
             </div>
-            <span class="member-guild ${member.guild === '부엉이' ? 'guild-owl' : 'guild-nation'}">${member.guild}</span>
+            <span class="member-guild ${guildClass}">${member.guild}</span>
             <span class="member-times" title="${timesDisplay || '미설정'}">${timesDisplay || '-'}</span>
             <span class="member-tags-cell">${tagsDisplay || '-'}</span>
             <span class="member-visibility">${visibilityText}</span>
@@ -139,19 +176,19 @@ function renderDesktopCard(member) {
 function renderMobileCard(member) {
     const timesDisplay = formatPreferredTimesWithTags(member.preferredTimes);
     const visibilityText = getVisibilityText(member.visibility);
-    const classIcon = CLASS_ICONS[member.class] || '👤';
+    const guildClass = member.guild === '부엉이' ? 'guild-owl' : member.guild === '부엉국' ? 'guild-nation' : 'guild-none';
     const safeId = member.name.replace(/[^a-zA-Z0-9가-힣]/g, '_');
 
     return `
     <div class="member-card-mobile">
         <div class="member-header-mobile" onclick="toggleAccordion('${safeId}')">
             <div class="member-main-info">
-                <div class="member-avatar">${classIcon}</div>
+                <div class="member-avatar">${getClassIcon(member.class)}</div>
                 <div class="member-info">
                     <span class="member-name">${escapeHtml(member.name)}</span>
                     <span class="member-class">${member.class || '-'}</span>
                 </div>
-                <span class="member-guild ${member.guild === '부엉이' ? 'guild-owl' : 'guild-nation'}">${member.guild}</span>
+                <span class="member-guild ${guildClass}">${member.guild}</span>
             </div>
             <span class="accordion-icon" id="icon-${safeId}">▼</span>
         </div>

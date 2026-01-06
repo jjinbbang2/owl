@@ -85,6 +85,7 @@
             <div class="filter-controls">
                 <select id="filterGuild">
                     <option value="">전체 길드</option>
+                    <option value="미설정">미설정</option>
                     <option value="부엉이">부엉이</option>
                     <option value="부엉국">부엉국</option>
                 </select>
@@ -120,7 +121,11 @@
                 <label>길드</label>
                 <div class="radio-options">
                     <label class="radio-label">
-                        <input type="radio" name="editGuild" value="부엉이" checked>
+                        <input type="radio" name="editGuild" value="미설정" checked>
+                        <span>미설정</span>
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="editGuild" value="부엉이">
                         <span>부엉이</span>
                     </label>
                     <label class="radio-label">
