@@ -1780,10 +1780,26 @@ body {
 .radio-label {
     display: inline-flex;
     align-items: center;
-    gap: 6px;
+    gap: 8px;
     cursor: pointer;
     font-size: 0.95rem;
     line-height: 1;
+    padding: 8px 12px;
+    border-radius: 6px;
+    border: 1px solid #444;
+    background: rgba(255, 255, 255, 0.03);
+    transition: all 0.2s ease;
+}
+
+.radio-label:hover {
+    border-color: var(--primary-gold);
+    background: rgba(212, 175, 55, 0.1);
+}
+
+.radio-label:has(input[type="radio"]:checked) {
+    border-color: var(--primary-gold);
+    background: rgba(212, 175, 55, 0.2);
+    color: var(--primary-gold);
 }
 
 .radio-label input[type="radio"] {
@@ -1792,11 +1808,14 @@ body {
     margin: 0;
     accent-color: var(--primary-gold);
     cursor: pointer;
-    vertical-align: middle;
 }
 
 .radio-label span {
-    vertical-align: middle;
+    font-weight: 400;
+}
+
+.radio-label:has(input[type="radio"]:checked) span {
+    font-weight: 500;
 }
 
 .radio-hint {
