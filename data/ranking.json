@@ -1,34 +1,6 @@
 {
-  "updatedAt": "2026-01-06T08:09:10.612Z",
+  "updatedAt": "2026-01-06T08:38:19.270Z",
   "members": [
-    {
-      "name": "운정",
-      "rank": 25935,
-      "rankDisplay": "25,935위",
-      "server": "라사",
-      "class": "마법사",
-      "totalScore": 88200,
-      "totalScoreDisplay": "88,200",
-      "combatScore": 58837,
-      "lifeScore": 10365,
-      "charmScore": 18998,
-      "source": "mobinogi.net",
-      "visibility": 0
-    },
-    {
-      "name": "새벽숲부엉이",
-      "rank": 5441,
-      "rankDisplay": "5,441위",
-      "server": "라사",
-      "class": "듀얼블레이드",
-      "totalScore": 114188,
-      "totalScoreDisplay": "114,188",
-      "combatScore": 54137,
-      "lifeScore": 20368,
-      "charmScore": 39683,
-      "source": "mobinogi.net",
-      "visibility": 0
-    },
     {
       "name": "로거니우스",
       "rank": 913,
@@ -40,6 +12,20 @@
       "combatScore": 58326,
       "lifeScore": 25952,
       "charmScore": 47064,
+      "source": "mobinogi.net",
+      "visibility": 0
+    },
+    {
+      "name": "운정",
+      "rank": 25935,
+      "rankDisplay": "25,935위",
+      "server": "라사",
+      "class": "마법사",
+      "totalScore": 88200,
+      "totalScoreDisplay": "88,200",
+      "combatScore": 58837,
+      "lifeScore": 10365,
+      "charmScore": 18998,
       "source": "mobinogi.net",
       "visibility": 0
     },
@@ -110,6 +96,20 @@
       "combatScore": 53897,
       "lifeScore": 24361,
       "charmScore": 22179,
+      "source": "mobinogi.net",
+      "visibility": 0
+    },
+    {
+      "name": "새벽숲부엉이",
+      "rank": 5441,
+      "rankDisplay": "5,441위",
+      "server": "라사",
+      "class": "듀얼블레이드",
+      "totalScore": 114188,
+      "totalScoreDisplay": "114,188",
+      "combatScore": 54137,
+      "lifeScore": 20368,
+      "charmScore": 39683,
       "source": "mobinogi.net",
       "visibility": 0
     },
@@ -686,6 +686,20 @@
       "charmScore": 6540,
       "source": "mobinogi.net",
       "visibility": 2
+    },
+    {
+      "name": "별고양이",
+      "rank": 2,
+      "rankDisplay": "2위",
+      "server": "라사",
+      "class": "수도사",
+      "totalScore": 156152,
+      "totalScoreDisplay": "156,152",
+      "combatScore": 70377,
+      "lifeScore": 32475,
+      "charmScore": 53300,
+      "source": "mobinogi.net",
+      "visibility": 0
     }
   ]
 }
