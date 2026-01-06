@@ -349,15 +349,14 @@ function closeDeleteModal() {
     document.getElementById('deleteModal').classList.add('hidden');
 }
 
-// 모달 외부 클릭 시 닫기
+// 모달 외부 클릭 시 닫기 (모달 배경 직접 클릭한 경우만)
 document.addEventListener('click', function(e) {
-    if (e.target.classList.contains('modal')) {
-        // addModal인 경우 진행 중인 작업 취소
-        if (e.target.id === 'addModal') {
-            closeAddModal();
-        } else {
-            e.target.classList.add('hidden');
-        }
+    // e.target이 .modal 클래스를 가진 요소 자체인 경우만 처리
+    // (모달 내부 요소인 .modal-content 등은 .modal 클래스가 없음)
+    if (e.target.id === 'addModal' && e.target.classList.contains('modal')) {
+        closeAddModal();
+    } else if (e.target.id === 'deleteModal' && e.target.classList.contains('modal')) {
+        closeDeleteModal();
     }
 });
 
@@ -373,10 +372,14 @@ function showStatus(elementId, message, type) {
 async function verifyCharacterExists(characterName, signal) {
     const controller = new AbortController();
     const timeoutId = setTimeout(() => controller.abort(), 5000);
+    let userCancelled = false;
 
     // 외부 signal이 abort되면 내부 controller도 abort
     if (signal) {
-        signal.addEventListener('abort', () => controller.abort());
+        signal.addEventListener('abort', () => {
+            userCancelled = true;
+            controller.abort();
+        });
     }
 
     try {
@@ -396,8 +399,12 @@ async function verifyCharacterExists(characterName, signal) {
     } catch (error) {
         clearTimeout(timeoutId);
         if (error.name === 'AbortError') {
-            console.log('캐릭터 확인 취소됨');
-            throw error; // 취소는 상위로 전파
+            if (userCancelled) {
+                console.log('캐릭터 확인 취소됨 (사용자)');
+                throw error; // 사용자 취소만 상위로 전파
+            } else {
+                console.log('캐릭터 확인 타임아웃 (5초)');
+            }
         } else {
             console.error('캐릭터 확인 오류:', error);
         }
