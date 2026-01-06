@@ -354,13 +354,17 @@ function showStatus(elementId, message, type) {
     el.classList.remove('hidden');
 }
 
-// 캐릭터 존재 확인 (API 호출 - CORS 프록시 사용)
+// 캐릭터 존재 확인 (API 호출 - CORS 프록시 사용, 5초 타임아웃)
 async function verifyCharacterExists(characterName) {
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 5000);
+
     try {
         const url = `${VERIFY_API_URL}${encodeURIComponent(characterName)}`;
         const proxyUrl = `https://api.allorigins.win/raw?url=${encodeURIComponent(url)}`;
 
-        const response = await fetch(proxyUrl);
+        const response = await fetch(proxyUrl, { signal: controller.signal });
+        clearTimeout(timeoutId);
         if (!response.ok) return false;
 
         const html = await response.text();
@@ -370,7 +374,12 @@ async function verifyCharacterExists(characterName) {
         const data = JSON.parse(match[1]);
         return data.userMetaData && data.userMetaData.length > 0;
     } catch (error) {
-        console.error('캐릭터 확인 오류:', error);
+        clearTimeout(timeoutId);
+        if (error.name === 'AbortError') {
+            console.error('캐릭터 확인 타임아웃 (5초)');
+        } else {
+            console.error('캐릭터 확인 오류:', error);
+        }
         return false;
     }
 }
