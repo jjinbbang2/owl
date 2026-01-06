@@ -1899,7 +1899,7 @@ body {
 
 .member-main {
     display: grid;
-    grid-template-columns: 40px 1fr 80px auto 80px 60px;
+    grid-template-columns: 40px 1fr 1fr 2fr 1fr 60px;
     align-items: center;
     gap: 12px;
 }
@@ -1943,6 +1943,7 @@ body {
 .member-class {
     font-size: 0.8rem;
     color: #888;
+    text-align: left;
 }
 
 .member-guild {
