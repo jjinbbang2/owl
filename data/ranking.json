@@ -1,34 +1,6 @@
 {
-  "updatedAt": "2026-01-06T11:06:54.343Z",
+  "updatedAt": "2026-01-06T12:10:09.993Z",
   "members": [
-    {
-      "name": "풀뱅기사",
-      "rank": 5057,
-      "rankDisplay": "5,057위",
-      "server": "라사",
-      "class": "화염술사",
-      "totalScore": 115223,
-      "totalScoreDisplay": "115,223",
-      "combatScore": 57066,
-      "lifeScore": 26930,
-      "charmScore": 31227,
-      "source": "mobinogi.net",
-      "visibility": 0
-    },
-    {
-      "name": "루야쫑쫑",
-      "rank": 7823,
-      "rankDisplay": "7,823위",
-      "server": "라사",
-      "class": "대검전사",
-      "totalScore": 121916,
-      "totalScoreDisplay": "121,916",
-      "combatScore": 59344,
-      "lifeScore": 24982,
-      "charmScore": 37590,
-      "source": "mobinogi.net",
-      "visibility": 0
-    },
     {
       "name": "차력거인",
       "rank": 12053,
@@ -114,6 +86,34 @@
       "visibility": 0
     },
     {
+      "name": "풀뱅기사",
+      "rank": 5057,
+      "rankDisplay": "5,057위",
+      "server": "라사",
+      "class": "화염술사",
+      "totalScore": 115223,
+      "totalScoreDisplay": "115,223",
+      "combatScore": 57066,
+      "lifeScore": 26930,
+      "charmScore": 31227,
+      "source": "mobinogi.net",
+      "visibility": 0
+    },
+    {
+      "name": "루야쫑쫑",
+      "rank": 7823,
+      "rankDisplay": "7,823위",
+      "server": "라사",
+      "class": "대검전사",
+      "totalScore": 121916,
+      "totalScoreDisplay": "121,916",
+      "combatScore": 59344,
+      "lifeScore": 24982,
+      "charmScore": 37590,
+      "source": "mobinogi.net",
+      "visibility": 0
+    },
+    {
       "name": "풀뱅맹구",
       "rank": 23727,
       "rankDisplay": "23,727위",
@@ -175,10 +175,10 @@
       "rankDisplay": "7위",
       "server": "라사",
       "class": "화염술사",
-      "totalScore": 152916,
-      "totalScoreDisplay": "152,916",
-      "combatScore": 62272,
-      "lifeScore": 37474,
+      "totalScore": 152919,
+      "totalScoreDisplay": "152,919",
+      "combatScore": 62273,
+      "lifeScore": 37476,
       "charmScore": 53170,
       "source": "mobinogi.net",
       "visibility": 0
