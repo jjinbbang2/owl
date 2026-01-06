@@ -315,7 +315,6 @@ async function saveProfile() {
 
         await loadAllData();
         renderMembersList();
-        renderCharts();
         closeEditModal();
         alert2('프로필이 저장되었습니다.', 'success');
     } catch (error) {
