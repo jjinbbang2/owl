@@ -378,17 +378,18 @@ function renderClassPowerChart() {
         },
         options: {
             responsive: true,
-            maintainAspectRatio: true,
+            maintainAspectRatio: false,
+            indexAxis: 'y',
             plugins: { legend: { display: false } },
             scales: {
-                y: {
+                x: {
                     beginAtZero: true,
                     ticks: { color: '#888' },
                     grid: { color: 'rgba(255,255,255,0.05)' },
                     title: { display: true, text: '전투력', color: '#888' }
                 },
-                x: {
-                    ticks: { color: '#ccc', maxRotation: 45, minRotation: 45 },
+                y: {
+                    ticks: { color: '#ccc' },
                     grid: { display: false }
                 }
             }
