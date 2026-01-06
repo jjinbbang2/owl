@@ -252,10 +252,13 @@ function renderTimeChart() {
     const ctx = canvas.getContext('2d');
     if (timeChart) timeChart.destroy();
 
+    // 1시간 단위 레이블 (0시~23시)
+    const labels = Array.from({length: 24}, (_, i) => `${i}`);
+
     timeChart = new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: Array.from({length: 24}, (_, i) => `${i}시`),
+            labels: labels,
             datasets: [{
                 label: '활동 가능 인원',
                 data: hourCounts,
@@ -269,8 +272,17 @@ function renderTimeChart() {
             maintainAspectRatio: true,
             plugins: { legend: { display: false } },
             scales: {
-                y: { beginAtZero: true, ticks: { stepSize: 1, color: '#888' }, grid: { color: 'rgba(255,255,255,0.05)' } },
-                x: { ticks: { color: '#888', maxRotation: 45, minRotation: 45 }, grid: { display: false } }
+                y: {
+                    beginAtZero: true,
+                    ticks: { stepSize: 1, color: '#888' },
+                    grid: { color: 'rgba(255,255,255,0.05)' },
+                    title: { display: true, text: '인원', color: '#888' }
+                },
+                x: {
+                    ticks: { color: '#888' },
+                    grid: { display: false },
+                    title: { display: true, text: '시간', color: '#888' }
+                }
             }
         }
     });
@@ -327,22 +339,32 @@ function renderClassPowerChart() {
     const canvas = document.getElementById('classPowerChart');
     if (!canvas) return;
 
+    // 모든 직업 목록 (최종 전직 기준)
+    const ALL_CLASSES = [
+        '검술사', '장궁병', '빙결술사', '화염술사', '전격술사',
+        '암흑술사', '수도사', '악사', '댄서', '듀얼블레이드', '격투가'
+    ];
+
     const visibleMembers = allMembers.filter(m => m.visibility !== 2 && m.combatScore);
     const classStats = {};
 
-    visibleMembers.forEach(member => {
-        if (!member.class) return;
-        if (!classStats[member.class]) {
-            classStats[member.class] = { total: 0, count: 0 };
-        }
-        classStats[member.class].total += member.combatScore;
-        classStats[member.class].count++;
+    // 모든 직업 초기화
+    ALL_CLASSES.forEach(cls => {
+        classStats[cls] = { total: 0, count: 0 };
     });
 
-    const labels = Object.keys(classStats).sort((a, b) =>
-        (classStats[b].total / classStats[b].count) - (classStats[a].total / classStats[a].count)
+    visibleMembers.forEach(member => {
+        if (!member.class) return;
+        if (classStats[member.class]) {
+            classStats[member.class].total += member.combatScore;
+            classStats[member.class].count++;
+        }
+    });
+
+    const labels = ALL_CLASSES;
+    const averages = labels.map(cls =>
+        classStats[cls].count > 0 ? Math.round(classStats[cls].total / classStats[cls].count) : 0
     );
-    const averages = labels.map(cls => Math.round(classStats[cls].total / classStats[cls].count));
 
     const ctx = canvas.getContext('2d');
     if (classPowerChart) classPowerChart.destroy();
@@ -362,11 +384,18 @@ function renderClassPowerChart() {
         options: {
             responsive: true,
             maintainAspectRatio: true,
-            indexAxis: 'y',
             plugins: { legend: { display: false } },
             scales: {
-                x: { beginAtZero: true, ticks: { color: '#888' }, grid: { color: 'rgba(255,255,255,0.05)' } },
-                y: { ticks: { color: '#ccc' }, grid: { display: false } }
+                y: {
+                    beginAtZero: true,
+                    ticks: { color: '#888' },
+                    grid: { color: 'rgba(255,255,255,0.05)' },
+                    title: { display: true, text: '전투력', color: '#888' }
+                },
+                x: {
+                    ticks: { color: '#ccc', maxRotation: 45, minRotation: 45 },
+                    grid: { display: false }
+                }
             }
         }
     });
