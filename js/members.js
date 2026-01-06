@@ -521,7 +521,7 @@ function renderTimeRanges(ranges) {
     });
 }
 
-function addTimeRange(start = '20:00', end = '23:00', tags = ['무관']) {
+function addTimeRange(start = '20:00', end = '23:00', tags = []) {
     const container = document.getElementById('timeRangeContainer');
     if (!container) return;
 
