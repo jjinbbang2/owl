@@ -1864,6 +1864,7 @@ body {
 /* 명단 섹션 */
 .members-section {
     margin-top: 30px;
+    padding-bottom: 100px;
 }
 
 .filter-controls {
