@@ -80,7 +80,8 @@ async function loadAllData() {
     try {
         rankingData = await loadRankingJson();
         profilesData = await loadMemberProfiles();
-        allMembers = mergeData(rankingData?.members || [], profilesData);
+        const visibilityData = await loadVisibilityData();
+        allMembers = mergeData(rankingData?.members || [], profilesData, visibilityData);
         console.log('[명단] 데이터 로드 완료:', allMembers.length, '명');
     } catch (error) {
         console.error('[명단] 데이터 로드 실패:', error);
@@ -119,13 +120,31 @@ async function loadMemberProfiles() {
     }
 }
 
-function mergeData(rankingMembers, profiles) {
+async function loadVisibilityData() {
+    try {
+        const { data, error } = await supabase
+            .from('ranking_characters')
+            .select('name, visibility');
+        if (error) {
+            console.error('[ranking_characters] visibility 로드 실패:', error);
+            return [];
+        }
+        return data || [];
+    } catch (error) {
+        console.error('[ranking_characters] visibility 로드 실패:', error);
+        return [];
+    }
+}
+
+function mergeData(rankingMembers, profiles, visibilityData) {
     const merged = rankingMembers.map(member => {
         const profile = profiles.find(p => p.character_name === member.name);
+        const visRecord = visibilityData.find(v => v.name === member.name);
         return {
             ...member,
             guild: profile?.guild || '미설정',
             preferredTimes: profile?.preferred_times || [],
+            visibility: visRecord?.visibility ?? member.visibility ?? 0,
             hasProfile: !!profile
         };
     });
@@ -468,7 +487,7 @@ async function saveProfile() {
     const visibilityRadio = document.querySelector('input[name="editVisibility"]:checked');
 
     if (!guildRadio || !visibilityRadio) {
-        alert('모든 설정을 선택해주세요.');
+        alert2('모든 설정을 선택해주세요.');
         return;
     }
 
@@ -498,10 +517,10 @@ async function saveProfile() {
         renderMembersList();
         renderCharts();
         closeEditModal();
-        alert('프로필이 저장되었습니다.');
+        alert2('프로필이 저장되었습니다.', 'success');
     } catch (error) {
         console.error('저장 실패:', error);
-        alert('저장 실패: ' + error.message);
+        alert2('저장 실패: ' + error.message, 'error');
     }
 }
 
