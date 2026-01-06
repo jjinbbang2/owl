@@ -554,19 +554,14 @@ async function deleteCharacter() {
 
         if (error) throw error;
 
-        showStatus('deleteStatus', '캐릭터가 삭제되었습니다! 랭킹 데이터 갱신 중...', 'success');
+        showStatus('deleteStatus', '캐릭터가 삭제되었습니다!', 'success');
 
-        // 워크플로우 트리거
-        const triggered = await triggerRankingUpdate();
-        if (triggered) {
-            showStatus('deleteStatus', '캐릭터가 삭제되었습니다! 잠시 후 랭킹에 반영됩니다.', 'success');
-        } else {
-            showStatus('deleteStatus', '캐릭터가 삭제되었습니다! 다음 자동 업데이트 시 반영됩니다.', 'success');
-        }
+        // 워크플로우 트리거 (백그라운드)
+        triggerRankingUpdate();
 
         setTimeout(() => {
             closeDeleteModal();
-        }, 2000);
+        }, 1500);
 
     } catch (error) {
         showStatus('deleteStatus', '삭제 실패: ' + error.message, 'error');
