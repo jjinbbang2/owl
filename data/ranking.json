@@ -1,6 +1,48 @@
 {
-  "updatedAt": "2026-01-06T06:34:46.004Z",
+  "updatedAt": "2026-01-06T06:48:15.216Z",
   "members": [
+    {
+      "name": "운정",
+      "rank": 25935,
+      "rankDisplay": "25,935위",
+      "server": "라사",
+      "class": "마법사",
+      "totalScore": 88200,
+      "totalScoreDisplay": "88,200",
+      "combatScore": 58837,
+      "lifeScore": 10365,
+      "charmScore": 18998,
+      "source": "mobinogi.net",
+      "visibility": 0
+    },
+    {
+      "name": "새벽숲부엉이",
+      "rank": 5441,
+      "rankDisplay": "5,441위",
+      "server": "라사",
+      "class": "듀얼블레이드",
+      "totalScore": 114188,
+      "totalScoreDisplay": "114,188",
+      "combatScore": 54137,
+      "lifeScore": 20368,
+      "charmScore": 39683,
+      "source": "mobinogi.net",
+      "visibility": 0
+    },
+    {
+      "name": "로거니우스",
+      "rank": 913,
+      "rankDisplay": "913위",
+      "server": "라사",
+      "class": "장궁병",
+      "totalScore": 131342,
+      "totalScoreDisplay": "131,342",
+      "combatScore": 58326,
+      "lifeScore": 25952,
+      "charmScore": 47064,
+      "source": "mobinogi.net",
+      "visibility": 0
+    },
     {
       "name": "풀뱅기사",
       "rank": 5057,
@@ -68,48 +110,6 @@
       "combatScore": 53897,
       "lifeScore": 24361,
       "charmScore": 22179,
-      "source": "mobinogi.net",
-      "visibility": 0
-    },
-    {
-      "name": "새벽숲부엉이",
-      "rank": 5441,
-      "rankDisplay": "5,441위",
-      "server": "라사",
-      "class": "듀얼블레이드",
-      "totalScore": 114188,
-      "totalScoreDisplay": "114,188",
-      "combatScore": 54137,
-      "lifeScore": 20368,
-      "charmScore": 39683,
-      "source": "mobinogi.net",
-      "visibility": 0
-    },
-    {
-      "name": "로거니우스",
-      "rank": 913,
-      "rankDisplay": "913위",
-      "server": "라사",
-      "class": "장궁병",
-      "totalScore": 131342,
-      "totalScoreDisplay": "131,342",
-      "combatScore": 58326,
-      "lifeScore": 25952,
-      "charmScore": 47064,
-      "source": "mobinogi.net",
-      "visibility": 0
-    },
-    {
-      "name": "운정",
-      "rank": 25935,
-      "rankDisplay": "25,935위",
-      "server": "라사",
-      "class": "마법사",
-      "totalScore": 88200,
-      "totalScoreDisplay": "88,200",
-      "combatScore": 58837,
-      "lifeScore": 10365,
-      "charmScore": 18998,
       "source": "mobinogi.net",
       "visibility": 0
     },
@@ -587,7 +587,7 @@
       "lifeScore": 12149,
       "charmScore": 7621,
       "source": "mobinogi.net",
-      "visibility": 0
+      "visibility": 1
     },
     {
       "name": "시울림",
@@ -685,7 +685,7 @@
       "lifeScore": 10352,
       "charmScore": 6540,
       "source": "mobinogi.net",
-      "visibility": 0
+      "visibility": 2
     }
   ]
 }
