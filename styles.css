@@ -1899,7 +1899,7 @@ body {
 
 .member-main {
     display: grid;
-    grid-template-columns: 40px 1fr 0.7fr 2fr 0.7fr 60px;
+    grid-template-columns: 40px 1fr 0.7fr 3fr 0.7fr 60px;
     align-items: center;
     gap: 12px;
 }
