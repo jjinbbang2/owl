@@ -111,7 +111,7 @@
 <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/ko.js"></script>
 <script src="./js/supabase-config.js?v=20251226a"></script>
 <script src="./js/combat-power.js?v=20260106a"></script>
-<script src="./js/party-share.js?v=20251226a"></script>
+<script src="./js/party-share.js?v=20260106a"></script>
 <script src="./js/party-common.js?v=20251226a"></script>
 <script>
 // 카카오 SDK 초기화
@@ -257,7 +257,8 @@ async function createParty() {
     const raidType = document.getElementById('newRaidType').value;
     const difficulty = document.getElementById('newDifficulty').value;
     const nickname = document.getElementById('newNickname').value.trim();
-    const combatPower = document.getElementById('newPower').value;
+    const combatPower = getActualPowerValue('newPower');
+    const combatPowerDisplay = document.getElementById('newPower').value;
     const className = document.getElementById('newClass').value.trim();
 
     if (!isQuickRecruit && !PartyCommon.getSelectedScheduleDate()) {
@@ -265,7 +266,8 @@ async function createParty() {
         return;
     }
 
-    if (!nickname || !combatPower || !className) {
+    // 비공개도 유효한 값으로 처리
+    if (!nickname || (!combatPower && combatPowerDisplay !== '비공개') || !className) {
         alert('닉네임, 전투력, 클래스를 모두 입력해주세요.');
         return;
     }
@@ -288,7 +290,7 @@ async function createParty() {
         .insert({
             party_id: party.id,
             nickname,
-            combat_power: combatPower ? parseInt(combatPower, 10) : null,
+            combat_power: combatPower || null,
             class_name: className || null
         });
 
@@ -315,10 +317,12 @@ async function createParty() {
 // 멤버 추가
 async function addMember(partyId) {
     const nickname = document.getElementById(`memberNickname-${partyId}`).value.trim();
-    const combatPower = document.getElementById(`memberPower-${partyId}`).value;
+    const combatPower = getActualPowerValue(`memberPower-${partyId}`);
+    const combatPowerDisplay = document.getElementById(`memberPower-${partyId}`).value;
     const className = document.getElementById(`memberClass-${partyId}`).value.trim();
 
-    if (!nickname || !combatPower || !className) {
+    // 비공개도 유효한 값으로 처리
+    if (!nickname || (!combatPower && combatPowerDisplay !== '비공개') || !className) {
         alert('닉네임, 전투력, 클래스를 모두 입력해주세요.');
         return;
     }
@@ -334,7 +338,7 @@ async function addMember(partyId) {
         .insert({
             party_id: partyId,
             nickname,
-            combat_power: combatPower ? parseInt(combatPower, 10) : null,
+            combat_power: combatPower || null,
             class_name: className || null
         });
 

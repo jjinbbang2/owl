@@ -115,13 +115,24 @@ async function fetchCombatPower(nicknameInputId, powerInputId, classInputId = nu
     const cachedData = findInRanking(nickname);
 
     if (cachedData) {
-        powerInput.value = cachedData.combatPower;
-        powerInput.placeholder = '자동입력';
-        powerInput.readOnly = true;
+        // 전투력 비공개 설정 확인
+        if (cachedData.showCombatPower === false) {
+            powerInput.type = 'text';
+            powerInput.value = '비공개';
+            powerInput.placeholder = '비공개';
+            powerInput.readOnly = true;
+            powerInput.dataset.actualPower = cachedData.combatPower; // 실제 값은 data 속성에 저장
+        } else {
+            powerInput.type = 'number';
+            powerInput.value = cachedData.combatPower;
+            powerInput.placeholder = '자동입력';
+            powerInput.readOnly = true;
+            delete powerInput.dataset.actualPower;
+        }
         if (classInput && cachedData.className) {
             classInput.value = cachedData.className;
         }
-        console.log(`[전투력] ${nickname}: ranking.json에서 조회 (${cachedData.combatPower}, ${cachedData.className})`);
+        console.log(`[전투력] ${nickname}: ranking.json에서 조회 (${cachedData.combatPower}, ${cachedData.className}, 공개: ${cachedData.showCombatPower})`);
         return;
     }
 
@@ -167,4 +178,21 @@ function handleNicknameKeydown(event, powerInputId) {
         event.preventDefault();
         event.target.blur();
     }
+}
+
+// 전투력 입력 필드에서 실제 값 가져오기
+// 비공개인 경우 data-actual-power 속성에서 가져옴
+function getActualPowerValue(powerInputId) {
+    const powerInput = document.getElementById(powerInputId);
+    if (!powerInput) return null;
+
+    // 비공개인 경우 실제 값은 data 속성에 저장됨
+    if (powerInput.dataset.actualPower) {
+        return parseInt(powerInput.dataset.actualPower, 10);
+    }
+
+    // 일반적인 경우
+    const value = powerInput.value;
+    if (!value || value === '비공개') return null;
+    return parseInt(value, 10);
 }

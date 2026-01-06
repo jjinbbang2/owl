@@ -163,7 +163,7 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="./js/supabase-config.js?v=20251226a"></script>
 <script src="./js/combat-power.js?v=20260106a"></script>
-<script src="./js/party-share.js?v=20251226a"></script>
+<script src="./js/party-share.js?v=20260106a"></script>
 <script src="./js/party-common.js?v=20251226a"></script>
 <script>
 // 카카오 SDK 초기화
@@ -340,11 +340,13 @@ async function createParty() {
     const isQuickRecruit = document.getElementById('newQuickRecruit').checked;
     const difficulty = document.getElementById('newDifficulty').value;
     const mainNickname = document.getElementById('newMainNickname').value.trim();
-    const mainPower = document.getElementById('newMainPower').value;
+    const mainPower = getActualPowerValue('newMainPower');
+    const mainPowerDisplay = document.getElementById('newMainPower').value;
     const mainClass = document.getElementById('newMainClass').value.trim();
     const isMainOnly = document.getElementById('newMainOnly').checked;
     const subNickname = document.getElementById('newSubNickname').value.trim();
-    const subPower = document.getElementById('newSubPower').value;
+    const subPower = getActualPowerValue('newSubPower');
+    const subPowerDisplay = document.getElementById('newSubPower').value;
     const subClass = document.getElementById('newSubClass').value.trim();
 
     // 요일·시간 또는 빠른모집 확인
@@ -353,14 +355,14 @@ async function createParty() {
         return;
     }
 
-    // 본캐 필수 입력 확인
-    if (!mainNickname || !mainPower || !mainClass) {
+    // 본캐 필수 입력 확인 (비공개도 유효한 값으로 처리)
+    if (!mainNickname || (!mainPower && mainPowerDisplay !== '비공개') || !mainClass) {
         alert2('본캐 닉네임, 전투력, 클래스를 모두 입력해주세요.');
         return;
     }
 
     // 부캐 필수 입력 확인 (본캐만 참여가 아닌 경우)
-    if (!isMainOnly && (!subNickname || !subPower || !subClass)) {
+    if (!isMainOnly && (!subNickname || (!subPower && subPowerDisplay !== '비공개') || !subClass)) {
         alert2('부캐 닉네임, 전투력, 클래스를 모두 입력해주세요.');
         return;
     }
@@ -389,10 +391,10 @@ async function createParty() {
         .insert({
             party_id: party.id,
             main_nickname: mainNickname,
-            main_power: mainPower ? parseInt(mainPower, 10) : null,
+            main_power: mainPower || null,
             main_class: mainClass || null,
             sub_nickname: isMainOnly ? null : subNickname,
-            sub_power: isMainOnly ? null : (subPower ? parseInt(subPower, 10) : null),
+            sub_power: isMainOnly ? null : (subPower || null),
             sub_class: isMainOnly ? null : (subClass || null),
             is_main_only: isMainOnly
         });
@@ -424,21 +426,23 @@ async function createParty() {
 // 멤버 추가
 async function addMember(partyId) {
     const mainNickname = document.getElementById(`mainNickname-${partyId}`).value.trim();
-    const mainPower = document.getElementById(`mainPower-${partyId}`).value;
+    const mainPower = getActualPowerValue(`mainPower-${partyId}`);
+    const mainPowerDisplay = document.getElementById(`mainPower-${partyId}`).value;
     const mainClass = document.getElementById(`mainClass-${partyId}`).value.trim();
     const isMainOnly = document.getElementById(`mainOnly-${partyId}`).checked;
     const subNickname = document.getElementById(`subNickname-${partyId}`).value.trim();
-    const subPower = document.getElementById(`subPower-${partyId}`).value;
+    const subPower = getActualPowerValue(`subPower-${partyId}`);
+    const subPowerDisplay = document.getElementById(`subPower-${partyId}`).value;
     const subClass = document.getElementById(`subClass-${partyId}`).value.trim();
 
-    // 본캐 필수 입력 확인
-    if (!mainNickname || !mainPower || !mainClass) {
+    // 본캐 필수 입력 확인 (비공개도 유효한 값으로 처리)
+    if (!mainNickname || (!mainPower && mainPowerDisplay !== '비공개') || !mainClass) {
         alert2('본캐 닉네임, 전투력, 클래스를 모두 입력해주세요.');
         return;
     }
 
     // 부캐 필수 입력 확인 (본캐만 참여가 아닌 경우)
-    if (!isMainOnly && (!subNickname || !subPower || !subClass)) {
+    if (!isMainOnly && (!subNickname || (!subPower && subPowerDisplay !== '비공개') || !subClass)) {
         alert2('부캐 닉네임, 전투력, 클래스를 모두 입력해주세요.');
         return;
     }
@@ -460,10 +464,10 @@ async function addMember(partyId) {
         .insert({
             party_id: partyId,
             main_nickname: mainNickname,
-            main_power: mainPower ? parseInt(mainPower, 10) : null,
+            main_power: mainPower || null,
             main_class: mainClass || null,
             sub_nickname: isMainOnly ? null : subNickname,
-            sub_power: isMainOnly ? null : (subPower ? parseInt(subPower, 10) : null),
+            sub_power: isMainOnly ? null : (subPower || null),
             sub_class: isMainOnly ? null : (subClass || null),
             is_main_only: isMainOnly
         });

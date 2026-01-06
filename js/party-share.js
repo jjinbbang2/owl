@@ -15,6 +15,15 @@ const PartyShare = (function () {
         return inManUnit.toFixed(1);
     }
 
+    // 전투력 표시 (비공개 설정 체크)
+    // getDisplayPower 함수가 있으면 사용, 없으면 formatPowerShort 사용
+    function getDisplayPowerForShare(nickname, power) {
+        if (typeof getDisplayPower === 'function') {
+            return getDisplayPower(nickname, power);
+        }
+        return formatPowerShort(power);
+    }
+
     // 일정 포맷팅
     function formatSchedule(date) {
         const month = String(date.getMonth() + 1).padStart(2, '0');
@@ -98,7 +107,8 @@ const PartyShare = (function () {
                 memberList = party.abyss_members.map(member => {
                     let line = `- ${member.nickname}`;
                     if (member.class_name) line += ` (${member.class_name})`;
-                    if (member.combat_power) line += ` ${formatPowerShort(member.combat_power)}`;
+                    const powerDisplay = getDisplayPowerForShare(member.nickname, member.combat_power);
+                    if (powerDisplay && powerDisplay !== '-') line += ` ${powerDisplay}`;
                     return line;
                 }).join('\n');
 
@@ -121,13 +131,15 @@ ${memberList}
                 memberList = party.help_members.map(member => {
                     let line = `- 본캐: ${member.main_nickname}`;
                     if (member.main_class) line += ` (${member.main_class})`;
-                    if (member.main_power) line += ` ${formatPowerShort(member.main_power)}`;
+                    const mainPowerDisplay = getDisplayPowerForShare(member.main_nickname, member.main_power);
+                    if (mainPowerDisplay && mainPowerDisplay !== '-') line += ` ${mainPowerDisplay}`;
                     if (member.is_main_only) {
                         line += ` [본캐만]`;
                     } else if (member.sub_nickname) {
                         line += ` / 부캐: ${member.sub_nickname}`;
                         if (member.sub_class) line += ` (${member.sub_class})`;
-                        if (member.sub_power) line += ` ${formatPowerShort(member.sub_power)}`;
+                        const subPowerDisplay = getDisplayPowerForShare(member.sub_nickname, member.sub_power);
+                        if (subPowerDisplay && subPowerDisplay !== '-') line += ` ${subPowerDisplay}`;
                     }
                     return line;
                 }).join('\n');
@@ -154,7 +166,8 @@ ${memberList}
                 memberList = party.raid_members.map(member => {
                     let line = `- ${member.nickname}`;
                     if (member.class_name) line += ` (${member.class_name})`;
-                    if (member.combat_power) line += ` ${formatPowerShort(member.combat_power)}`;
+                    const powerDisplay = getDisplayPowerForShare(member.nickname, member.combat_power);
+                    if (powerDisplay && powerDisplay !== '-') line += ` ${powerDisplay}`;
                     return line;
                 }).join('\n');
 
@@ -196,7 +209,7 @@ ${memberList}
             case 'abyss':
                 items = party.abyss_members.map(member => {
                     const className = member.class_name || '';
-                    const power = formatPowerShort(member.combat_power);
+                    const power = getDisplayPowerForShare(member.nickname, member.combat_power);
                     return {
                         item  : member.nickname,
                         itemOp: className ? `${power} ${className}` : power
@@ -206,7 +219,7 @@ ${memberList}
             case 'help':
                 party.help_members.forEach(member => {
                     const mainClass = member.main_class || '';
-                    const mainPower = formatPowerShort(member.main_power);
+                    const mainPower = getDisplayPowerForShare(member.main_nickname, member.main_power);
                     // const suffix = member.is_main_only ? ' [본캐만]' : '';
                     const suffix = '';
                     items.push({
@@ -223,17 +236,17 @@ ${memberList}
                     // 처음 4명 표시
                     items = raidMembers.slice(0, 4).map(member => {
                         const className = member.class_name || '';
-                        const power = formatPowerShort(member.combat_power);
+                        const power = getDisplayPowerForShare(member.nickname, member.combat_power);
                         return {
                             item  : member.nickname,
                             itemOp: className ? `${power} ${className}` : power
                         };
                     });
 
-                    // 나머지 멤버들의 평균 전투력 계산
+                    // 나머지 멤버들의 평균 전투력 계산 (비공개 멤버 제외)
                     const remainingMembers = raidMembers.slice(4);
                     const remainingPowers = remainingMembers
-                        .filter(m => m.combat_power)
+                        .filter(m => m.combat_power && getDisplayPowerForShare(m.nickname, m.combat_power) !== '비공개')
                         .map(m => m.combat_power);
                     const avgPower = remainingPowers.length > 0
                         ? Math.round(remainingPowers.reduce((a, b) => a + b, 0) / remainingPowers.length)
@@ -246,7 +259,7 @@ ${memberList}
                 } else {
                     items = raidMembers.map(member => {
                         const className = member.class_name || '';
-                        const power = formatPowerShort(member.combat_power);
+                        const power = getDisplayPowerForShare(member.nickname, member.combat_power);
                         return {
                             item  : member.nickname,
                             itemOp: className ? `${power} ${className}` : power
