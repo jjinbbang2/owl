@@ -30,8 +30,6 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
     <link rel="stylesheet" href="./styles.css?v=20260106a">
 
-    <!-- Chart.js CDN -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1"></script>
 </head>
 <body>
 <nav class="nav">
@@ -41,6 +39,7 @@
         <ul class="nav-menu" id="navMenu">
             <li><a href="index.html">랭킹</a></li>
             <li><a href="members.html" class="active">명단</a></li>
+            <li><a href="stats.html">통계</a></li>
             <li><a href="guide.html">이용안내</a></li>
             <li><a href="abyss.html">어비스</a></li>
             <li><a href="abyss-help.html">품앗이</a></li>
@@ -55,35 +54,6 @@
         <h1 class="header-title">길드원 명단</h1>
         <p class="header-subtitle">선호 시간대 및 정보 관리</p>
     </header>
-
-    <!-- 통계 섹션 -->
-    <section class="stats-section">
-        <h2 class="section-title">📊 통계</h2>
-
-        <!-- 시간대별 활동 가능 인원 (전체 너비) -->
-        <div class="chart-container chart-full">
-            <h3 class="chart-title">시간대별 활동 가능 인원</h3>
-            <canvas id="timeChart"></canvas>
-        </div>
-
-        <!-- 직업별 평균 전투력 (전체 너비) -->
-        <div class="chart-container chart-full">
-            <h3 class="chart-title">직업별 평균 전투력</h3>
-            <canvas id="classPowerChart"></canvas>
-        </div>
-
-        <!-- 선호 태그 분포 + 직업 분포 (PC: 한 행, 모바일: 각각) -->
-        <div class="charts-row">
-            <div class="chart-container chart-half">
-                <h3 class="chart-title">선호 태그 분포</h3>
-                <canvas id="tagChart"></canvas>
-            </div>
-            <div class="chart-container chart-half">
-                <h3 class="chart-title">직업 분포</h3>
-                <canvas id="classDistChart"></canvas>
-            </div>
-        </div>
-    </section>
 
     <!-- 명단 섹션 -->
     <section class="members-section">

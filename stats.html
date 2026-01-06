@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>통계 - 부엉공화국</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="부엉공화국 길드원 통계 및 분석 정보입니다.">
+    <meta name="keywords" content="마비노기 모바일, 부엉이, 부엉국 길드, 통계">
+    <meta name="author" content="부엉공화국">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg">
+    <link rel="apple-touch-icon" href="./favicon.svg">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="통계 - 부엉공화국">
+    <meta property="og:description" content="부엉공화국 길드원 통계 및 분석 정보">
+    <meta property="og:image" content="https://jjinbbang2.github.io/owl/og-image.png">
+    <meta property="og:url" content="https://jjinbbang2.github.io/owl/stats.html">
+    <meta property="og:site_name" content="부엉공화국">
+
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#4a3728">
+
+    <!-- Fonts & Styles -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./styles.css?v=20260106b">
+
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1"></script>
+</head>
+<body>
+<nav class="nav">
+    <div class="nav-container">
+        <a href="index.html" class="nav-logo">🦉</a>
+        <button class="nav-toggle" onclick="toggleNav()">☰</button>
+        <ul class="nav-menu" id="navMenu">
+            <li><a href="index.html">랭킹</a></li>
+            <li><a href="members.html">명단</a></li>
+            <li><a href="stats.html" class="active">통계</a></li>
+            <li><a href="guide.html">이용안내</a></li>
+            <li><a href="abyss.html">어비스</a></li>
+            <li><a href="abyss-help.html">품앗이</a></li>
+            <li><a href="raid.html">레이드</a></li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container">
+    <header class="header">
+        <div class="header-emblem">📊</div>
+        <h1 class="header-title">길드 통계</h1>
+        <p class="header-subtitle">길드원 활동 및 분포 분석</p>
+    </header>
+
+    <!-- 통계 섹션 -->
+    <section class="stats-section">
+        <!-- 시간대별 활동 가능 인원 (전체 너비) -->
+        <div class="chart-container chart-full">
+            <h3 class="chart-title">시간대별 활동 가능 인원</h3>
+            <canvas id="timeChart"></canvas>
+        </div>
+
+        <!-- 직업별 평균 전투력 (전체 너비) -->
+        <div class="chart-container chart-full">
+            <h3 class="chart-title">직업별 평균 전투력</h3>
+            <canvas id="classPowerChart"></canvas>
+        </div>
+
+        <!-- 선호 태그 분포 + 직업 분포 (PC: 한 행, 모바일: 각각) -->
+        <div class="charts-row">
+            <div class="chart-container chart-half">
+                <h3 class="chart-title">선호 태그 분포</h3>
+                <canvas id="tagChart"></canvas>
+            </div>
+            <div class="chart-container chart-half">
+                <h3 class="chart-title">직업 분포</h3>
+                <canvas id="classDistChart"></canvas>
+            </div>
+        </div>
+    </section>
+</div>
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="./js/supabase-config.js?v=20260106b"></script>
+<script src="./js/stats.js?v=20260106b"></script>
+</body>
+</html>
