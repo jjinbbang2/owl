@@ -1,20 +1,6 @@
 {
-  "updatedAt": "2026-01-06T09:09:53.188Z",
+  "updatedAt": "2026-01-06T10:07:42.482Z",
   "members": [
-    {
-      "name": "운정",
-      "rank": 25935,
-      "rankDisplay": "25,935위",
-      "server": "라사",
-      "class": "마법사",
-      "totalScore": 88200,
-      "totalScoreDisplay": "88,200",
-      "combatScore": 58837,
-      "lifeScore": 10365,
-      "charmScore": 18998,
-      "source": "mobinogi.net",
-      "visibility": 0
-    },
     {
       "name": "풀뱅기사",
       "rank": 5057,
@@ -114,6 +100,20 @@
       "visibility": 0
     },
     {
+      "name": "운정",
+      "rank": 25935,
+      "rankDisplay": "25,935위",
+      "server": "라사",
+      "class": "마법사",
+      "totalScore": 88200,
+      "totalScoreDisplay": "88,200",
+      "combatScore": 58837,
+      "lifeScore": 10365,
+      "charmScore": 18998,
+      "source": "mobinogi.net",
+      "visibility": 0
+    },
+    {
       "name": "풀뱅맹구",
       "rank": 23727,
       "rankDisplay": "23,727위",
@@ -171,8 +171,8 @@
     },
     {
       "name": "시우쇠",
-      "rank": 7,
-      "rankDisplay": "7위",
+      "rank": 6,
+      "rankDisplay": "6위",
       "server": "라사",
       "class": "화염술사",
       "totalScore": 152913,
@@ -670,34 +670,6 @@
       "combatScore": 58329,
       "lifeScore": 18741,
       "charmScore": 50665,
-      "source": "mobinogi.net",
-      "visibility": 0
-    },
-    {
-      "name": "갓보노",
-      "rank": 155907,
-      "rankDisplay": "155,907위",
-      "server": "라사",
-      "class": "전격술사",
-      "totalScore": 29636,
-      "totalScoreDisplay": "29,636",
-      "combatScore": 12744,
-      "lifeScore": 10352,
-      "charmScore": 6540,
-      "source": "mobinogi.net",
-      "visibility": 2
-    },
-    {
-      "name": "감자면이조아",
-      "rank": 3,
-      "rankDisplay": "3위",
-      "server": "라사",
-      "class": "화염술사",
-      "totalScore": 155331,
-      "totalScoreDisplay": "155,331",
-      "combatScore": 66558,
-      "lifeScore": 35268,
-      "charmScore": 53505,
       "source": "mobinogi.net",
       "visibility": 0
     }
