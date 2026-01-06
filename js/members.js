@@ -1,0 +1,615 @@
+/**
+ * 명단 페이지 JavaScript
+ * preferred_times 구조: [{ start: "20:00", end: "23:00", tags: ["평일", "주말"] }, ...]
+ */
+
+// 전역 변수
+let allMembers = [];
+let rankingData = null;
+let profilesData = [];
+
+// 차트 인스턴스
+let timeChart = null;
+let tagChart = null;
+let classPowerChart = null;
+let classDistChart = null;
+
+// 태그 목록
+const TAG_OPTIONS = ['무관', '평일', '주말', '공휴일제외', '공휴일만'];
+
+// 직업 아이콘 매핑
+const CLASS_ICONS = {
+    '전사': '⚔️',
+    '마법사': '🔮',
+    '궁수': '🏹',
+    '장궁병': '🎯',
+    '음유시인': '🎵',
+    '성기사': '🛡️',
+    '다크나이트': '⚫',
+    '비스트': '🐾',
+    '자이언트': '👊',
+    '인형술사': '🪆'
+};
+
+// ===== 초기화 =====
+document.addEventListener('DOMContentLoaded', async function() {
+    await loadAllData();
+    renderMembersList();
+    renderCharts();
+    setupFilters();
+    setupModalEvents();
+});
+
+// ===== 데이터 로드 =====
+async function loadAllData() {
+    try {
+        rankingData = await loadRankingJson();
+        profilesData = await loadMemberProfiles();
+        allMembers = mergeData(rankingData?.members || [], profilesData);
+        console.log('[명단] 데이터 로드 완료:', allMembers.length, '명');
+    } catch (error) {
+        console.error('[명단] 데이터 로드 실패:', error);
+        allMembers = [];
+    }
+}
+
+async function loadRankingJson() {
+    try {
+        const basePath = window.location.pathname.includes('/owl/')
+            ? '/owl/data/ranking.json'
+            : './data/ranking.json';
+        const response = await fetch(basePath + '?t=' + Date.now());
+        if (response.ok) {
+            return await response.json();
+        }
+    } catch (error) {
+        console.warn('[ranking.json] 로드 실패:', error.message);
+    }
+    return null;
+}
+
+async function loadMemberProfiles() {
+    try {
+        const { data, error } = await supabase
+            .from('member_profiles')
+            .select('*');
+        if (error) {
+            console.error('[member_profiles] 로드 실패:', error);
+            return [];
+        }
+        return data || [];
+    } catch (error) {
+        console.error('[member_profiles] 로드 실패:', error);
+        return [];
+    }
+}
+
+function mergeData(rankingMembers, profiles) {
+    return rankingMembers.map(member => {
+        const profile = profiles.find(p => p.character_name === member.name);
+        return {
+            ...member,
+            guild: profile?.guild || '부엉이',
+            preferredTimes: profile?.preferred_times || [],
+            hasProfile: !!profile
+        };
+    });
+}
+
+// ===== 명단 렌더링 =====
+function renderMembersList() {
+    const container = document.getElementById('membersList');
+    if (!container) return;
+
+    const filteredMembers = getFilteredMembers();
+
+    if (filteredMembers.length === 0) {
+        container.innerHTML = renderEmptyState();
+        return;
+    }
+
+    container.innerHTML = filteredMembers.map(member =>
+        renderDesktopCard(member) + renderMobileCard(member)
+    ).join('');
+}
+
+function renderDesktopCard(member) {
+    const timesDisplay = formatPreferredTimes(member.preferredTimes);
+    const tagsDisplay = formatAllTags(member.preferredTimes);
+    const visibilityText = getVisibilityText(member.visibility);
+    const classIcon = CLASS_ICONS[member.class] || '👤';
+
+    return `
+    <div class="member-card">
+        <div class="member-main">
+            <div class="member-avatar">${classIcon}</div>
+            <div class="member-info">
+                <span class="member-name">${escapeHtml(member.name)}</span>
+                <span class="member-class">${member.class || '-'}</span>
+            </div>
+            <span class="member-guild ${member.guild === '부엉이' ? 'guild-owl' : 'guild-nation'}">${member.guild}</span>
+            <span class="member-times" title="${timesDisplay || '미설정'}">${timesDisplay || '-'}</span>
+            <span class="member-tags-cell">${tagsDisplay || '-'}</span>
+            <span class="member-visibility">${visibilityText}</span>
+            <button class="btn-edit-member" onclick="openEditModal('${escapeHtml(member.name)}')">수정</button>
+        </div>
+    </div>`;
+}
+
+function renderMobileCard(member) {
+    const timesDisplay = formatPreferredTimesWithTags(member.preferredTimes);
+    const visibilityText = getVisibilityText(member.visibility);
+    const classIcon = CLASS_ICONS[member.class] || '👤';
+    const safeId = member.name.replace(/[^a-zA-Z0-9가-힣]/g, '_');
+
+    return `
+    <div class="member-card-mobile">
+        <div class="member-header-mobile" onclick="toggleAccordion('${safeId}')">
+            <div class="member-main-info">
+                <div class="member-avatar">${classIcon}</div>
+                <div class="member-info">
+                    <span class="member-name">${escapeHtml(member.name)}</span>
+                    <span class="member-class">${member.class || '-'}</span>
+                </div>
+                <span class="member-guild ${member.guild === '부엉이' ? 'guild-owl' : 'guild-nation'}">${member.guild}</span>
+            </div>
+            <span class="accordion-icon" id="icon-${safeId}">▼</span>
+        </div>
+        <div class="member-details-mobile" id="details-${safeId}">
+            <div class="detail-row">
+                <span class="detail-label">선호시간</span>
+                <span class="detail-value">${timesDisplay || '-'}</span>
+            </div>
+            <div class="detail-row">
+                <span class="detail-label">공개설정</span>
+                <span class="detail-value">${visibilityText}</span>
+            </div>
+            <div class="detail-row" style="justify-content: flex-end; border-bottom: none;">
+                <button class="btn-edit-member" onclick="openEditModal('${escapeHtml(member.name)}')">수정</button>
+            </div>
+        </div>
+    </div>`;
+}
+
+function renderEmptyState() {
+    return `
+    <div class="members-empty">
+        <div class="members-empty-icon">📋</div>
+        <p>등록된 길드원이 없습니다.</p>
+    </div>`;
+}
+
+// ===== 차트 렌더링 =====
+function renderCharts() {
+    renderTimeChart();
+    renderTagChart();
+    renderClassPowerChart();
+    renderClassDistChart();
+}
+
+function renderTimeChart() {
+    const canvas = document.getElementById('timeChart');
+    if (!canvas) return;
+
+    const hourCounts = new Array(24).fill(0);
+
+    allMembers.forEach(member => {
+        if (member.preferredTimes && member.preferredTimes.length > 0) {
+            member.preferredTimes.forEach(range => {
+                if (!range.start || !range.end) return;
+                const startHour = parseInt(range.start.split(':')[0]);
+                const endHour = parseInt(range.end.split(':')[0]);
+
+                if (startHour <= endHour) {
+                    for (let h = startHour; h <= endHour; h++) {
+                        hourCounts[h]++;
+                    }
+                } else {
+                    for (let h = startHour; h < 24; h++) hourCounts[h]++;
+                    for (let h = 0; h <= endHour; h++) hourCounts[h]++;
+                }
+            });
+        }
+    });
+
+    const ctx = canvas.getContext('2d');
+    if (timeChart) timeChart.destroy();
+
+    timeChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: Array.from({length: 24}, (_, i) => `${i}시`),
+            datasets: [{
+                label: '활동 가능 인원',
+                data: hourCounts,
+                backgroundColor: 'rgba(122, 162, 247, 0.6)',
+                borderColor: 'rgba(122, 162, 247, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: true,
+            plugins: { legend: { display: false } },
+            scales: {
+                y: { beginAtZero: true, ticks: { stepSize: 1, color: '#888' }, grid: { color: 'rgba(255,255,255,0.05)' } },
+                x: { ticks: { color: '#888', maxRotation: 45, minRotation: 45 }, grid: { display: false } }
+            }
+        }
+    });
+}
+
+function renderTagChart() {
+    const canvas = document.getElementById('tagChart');
+    if (!canvas) return;
+
+    const tagCounts = { '무관': 0, '평일': 0, '주말': 0, '공휴일제외': 0, '공휴일만': 0 };
+
+    allMembers.forEach(member => {
+        if (member.preferredTimes && member.preferredTimes.length > 0) {
+            member.preferredTimes.forEach(range => {
+                if (range.tags && Array.isArray(range.tags)) {
+                    range.tags.forEach(tag => {
+                        if (tagCounts.hasOwnProperty(tag)) {
+                            tagCounts[tag]++;
+                        }
+                    });
+                }
+            });
+        }
+    });
+
+    const ctx = canvas.getContext('2d');
+    if (tagChart) tagChart.destroy();
+
+    tagChart = new Chart(ctx, {
+        type: 'pie',
+        data: {
+            labels: Object.keys(tagCounts),
+            datasets: [{
+                data: Object.values(tagCounts),
+                backgroundColor: [
+                    'rgba(136, 136, 136, 0.7)',
+                    'rgba(74, 222, 128, 0.7)',
+                    'rgba(168, 85, 247, 0.7)',
+                    'rgba(248, 113, 113, 0.7)',
+                    'rgba(251, 146, 60, 0.7)'
+                ],
+                borderWidth: 0
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: true,
+            plugins: { legend: { position: 'bottom', labels: { color: '#ccc', padding: 15 } } }
+        }
+    });
+}
+
+function renderClassPowerChart() {
+    const canvas = document.getElementById('classPowerChart');
+    if (!canvas) return;
+
+    const visibleMembers = allMembers.filter(m => m.visibility !== 2 && m.combatScore);
+    const classStats = {};
+
+    visibleMembers.forEach(member => {
+        if (!member.class) return;
+        if (!classStats[member.class]) {
+            classStats[member.class] = { total: 0, count: 0 };
+        }
+        classStats[member.class].total += member.combatScore;
+        classStats[member.class].count++;
+    });
+
+    const labels = Object.keys(classStats).sort((a, b) =>
+        (classStats[b].total / classStats[b].count) - (classStats[a].total / classStats[a].count)
+    );
+    const averages = labels.map(cls => Math.round(classStats[cls].total / classStats[cls].count));
+
+    const ctx = canvas.getContext('2d');
+    if (classPowerChart) classPowerChart.destroy();
+
+    classPowerChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: '평균 전투력',
+                data: averages,
+                backgroundColor: 'rgba(212, 175, 55, 0.6)',
+                borderColor: 'rgba(212, 175, 55, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: true,
+            indexAxis: 'y',
+            plugins: { legend: { display: false } },
+            scales: {
+                x: { beginAtZero: true, ticks: { color: '#888' }, grid: { color: 'rgba(255,255,255,0.05)' } },
+                y: { ticks: { color: '#ccc' }, grid: { display: false } }
+            }
+        }
+    });
+}
+
+function renderClassDistChart() {
+    const canvas = document.getElementById('classDistChart');
+    if (!canvas) return;
+
+    const classCounts = {};
+    allMembers.forEach(member => {
+        if (!member.class) return;
+        classCounts[member.class] = (classCounts[member.class] || 0) + 1;
+    });
+
+    const ctx = canvas.getContext('2d');
+    if (classDistChart) classDistChart.destroy();
+
+    classDistChart = new Chart(ctx, {
+        type: 'pie',
+        data: {
+            labels: Object.keys(classCounts),
+            datasets: [{
+                data: Object.values(classCounts),
+                backgroundColor: generateColors(Object.keys(classCounts).length),
+                borderWidth: 0
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: true,
+            plugins: { legend: { position: 'bottom', labels: { color: '#ccc', padding: 15 } } }
+        }
+    });
+}
+
+// ===== 프로필 수정 모달 =====
+function openEditModal(characterName) {
+    const member = allMembers.find(m => m.name === characterName);
+    if (!member) {
+        alert('캐릭터를 찾을 수 없습니다.');
+        return;
+    }
+
+    document.getElementById('editCharacterName').value = characterName;
+    document.getElementById('editModalTitle').textContent = `${characterName} 프로필 수정`;
+
+    // 길드 설정
+    const guildRadio = document.querySelector(`input[name="editGuild"][value="${member.guild}"]`);
+    if (guildRadio) guildRadio.checked = true;
+
+    // 시간대+태그 설정
+    renderTimeRanges(member.preferredTimes || []);
+
+    // 공개설정
+    const visibilityRadio = document.querySelector(`input[name="editVisibility"][value="${member.visibility ?? 0}"]`);
+    if (visibilityRadio) visibilityRadio.checked = true;
+
+    document.getElementById('editModal').classList.remove('hidden');
+}
+
+function closeEditModal() {
+    document.getElementById('editModal').classList.add('hidden');
+}
+
+async function saveProfile() {
+    const characterName = document.getElementById('editCharacterName').value;
+    const guildRadio = document.querySelector('input[name="editGuild"]:checked');
+    const visibilityRadio = document.querySelector('input[name="editVisibility"]:checked');
+
+    if (!guildRadio || !visibilityRadio) {
+        alert('모든 설정을 선택해주세요.');
+        return;
+    }
+
+    const guild = guildRadio.value;
+    const preferredTimes = collectTimeRanges();
+    const visibility = parseInt(visibilityRadio.value);
+
+    try {
+        const { error: profileError } = await supabase
+            .from('member_profiles')
+            .upsert({
+                character_name: characterName,
+                guild: guild,
+                preferred_times: preferredTimes
+            }, { onConflict: 'character_name' });
+
+        if (profileError) throw profileError;
+
+        const { error: visibilityError } = await supabase
+            .from('ranking_characters')
+            .update({ visibility: visibility })
+            .eq('name', characterName);
+
+        if (visibilityError) throw visibilityError;
+
+        await loadAllData();
+        renderMembersList();
+        renderCharts();
+        closeEditModal();
+        alert('프로필이 저장되었습니다.');
+    } catch (error) {
+        console.error('저장 실패:', error);
+        alert('저장 실패: ' + error.message);
+    }
+}
+
+// ===== 시간대+태그 범위 관리 =====
+function renderTimeRanges(ranges) {
+    const container = document.getElementById('timeRangeContainer');
+    if (!container) return;
+    container.innerHTML = '';
+
+    if (!ranges || ranges.length === 0) {
+        addTimeRange();
+        return;
+    }
+
+    ranges.forEach(range => {
+        addTimeRange(range.start, range.end, range.tags || []);
+    });
+}
+
+function addTimeRange(start = '20:00', end = '23:00', tags = ['무관']) {
+    const container = document.getElementById('timeRangeContainer');
+    if (!container) return;
+
+    const id = Date.now() + Math.random().toString(36).substr(2, 9);
+
+    const tagCheckboxes = TAG_OPTIONS.map(tag => `
+        <label class="tag-checkbox">
+            <input type="checkbox" value="${tag}" ${tags.includes(tag) ? 'checked' : ''}>
+            <span class="member-tag tag-${tag}">${tag}</span>
+        </label>
+    `).join('');
+
+    const html = `
+    <div class="time-range-row" id="timeRange-${id}">
+        <div class="time-range-times">
+            <select class="time-start">
+                ${generateTimeOptions(start)}
+            </select>
+            <span>~</span>
+            <select class="time-end">
+                ${generateTimeOptions(end)}
+            </select>
+            <button type="button" class="btn-remove-time" onclick="removeTimeRange('${id}')">×</button>
+        </div>
+        <div class="time-range-tags">
+            ${tagCheckboxes}
+        </div>
+    </div>`;
+
+    container.insertAdjacentHTML('beforeend', html);
+}
+
+function removeTimeRange(id) {
+    const row = document.getElementById(`timeRange-${id}`);
+    if (row) row.remove();
+}
+
+function generateTimeOptions(selected) {
+    let options = '';
+    for (let h = 0; h < 24; h++) {
+        for (let m = 0; m < 60; m += 30) {
+            const time = `${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}`;
+            options += `<option value="${time}" ${time === selected ? 'selected' : ''}>${time}</option>`;
+        }
+    }
+    return options;
+}
+
+function collectTimeRanges() {
+    const rows = document.querySelectorAll('.time-range-row');
+    const ranges = [];
+
+    rows.forEach(row => {
+        const start = row.querySelector('.time-start')?.value;
+        const end = row.querySelector('.time-end')?.value;
+        const tagCheckboxes = row.querySelectorAll('.time-range-tags input[type="checkbox"]:checked');
+        const tags = Array.from(tagCheckboxes).map(cb => cb.value);
+
+        if (start && end) {
+            ranges.push({ start, end, tags: tags.length > 0 ? tags : ['무관'] });
+        }
+    });
+
+    return ranges;
+}
+
+// ===== 유틸리티 함수 =====
+function formatPreferredTimes(times) {
+    if (!times || times.length === 0) return '';
+    return times.map(t => `${t.start}~${t.end}`).join(', ');
+}
+
+function formatPreferredTimesWithTags(times) {
+    if (!times || times.length === 0) return '';
+    return times.map(t => {
+        const tagsStr = t.tags && t.tags.length > 0 ? `(${t.tags.join(',')})` : '';
+        return `${t.start}~${t.end}${tagsStr}`;
+    }).join('<br>');
+}
+
+function formatAllTags(times) {
+    if (!times || times.length === 0) return '';
+    const allTags = new Set();
+    times.forEach(t => {
+        if (t.tags && Array.isArray(t.tags)) {
+            t.tags.forEach(tag => allTags.add(tag));
+        }
+    });
+    if (allTags.size === 0) return '';
+    return Array.from(allTags).map(tag =>
+        `<span class="member-tag tag-${tag}">${tag}</span>`
+    ).join(' ');
+}
+
+function getVisibilityText(visibility) {
+    const texts = { 0: '모두공개', 1: '전투력만', 2: '비공개' };
+    return texts[visibility] || '모두공개';
+}
+
+function toggleAccordion(id) {
+    const details = document.getElementById(`details-${id}`);
+    const icon = document.getElementById(`icon-${id}`);
+    if (details) details.classList.toggle('show');
+    if (icon) icon.classList.toggle('expanded');
+}
+
+function getFilteredMembers() {
+    const guildFilter = document.getElementById('filterGuild')?.value || '';
+    const tagFilter = document.getElementById('filterTag')?.value || '';
+
+    return allMembers.filter(m => {
+        if (guildFilter && m.guild !== guildFilter) return false;
+        if (tagFilter) {
+            const hasThatTag = m.preferredTimes?.some(pt =>
+                pt.tags && pt.tags.includes(tagFilter)
+            );
+            if (!hasThatTag) return false;
+        }
+        return true;
+    });
+}
+
+function setupFilters() {
+    const guildSelect = document.getElementById('filterGuild');
+    const tagSelect = document.getElementById('filterTag');
+
+    if (guildSelect) guildSelect.addEventListener('change', renderMembersList);
+    if (tagSelect) tagSelect.addEventListener('change', renderMembersList);
+
+    let resizeTimeout;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(renderMembersList, 100);
+    });
+}
+
+function setupModalEvents() {
+    document.addEventListener('click', function(e) {
+        if (e.target.classList.contains('modal')) {
+            e.target.classList.add('hidden');
+        }
+    });
+}
+
+function generateColors(count) {
+    const baseColors = [
+        'rgba(122, 162, 247, 0.7)', 'rgba(212, 175, 55, 0.7)', 'rgba(74, 222, 128, 0.7)',
+        'rgba(248, 113, 113, 0.7)', 'rgba(168, 85, 247, 0.7)', 'rgba(244, 114, 182, 0.7)',
+        'rgba(251, 146, 60, 0.7)', 'rgba(34, 211, 238, 0.7)', 'rgba(163, 230, 53, 0.7)', 'rgba(217, 70, 239, 0.7)'
+    ];
+    return Array.from({ length: count }, (_, i) => baseColors[i % baseColors.length]);
+}
+
+function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+}

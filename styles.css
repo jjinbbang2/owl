@@ -1818,3 +1818,379 @@ body {
     color: #888;
     margin-top: 8px;
 }
+
+/* ========================================
+   명단 페이지 스타일
+   ======================================== */
+
+/* 통계 섹션 */
+.stats-section {
+    margin-bottom: 40px;
+}
+
+.charts-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.chart-container {
+    background: rgba(26, 27, 38, 0.95);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.chart-title {
+    color: var(--primary-gold);
+    font-size: 0.95rem;
+    margin-bottom: 15px;
+    text-align: center;
+    font-weight: 500;
+}
+
+/* 명단 섹션 */
+.members-section {
+    margin-top: 30px;
+}
+
+.filter-controls {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.filter-controls select {
+    padding: 8px 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    background: rgba(0, 0, 0, 0.3);
+    color: var(--text-light);
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+.filter-controls select:focus {
+    border-color: var(--primary-gold);
+    outline: none;
+}
+
+/* 데스크톱 카드 */
+.member-card {
+    background: rgba(26, 27, 38, 0.95);
+    border-radius: 8px;
+    padding: 15px 20px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.member-main {
+    display: grid;
+    grid-template-columns: 40px 1fr 80px 180px 90px 90px 60px;
+    align-items: center;
+    gap: 12px;
+}
+
+.member-avatar {
+    width: 40px;
+    height: 40px;
+    background: rgba(122, 162, 247, 0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+}
+
+.member-info {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.member-name {
+    font-weight: 500;
+    color: #fff;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.member-class {
+    font-size: 0.8rem;
+    color: #888;
+}
+
+.member-guild {
+    font-size: 0.85rem;
+    padding: 4px 10px;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.guild-owl {
+    background: rgba(212, 175, 55, 0.2);
+    color: var(--primary-gold);
+}
+
+.guild-nation {
+    background: rgba(122, 162, 247, 0.2);
+    color: var(--accent-blue);
+}
+
+.member-times {
+    font-size: 0.85rem;
+    color: var(--text-light);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.member-tag {
+    font-size: 0.8rem;
+    padding: 4px 10px;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.tag-무관 { background: rgba(255, 255, 255, 0.1); color: #888; }
+.tag-평일 { background: rgba(74, 222, 128, 0.2); color: #4ade80; }
+.tag-주말 { background: rgba(168, 85, 247, 0.2); color: #a855f7; }
+.tag-공휴일제외 { background: rgba(248, 113, 113, 0.2); color: #f87171; }
+.tag-공휴일만 { background: rgba(251, 146, 60, 0.2); color: #fb923c; }
+
+.member-visibility {
+    font-size: 0.8rem;
+    color: #888;
+    text-align: center;
+}
+
+.btn-edit-member {
+    background: rgba(122, 162, 247, 0.2);
+    color: var(--accent-blue);
+    border: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    transition: background 0.2s;
+}
+
+.btn-edit-member:hover {
+    background: rgba(122, 162, 247, 0.3);
+}
+
+/* 모바일 아코디언 카드 */
+.member-card-mobile {
+    background: rgba(26, 27, 38, 0.95);
+    border-radius: 8px;
+    margin-bottom: 10px;
+    overflow: hidden;
+    display: none;
+}
+
+.member-header-mobile {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    cursor: pointer;
+}
+
+.member-main-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex: 1;
+    min-width: 0;
+}
+
+.accordion-icon {
+    color: #888;
+    font-size: 0.75rem;
+    transition: transform 0.2s;
+}
+
+.accordion-icon.expanded {
+    transform: rotate(180deg);
+}
+
+.member-details-mobile {
+    padding: 0 15px 15px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    display: none;
+}
+
+.member-details-mobile.show {
+    display: block;
+}
+
+.detail-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.detail-row:last-child {
+    border-bottom: none;
+}
+
+.detail-label {
+    color: #888;
+    font-size: 0.85rem;
+}
+
+.detail-value {
+    font-size: 0.85rem;
+    color: var(--text-light);
+}
+
+/* 시간대 범위 입력 */
+.time-range-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 10px;
+}
+
+.time-range-row {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 12px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.time-range-times {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.time-range-times select {
+    padding: 8px 10px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    background: rgba(0, 0, 0, 0.3);
+    color: var(--text-light);
+    font-size: 0.9rem;
+}
+
+.time-range-times span {
+    color: #888;
+}
+
+.time-range-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.tag-checkbox {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.tag-checkbox input[type="checkbox"] {
+    display: none;
+}
+
+.tag-checkbox .member-tag {
+    opacity: 0.4;
+    transition: opacity 0.2s;
+}
+
+.tag-checkbox input[type="checkbox"]:checked + .member-tag {
+    opacity: 1;
+}
+
+.member-tags-cell {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+}
+
+.btn-add-time {
+    background: rgba(74, 222, 128, 0.2);
+    color: #4ade80;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: background 0.2s;
+}
+
+.btn-add-time:hover {
+    background: rgba(74, 222, 128, 0.3);
+}
+
+.btn-remove-time {
+    background: rgba(248, 113, 113, 0.2);
+    color: #f87171;
+    border: none;
+    width: 28px;
+    height: 28px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+}
+
+.btn-remove-time:hover {
+    background: rgba(248, 113, 113, 0.3);
+}
+
+/* 명단 빈 상태 */
+.members-empty {
+    text-align: center;
+    padding: 60px 20px;
+    color: #888;
+}
+
+.members-empty-icon {
+    font-size: 3rem;
+    margin-bottom: 15px;
+    opacity: 0.5;
+}
+
+/* 명단 페이지 반응형 */
+@media (max-width: 768px) {
+    .charts-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .filter-controls {
+        flex-wrap: wrap;
+    }
+
+    .filter-controls select {
+        flex: 1;
+        min-width: 120px;
+    }
+
+    .member-card {
+        display: none;
+    }
+
+    .member-card-mobile {
+        display: block;
+    }
+}
+
+@media (max-width: 480px) {
+    .chart-container {
+        padding: 15px;
+    }
+
+    .chart-title {
+        font-size: 0.85rem;
+    }
+}

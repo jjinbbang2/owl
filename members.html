@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>명단 - 부엉공화국</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="부엉공화국 길드원 명단 및 선호 시간대 정보입니다.">
+    <meta name="keywords" content="마비노기 모바일, 부엉이,부엉국 길드, 명단, 시간대">
+    <meta name="author" content="부엉공화국">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg">
+    <link rel="apple-touch-icon" href="./favicon.svg">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="명단 - 부엉공화국">
+    <meta property="og:description" content="부엉공화국 길드원 명단 및 선호 시간대 정보">
+    <meta property="og:image" content="https://jjinbbang2.github.io/owl/og-image.png">
+    <meta property="og:url" content="https://jjinbbang2.github.io/owl/members.html">
+    <meta property="og:site_name" content="부엉공화국">
+
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#4a3728">
+
+    <!-- Fonts & Styles -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./styles.css?v=20260106a">
+
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1"></script>
+</head>
+<body>
+<nav class="nav">
+    <div class="nav-container">
+        <a href="index.html" class="nav-logo">🦉</a>
+        <button class="nav-toggle" onclick="toggleNav()">☰</button>
+        <ul class="nav-menu" id="navMenu">
+            <li><a href="index.html">랭킹</a></li>
+            <li><a href="members.html" class="active">명단</a></li>
+            <li><a href="guide.html">이용안내</a></li>
+            <li><a href="abyss.html">어비스</a></li>
+            <li><a href="abyss-help.html">품앗이</a></li>
+            <li><a href="raid.html">레이드</a></li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container">
+    <header class="header">
+        <div class="header-emblem">📋</div>
+        <h1 class="header-title">길드원 명단</h1>
+        <p class="header-subtitle">선호 시간대 및 정보 관리</p>
+    </header>
+
+    <!-- 통계 섹션 -->
+    <section class="stats-section">
+        <h2 class="section-title">📊 통계</h2>
+        <div class="charts-grid">
+            <div class="chart-container">
+                <h3 class="chart-title">시간대별 활동 가능 인원</h3>
+                <canvas id="timeChart"></canvas>
+            </div>
+            <div class="chart-container">
+                <h3 class="chart-title">선호 태그 분포</h3>
+                <canvas id="tagChart"></canvas>
+            </div>
+            <div class="chart-container">
+                <h3 class="chart-title">직업별 평균 전투력</h3>
+                <canvas id="classPowerChart"></canvas>
+            </div>
+            <div class="chart-container">
+                <h3 class="chart-title">직업 분포</h3>
+                <canvas id="classDistChart"></canvas>
+            </div>
+        </div>
+    </section>
+
+    <!-- 명단 섹션 -->
+    <section class="members-section">
+        <div class="section-header">
+            <h2 class="section-title">👥 길드원 목록</h2>
+            <div class="filter-controls">
+                <select id="filterGuild">
+                    <option value="">전체 길드</option>
+                    <option value="부엉이">부엉이</option>
+                    <option value="부엉국">부엉국</option>
+                </select>
+                <select id="filterTag">
+                    <option value="">전체 태그</option>
+                    <option value="무관">무관</option>
+                    <option value="평일">평일</option>
+                    <option value="주말">주말</option>
+                    <option value="공휴일제외">공휴일제외</option>
+                    <option value="공휴일만">공휴일만</option>
+                </select>
+            </div>
+        </div>
+
+        <div id="membersList">
+            <!-- JavaScript로 동적 생성 -->
+        </div>
+    </section>
+</div>
+
+<!-- 프로필 수정 모달 -->
+<div id="editModal" class="modal hidden">
+    <div class="modal-content modal-large">
+        <div class="modal-header">
+            <h3 id="editModalTitle">프로필 수정</h3>
+            <button class="modal-close" onclick="closeEditModal()">&times;</button>
+        </div>
+        <div class="modal-body">
+            <input type="hidden" id="editCharacterName">
+
+            <!-- 길드 선택 -->
+            <div class="form-group radio-group">
+                <label>길드</label>
+                <div class="radio-options">
+                    <label class="radio-label">
+                        <input type="radio" name="editGuild" value="부엉이" checked>
+                        <span>부엉이</span>
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="editGuild" value="부엉국">
+                        <span>부엉국</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- 선호시간대 + 태그 -->
+            <div class="form-group">
+                <label>선호 시간대</label>
+                <div id="timeRangeContainer" class="time-range-container">
+                    <!-- 동적으로 시간대 범위 추가 -->
+                </div>
+                <button type="button" class="btn-add-time" onclick="addTimeRange()">+ 시간대 추가</button>
+            </div>
+
+            <!-- 공개설정 -->
+            <div class="form-group radio-group">
+                <label>공개 설정</label>
+                <div class="radio-options">
+                    <label class="radio-label">
+                        <input type="radio" name="editVisibility" value="0" checked>
+                        <span>모두공개</span>
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="editVisibility" value="1">
+                        <span>전투력만공개</span>
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="editVisibility" value="2">
+                        <span>비공개</span>
+                    </label>
+                </div>
+                <p class="radio-hint">모두공개: 랭킹+전투력 표시 / 전투력만공개: 랭킹X, 전투력O / 비공개: 모두X</p>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn-cancel" onclick="closeEditModal()">취소</button>
+            <button class="btn-submit" onclick="saveProfile()">저장</button>
+        </div>
+    </div>
+</div>
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="./js/supabase-config.js?v=20260106a"></script>
+<script src="./js/members.js?v=20260106a"></script>
+</body>
+</html>
