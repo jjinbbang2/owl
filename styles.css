@@ -99,20 +99,20 @@ body {
 
 /* 엑셀 다운로드 버튼 */
 .btn-download {
-    padding: 6px 12px;
-    background: var(--primary-gold);
-    color: var(--bg-dark);
+    padding: 8px 12px;
+    background: #217346;
+    color: #fff;
     border: none;
     border-radius: 6px;
     cursor: pointer;
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     font-weight: 500;
-    transition: opacity 0.2s;
+    transition: background 0.2s;
     white-space: nowrap;
 }
 
 .btn-download:hover {
-    opacity: 0.85;
+    background: #1a5c38;
 }
 
 .header-right {
