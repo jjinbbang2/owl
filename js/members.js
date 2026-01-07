@@ -184,6 +184,7 @@ function renderMembersList() {
 function renderDesktopCard(member) {
     const timesWithTags = formatTimesWithTagsDesktop(member.preferredTimes);
     const visibilityText = getVisibilityText(member.visibility);
+    const combatPowerDisplay = formatCombatPowerDisplay(member.combatScore, member.visibility);
     const guildClass = member.guild === '부엉이' ? 'guild-owl' : member.guild === '부엉국' ? 'guild-nation' : 'guild-none';
 
     return `
@@ -196,10 +197,21 @@ function renderDesktopCard(member) {
             </div>
             <span class="member-guild ${guildClass}">${member.guild}</span>
             <div class="member-times-tags">${timesWithTags || '-'}</div>
+            <span class="member-power">${combatPowerDisplay}</span>
             <span class="member-visibility">${visibilityText}</span>
             <button class="btn-edit-member" onclick="openEditModal('${escapeHtml(member.name)}')">수정</button>
         </div>
     </div>`;
+}
+
+function formatCombatPowerDisplay(combatScore, visibility) {
+    // 비공개(2)인 경우
+    if (visibility === 2) return '비공개';
+    // 전투력 없는 경우
+    if (!combatScore) return '-';
+    // 모두공개(0) 또는 전투력만공개(1): 4.9, 5.8 형식
+    const inManUnit = Math.floor(combatScore / 1000) / 10;
+    return inManUnit.toFixed(1);
 }
 
 function renderMobileCard(member) {
