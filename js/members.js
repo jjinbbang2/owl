@@ -617,7 +617,8 @@ function downloadExcel() {
 function formatCombatPowerForExcel(combatScore, visibility) {
     if (visibility === 2) return '비공개';
     if (!combatScore) return '-';
-    return combatScore.toLocaleString();
+    const inManUnit = Math.floor(combatScore / 1000) / 10;
+    return inManUnit.toFixed(1);
 }
 
 function formatTimesForExcel(times) {
