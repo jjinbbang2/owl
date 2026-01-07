@@ -1987,6 +1987,23 @@ body {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.member-name.alt-char {
+    color: #a0a0a0;
+}
+
+.alt-badge {
+    font-size: 0.65rem;
+    padding: 2px 5px;
+    background: rgba(160, 160, 160, 0.3);
+    color: #a0a0a0;
+    border-radius: 4px;
+    font-weight: 400;
+    flex-shrink: 0;
 }
 
 .member-class {

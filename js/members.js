@@ -188,13 +188,15 @@ function renderDesktopCard(member) {
     const visibilityText = getVisibilityText(member.visibility);
     const combatPowerDisplay = formatCombatPowerDisplay(member.combatScore, member.visibility);
     const guildClass = member.guild === '부엉이' ? 'guild-owl' : member.guild === '부엉국' ? 'guild-nation' : 'guild-none';
+    const nameClass = member.isAlt ? 'member-name alt-char' : 'member-name';
+    const altBadge = member.isAlt ? `<span class="alt-badge">부</span>` : '';
 
     return `
     <div class="member-card">
         <div class="member-main">
             <div class="member-avatar">${getClassIcon(member.class)}</div>
             <div class="member-info">
-                <span class="member-name">${escapeHtml(member.name)}</span>
+                <span class="${nameClass}">${altBadge}${escapeHtml(member.name)}</span>
                 <span class="member-class">${member.class || '-'}</span>
             </div>
             <span class="member-guild ${guildClass}">${member.guild}</span>
@@ -222,6 +224,8 @@ function renderMobileCard(member) {
     const combatPowerDisplay = formatCombatPowerDisplay(member.combatScore, member.visibility);
     const guildClass = member.guild === '부엉이' ? 'guild-owl' : member.guild === '부엉국' ? 'guild-nation' : 'guild-none';
     const safeId = member.name.replace(/[^a-zA-Z0-9가-힣]/g, '_');
+    const nameClass = member.isAlt ? 'member-name alt-char' : 'member-name';
+    const altBadge = member.isAlt ? `<span class="alt-badge">부</span>` : '';
 
     return `
     <div class="member-card-mobile">
@@ -229,7 +233,7 @@ function renderMobileCard(member) {
             <div class="member-main-info">
                 <div class="member-avatar">${getClassIcon(member.class)}</div>
                 <div class="member-info">
-                    <span class="member-name">${escapeHtml(member.name)}</span>
+                    <span class="${nameClass}">${altBadge}${escapeHtml(member.name)}</span>
                     <span class="member-class">${member.class || '-'}</span>
                 </div>
                 <span class="member-guild ${guildClass}">${member.guild}</span>
@@ -649,7 +653,8 @@ function downloadExcel() {
         '캐릭터명': m.name,
         '직업': m.class || '-',
         '길드': m.guild,
-        '부캐': m.isAlt ? 'O' : '',
+        '본캐/부캐': m.isAlt ? '부캐' : '본캐',
+        '본캐': m.isAlt ? (m.mainCharacter || '-') : '',
         '전투력': formatCombatPowerForExcel(m.combatScore, m.visibility),
         '선호시간': formatTimesForExcel(m.preferredTimes),
         '태그': formatTagsForExcel(m.preferredTimes),
@@ -666,7 +671,8 @@ function downloadExcel() {
         { wch: 15 },  // 캐릭터명
         { wch: 12 },  // 직업
         { wch: 8 },   // 길드
-        { wch: 5 },   // 부캐
+        { wch: 8 },   // 본캐/부캐
+        { wch: 15 },  // 본캐
         { wch: 10 },  // 전투력
         { wch: 25 },  // 선호시간
         { wch: 20 },  // 태그
