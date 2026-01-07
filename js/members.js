@@ -156,6 +156,7 @@ function mergeData(rankingMembers, profiles, visibilityData) {
             ...member,
             guild: profile?.guild || '미설정',
             preferredTimes: profile?.preferred_times || [],
+            isAlt: profile?.is_alt || false,
             visibility: visRecord?.visibility ?? member.visibility ?? 0,
             hasProfile: !!profile
         };
@@ -277,6 +278,9 @@ function openEditModal(characterName) {
     const guildRadio = document.querySelector(`input[name="editGuild"][value="${member.guild}"]`);
     if (guildRadio) guildRadio.checked = true;
 
+    // 부캐 여부 설정
+    document.getElementById('editIsAlt').checked = member.isAlt || false;
+
     // 시간대+태그 설정
     renderTimeRanges(member.preferredTimes || []);
 
@@ -295,6 +299,7 @@ async function saveProfile() {
     const characterName = document.getElementById('editCharacterName').value;
     const guildRadio = document.querySelector('input[name="editGuild"]:checked');
     const visibilityRadio = document.querySelector('input[name="editVisibility"]:checked');
+    const isAlt = document.getElementById('editIsAlt').checked;
 
     if (!guildRadio || !visibilityRadio) {
         alert2('모든 설정을 선택해주세요.');
@@ -311,7 +316,8 @@ async function saveProfile() {
             .upsert({
                 character_name: characterName,
                 guild: guild,
-                preferred_times: preferredTimes
+                preferred_times: preferredTimes,
+                is_alt: isAlt
             }, { onConflict: 'character_name' });
 
         if (profileError) throw profileError;
@@ -478,6 +484,7 @@ function getFilteredMembers() {
     const classFilter = document.getElementById('filterClass')?.value || '';
     const timeFilter = document.getElementById('filterTime')?.value || '';
     const tagFilter = document.getElementById('filterTag')?.value || '';
+    const altFilter = document.getElementById('filterAlt')?.value || '';
 
     return allMembers.filter(m => {
         // 길드 필터
@@ -512,6 +519,11 @@ function getFilteredMembers() {
             );
             if (!hasThatTag) return false;
         }
+
+        // 부캐 필터
+        if (altFilter === 'main' && m.isAlt) return false;
+        if (altFilter === 'alt' && !m.isAlt) return false;
+
         return true;
     });
 }
@@ -521,6 +533,7 @@ function setupFilters() {
     const classSelect = document.getElementById('filterClass');
     const timeSelect = document.getElementById('filterTime');
     const tagSelect = document.getElementById('filterTag');
+    const altSelect = document.getElementById('filterAlt');
 
     // 직업 필터 동적 생성
     populateClassFilter();
@@ -529,6 +542,7 @@ function setupFilters() {
     if (classSelect) classSelect.addEventListener('change', renderMembersList);
     if (timeSelect) timeSelect.addEventListener('change', renderMembersList);
     if (tagSelect) tagSelect.addEventListener('change', renderMembersList);
+    if (altSelect) altSelect.addEventListener('change', renderMembersList);
 
     let resizeTimeout;
     window.addEventListener('resize', () => {
@@ -587,6 +601,7 @@ function downloadExcel() {
         '캐릭터명': m.name,
         '직업': m.class || '-',
         '길드': m.guild,
+        '부캐': m.isAlt ? 'O' : '',
         '전투력': formatCombatPowerForExcel(m.combatScore, m.visibility),
         '선호시간': formatTimesForExcel(m.preferredTimes),
         '태그': formatTagsForExcel(m.preferredTimes),
@@ -603,7 +618,8 @@ function downloadExcel() {
         { wch: 15 },  // 캐릭터명
         { wch: 12 },  // 직업
         { wch: 8 },   // 길드
-        { wch: 12 },  // 전투력
+        { wch: 5 },   // 부캐
+        { wch: 10 },  // 전투력
         { wch: 25 },  // 선호시간
         { wch: 20 },  // 태그
         { wch: 10 }   // 공개설정
