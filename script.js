@@ -542,11 +542,28 @@ async function deleteCharacter() {
         return;
     }
 
-    if (!confirm(`정말 "${characterName}" 캐릭터를 삭제하시겠습니까?`)) {
-        return;
-    }
-
     try {
+        // 해당 캐릭터를 본캐로 설정한 부캐들 조회
+        const { data: altChars, error: altError } = await supabase
+            .from('member_profiles')
+            .select('character_name')
+            .eq('main_character', characterName);
+
+        if (altError) throw altError;
+
+        const altNames = altChars?.map(a => a.character_name) || [];
+
+        // 확인 메시지 생성
+        let confirmMsg = `정말 "${characterName}" 캐릭터를 삭제하시겠습니까?`;
+        if (altNames.length > 0) {
+            confirmMsg += `\n\n※ 연결된 부캐 ${altNames.length}개도 함께 삭제됩니다:\n- ${altNames.join('\n- ')}`;
+        }
+
+        if (!confirm(confirmMsg)) {
+            return;
+        }
+
+        // 본캐 삭제
         const { error } = await supabase
             .from('ranking_characters')
             .delete()
@@ -554,7 +571,32 @@ async function deleteCharacter() {
 
         if (error) throw error;
 
-        showStatus('deleteStatus', '캐릭터가 삭제되었습니다!', 'success');
+        // 부캐들도 삭제
+        if (altNames.length > 0) {
+            const { error: altDelError } = await supabase
+                .from('ranking_characters')
+                .delete()
+                .in('name', altNames);
+
+            if (altDelError) {
+                console.error('부캐 삭제 오류:', altDelError);
+            }
+
+            // member_profiles에서 부캐 프로필도 삭제
+            await supabase
+                .from('member_profiles')
+                .delete()
+                .in('character_name', altNames);
+        }
+
+        // 본캐의 member_profiles도 삭제
+        await supabase
+            .from('member_profiles')
+            .delete()
+            .eq('character_name', characterName);
+
+        const deletedCount = 1 + altNames.length;
+        showStatus('deleteStatus', `${deletedCount}개 캐릭터가 삭제되었습니다!`, 'success');
 
         // 워크플로우 트리거 (백그라운드)
         triggerRankingUpdate();
