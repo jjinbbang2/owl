@@ -1837,6 +1837,37 @@ body {
     margin-top: 8px;
 }
 
+/* 본캐 선택 영역 */
+.main-char-select {
+    margin-top: 12px;
+    padding: 12px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+}
+
+.main-char-select label {
+    display: block;
+    font-size: 0.85rem;
+    color: #aaa;
+    margin-bottom: 8px;
+}
+
+.main-char-select select {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    background: rgba(0, 0, 0, 0.3);
+    color: var(--text-light);
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+.main-char-select select:focus {
+    border-color: var(--primary-gold);
+    outline: none;
+}
+
 /* ========================================
    명단 페이지 스타일
    ======================================== */

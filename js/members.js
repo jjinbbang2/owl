@@ -157,6 +157,7 @@ function mergeData(rankingMembers, profiles, visibilityData) {
             guild: profile?.guild || '미설정',
             preferredTimes: profile?.preferred_times || [],
             isAlt: profile?.is_alt || false,
+            mainCharacter: profile?.main_character || '',
             visibility: visRecord?.visibility ?? member.visibility ?? 0,
             hasProfile: !!profile
         };
@@ -278,15 +279,27 @@ function openEditModal(characterName) {
     const guildRadio = document.querySelector(`input[name="editGuild"][value="${member.guild}"]`);
     if (guildRadio) guildRadio.checked = true;
 
-    // 부캐 여부 설정
-    document.getElementById('editIsAlt').checked = member.isAlt || false;
-
     // 시간대+태그 설정
     renderTimeRanges(member.preferredTimes || []);
 
     // 공개설정
     const visibilityRadio = document.querySelector(`input[name="editVisibility"][value="${member.visibility ?? 0}"]`);
     if (visibilityRadio) visibilityRadio.checked = true;
+
+    // 본캐/부캐 설정
+    const isAltValue = member.isAlt ? 'alt' : 'main';
+    const isAltRadio = document.querySelector(`input[name="editIsAlt"][value="${isAltValue}"]`);
+    if (isAltRadio) isAltRadio.checked = true;
+
+    // 본캐 선택 목록 채우기
+    populateMainCharSelect(characterName);
+
+    // 본캐 선택값 설정
+    const mainCharSelect = document.getElementById('editMainChar');
+    if (mainCharSelect) mainCharSelect.value = member.mainCharacter || '';
+
+    // 본캐 선택 영역 표시/숨김
+    toggleMainCharSelect();
 
     document.getElementById('editModal').classList.remove('hidden');
 }
@@ -295,13 +308,45 @@ function closeEditModal() {
     document.getElementById('editModal').classList.add('hidden');
 }
 
+function toggleMainCharSelect() {
+    const isAltRadio = document.querySelector('input[name="editIsAlt"]:checked');
+    const container = document.getElementById('mainCharSelectContainer');
+    if (!container) return;
+
+    if (isAltRadio && isAltRadio.value === 'alt') {
+        container.classList.remove('hidden');
+    } else {
+        container.classList.add('hidden');
+    }
+}
+
+function populateMainCharSelect(currentCharName) {
+    const select = document.getElementById('editMainChar');
+    if (!select) return;
+
+    // 본캐만 필터링 (isAlt가 false인 캐릭터, 현재 캐릭터 제외)
+    const mainChars = allMembers.filter(m => !m.isAlt && m.name !== currentCharName);
+
+    // 옵션 초기화
+    select.innerHTML = '<option value="">본캐를 선택하세요</option>';
+
+    // 본캐 목록 추가
+    mainChars.forEach(char => {
+        const option = document.createElement('option');
+        option.value = char.name;
+        option.textContent = `${char.name} (${char.class || '-'})`;
+        select.appendChild(option);
+    });
+}
+
 async function saveProfile() {
     const characterName = document.getElementById('editCharacterName').value;
     const guildRadio = document.querySelector('input[name="editGuild"]:checked');
     const visibilityRadio = document.querySelector('input[name="editVisibility"]:checked');
-    const isAlt = document.getElementById('editIsAlt').checked;
+    const isAltRadio = document.querySelector('input[name="editIsAlt"]:checked');
+    const mainCharSelect = document.getElementById('editMainChar');
 
-    if (!guildRadio || !visibilityRadio) {
+    if (!guildRadio || !visibilityRadio || !isAltRadio) {
         alert2('모든 설정을 선택해주세요.');
         return;
     }
@@ -309,6 +354,8 @@ async function saveProfile() {
     const guild = guildRadio.value;
     const preferredTimes = collectTimeRanges();
     const visibility = parseInt(visibilityRadio.value);
+    const isAlt = isAltRadio.value === 'alt';
+    const mainCharacter = isAlt ? (mainCharSelect?.value || '') : '';
 
     try {
         const { error: profileError } = await supabase
@@ -317,7 +364,8 @@ async function saveProfile() {
                 character_name: characterName,
                 guild: guild,
                 preferred_times: preferredTimes,
-                is_alt: isAlt
+                is_alt: isAlt,
+                main_character: mainCharacter
             }, { onConflict: 'character_name' });
 
         if (profileError) throw profileError;
