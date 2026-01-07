@@ -217,6 +217,7 @@ function formatCombatPowerDisplay(combatScore, visibility) {
 function renderMobileCard(member) {
     const timesDisplay = formatPreferredTimesWithTags(member.preferredTimes);
     const visibilityText = getVisibilityText(member.visibility);
+    const combatPowerDisplay = formatCombatPowerDisplay(member.combatScore, member.visibility);
     const guildClass = member.guild === '부엉이' ? 'guild-owl' : member.guild === '부엉국' ? 'guild-nation' : 'guild-none';
     const safeId = member.name.replace(/[^a-zA-Z0-9가-힣]/g, '_');
 
@@ -237,6 +238,10 @@ function renderMobileCard(member) {
             <div class="detail-row">
                 <span class="detail-label">선호시간</span>
                 <span class="detail-value">${timesDisplay || '-'}</span>
+            </div>
+            <div class="detail-row">
+                <span class="detail-label">전투력</span>
+                <span class="detail-value combat-power-value">${combatPowerDisplay}</span>
             </div>
             <div class="detail-row">
                 <span class="detail-label">공개설정</span>

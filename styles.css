@@ -2108,6 +2108,11 @@ body {
     color: var(--text-light);
 }
 
+.detail-value.combat-power-value {
+    color: var(--primary-gold);
+    font-weight: 500;
+}
+
 /* 시간대 범위 입력 */
 .time-range-container {
     display: flex;
