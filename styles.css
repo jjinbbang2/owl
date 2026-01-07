@@ -1955,7 +1955,7 @@ body {
 
 .member-main {
     display: grid;
-    grid-template-columns: 40px 1.6fr 0.7fr 2.4fr 0.7fr 0.7fr 60px;
+    grid-template-columns: 40px 1.7fr 0.7fr 2.3fr 0.7fr 0.7fr 60px;
     align-items: center;
     gap: 12px;
 }
