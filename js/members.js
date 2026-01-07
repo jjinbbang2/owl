@@ -184,7 +184,8 @@ function renderMembersList() {
 }
 
 function renderDesktopCard(member) {
-    const timesWithTags = formatTimesWithTagsDesktop(member.preferredTimes);
+    const effectiveTimes = getEffectivePreferredTimes(member);
+    const timesWithTags = formatTimesWithTagsDesktop(effectiveTimes);
     const visibilityText = getVisibilityText(member.visibility);
     const combatPowerDisplay = formatCombatPowerDisplay(member.combatScore, member.visibility);
     const guildClass = member.guild === '부엉이' ? 'guild-owl' : member.guild === '부엉국' ? 'guild-nation' : 'guild-none';
@@ -219,7 +220,8 @@ function formatCombatPowerDisplay(combatScore, visibility) {
 }
 
 function renderMobileCard(member) {
-    const timesDisplay = formatPreferredTimesWithTags(member.preferredTimes);
+    const effectiveTimes = getEffectivePreferredTimes(member);
+    const timesDisplay = formatPreferredTimesWithTags(effectiveTimes);
     const visibilityText = getVisibilityText(member.visibility);
     const combatPowerDisplay = formatCombatPowerDisplay(member.combatScore, member.visibility);
     const guildClass = member.guild === '부엉이' ? 'guild-owl' : member.guild === '부엉국' ? 'guild-nation' : 'guild-none';
@@ -314,13 +316,21 @@ function closeEditModal() {
 
 function toggleMainCharSelect() {
     const isAltRadio = document.querySelector('input[name="editIsAlt"]:checked');
-    const container = document.getElementById('mainCharSelectContainer');
-    if (!container) return;
+    const mainCharContainer = document.getElementById('mainCharSelectContainer');
+    const timeRangeSection = document.querySelector('.form-group:has(#timeRangeContainer)');
 
-    if (isAltRadio && isAltRadio.value === 'alt') {
-        container.classList.remove('hidden');
+    if (!mainCharContainer) return;
+
+    const isAlt = isAltRadio && isAltRadio.value === 'alt';
+
+    if (isAlt) {
+        mainCharContainer.classList.remove('hidden');
+        // 부캐는 시간대 설정 불가
+        if (timeRangeSection) timeRangeSection.classList.add('hidden');
     } else {
-        container.classList.add('hidden');
+        mainCharContainer.classList.add('hidden');
+        // 본캐는 시간대 설정 가능
+        if (timeRangeSection) timeRangeSection.classList.remove('hidden');
     }
 }
 
@@ -356,10 +366,11 @@ async function saveProfile() {
     }
 
     const guild = guildRadio.value;
-    const preferredTimes = collectTimeRanges();
     const visibility = parseInt(visibilityRadio.value);
     const isAlt = isAltRadio.value === 'alt';
     const mainCharacter = isAlt ? (mainCharSelect?.value || '') : '';
+    // 부캐는 시간대를 저장하지 않음 (본캐 시간대를 따라감)
+    const preferredTimes = isAlt ? [] : collectTimeRanges();
 
     try {
         const { error: profileError } = await supabase
@@ -524,6 +535,16 @@ function getVisibilityText(visibility) {
     return texts[visibility] || '모두공개';
 }
 
+// 부캐의 경우 본캐의 선호시간/태그를 반환
+function getEffectivePreferredTimes(member) {
+    if (!member.isAlt || !member.mainCharacter) {
+        return member.preferredTimes || [];
+    }
+    // 본캐 찾기
+    const mainChar = allMembers.find(m => m.name === member.mainCharacter);
+    return mainChar?.preferredTimes || [];
+}
+
 function toggleAccordion(id) {
     const details = document.getElementById(`details-${id}`);
     const icon = document.getElementById(`icon-${id}`);
@@ -545,10 +566,13 @@ function getFilteredMembers() {
         // 직업 필터
         if (classFilter && m.class !== classFilter) return false;
 
+        // 부캐는 본캐의 시간대/태그를 사용
+        const effectiveTimes = getEffectivePreferredTimes(m);
+
         // 시간대 필터
         if (timeFilter) {
             const [startRange, endRange] = timeFilter.split('-').map(Number);
-            const hasTimeInRange = m.preferredTimes?.some(pt => {
+            const hasTimeInRange = effectiveTimes?.some(pt => {
                 if (!pt.start || !pt.end) return false;
                 const startHour = parseInt(pt.start.split(':')[0]);
                 const endHour = parseInt(pt.end.split(':')[0]);
@@ -566,7 +590,7 @@ function getFilteredMembers() {
 
         // 태그 필터
         if (tagFilter) {
-            const hasThatTag = m.preferredTimes?.some(pt =>
+            const hasThatTag = effectiveTimes?.some(pt =>
                 pt.tags && pt.tags.includes(tagFilter)
             );
             if (!hasThatTag) return false;
@@ -649,17 +673,20 @@ function downloadExcel() {
     }
 
     // 엑셀 데이터 구성
-    const excelData = filteredMembers.map(m => ({
-        '캐릭터명': m.name,
-        '직업': m.class || '-',
-        '길드': m.guild,
-        '본캐/부캐': m.isAlt ? '부캐' : '본캐',
-        '본캐': m.isAlt ? (m.mainCharacter || '-') : '',
-        '전투력': formatCombatPowerForExcel(m.combatScore, m.visibility),
-        '선호시간': formatTimesForExcel(m.preferredTimes),
-        '태그': formatTagsForExcel(m.preferredTimes),
-        '공개설정': getVisibilityText(m.visibility)
-    }));
+    const excelData = filteredMembers.map(m => {
+        const effectiveTimes = getEffectivePreferredTimes(m);
+        return {
+            '캐릭터명': m.name,
+            '직업': m.class || '-',
+            '길드': m.guild,
+            '본캐/부캐': m.isAlt ? '부캐' : '본캐',
+            '본캐': m.isAlt ? (m.mainCharacter || '-') : '',
+            '전투력': formatCombatPowerForExcel(m.combatScore, m.visibility),
+            '선호시간': formatTimesForExcel(effectiveTimes),
+            '태그': formatTagsForExcel(effectiveTimes),
+            '공개설정': getVisibilityText(m.visibility)
+        };
+    });
 
     // SheetJS로 엑셀 생성
     const ws = XLSX.utils.json_to_sheet(excelData);
