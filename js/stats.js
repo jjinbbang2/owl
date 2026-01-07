@@ -253,8 +253,9 @@ function renderClassPowerChart() {
         (classStats[b].total / classStats[b].count) - (classStats[a].total / classStats[a].count)
     );
 
-    const labels = sortedClasses;
-    const averages = labels.map(cls => Math.round(classStats[cls].total / classStats[cls].count));
+    // 직업명 (인원수) 형식으로 레이블 생성
+    const labels = sortedClasses.map(cls => `${cls} (${classStats[cls].count})`);
+    const averages = sortedClasses.map(cls => Math.round(classStats[cls].total / classStats[cls].count));
 
     // 직업 개수에 따라 차트 높이 동적 설정 (직업당 35px)
     const chartHeight = Math.max(150, labels.length * 35);
