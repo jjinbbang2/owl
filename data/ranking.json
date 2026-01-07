@@ -1,6 +1,20 @@
 {
-  "updatedAt": "2026-01-07T06:10:34.112Z",
+  "updatedAt": "2026-01-07T07:11:20.766Z",
   "members": [
+    {
+      "name": "갑옷거인",
+      "rank": 24229,
+      "rankDisplay": "24,229위",
+      "server": "라사",
+      "class": "대검전사",
+      "totalScore": 100450,
+      "totalScoreDisplay": "100,450",
+      "combatScore": 53897,
+      "lifeScore": 24374,
+      "charmScore": 22179,
+      "source": "mobinogi.net",
+      "visibility": 0
+    },
     {
       "name": "전퇴의거인",
       "rank": 13876,
@@ -12,6 +26,34 @@
       "combatScore": 54590,
       "lifeScore": 19993,
       "charmScore": 23552,
+      "source": "mobinogi.net",
+      "visibility": 0
+    },
+    {
+      "name": "루야쫑쫑",
+      "rank": 17929,
+      "rankDisplay": "17,929위",
+      "server": "라사",
+      "class": "대검전사",
+      "totalScore": 108739,
+      "totalScoreDisplay": "108,739",
+      "combatScore": 59344,
+      "lifeScore": 25052,
+      "charmScore": 24343,
+      "source": "mobinogi.net",
+      "visibility": 0
+    },
+    {
+      "name": "풀뱅기사",
+      "rank": 5128,
+      "rankDisplay": "5,128위",
+      "server": "라사",
+      "class": "화염술사",
+      "totalScore": 114786,
+      "totalScoreDisplay": "114,786",
+      "combatScore": 57077,
+      "lifeScore": 26480,
+      "charmScore": 31229,
       "source": "mobinogi.net",
       "visibility": 0
     },
@@ -68,48 +110,6 @@
       "combatScore": 53385,
       "lifeScore": 24831,
       "charmScore": 21343,
-      "source": "mobinogi.net",
-      "visibility": 0
-    },
-    {
-      "name": "풀뱅기사",
-      "rank": 5128,
-      "rankDisplay": "5,128위",
-      "server": "라사",
-      "class": "화염술사",
-      "totalScore": 114786,
-      "totalScoreDisplay": "114,786",
-      "combatScore": 57077,
-      "lifeScore": 26480,
-      "charmScore": 31229,
-      "source": "mobinogi.net",
-      "visibility": 0
-    },
-    {
-      "name": "갑옷거인",
-      "rank": 24229,
-      "rankDisplay": "24,229위",
-      "server": "라사",
-      "class": "대검전사",
-      "totalScore": 100450,
-      "totalScoreDisplay": "100,450",
-      "combatScore": 53897,
-      "lifeScore": 24374,
-      "charmScore": 22179,
-      "source": "mobinogi.net",
-      "visibility": 0
-    },
-    {
-      "name": "루야쫑쫑",
-      "rank": 17929,
-      "rankDisplay": "17,929위",
-      "server": "라사",
-      "class": "대검전사",
-      "totalScore": 108739,
-      "totalScoreDisplay": "108,739",
-      "combatScore": 59344,
-      "lifeScore": 25052,
-      "charmScore": 24343,
       "source": "mobinogi.net",
       "visibility": 0
     },
@@ -199,8 +199,8 @@
     },
     {
       "name": "플라시엘",
-      "rank": 231,
-      "rankDisplay": "231위",
+      "rank": 239,
+      "rankDisplay": "239위",
       "server": "라사",
       "class": "수도사",
       "totalScore": 139346,
@@ -618,6 +618,20 @@
       "visibility": 0
     },
     {
+      "name": "리트리부엉",
+      "rank": 11479,
+      "rankDisplay": "11,479위",
+      "server": "라사",
+      "class": "힐러",
+      "totalScore": 101293,
+      "totalScoreDisplay": "101,293",
+      "combatScore": 55715,
+      "lifeScore": 22246,
+      "charmScore": 23332,
+      "source": "mobinogi.net",
+      "visibility": 2
+    },
+    {
       "name": "빵민",
       "rank": 39979,
       "rankDisplay": "39,979위",
@@ -674,16 +688,16 @@
       "visibility": 2
     },
     {
-      "name": "솥밥이",
-      "rank": 45504,
-      "rankDisplay": "45,504위",
+      "name": "이카러스",
+      "rank": 8524,
+      "rankDisplay": "8,524위",
       "server": "라사",
-      "class": "검술사",
-      "totalScore": 86368,
-      "totalScoreDisplay": "86,368",
-      "combatScore": 50106,
-      "lifeScore": 20954,
-      "charmScore": 15308,
+      "class": "빙결술사",
+      "totalScore": 106258,
+      "totalScoreDisplay": "106,258",
+      "combatScore": 54878,
+      "lifeScore": 24801,
+      "charmScore": 26579,
       "source": "mobinogi.net",
       "visibility": 2
     },
@@ -744,30 +758,30 @@
       "visibility": 2
     },
     {
-      "name": "이카러스",
-      "rank": 8524,
-      "rankDisplay": "8,524위",
+      "name": "솥밥이",
+      "rank": 45504,
+      "rankDisplay": "45,504위",
       "server": "라사",
-      "class": "빙결술사",
-      "totalScore": 106258,
-      "totalScoreDisplay": "106,258",
-      "combatScore": 54878,
-      "lifeScore": 24801,
-      "charmScore": 26579,
+      "class": "검술사",
+      "totalScore": 86368,
+      "totalScoreDisplay": "86,368",
+      "combatScore": 50106,
+      "lifeScore": 20954,
+      "charmScore": 15308,
       "source": "mobinogi.net",
       "visibility": 2
     },
     {
       "name": "A5",
-      "rank": 1702,
-      "rankDisplay": "1,702위",
+      "rank": 238,
+      "rankDisplay": "238위",
       "server": "라사",
       "class": "대검전사",
-      "totalScore": 138085,
-      "totalScoreDisplay": "138,085",
-      "combatScore": 64136,
+      "totalScore": 139347,
+      "totalScoreDisplay": "139,347",
+      "combatScore": 64398,
       "lifeScore": 26694,
-      "charmScore": 47255,
+      "charmScore": 48255,
       "source": "mobinogi.net",
       "visibility": 2
     },
@@ -828,20 +842,6 @@
       "visibility": 2
     },
     {
-      "name": "리트리부엉",
-      "rank": 11479,
-      "rankDisplay": "11,479위",
-      "server": "라사",
-      "class": "힐러",
-      "totalScore": 101293,
-      "totalScoreDisplay": "101,293",
-      "combatScore": 55715,
-      "lifeScore": 22246,
-      "charmScore": 23332,
-      "source": "mobinogi.net",
-      "visibility": 2
-    },
-    {
       "name": "꿀미호",
       "rank": 2043,
       "rankDisplay": "2,043위",
@@ -881,7 +881,7 @@
       "lifeScore": 36417,
       "charmScore": 18770,
       "source": "mobinogi.net",
-      "visibility": 0
+      "visibility": 1
     },
     {
       "name": "키타타",
@@ -895,7 +895,7 @@
       "lifeScore": 36325,
       "charmScore": 21270,
       "source": "mobinogi.net",
-      "visibility": 0
+      "visibility": 1
     },
     {
       "name": "오일러방정식",
@@ -969,15 +969,15 @@
     },
     {
       "name": "여니는여니여니여니해",
-      "rank": 10942,
-      "rankDisplay": "10,942위",
+      "rank": 10886,
+      "rankDisplay": "10,886위",
       "server": "라사",
       "class": "사제",
-      "totalScore": 102000,
-      "totalScoreDisplay": "102,000",
+      "totalScore": 102030,
+      "totalScoreDisplay": "102,030",
       "combatScore": 54616,
-      "lifeScore": 29215,
-      "charmScore": 18169,
+      "lifeScore": 29239,
+      "charmScore": 18175,
       "source": "mobinogi.net",
       "visibility": 0
     },
@@ -1006,6 +1006,20 @@
       "combatScore": 55984,
       "lifeScore": 26806,
       "charmScore": 17169,
+      "source": "mobinogi.net",
+      "visibility": 0
+    },
+    {
+      "name": "여니는여니여니여니여니여",
+      "rank": 21689,
+      "rankDisplay": "21,689위",
+      "server": "라사",
+      "class": "암흑술사",
+      "totalScore": 91084,
+      "totalScoreDisplay": "91,084",
+      "combatScore": 51696,
+      "lifeScore": 25819,
+      "charmScore": 13569,
       "source": "mobinogi.net",
       "visibility": 0
     }
