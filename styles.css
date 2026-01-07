@@ -109,6 +109,13 @@ body {
     font-weight: 500;
     transition: background 0.2s;
     white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.btn-download svg {
+    flex-shrink: 0;
 }
 
 .btn-download:hover {
