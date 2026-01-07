@@ -1,10 +1,10 @@
 {
-  "updatedAt": "2026-01-07T05:11:21.948Z",
+  "updatedAt": "2026-01-07T05:25:51.882Z",
   "members": [
     {
       "name": "갑옷거인",
-      "rank": 24243,
-      "rankDisplay": "24,243위",
+      "rank": 24229,
+      "rankDisplay": "24,229위",
       "server": "라사",
       "class": "대검전사",
       "totalScore": 100450,
@@ -978,6 +978,20 @@
       "combatScore": 52970,
       "lifeScore": 20804,
       "charmScore": 16991,
+      "source": "mobinogi.net",
+      "visibility": 0
+    },
+    {
+      "name": "힐러보노",
+      "rank": 103640,
+      "rankDisplay": "103,640위",
+      "server": "라사",
+      "class": "힐러",
+      "totalScore": 44804,
+      "totalScoreDisplay": "44,804",
+      "combatScore": 25034,
+      "lifeScore": 12149,
+      "charmScore": 7621,
       "source": "mobinogi.net",
       "visibility": 0
     }
