@@ -572,3 +572,69 @@ function escapeHtml(text) {
     div.textContent = text;
     return div.innerHTML;
 }
+
+// ===== 엑셀 다운로드 =====
+function downloadExcel() {
+    const filteredMembers = getFilteredMembers();
+
+    if (filteredMembers.length === 0) {
+        alert2('다운로드할 데이터가 없습니다.', 'warning');
+        return;
+    }
+
+    // 엑셀 데이터 구성
+    const excelData = filteredMembers.map(m => ({
+        '캐릭터명': m.name,
+        '직업': m.class || '-',
+        '길드': m.guild,
+        '전투력': formatCombatPowerForExcel(m.combatScore, m.visibility),
+        '선호시간': formatTimesForExcel(m.preferredTimes),
+        '태그': formatTagsForExcel(m.preferredTimes),
+        '공개설정': getVisibilityText(m.visibility)
+    }));
+
+    // SheetJS로 엑셀 생성
+    const ws = XLSX.utils.json_to_sheet(excelData);
+    const wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, '길드원명단');
+
+    // 열 너비 설정
+    ws['!cols'] = [
+        { wch: 15 },  // 캐릭터명
+        { wch: 12 },  // 직업
+        { wch: 8 },   // 길드
+        { wch: 12 },  // 전투력
+        { wch: 25 },  // 선호시간
+        { wch: 20 },  // 태그
+        { wch: 10 }   // 공개설정
+    ];
+
+    // 파일 다운로드
+    const filename = `부엉공화국_길드원명단_${getDateString()}.xlsx`;
+    XLSX.writeFile(wb, filename);
+}
+
+function formatCombatPowerForExcel(combatScore, visibility) {
+    if (visibility === 2) return '비공개';
+    if (!combatScore) return '-';
+    return combatScore.toLocaleString();
+}
+
+function formatTimesForExcel(times) {
+    if (!times || times.length === 0) return '-';
+    return times.map(t => `${t.start}~${t.end}`).join(', ');
+}
+
+function formatTagsForExcel(times) {
+    if (!times || times.length === 0) return '-';
+    const allTags = new Set();
+    times.forEach(t => {
+        if (t.tags) t.tags.forEach(tag => allTags.add(tag));
+    });
+    return allTags.size > 0 ? Array.from(allTags).join(', ') : '-';
+}
+
+function getDateString() {
+    const now = new Date();
+    return `${now.getFullYear()}${String(now.getMonth()+1).padStart(2,'0')}${String(now.getDate()).padStart(2,'0')}`;
+}

@@ -97,6 +97,24 @@ body {
     border-color: var(--accent-blue);
 }
 
+/* 엑셀 다운로드 버튼 */
+.btn-download {
+    padding: 6px 12px;
+    background: var(--primary-gold);
+    color: var(--bg-dark);
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    font-weight: 500;
+    transition: opacity 0.2s;
+    white-space: nowrap;
+}
+
+.btn-download:hover {
+    opacity: 0.85;
+}
+
 .header-right {
     display: flex;
     align-items: center;

@@ -28,7 +28,7 @@
     <!-- Fonts & Styles -->
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
-    <link rel="stylesheet" href="./styles.css?v=20260107a">
+    <link rel="stylesheet" href="./styles.css?v=20260107b">
 
 </head>
 <body>
@@ -59,6 +59,7 @@
     <section class="members-section">
         <div class="section-header">
             <h2 class="section-title">👥 길드원 목록</h2>
+            <button class="btn-download" onclick="downloadExcel()">📥 엑셀</button>
             <div class="filter-controls">
                 <select id="filterGuild">
                     <option value="">전체 길드</option>
@@ -162,7 +163,8 @@
 <!-- Scripts -->
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://cdn.sheetjs.com/xlsx-0.20.1/package/dist/xlsx.full.min.js"></script>
 <script src="./js/supabase-config.js?v=20260106c"></script>
-<script src="./js/members.js?v=20260107a"></script>
+<script src="./js/members.js?v=20260107b"></script>
 </body>
 </html>
