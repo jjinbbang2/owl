@@ -664,7 +664,27 @@ function escapeHtml(text) {
 }
 
 // ===== 엑셀 다운로드 =====
-function downloadExcel() {
+async function downloadExcel() {
+    // 암호 입력 요청
+    const { value: password } = await Swal.fire({
+        title: '암호 입력',
+        input: 'password',
+        inputLabel: '다운로드 암호를 입력하세요',
+        inputPlaceholder: '암호',
+        showCancelButton: true,
+        confirmButtonText: '확인',
+        cancelButtonText: '취소'
+    });
+
+    // 취소한 경우
+    if (!password) return;
+
+    // 암호가 틀린 경우
+    if (password !== '0328') {
+        alert2('암호가 틀렸습니다.', 'error');
+        return;
+    }
+
     const filteredMembers = getFilteredMembers();
 
     if (filteredMembers.length === 0) {
