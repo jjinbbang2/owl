@@ -329,6 +329,35 @@ async function addMember(partyId) {
         return;
     }
 
+    // DB에서 파티 정보 및 현재 참가자 수 확인
+    const { data: partyData, error: partyError } = await supabase
+        .from('raid_parties')
+        .select('raid_type')
+        .eq('id', partyId)
+        .single();
+
+    if (partyError) {
+        alert('파티 정보 확인 실패: ' + partyError.message);
+        return;
+    }
+
+    const { count, error: countError } = await supabase
+        .from('raid_members')
+        .select('*', { count: 'exact', head: true })
+        .eq('party_id', partyId);
+
+    if (countError) {
+        alert('참가 확인 실패: ' + countError.message);
+        return;
+    }
+
+    const maxMembers = getMaxMembers(partyData.raid_type);
+    if (count >= maxMembers) {
+        alert('파티가 이미 가득 찼습니다.');
+        loadParties();
+        return;
+    }
+
     const party = currentParties.find(p => p.id === partyId);
     if (party && party.raid_members.some(m => m.nickname === nickname)) {
         alert('이미 참가한 닉네임입니다.');

@@ -300,6 +300,23 @@ async function addMember(partyId) {
         return;
     }
 
+    // DB에서 현재 참가자 수 확인
+    const { count, error: countError } = await supabase
+        .from('abyss_members')
+        .select('*', { count: 'exact', head: true })
+        .eq('party_id', partyId);
+
+    if (countError) {
+        alert('참가 확인 실패: ' + countError.message);
+        return;
+    }
+
+    if (count >= 4) {
+        alert('파티가 이미 가득 찼습니다.');
+        loadParties();
+        return;
+    }
+
     const party = currentParties.find(p => p.id === partyId);
     if (party && party.abyss_members.some(m => m.nickname === nickname)) {
         alert('이미 참가한 닉네임입니다.');
