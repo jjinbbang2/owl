@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>모비라이프 - 부엉공화국</title>
+
+    <meta name="description" content="마비노기 모바일 일정 정보 - 어비스 구멍, 심층구멍 일정표">
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg">
+    <meta property="og:title" content="모비라이프 - 부엉공화국">
+    <meta property="og:image" content="https://jjinbbang2.github.io/owl/og-image.png">
+    <meta name="theme-color" content="#4a3728">
+
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./styles.css?v=20260108a">
+</head>
+<body>
+<nav class="nav">
+    <div class="nav-container">
+        <a href="index.html" class="nav-logo">🦉</a>
+        <button class="nav-toggle" onclick="toggleNav()">☰</button>
+        <ul class="nav-menu" id="navMenu">
+            <li><a href="index.html">랭킹</a></li>
+            <li><a href="members.html">명단</a></li>
+            <li><a href="stats.html">통계</a></li>
+            <li><a href="guide.html">이용안내</a></li>
+            <li><a href="abyss.html">어비스</a></li>
+            <li><a href="abyss-help.html">품앗이</a></li>
+            <li><a href="raid.html">레이드</a></li>
+            <li><a href="mobilife.html" class="active">모비라이프</a></li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container">
+    <header class="header">
+        <div class="header-emblem">🌐</div>
+        <h1 class="header-title">모비라이프</h1>
+        <p class="header-subtitle">마비노기 모바일 일정 정보</p>
+    </header>
+
+    <section class="mobilife-section">
+        <div class="iframe-container">
+            <iframe
+                id="mobilifeFrame"
+                src="https://mabimobi.life"
+                title="모비라이프 일정표"
+                onload="hideLoading()"
+                onerror="showError()">
+            </iframe>
+            <div id="iframeLoading" class="iframe-loading">
+                <div class="loading-spinner"></div>
+                <p>모비라이프 로딩 중...</p>
+            </div>
+        </div>
+
+        <div id="iframeFallback" class="iframe-fallback hidden">
+            <p>⚠️ iframe 로딩이 차단되었습니다.</p>
+            <a href="https://mabimobi.life" target="_blank" rel="noopener noreferrer" class="btn-external">
+                🔗 모비라이프 사이트 바로가기
+            </a>
+        </div>
+
+        <div class="mobilife-links">
+            <p>직접 방문하기:</p>
+            <a href="https://mabimobi.life" target="_blank" rel="noopener noreferrer" class="btn-link">
+                모비라이프 메인
+            </a>
+        </div>
+    </section>
+</div>
+
+<script>
+function toggleNav() {
+    const menu = document.getElementById('navMenu');
+    menu.classList.toggle('show');
+}
+
+function hideLoading() {
+    const loading = document.getElementById('iframeLoading');
+    if (loading) loading.classList.add('hidden');
+}
+
+function showError() {
+    const loading = document.getElementById('iframeLoading');
+    const fallback = document.getElementById('iframeFallback');
+    const frame = document.getElementById('mobilifeFrame');
+
+    if (loading) loading.classList.add('hidden');
+    if (fallback) fallback.classList.remove('hidden');
+    if (frame) frame.style.display = 'none';
+}
+
+// iframe 로딩 타임아웃 (10초 후에도 로딩 중이면 대체 UI 표시)
+setTimeout(() => {
+    const loading = document.getElementById('iframeLoading');
+    if (loading && !loading.classList.contains('hidden')) {
+        showError();
+    }
+}, 10000);
+</script>
+
+<style>
+.mobilife-section {
+    margin-top: 20px;
+}
+
+.iframe-container {
+    position: relative;
+    width: 100%;
+    height: 80vh;
+    min-height: 500px;
+    background: rgba(26, 27, 38, 0.95);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.iframe-container iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.iframe-loading {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: rgba(26, 27, 38, 0.95);
+    color: var(--text-light);
+}
+
+.loading-spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid rgba(212, 175, 55, 0.3);
+    border-top-color: var(--primary-gold);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 15px;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.iframe-fallback {
+    text-align: center;
+    padding: 40px 20px;
+    background: rgba(248, 113, 113, 0.1);
+    border: 1px solid rgba(248, 113, 113, 0.3);
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+.iframe-fallback p {
+    color: #f87171;
+    margin-bottom: 15px;
+}
+
+.btn-external {
+    display: inline-block;
+    padding: 12px 24px;
+    background: var(--primary-gold);
+    color: #1a1b26;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: opacity 0.2s;
+}
+
+.btn-external:hover {
+    opacity: 0.9;
+}
+
+.mobilife-links {
+    margin-top: 20px;
+    text-align: center;
+    padding: 15px;
+    background: rgba(26, 27, 38, 0.5);
+    border-radius: 8px;
+}
+
+.mobilife-links p {
+    color: #888;
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+}
+
+.btn-link {
+    display: inline-block;
+    padding: 8px 16px;
+    background: rgba(122, 162, 247, 0.2);
+    color: var(--accent-blue);
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    transition: background 0.2s;
+}
+
+.btn-link:hover {
+    background: rgba(122, 162, 247, 0.3);
+}
+
+.hidden {
+    display: none !important;
+}
+</style>
+</body>
+</html>
