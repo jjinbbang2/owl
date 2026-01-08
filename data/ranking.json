@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-01-08T08:11:04.824Z",
+  "updatedAt": "2026-01-08T09:11:28.168Z",
   "members": [
     {
       "name": "갑옷거인",
@@ -161,11 +161,11 @@
       "rankDisplay": "5위",
       "server": "라사",
       "class": "화염술사",
-      "totalScore": 153045,
-      "totalScoreDisplay": "153,045",
+      "totalScore": 153047,
+      "totalScoreDisplay": "153,047",
       "combatScore": 62352,
       "lifeScore": 37521,
-      "charmScore": 53172,
+      "charmScore": 53174,
       "source": "mobinogi.net",
       "visibility": 0
     },
