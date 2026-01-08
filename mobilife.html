@@ -42,16 +42,9 @@
     <section class="mobilife-section">
         <div class="iframe-container">
             <iframe
-                id="mobilifeFrame"
                 src="https://mabimobi.life"
-                title="모비라이프 일정표"
-                onload="hideLoading()"
-                onerror="showError()">
+                title="모비라이프 일정표">
             </iframe>
-            <div id="iframeLoading" class="iframe-loading">
-                <div class="loading-spinner"></div>
-                <p>모비라이프 로딩 중...</p>
-            </div>
         </div>
 
         <div class="iframe-container iframe-container-2">
@@ -59,13 +52,6 @@
                 src="https://mabimobi.life"
                 title="모비라이프 일정표 2">
             </iframe>
-        </div>
-
-        <div id="iframeFallback" class="iframe-fallback hidden">
-            <p>⚠️ iframe 로딩이 차단되었습니다.</p>
-            <a href="https://mabimobi.life" target="_blank" rel="noopener noreferrer" class="btn-external">
-                🔗 모비라이프 사이트 바로가기
-            </a>
         </div>
 
         <div class="mobilife-links">
@@ -82,29 +68,6 @@ function toggleNav() {
     const menu = document.getElementById('navMenu');
     menu.classList.toggle('show');
 }
-
-function hideLoading() {
-    const loading = document.getElementById('iframeLoading');
-    if (loading) loading.classList.add('hidden');
-}
-
-function showError() {
-    const loading = document.getElementById('iframeLoading');
-    const fallback = document.getElementById('iframeFallback');
-    const frame = document.getElementById('mobilifeFrame');
-
-    if (loading) loading.classList.add('hidden');
-    if (fallback) fallback.classList.remove('hidden');
-    if (frame) frame.style.display = 'none';
-}
-
-// iframe 로딩 타임아웃 (10초 후에도 로딩 중이면 대체 UI 표시)
-setTimeout(() => {
-    const loading = document.getElementById('iframeLoading');
-    if (loading && !loading.classList.contains('hidden')) {
-        showError();
-    }
-}, 10000);
 </script>
 
 <style>
@@ -138,63 +101,6 @@ setTimeout(() => {
     margin-top: -510px;  /* 상단 510px 건너뛰기 */
 }
 
-.iframe-loading {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background: rgba(26, 27, 38, 0.95);
-    color: var(--text-light);
-}
-
-.loading-spinner {
-    width: 40px;
-    height: 40px;
-    border: 3px solid rgba(212, 175, 55, 0.3);
-    border-top-color: var(--primary-gold);
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
-    margin-bottom: 15px;
-}
-
-@keyframes spin {
-    to { transform: rotate(360deg); }
-}
-
-.iframe-fallback {
-    text-align: center;
-    padding: 40px 20px;
-    background: rgba(248, 113, 113, 0.1);
-    border: 1px solid rgba(248, 113, 113, 0.3);
-    border-radius: 8px;
-    margin-top: 20px;
-}
-
-.iframe-fallback p {
-    color: #f87171;
-    margin-bottom: 15px;
-}
-
-.btn-external {
-    display: inline-block;
-    padding: 12px 24px;
-    background: var(--primary-gold);
-    color: #1a1b26;
-    text-decoration: none;
-    border-radius: 8px;
-    font-weight: 500;
-    transition: opacity 0.2s;
-}
-
-.btn-external:hover {
-    opacity: 0.9;
-}
-
 .mobilife-links {
     margin-top: 20px;
     text-align: center;
@@ -222,10 +128,6 @@ setTimeout(() => {
 
 .btn-link:hover {
     background: rgba(122, 162, 247, 0.3);
-}
-
-.hidden {
-    display: none !important;
 }
 </style>
 </body>
