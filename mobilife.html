@@ -92,6 +92,9 @@ function toggleNav() {
     border: none;
     pointer-events: none;  /* 스크롤 방지 */
     margin-top: -170px;  /* 상단 170px 건너뛰기 */
+    touch-action: none;  /* 모바일 터치/드래그 방지 */
+    user-select: none;
+    -webkit-user-select: none;
 }
 
 .iframe-container-2 {
