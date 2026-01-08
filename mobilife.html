@@ -54,6 +54,13 @@
             </div>
         </div>
 
+        <div class="iframe-container iframe-container-2">
+            <iframe
+                src="https://mabimobi.life"
+                title="모비라이프 일정표 2">
+            </iframe>
+        </div>
+
         <div id="iframeFallback" class="iframe-fallback hidden">
             <p>⚠️ iframe 로딩이 차단되었습니다.</p>
             <a href="https://mabimobi.life" target="_blank" rel="noopener noreferrer" class="btn-external">
@@ -120,6 +127,15 @@ setTimeout(() => {
     border: none;
     pointer-events: none;  /* 스크롤 방지 */
     margin-top: -170px;  /* 상단 170px 건너뛰기 */
+}
+
+.iframe-container-2 {
+    height: 135px;
+    margin-top: 15px;
+}
+
+.iframe-container-2 iframe {
+    margin-top: -320px;  /* 상단 320px 건너뛰기 */
 }
 
 .iframe-loading {
