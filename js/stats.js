@@ -188,7 +188,7 @@ function renderTagChart() {
     const canvas = document.getElementById('tagChart');
     if (!canvas) return;
 
-    const tagCounts = { '무관': 0, '평일': 0, '주말': 0, '공휴일제외': 0, '공휴일만': 0 };
+    const tagCounts = { '무관': 0, '평일': 0, '주말': 0, '공휴일제외': 0, '공휴일': 0 };
 
     allMembers.forEach(member => {
         if (member.preferredTimes && member.preferredTimes.length > 0) {

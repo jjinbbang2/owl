@@ -9,7 +9,7 @@ let rankingData = null;
 let profilesData = [];
 
 // 태그 목록
-const TAG_OPTIONS = ['무관', '평일', '주말', '공휴일제외', '공휴일만'];
+const TAG_OPTIONS = ['무관', '평일', '주말', '공휴일제외', '공휴일'];
 
 // 길드 옵션
 const GUILD_OPTIONS = ['미설정', '부엉이', '부엉국'];
