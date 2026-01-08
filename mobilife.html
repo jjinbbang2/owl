@@ -81,10 +81,12 @@ function toggleNav() {
     height: 90px;
     background: rgba(26, 27, 38, 0.95);
     border-radius: 8px;
-    overflow: hidden;
+    overflow-x: auto;
+    overflow-y: hidden;
 }
 
 .iframe-container iframe {
+    min-width: 820px;
     width: 100%;
     height: 1200px;  /* iframe 내부 높이를 크게 설정 */
     border: none;
