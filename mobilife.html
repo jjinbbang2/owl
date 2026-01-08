@@ -45,6 +45,7 @@
                 src="https://mabimobi.life"
                 title="모비라이프 일정표">
             </iframe>
+            <div class="iframe-overlay"></div>
         </div>
 
         <div class="iframe-container iframe-container-2">
@@ -52,6 +53,7 @@
                 src="https://mabimobi.life"
                 title="모비라이프 일정표 2">
             </iframe>
+            <div class="iframe-overlay"></div>
         </div>
 
         <div class="mobilife-links">
@@ -81,8 +83,9 @@ function toggleNav() {
     height: 90px;
     background: rgba(26, 27, 38, 0.95);
     border-radius: 8px;
-    overflow-x: auto;
-    overflow-y: hidden;
+    overflow: hidden;
+    touch-action: pan-x;
+    -webkit-overflow-scrolling: auto;
 }
 
 .iframe-container iframe {
@@ -104,6 +107,16 @@ function toggleNav() {
 
 .iframe-container-2 iframe {
     margin-top: -510px;  /* 상단 510px 건너뛰기 */
+}
+
+.iframe-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: transparent;
+    z-index: 10;
 }
 
 .mobilife-links {
