@@ -70,6 +70,40 @@ function toggleNav() {
     const menu = document.getElementById('navMenu');
     menu.classList.toggle('show');
 }
+
+// 모바일에서 iframe 가로 스크롤 애니메이션
+function autoScrollOnMobile() {
+    const isMobile = window.innerWidth <= 820;
+    if (!isMobile) return;
+
+    const containers = document.querySelectorAll('.iframe-container');
+    containers.forEach(container => {
+        const scrollWidth = container.scrollWidth - container.clientWidth;
+        if (scrollWidth <= 0) return;
+
+        const duration = 3000;
+        const startTime = performance.now();
+
+        function animate(currentTime) {
+            const elapsed = currentTime - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            // easeOutQuad for smooth animation
+            const easeProgress = 1 - (1 - progress) * (1 - progress);
+            container.scrollLeft = scrollWidth * easeProgress;
+
+            if (progress < 1) {
+                requestAnimationFrame(animate);
+            }
+        }
+
+        requestAnimationFrame(animate);
+    });
+}
+
+// 페이지 로드 후 실행
+window.addEventListener('load', () => {
+    setTimeout(autoScrollOnMobile, 500);
+});
 </script>
 
 <style>
