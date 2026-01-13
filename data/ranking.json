@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-01-13T04:22:02.484Z",
+  "updatedAt": "2026-01-13T05:11:50.822Z",
   "members": [
     {
       "name": "갑옷거인",
@@ -157,8 +157,8 @@
     },
     {
       "name": "시우쇠",
-      "rank": 5,
-      "rankDisplay": "5위",
+      "rank": 4,
+      "rankDisplay": "4위",
       "server": "라사",
       "class": "화염술사",
       "totalScore": 153817,
