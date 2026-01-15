@@ -72,6 +72,7 @@
                         <option value="글라스기브넨">글라스기브넨 (8인)</option>
                         <option value="화이트 서큐버스">화이트 서큐버스 (4인)</option>
                         <option value="타바르타스" selected>타바르타스 (8인)</option>
+                        <option value="에이렐">에이렐 (4인)</option>
                     </select>
                 </div>
                 <div class="form-group">
@@ -125,7 +126,7 @@ let currentParties = [];
 
 // 레이드별 정원
 function getMaxMembers(raidType) {
-    return raidType === '화이트 서큐버스' ? 4 : 8;
+    return (raidType === '화이트 서큐버스' || raidType === '에이렐') ? 4 : 8;
 }
 
 // 파티 목록 로드
@@ -248,7 +249,8 @@ function updateDifficultyOptions() {
     const options = {
         '글라스기브넨': '<option value="입문">입문</option><option value="어려움">어려움</option><option value="매우 어려움" selected>매우 어려움</option>',
         '화이트 서큐버스': '<option value="어려움" selected>어려움</option>',
-        '타바르타스': '<option value="입문">입문</option><option value="어려움" selected>어려움</option>'
+        '타바르타스': '<option value="입문">입문</option><option value="어려움" selected>어려움</option>',
+        '에이렐': '<option value="어려움" selected>어려움</option>'
     };
 
     difficultySelect.innerHTML = options[raidType] || options['글라스기브넨'];

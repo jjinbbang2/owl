@@ -160,7 +160,7 @@ ${memberList}
 
             case 'raid':
                 const raidType = party.raid_type || '글라스기브넨';
-                maxMembers = (raidType === '화이트 서큐버스' || raidType === '에르그 퀘이크') ? 4 : 8;
+                maxMembers = (raidType === '화이트 서큐버스' || raidType === '에이렐') ? 4 : 8;
                 memberCount = party.raid_members.length;
 
                 memberList = party.raid_members.map(member => {
@@ -194,7 +194,8 @@ ${memberList}
     const raidImageMap = {
         '글라스기브넨'  : 'https://jjinbbang2.github.io/owl/images/raids/kakao-glas.png',
         '화이트 서큐버스': 'https://jjinbbang2.github.io/owl/images/raids/kakao-succubus.png',
-        '타바르타스'   : 'https://jjinbbang2.github.io/owl/images/raids/kakao-tavartas.png'
+        '타바르타스'   : 'https://jjinbbang2.github.io/owl/images/raids/kakao-tavartas.png',
+        '에이렐'      : 'https://jjinbbang2.github.io/owl/images/raids/kakao-erel.png'
     };
 
     // 어비스/품앗이 이미지 URL

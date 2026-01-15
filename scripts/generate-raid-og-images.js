@@ -32,6 +32,14 @@ const bosses = [
     color: '#ffd700',      // 골드 (황금 골렘)
     bgGradient: ['#1a1508', '#2d2510', '#0f0d05'],
     members: 8
+  },
+  {
+    id: 'erel',
+    name: '에이렐',
+    imageFile: 'erel.png',
+    color: '#66ccff',      // 하늘색 (바람/천공)
+    bgGradient: ['#0a141a', '#15252d', '#08100f'],
+    members: 4
   }
 ];
 
