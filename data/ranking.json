@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-01-17T05:08:43.606Z",
+  "updatedAt": "2026-01-17T06:09:51.773Z",
   "members": [
     {
       "name": "루야쫑쫑",
@@ -800,20 +800,6 @@
       "visibility": 2
     },
     {
-      "name": "낭만감자",
-      "rank": 33043,
-      "rankDisplay": "33,043위",
-      "server": "라사",
-      "class": "검술사",
-      "totalScore": 84276,
-      "totalScoreDisplay": "84,276",
-      "combatScore": 50034,
-      "lifeScore": 16433,
-      "charmScore": 17809,
-      "source": "mobinogi.net",
-      "visibility": 2
-    },
-    {
       "name": "설란",
       "rank": 5001,
       "rankDisplay": "5,001위",
@@ -826,6 +812,20 @@
       "charmScore": 40110,
       "source": "mobinogi.net",
       "visibility": 2
+    },
+    {
+      "name": "낭만감자",
+      "rank": 33043,
+      "rankDisplay": "33,043위",
+      "server": "라사",
+      "class": "검술사",
+      "totalScore": 84276,
+      "totalScoreDisplay": "84,276",
+      "combatScore": 50034,
+      "lifeScore": 16433,
+      "charmScore": 17809,
+      "source": "mobinogi.net",
+      "visibility": 0
     },
     {
       "name": "꿀미호",
