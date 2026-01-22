@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-01-22T05:14:33.156Z",
+  "updatedAt": "2026-01-22T08:10:39.560Z",
   "members": [
     {
       "name": "루야쫑쫑",
@@ -26,6 +26,20 @@
       "combatScore": 59177,
       "lifeScore": 25951,
       "charmScore": 47094,
+      "source": "mobinogi.net",
+      "visibility": 0
+    },
+    {
+      "name": "차력거인",
+      "rank": 23203,
+      "rankDisplay": "23,203위",
+      "server": "라사",
+      "class": "석궁사수",
+      "totalScore": 101011,
+      "totalScoreDisplay": "101,011",
+      "combatScore": 54698,
+      "lifeScore": 24936,
+      "charmScore": 21377,
       "source": "mobinogi.net",
       "visibility": 0
     },
@@ -82,20 +96,6 @@
       "combatScore": 59744,
       "lifeScore": 10153,
       "charmScore": 20016,
-      "source": "mobinogi.net",
-      "visibility": 0
-    },
-    {
-      "name": "차력거인",
-      "rank": 23203,
-      "rankDisplay": "23,203위",
-      "server": "라사",
-      "class": "석궁사수",
-      "totalScore": 101011,
-      "totalScoreDisplay": "101,011",
-      "combatScore": 54698,
-      "lifeScore": 24936,
-      "charmScore": 21377,
       "source": "mobinogi.net",
       "visibility": 0
     },
@@ -604,6 +604,20 @@
       "visibility": 0
     },
     {
+      "name": "낭만감자",
+      "rank": 33043,
+      "rankDisplay": "33,043위",
+      "server": "라사",
+      "class": "검술사",
+      "totalScore": 84276,
+      "totalScoreDisplay": "84,276",
+      "combatScore": 50034,
+      "lifeScore": 16433,
+      "charmScore": 17809,
+      "source": "mobinogi.net",
+      "visibility": 0
+    },
+    {
       "name": "빵민",
       "rank": 36058,
       "rankDisplay": "36,058위",
@@ -744,6 +758,20 @@
       "visibility": 2
     },
     {
+      "name": "낙화비검",
+      "rank": 40708,
+      "rankDisplay": "40,708위",
+      "server": "라사",
+      "class": "검술사",
+      "totalScore": 79522,
+      "totalScoreDisplay": "79,522",
+      "combatScore": 46098,
+      "lifeScore": 19384,
+      "charmScore": 14040,
+      "source": "mobinogi.net",
+      "visibility": 0
+    },
+    {
       "name": "이카러스",
       "rank": 8275,
       "rankDisplay": "8,275위",
@@ -814,20 +842,6 @@
       "visibility": 2
     },
     {
-      "name": "낭만감자",
-      "rank": 33043,
-      "rankDisplay": "33,043위",
-      "server": "라사",
-      "class": "검술사",
-      "totalScore": 84276,
-      "totalScoreDisplay": "84,276",
-      "combatScore": 50034,
-      "lifeScore": 16433,
-      "charmScore": 17809,
-      "source": "mobinogi.net",
-      "visibility": 0
-    },
-    {
       "name": "꿀미호",
       "rank": 2273,
       "rankDisplay": "2,273위",
@@ -838,20 +852,6 @@
       "combatScore": 61102,
       "lifeScore": 31886,
       "charmScore": 46960,
-      "source": "mobinogi.net",
-      "visibility": 0
-    },
-    {
-      "name": "낙화비검",
-      "rank": 40708,
-      "rankDisplay": "40,708위",
-      "server": "라사",
-      "class": "검술사",
-      "totalScore": 79522,
-      "totalScoreDisplay": "79,522",
-      "combatScore": 46098,
-      "lifeScore": 19384,
-      "charmScore": 14040,
       "source": "mobinogi.net",
       "visibility": 0
     },
@@ -1020,6 +1020,20 @@
       "combatScore": 59402,
       "lifeScore": 28766,
       "charmScore": 47708,
+      "source": "mobinogi.net",
+      "visibility": 0
+    },
+    {
+      "name": "Zi존아프로",
+      "rank": 514,
+      "rankDisplay": "514위",
+      "server": "라사",
+      "class": "빙결술사",
+      "totalScore": 136877,
+      "totalScoreDisplay": "136,877",
+      "combatScore": 65477,
+      "lifeScore": 24123,
+      "charmScore": 47277,
       "source": "mobinogi.net",
       "visibility": 0
     }
