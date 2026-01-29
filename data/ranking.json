@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-01-29T05:22:45.316Z",
+  "updatedAt": "2026-01-29T06:19:09.181Z",
   "members": [
     {
       "name": "루야쫑쫑",
@@ -143,8 +143,8 @@
     },
     {
       "name": "시우쇠",
-      "rank": 4,
-      "rankDisplay": "4위",
+      "rank": 3,
+      "rankDisplay": "3위",
       "server": "라사",
       "class": "화염술사",
       "totalScore": 157512,
@@ -717,8 +717,8 @@
     },
     {
       "name": "Rabiatan",
-      "rank": 39863,
-      "rankDisplay": "39,863위",
+      "rank": 39856,
+      "rankDisplay": "39,856위",
       "server": "라사",
       "class": "대검전사",
       "totalScore": 81543,
