@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-01-31T10:08:08.639Z",
+  "updatedAt": "2026-01-31T11:08:07.563Z",
   "members": [
     {
       "name": "루야쫑쫑",
@@ -143,15 +143,15 @@
     },
     {
       "name": "시우쇠",
-      "rank": 6,
-      "rankDisplay": "6위",
+      "rank": 5,
+      "rankDisplay": "5위",
       "server": "라사",
       "class": "화염술사",
-      "totalScore": 157538,
-      "totalScoreDisplay": "157,538",
+      "totalScore": 157526,
+      "totalScoreDisplay": "157,526",
       "combatScore": 66002,
-      "lifeScore": 38242,
-      "charmScore": 53294,
+      "lifeScore": 38228,
+      "charmScore": 53296,
       "source": "mobinogi.net",
       "visibility": 0
     },
