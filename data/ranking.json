@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-02-03T05:27:54.230Z",
+  "updatedAt": "2026-02-03T06:22:09.120Z",
   "members": [
     {
       "name": "루야쫑쫑",
@@ -30,48 +30,6 @@
       "visibility": 0
     },
     {
-      "name": "차력거인",
-      "rank": 23942,
-      "rankDisplay": "23,942위",
-      "server": "라사",
-      "class": "석궁사수",
-      "totalScore": 104382,
-      "totalScoreDisplay": "104,382",
-      "combatScore": 57587,
-      "lifeScore": 25358,
-      "charmScore": 21437,
-      "source": "mobinogi.net",
-      "visibility": 0
-    },
-    {
-      "name": "갑옷거인",
-      "rank": 25629,
-      "rankDisplay": "25,629위",
-      "server": "라사",
-      "class": "대검전사",
-      "totalScore": 105396,
-      "totalScoreDisplay": "105,396",
-      "combatScore": 58248,
-      "lifeScore": 24936,
-      "charmScore": 22212,
-      "source": "mobinogi.net",
-      "visibility": 0
-    },
-    {
-      "name": "전퇴의거인",
-      "rank": 26343,
-      "rankDisplay": "26,343위",
-      "server": "라사",
-      "class": "빙결술사",
-      "totalScore": 101621,
-      "totalScoreDisplay": "101,621",
-      "combatScore": 56680,
-      "lifeScore": 20296,
-      "charmScore": 24645,
-      "source": "mobinogi.net",
-      "visibility": 0
-    },
-    {
       "name": "새벽숲부엉이",
       "rank": 5448,
       "rankDisplay": "5,448위",
@@ -96,6 +54,48 @@
       "combatScore": 61529,
       "lifeScore": 10158,
       "charmScore": 20049,
+      "source": "mobinogi.net",
+      "visibility": 0
+    },
+    {
+      "name": "차력거인",
+      "rank": 23942,
+      "rankDisplay": "23,942위",
+      "server": "라사",
+      "class": "석궁사수",
+      "totalScore": 104382,
+      "totalScoreDisplay": "104,382",
+      "combatScore": 57587,
+      "lifeScore": 25358,
+      "charmScore": 21437,
+      "source": "mobinogi.net",
+      "visibility": 0
+    },
+    {
+      "name": "전퇴의거인",
+      "rank": 26343,
+      "rankDisplay": "26,343위",
+      "server": "라사",
+      "class": "빙결술사",
+      "totalScore": 101621,
+      "totalScoreDisplay": "101,621",
+      "combatScore": 56680,
+      "lifeScore": 20296,
+      "charmScore": 24645,
+      "source": "mobinogi.net",
+      "visibility": 0
+    },
+    {
+      "name": "갑옷거인",
+      "rank": 25629,
+      "rankDisplay": "25,629위",
+      "server": "라사",
+      "class": "대검전사",
+      "totalScore": 105396,
+      "totalScoreDisplay": "105,396",
+      "combatScore": 58248,
+      "lifeScore": 24936,
+      "charmScore": 22212,
       "source": "mobinogi.net",
       "visibility": 0
     },
@@ -516,20 +516,6 @@
       "combatScore": 53167,
       "lifeScore": 16792,
       "charmScore": 20735,
-      "source": "mobinogi.net",
-      "visibility": 0
-    },
-    {
-      "name": "RIZ",
-      "rank": 37,
-      "rankDisplay": "37위",
-      "server": "라사",
-      "class": "힐러",
-      "totalScore": 151599,
-      "totalScoreDisplay": "151,599",
-      "combatScore": 67407,
-      "lifeScore": 34008,
-      "charmScore": 50184,
       "source": "mobinogi.net",
       "visibility": 0
     },
