@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-02-03T01:38:57.847Z",
+  "updatedAt": "2026-02-03T03:04:20.120Z",
   "members": [
     {
       "name": "루야쫑쫑",
@@ -465,15 +465,15 @@
     },
     {
       "name": "Zi존아프로",
-      "rank": 474,
-      "rankDisplay": "474위",
+      "rank": 425,
+      "rankDisplay": "425위",
       "server": "라사",
       "class": "빙결술사",
-      "totalScore": 140919,
-      "totalScoreDisplay": "140,919",
-      "combatScore": 68977,
+      "totalScore": 140992,
+      "totalScoreDisplay": "140,992",
+      "combatScore": 69044,
       "lifeScore": 24593,
-      "charmScore": 47349,
+      "charmScore": 47355,
       "source": "mobinogi.net",
       "visibility": 0
     },
@@ -1025,15 +1025,15 @@
     },
     {
       "name": "Zi존아프로",
-      "rank": 474,
-      "rankDisplay": "474위",
+      "rank": 425,
+      "rankDisplay": "425위",
       "server": "라사",
       "class": "빙결술사",
-      "totalScore": 140919,
-      "totalScoreDisplay": "140,919",
-      "combatScore": 68977,
+      "totalScore": 140992,
+      "totalScoreDisplay": "140,992",
+      "combatScore": 69044,
       "lifeScore": 24593,
-      "charmScore": 47349,
+      "charmScore": 47355,
       "source": "mobinogi.net",
       "visibility": 0
     }
