@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-02-17T17:26:31.759Z",
+  "updatedAt": "2026-02-17T18:24:23.853Z",
   "members": [
     {
       "name": "새벽숲부엉이",
@@ -152,20 +152,6 @@
       "combatScore": 59950,
       "lifeScore": 22987,
       "charmScore": 24353,
-      "source": "mobinogi.net",
-      "visibility": 0
-    },
-    {
-      "name": "빼쥬",
-      "rank": 19929,
-      "rankDisplay": "19,929위",
-      "server": "라사",
-      "class": "화염술사",
-      "totalScore": 106262,
-      "totalScoreDisplay": "106,262",
-      "combatScore": 59852,
-      "lifeScore": 22807,
-      "charmScore": 23603,
       "source": "mobinogi.net",
       "visibility": 0
     },
