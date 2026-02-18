@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-02-18T06:28:22.729Z",
+  "updatedAt": "2026-02-18T07:26:14.107Z",
   "members": [
     {
       "name": "새벽숲부엉이",
@@ -87,15 +87,15 @@
     },
     {
       "name": "플라시엘",
-      "rank": 2876,
-      "rankDisplay": "2,876위",
+      "rank": 450,
+      "rankDisplay": "450위",
       "server": "라사",
       "class": "수도사",
-      "totalScore": 140782,
-      "totalScoreDisplay": "140,782",
-      "combatScore": 64358,
-      "lifeScore": 33132,
-      "charmScore": 43292,
+      "totalScore": 141740,
+      "totalScoreDisplay": "141,740",
+      "combatScore": 64331,
+      "lifeScore": 33111,
+      "charmScore": 44298,
       "source": "mobinogi.net",
       "visibility": 0
     },
