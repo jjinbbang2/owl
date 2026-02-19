@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-02-19T18:21:57.758Z",
+  "updatedAt": "2026-02-19T19:20:57.664Z",
   "members": [
     {
       "name": "새벽숲부엉이",
@@ -843,15 +843,15 @@
     },
     {
       "name": "풀뱅기사",
-      "rank": 492,
-      "rankDisplay": "492위",
+      "rank": 505,
+      "rankDisplay": "505위",
       "server": "라사",
       "class": "화염술사",
-      "totalScore": 141497,
-      "totalScoreDisplay": "141,497",
+      "totalScore": 141507,
+      "totalScoreDisplay": "141,507",
       "combatScore": 63632,
-      "lifeScore": 29906,
-      "charmScore": 47959,
+      "lifeScore": 29913,
+      "charmScore": 47962,
       "source": "mobinogi.net",
       "visibility": 0
     },
