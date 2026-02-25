@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-02-25T22:11:51.906Z",
+  "updatedAt": "2026-02-25T23:12:54.826Z",
   "members": [
     {
       "name": "새벽숲부엉이",
@@ -12,6 +12,20 @@
       "combatScore": 58070,
       "lifeScore": 21239,
       "charmScore": 39851,
+      "source": "mobinogi.net",
+      "visibility": 0
+    },
+    {
+      "name": "운정",
+      "rank": 27109,
+      "rankDisplay": "27,109위",
+      "server": "라사",
+      "class": "마법사",
+      "totalScore": 92822,
+      "totalScoreDisplay": "92,822",
+      "combatScore": 62106,
+      "lifeScore": 10622,
+      "charmScore": 20094,
       "source": "mobinogi.net",
       "visibility": 0
     },
