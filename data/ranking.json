@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-03-09T21:19:25.009Z",
+  "updatedAt": "2026-03-09T22:17:32.090Z",
   "members": [
     {
       "name": "새벽숲부엉이",
@@ -418,6 +418,20 @@
       "combatScore": 53386,
       "lifeScore": 16797,
       "charmScore": 17788,
+      "source": "mobinogi.net",
+      "visibility": 0
+    },
+    {
+      "name": "피리새",
+      "rank": 26491,
+      "rankDisplay": "26,491위",
+      "server": "라사",
+      "class": "도적",
+      "totalScore": 93755,
+      "totalScoreDisplay": "93,755",
+      "combatScore": 54109,
+      "lifeScore": 22271,
+      "charmScore": 17375,
       "source": "mobinogi.net",
       "visibility": 0
     },
