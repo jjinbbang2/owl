@@ -1,104 +1,78 @@
 {
-  "timestamp": "2026-02-07T15:08:28.629Z",
+  "timestamp": "2026-03-09T15:23:41.549Z",
   "tables": {
     "rankings": {
-      "count": 72,
+      "count": 61,
       "data": [
+        {
+          "id": "eee72c47-6de4-41f5-9d47-a96a27a1d711",
+          "name": "준숙",
+          "rank": 21577,
+          "server": "라사",
+          "class": "전사",
+          "combat_score": 59329,
+          "life_score": 23282,
+          "charm_score": 22151,
+          "total_score": 104762,
+          "source": "mobinogi.net",
+          "updated_at": "2026-03-09T14:29:55.141+00:00"
+        },
+        {
+          "id": "2322be88-2768-443c-b0f8-edf3a2f118c1",
+          "name": "이카러스",
+          "rank": 8524,
+          "server": "라사",
+          "class": "빙결술사",
+          "combat_score": 60384,
+          "life_score": 26040,
+          "charm_score": 26749,
+          "total_score": 113173,
+          "source": "mobinogi.net",
+          "updated_at": "2026-03-09T14:30:00.734+00:00"
+        },
         {
           "id": "da2fafe9-bdfc-42fa-9574-115122b59073",
           "name": "이까연",
-          "rank": 17291,
+          "rank": 18346,
           "server": "라사",
           "class": "전격술사",
-          "combat_score": 59720,
-          "life_score": 22590,
-          "charm_score": 24337,
-          "total_score": 106647,
+          "combat_score": 60079,
+          "life_score": 23155,
+          "charm_score": 24401,
+          "total_score": 107635,
           "source": "mobinogi.net",
-          "updated_at": "2026-02-07T14:10:15.485+00:00"
+          "updated_at": "2026-03-09T14:29:51.618+00:00"
         },
         {
-          "id": "16eff12f-2fd5-45f6-8d2d-3c2129a3d56f",
-          "name": "로거니우스",
-          "rank": 3679,
-          "server": "라사",
-          "class": "장궁병",
-          "combat_score": 62934,
-          "life_score": 26359,
-          "charm_score": 48935,
-          "total_score": 138228,
-          "source": "mobinogi.net",
-          "updated_at": "2026-02-07T14:10:11.78+00:00"
-        },
-        {
-          "id": "56dd026f-3dcd-45ac-8863-6fd77ce5a416",
-          "name": "악바르",
-          "rank": 33121,
+          "id": "34157588-920a-4f62-a7a9-7a616495e5b1",
+          "name": "빼쥬",
+          "rank": 19426,
           "server": "라사",
           "class": "화염술사",
-          "combat_score": 56237,
-          "life_score": 23717,
-          "charm_score": 14766,
-          "total_score": 94720,
+          "combat_score": 60060,
+          "life_score": 22996,
+          "charm_score": 23651,
+          "total_score": 106707,
           "source": "mobinogi.net",
-          "updated_at": "2026-02-07T14:10:16.845+00:00"
+          "updated_at": "2026-03-09T14:29:51.858+00:00"
         },
         {
-          "id": "33174c90-69f5-4bfc-9da2-853366d20556",
-          "name": "초엣",
-          "rank": 3852,
+          "id": "e2e7e561-e9a8-472a-af50-9c19114ad328",
+          "name": "로키쿠",
+          "rank": 1931,
           "server": "라사",
-          "class": "검술사",
-          "combat_score": 58469,
-          "life_score": 19465,
-          "charm_score": 45309,
-          "total_score": 123243,
+          "class": "음유시인",
+          "combat_score": 64124,
+          "life_score": 23525,
+          "charm_score": 45163,
+          "total_score": 132812,
           "source": "mobinogi.net",
-          "updated_at": "2026-02-07T14:10:14.103+00:00"
-        },
-        {
-          "id": "530bbd12-4033-4e79-9b83-1f09882ddec6",
-          "name": "번개술",
-          "rank": 21482,
-          "server": "라사",
-          "class": "전격술사",
-          "combat_score": 54828,
-          "life_score": 23616,
-          "charm_score": 16966,
-          "total_score": 95410,
-          "source": "mobinogi.net",
-          "updated_at": "2026-02-07T14:10:17.003+00:00"
-        },
-        {
-          "id": "f93a4f32-dd10-486a-b567-6d54a4c8a911",
-          "name": "시형",
-          "rank": 2335,
-          "server": "라사",
-          "class": "전격술사",
-          "combat_score": 61321,
-          "life_score": 19546,
-          "charm_score": 50755,
-          "total_score": 131622,
-          "source": "mobinogi.net",
-          "updated_at": "2026-02-07T14:10:19.667+00:00"
-        },
-        {
-          "id": "9c125bdd-6ae9-4ad4-ad6a-b97cdacb632c",
-          "name": "시우쇠",
-          "rank": 5,
-          "server": "라사",
-          "class": "화염술사",
-          "combat_score": 66767,
-          "life_score": 38458,
-          "charm_score": 53340,
-          "total_score": 158565,
-          "source": "mobinogi.net",
-          "updated_at": "2026-02-07T14:10:14.269+00:00"
+          "updated_at": "2026-03-09T14:29:55.608+00:00"
         },
         {
           "id": "62a9c573-4db5-43df-8c3e-711146054920",
           "name": "솥밥이",
-          "rank": 49975,
+          "rank": 52521,
           "server": "라사",
           "class": "힐러",
           "combat_score": 39317,
@@ -106,207 +80,64 @@
           "charm_score": 15308,
           "total_score": 75579,
           "source": "mobinogi.net",
-          "updated_at": "2026-02-07T14:10:22.04+00:00"
-        },
-        {
-          "id": "93a78070-753a-400a-b3b8-fa135d58d867",
-          "name": "류진원",
-          "rank": 17428,
-          "server": "라사",
-          "class": "암흑술사",
-          "combat_score": 56393,
-          "life_score": 22269,
-          "charm_score": 23000,
-          "total_score": 101662,
-          "source": "mobinogi.net",
-          "updated_at": "2026-02-07T14:10:17.181+00:00"
-        },
-        {
-          "id": "c3edad6d-2bbd-4df4-a1ca-2e5c6428ba80",
-          "name": "새벽숲부엉이",
-          "rank": 5443,
-          "server": "라사",
-          "class": "듀얼블레이드",
-          "combat_score": 57758,
-          "life_score": 20899,
-          "charm_score": 39782,
-          "total_score": 118439,
-          "source": "mobinogi.net",
-          "updated_at": "2026-02-07T14:10:12.319+00:00"
-        },
-        {
-          "id": "34157588-920a-4f62-a7a9-7a616495e5b1",
-          "name": "빼쥬",
-          "rank": 19002,
-          "server": "라사",
-          "class": "화염술사",
-          "combat_score": 59852,
-          "life_score": 22430,
-          "charm_score": 23587,
-          "total_score": 105869,
-          "source": "mobinogi.net",
-          "updated_at": "2026-02-07T14:10:15.642+00:00"
-        },
-        {
-          "id": "aa776874-4bfa-4626-a373-aafa36bf7c0b",
-          "name": "고진",
-          "rank": 11954,
-          "server": "라사",
-          "class": "검술사",
-          "combat_score": 59032,
-          "life_score": 21562,
-          "charm_score": 24474,
-          "total_score": 105068,
-          "source": "mobinogi.net",
-          "updated_at": "2026-02-07T14:10:14.453+00:00"
-        },
-        {
-          "id": "61db4be2-fe6d-49b7-805e-11050cbf2250",
-          "name": "빵민",
-          "rank": 31848,
-          "server": "라사",
-          "class": "사제",
-          "combat_score": 59257,
-          "life_score": 24805,
-          "charm_score": 17531,
-          "total_score": 101593,
-          "source": "mobinogi.net",
-          "updated_at": "2026-02-07T14:10:20.018+00:00"
-        },
-        {
-          "id": "e2e7e561-e9a8-472a-af50-9c19114ad328",
-          "name": "로키쿠",
-          "rank": 3860,
-          "server": "라사",
-          "class": "음유시인",
-          "combat_score": 63341,
-          "life_score": 23540,
-          "charm_score": 44099,
-          "total_score": 130980,
-          "source": "mobinogi.net",
-          "updated_at": "2026-02-07T14:10:18.424+00:00"
-        },
-        {
-          "id": "6fa6c924-34e6-470c-990b-a2c66e889a26",
-          "name": "퉁이",
-          "rank": 5369,
-          "server": "라사",
-          "class": "듀얼블레이드",
-          "combat_score": 58810,
-          "life_score": 16084,
-          "charm_score": 43776,
-          "total_score": 118670,
-          "source": "mobinogi.net",
-          "updated_at": "2026-02-07T14:10:18.624+00:00"
-        },
-        {
-          "id": "9bd89817-8391-42ff-87c9-28894e68295a",
-          "name": "A5",
-          "rank": 1093,
-          "server": "라사",
-          "class": "대검전사",
-          "combat_score": 67137,
-          "life_score": 29045,
-          "charm_score": 49421,
-          "total_score": 145603,
-          "source": "mobinogi.net",
-          "updated_at": "2026-02-07T14:10:20.176+00:00"
-        },
-        {
-          "id": "2f3a468c-0993-4065-b962-232cbf03b8bb",
-          "name": "은월선비",
-          "rank": 23384,
-          "server": "라사",
-          "class": "화염술사",
-          "combat_score": 54220,
-          "life_score": 21033,
-          "charm_score": 18657,
-          "total_score": 93910,
-          "source": "mobinogi.net",
-          "updated_at": "2026-02-07T14:10:14.629+00:00"
+          "updated_at": "2026-03-09T14:30:00.96+00:00"
         },
         {
           "id": "d0d30108-da97-4a87-abc7-357dfb1bf312",
           "name": "풀뱅기사",
-          "rank": 1666,
+          "rank": 2507,
           "server": "라사",
           "class": "화염술사",
-          "combat_score": 63156,
-          "life_score": 29117,
-          "charm_score": 46811,
-          "total_score": 139084,
+          "combat_score": 63804,
+          "life_score": 30026,
+          "charm_score": 46908,
+          "total_score": 140738,
           "source": "mobinogi.net",
-          "updated_at": "2026-02-07T14:10:24.721+00:00"
+          "updated_at": "2026-03-09T14:30:03.377+00:00"
         },
         {
           "id": "fffabe40-d5cf-42d4-9f40-0f74a8c56bc4",
           "name": "보리굴비",
-          "rank": 2327,
+          "rank": 2742,
           "server": "라사",
           "class": "화염술사",
-          "combat_score": 62574,
-          "life_score": 19596,
-          "charm_score": 46809,
-          "total_score": 128979,
+          "combat_score": 62855,
+          "life_score": 19651,
+          "charm_score": 46867,
+          "total_score": 129373,
           "source": "mobinogi.net",
-          "updated_at": "2026-02-07T14:10:15.824+00:00"
+          "updated_at": "2026-03-09T14:29:52.113+00:00"
         },
         {
-          "id": "b590fe0b-bddb-4a99-a5ce-89e34fa8d1c9",
-          "name": "린파란",
-          "rank": 1398,
+          "id": "6fa6c924-34e6-470c-990b-a2c66e889a26",
+          "name": "퉁이",
+          "rank": 5794,
           "server": "라사",
-          "class": "힐러",
-          "combat_score": 63214,
-          "life_score": 25261,
-          "charm_score": 45147,
-          "total_score": 133622,
+          "class": "듀얼블레이드",
+          "combat_score": 59735,
+          "life_score": 16089,
+          "charm_score": 43855,
+          "total_score": 119679,
           "source": "mobinogi.net",
-          "updated_at": "2026-02-07T14:10:17.356+00:00"
-        },
-        {
-          "id": "9a9edd7a-77da-4282-9406-11660eee756d",
-          "name": "운정",
-          "rank": 26153,
-          "server": "라사",
-          "class": "마법사",
-          "combat_score": 61529,
-          "life_score": 10161,
-          "charm_score": 20056,
-          "total_score": 91746,
-          "source": "mobinogi.net",
-          "updated_at": "2026-02-07T14:10:12.51+00:00"
-        },
-        {
-          "id": "453fa17e-55af-4b1c-a1c7-18b402723017",
-          "name": "Zi존아프로",
-          "rank": 469,
-          "server": "라사",
-          "class": "빙결술사",
-          "combat_score": 69044,
-          "life_score": 24618,
-          "charm_score": 47365,
-          "total_score": 141027,
-          "source": "mobinogi.net",
-          "updated_at": "2026-02-07T14:10:24.878+00:00"
+          "updated_at": "2026-03-09T14:29:55.834+00:00"
         },
         {
           "id": "81d3fdb0-7a98-45fa-9935-9db017afed21",
           "name": "통이",
-          "rank": 27683,
+          "rank": 34672,
           "server": "라사",
           "class": "화염술사",
-          "combat_score": 53167,
-          "life_score": 16792,
-          "charm_score": 20740,
-          "total_score": 90699,
+          "combat_score": 53386,
+          "life_score": 16797,
+          "charm_score": 17788,
+          "total_score": 87971,
           "source": "mobinogi.net",
-          "updated_at": "2026-02-07T14:10:18.793+00:00"
+          "updated_at": "2026-03-09T14:29:56.067+00:00"
         },
         {
           "id": "eb37d22b-2b75-43a4-b13b-cd4ba779ddb6",
           "name": "피리새",
-          "rank": 23589,
+          "rank": 26491,
           "server": "라사",
           "class": "도적",
           "combat_score": 54109,
@@ -314,371 +145,449 @@
           "charm_score": 17375,
           "total_score": 93755,
           "source": "mobinogi.net",
-          "updated_at": "2026-02-07T14:10:18.966+00:00"
+          "updated_at": "2026-03-09T14:29:56.334+00:00"
         },
         {
-          "id": "07578120-b000-4d05-b377-d96e00a31b06",
-          "name": "플라시엘",
-          "rank": 263,
+          "id": "453fa17e-55af-4b1c-a1c7-18b402723017",
+          "name": "Zi존아프로",
+          "rank": 567,
           "server": "라사",
-          "class": "수도사",
-          "combat_score": 63900,
-          "life_score": 32739,
-          "charm_score": 47204,
-          "total_score": 143843,
+          "class": "빙결술사",
+          "combat_score": 69635,
+          "life_score": 24603,
+          "charm_score": 47458,
+          "total_score": 141696,
           "source": "mobinogi.net",
-          "updated_at": "2026-02-07T14:10:14.807+00:00"
+          "updated_at": "2026-03-09T14:30:03.612+00:00"
         },
         {
-          "id": "b9ea4afe-6335-4957-b219-e5c771a384bd",
-          "name": "다큐",
-          "rank": 44181,
+          "id": "c3edad6d-2bbd-4df4-a1ca-2e5c6428ba80",
+          "name": "새벽숲부엉이",
+          "rank": 5997,
           "server": "라사",
-          "class": "힐러",
-          "combat_score": 52670,
-          "life_score": 9088,
-          "charm_score": 17909,
-          "total_score": 79667,
+          "class": "듀얼블레이드",
+          "combat_score": 58070,
+          "life_score": 21241,
+          "charm_score": 39857,
+          "total_score": 119168,
           "source": "mobinogi.net",
-          "updated_at": "2026-02-07T14:10:20.349+00:00"
-        },
-        {
-          "id": "1d433ae0-d56d-4f48-9100-18a0c05cebe3",
-          "name": "텐버거",
-          "rank": 16038,
-          "server": "라사",
-          "class": "장궁병",
-          "combat_score": 57391,
-          "life_score": 15265,
-          "charm_score": 27645,
-          "total_score": 100301,
-          "source": "mobinogi.net",
-          "updated_at": "2026-02-07T14:10:20.52+00:00"
+          "updated_at": "2026-03-09T14:29:47.984+00:00"
         },
         {
           "id": "566db315-2686-4693-a8d5-370717d8be3f",
           "name": "바르다",
-          "rank": 6545,
+          "rank": 7514,
           "server": "라사",
           "class": "빙결술사",
-          "combat_score": 61647,
-          "life_score": 25743,
-          "charm_score": 28066,
-          "total_score": 115456,
+          "combat_score": 62868,
+          "life_score": 26279,
+          "charm_score": 26141,
+          "total_score": 115288,
           "source": "mobinogi.net",
-          "updated_at": "2026-02-07T14:10:15.982+00:00"
+          "updated_at": "2026-03-09T14:29:52.358+00:00"
         },
         {
-          "id": "e0beca88-f1a3-4e9e-a9f8-c69f465371b2",
-          "name": "고로정비",
-          "rank": 24172,
+          "id": "9a9edd7a-77da-4282-9406-11660eee756d",
+          "name": "운정",
+          "rank": 27751,
           "server": "라사",
-          "class": "사제",
-          "combat_score": 54817,
-          "life_score": 18099,
-          "charm_score": 20388,
-          "total_score": 93304,
+          "class": "마법사",
+          "combat_score": 62108,
+          "life_score": 10622,
+          "charm_score": 20106,
+          "total_score": 92836,
           "source": "mobinogi.net",
-          "updated_at": "2026-02-07T14:10:20.693+00:00"
-        },
-        {
-          "id": "dfedc1b0-8491-477a-a9fd-42675acfb0a7",
-          "name": "루야쫑쫑",
-          "rank": 2575,
-          "server": "라사",
-          "class": "대검전사",
-          "combat_score": 63621,
-          "life_score": 25610,
-          "charm_score": 38702,
-          "total_score": 127933,
-          "source": "mobinogi.net",
-          "updated_at": "2026-02-07T14:10:11.52+00:00"
-        },
-        {
-          "id": "17ac5080-656c-4e78-8e4b-10238276837d",
-          "name": "차력거인",
-          "rank": 24316,
-          "server": "라사",
-          "class": "석궁사수",
-          "combat_score": 58311,
-          "life_score": 25411,
-          "charm_score": 21452,
-          "total_score": 105174,
-          "source": "mobinogi.net",
-          "updated_at": "2026-02-07T14:10:12.949+00:00"
-        },
-        {
-          "id": "d12eca13-bf99-478d-ac5c-585651fcabae",
-          "name": "전퇴의거인",
-          "rank": 26169,
-          "server": "라사",
-          "class": "빙결술사",
-          "combat_score": 56680,
-          "life_score": 20267,
-          "charm_score": 24657,
-          "total_score": 101604,
-          "source": "mobinogi.net",
-          "updated_at": "2026-02-07T14:10:13.136+00:00"
-        },
-        {
-          "id": "0470c07c-86c4-4c49-944b-9df7d5a0d971",
-          "name": "갑옷거인",
-          "rank": 25565,
-          "server": "라사",
-          "class": "대검전사",
-          "combat_score": 58114,
-          "life_score": 24978,
-          "charm_score": 22215,
-          "total_score": 105307,
-          "source": "mobinogi.net",
-          "updated_at": "2026-02-07T14:10:13.575+00:00"
+          "updated_at": "2026-03-09T14:29:48.631+00:00"
         },
         {
           "id": "2d69736e-6f2d-4646-abd7-b963d54731e5",
           "name": "읏챠",
-          "rank": 28925,
+          "rank": 51531,
           "server": "라사",
           "class": "듀얼블레이드",
-          "combat_score": 55213,
-          "life_score": 18764,
-          "charm_score": 15795,
-          "total_score": 89772,
+          "combat_score": 55872,
+          "life_score": 19188,
+          "charm_score": 13548,
+          "total_score": 88608,
           "source": "mobinogi.net",
-          "updated_at": "2026-02-07T14:10:16.158+00:00"
+          "updated_at": "2026-03-09T14:29:52.587+00:00"
         },
         {
           "id": "1a37600b-3d59-454d-9c92-914802f469a1",
           "name": "위례",
-          "rank": 19447,
+          "rank": 20465,
           "server": "라사",
           "class": "힐러",
-          "combat_score": 57465,
-          "life_score": 14818,
-          "charm_score": 24811,
-          "total_score": 97094,
+          "combat_score": 57683,
+          "life_score": 14868,
+          "charm_score": 25867,
+          "total_score": 98418,
           "source": "mobinogi.net",
-          "updated_at": "2026-02-07T14:10:16.324+00:00"
-        },
-        {
-          "id": "5c9e5a7b-d403-4a16-9870-fe88ead4830c",
-          "name": "풀뱅맹구",
-          "rank": 15660,
-          "server": "라사",
-          "class": "힐러",
-          "combat_score": 56386,
-          "life_score": 16932,
-          "charm_score": 27454,
-          "total_score": 100772,
-          "source": "mobinogi.net",
-          "updated_at": "2026-02-07T14:10:13.75+00:00"
-        },
-        {
-          "id": "5a1ff712-30b4-41a7-bbc9-360ae5111724",
-          "name": "빼주",
-          "rank": 720,
-          "server": "라사",
-          "class": "석궁사수",
-          "combat_score": 63037,
-          "life_score": 25410,
-          "charm_score": 49837,
-          "total_score": 138284,
-          "source": "mobinogi.net",
-          "updated_at": "2026-02-07T14:10:14.98+00:00"
-        },
-        {
-          "id": "4bb84619-a45a-4ca5-b22a-32695cdb7d6b",
-          "name": "빼주야",
-          "rank": 19505,
-          "server": "라사",
-          "class": "힐러",
-          "combat_score": 56931,
-          "life_score": 23531,
-          "charm_score": 23337,
-          "total_score": 103799,
-          "source": "mobinogi.net",
-          "updated_at": "2026-02-07T14:10:15.154+00:00"
-        },
-        {
-          "id": "eec06a23-84f9-4bde-b7e5-a25f1e7da1d0",
-          "name": "빼주현",
-          "rank": 17980,
-          "server": "라사",
-          "class": "사제",
-          "combat_score": 59529,
-          "life_score": 22775,
-          "charm_score": 23587,
-          "total_score": 105891,
-          "source": "mobinogi.net",
-          "updated_at": "2026-02-07T14:10:15.311+00:00"
-        },
-        {
-          "id": "cfad5f6c-68bf-43d8-93f5-ef7949e004c6",
-          "name": "여니는여니여니해",
-          "rank": 1301,
-          "server": "라사",
-          "class": "댄서",
-          "combat_score": 62488,
-          "life_score": 29173,
-          "charm_score": 42332,
-          "total_score": 133993,
-          "source": "mobinogi.net",
-          "updated_at": "2026-02-07T14:10:17.529+00:00"
-        },
-        {
-          "id": "628f6c37-0ac5-4bad-839c-2b7f0c56028c",
-          "name": "귤설",
-          "rank": 14363,
-          "server": "라사",
-          "class": "수도사",
-          "combat_score": 60449,
-          "life_score": 24729,
-          "charm_score": 23246,
-          "total_score": 108424,
-          "source": "mobinogi.net",
-          "updated_at": "2026-02-07T14:10:19.132+00:00"
-        },
-        {
-          "id": "9e76b3a5-933b-491d-ae48-cef6884d244e",
-          "name": "깡설",
-          "rank": 19308,
-          "server": "라사",
-          "class": "석궁사수",
-          "combat_score": 59315,
-          "life_score": 24078,
-          "charm_score": 21692,
-          "total_score": 105085,
-          "source": "mobinogi.net",
-          "updated_at": "2026-02-07T14:10:19.328+00:00"
-        },
-        {
-          "id": "eaeca0ae-7698-4bd4-a558-8cbe748c7b77",
-          "name": "프네",
-          "rank": 22043,
-          "server": "라사",
-          "class": "악사",
-          "combat_score": 54310,
-          "life_score": 15210,
-          "charm_score": 25457,
-          "total_score": 94977,
-          "source": "mobinogi.net",
-          "updated_at": "2026-02-07T14:10:19.491+00:00"
+          "updated_at": "2026-03-09T14:29:52.828+00:00"
         },
         {
           "id": "5da909ad-0644-484d-b473-4185a7005857",
           "name": "항타기",
-          "rank": 36498,
+          "rank": 38967,
           "server": "라사",
           "class": "수도사",
-          "combat_score": 57233,
-          "life_score": 24535,
-          "charm_score": 14266,
-          "total_score": 96034,
+          "combat_score": 57782,
+          "life_score": 24578,
+          "charm_score": 14339,
+          "total_score": 96699,
           "source": "mobinogi.net",
-          "updated_at": "2026-02-07T14:10:16.51+00:00"
-        },
-        {
-          "id": "84194c1a-d17c-4c5c-95d3-42c604bbcf24",
-          "name": "불도저츄러스",
-          "rank": 38226,
-          "server": "라사",
-          "class": "대검전사",
-          "combat_score": 55475,
-          "life_score": 8543,
-          "charm_score": 19519,
-          "total_score": 83537,
-          "source": "mobinogi.net",
-          "updated_at": "2026-02-07T14:10:13.919+00:00"
-        },
-        {
-          "id": "253d12ff-cbcd-4b66-9b49-9265f3c1b7b6",
-          "name": "지유쓰",
-          "rank": 14022,
-          "server": "라사",
-          "class": "힐러",
-          "combat_score": 55523,
-          "life_score": 15994,
-          "charm_score": 30963,
-          "total_score": 102480,
-          "source": "mobinogi.net",
-          "updated_at": "2026-02-07T14:10:20.852+00:00"
+          "updated_at": "2026-03-09T14:29:53.054+00:00"
         },
         {
           "id": "969ca528-6f59-43ac-b7cf-504513610cd6",
           "name": "볼프강아마데우스",
-          "rank": 17686,
+          "rank": 32316,
           "server": "라사",
           "class": "석궁사수",
-          "combat_score": 57301,
-          "life_score": 23755,
-          "charm_score": 17616,
-          "total_score": 98672,
+          "combat_score": 57809,
+          "life_score": 24094,
+          "charm_score": 16689,
+          "total_score": 98592,
           "source": "mobinogi.net",
-          "updated_at": "2026-02-07T14:10:16.669+00:00"
+          "updated_at": "2026-03-09T14:29:53.287+00:00"
+        },
+        {
+          "id": "56dd026f-3dcd-45ac-8863-6fd77ce5a416",
+          "name": "악바르",
+          "rank": 21804,
+          "server": "라사",
+          "class": "화염술사",
+          "combat_score": 57410,
+          "life_score": 24072,
+          "charm_score": 15839,
+          "total_score": 97321,
+          "source": "mobinogi.net",
+          "updated_at": "2026-03-09T14:29:53.527+00:00"
+        },
+        {
+          "id": "530bbd12-4033-4e79-9b83-1f09882ddec6",
+          "name": "번개술",
+          "rank": 21630,
+          "server": "라사",
+          "class": "전격술사",
+          "combat_score": 56434,
+          "life_score": 24001,
+          "charm_score": 17039,
+          "total_score": 97474,
+          "source": "mobinogi.net",
+          "updated_at": "2026-03-09T14:29:53.768+00:00"
+        },
+        {
+          "id": "628f6c37-0ac5-4bad-839c-2b7f0c56028c",
+          "name": "귤설",
+          "rank": 9316,
+          "server": "라사",
+          "class": "수도사",
+          "combat_score": 61323,
+          "life_score": 25981,
+          "charm_score": 24289,
+          "total_score": 111593,
+          "source": "mobinogi.net",
+          "updated_at": "2026-03-09T14:29:56.569+00:00"
+        },
+        {
+          "id": "93a78070-753a-400a-b3b8-fa135d58d867",
+          "name": "류진원",
+          "rank": 18000,
+          "server": "라사",
+          "class": "암흑술사",
+          "combat_score": 56393,
+          "life_score": 22237,
+          "charm_score": 22058,
+          "total_score": 100688,
+          "source": "mobinogi.net",
+          "updated_at": "2026-03-09T14:29:53.995+00:00"
+        },
+        {
+          "id": "9e76b3a5-933b-491d-ae48-cef6884d244e",
+          "name": "깡설",
+          "rank": 11044,
+          "server": "라사",
+          "class": "석궁사수",
+          "combat_score": 60499,
+          "life_score": 25379,
+          "charm_score": 22759,
+          "total_score": 108637,
+          "source": "mobinogi.net",
+          "updated_at": "2026-03-09T14:29:56.798+00:00"
+        },
+        {
+          "id": "b590fe0b-bddb-4a99-a5ce-89e34fa8d1c9",
+          "name": "린파란",
+          "rank": 5407,
+          "server": "라사",
+          "class": "힐러",
+          "combat_score": 63981,
+          "life_score": 25570,
+          "charm_score": 41262,
+          "total_score": 130813,
+          "source": "mobinogi.net",
+          "updated_at": "2026-03-09T14:29:54.222+00:00"
+        },
+        {
+          "id": "eaeca0ae-7698-4bd4-a558-8cbe748c7b77",
+          "name": "프네",
+          "rank": 22803,
+          "server": "라사",
+          "class": "악사",
+          "combat_score": 55774,
+          "life_score": 15232,
+          "charm_score": 25511,
+          "total_score": 96517,
+          "source": "mobinogi.net",
+          "updated_at": "2026-03-09T14:29:57.043+00:00"
+        },
+        {
+          "id": "f93a4f32-dd10-486a-b567-6d54a4c8a911",
+          "name": "시형",
+          "rank": 1684,
+          "server": "라사",
+          "class": "전격술사",
+          "combat_score": 61321,
+          "life_score": 20060,
+          "charm_score": 53193,
+          "total_score": 134574,
+          "source": "mobinogi.net",
+          "updated_at": "2026-03-09T14:29:57.273+00:00"
+        },
+        {
+          "id": "5c9e5a7b-d403-4a16-9870-fe88ead4830c",
+          "name": "풀뱅맹구",
+          "rank": 13595,
+          "server": "라사",
+          "class": "힐러",
+          "combat_score": 58226,
+          "life_score": 16904,
+          "charm_score": 30116,
+          "total_score": 105246,
+          "source": "mobinogi.net",
+          "updated_at": "2026-03-09T14:29:49.295+00:00"
+        },
+        {
+          "id": "61db4be2-fe6d-49b7-805e-11050cbf2250",
+          "name": "빵민",
+          "rank": 33450,
+          "server": "라사",
+          "class": "사제",
+          "combat_score": 60033,
+          "life_score": 25421,
+          "charm_score": 17534,
+          "total_score": 102988,
+          "source": "mobinogi.net",
+          "updated_at": "2026-03-09T14:29:57.727+00:00"
+        },
+        {
+          "id": "33174c90-69f5-4bfc-9da2-853366d20556",
+          "name": "초엣",
+          "rank": 4641,
+          "server": "라사",
+          "class": "검술사",
+          "combat_score": 58469,
+          "life_score": 19465,
+          "charm_score": 45309,
+          "total_score": 123243,
+          "source": "mobinogi.net",
+          "updated_at": "2026-03-09T14:29:49.534+00:00"
+        },
+        {
+          "id": "aa776874-4bfa-4626-a373-aafa36bf7c0b",
+          "name": "고진",
+          "rank": 12643,
+          "server": "라사",
+          "class": "검술사",
+          "combat_score": 59813,
+          "life_score": 22095,
+          "charm_score": 24503,
+          "total_score": 106411,
+          "source": "mobinogi.net",
+          "updated_at": "2026-03-09T14:29:49.768+00:00"
+        },
+        {
+          "id": "2f3a468c-0993-4065-b962-232cbf03b8bb",
+          "name": "은월선비",
+          "rank": 23271,
+          "server": "라사",
+          "class": "화염술사",
+          "combat_score": 55219,
+          "life_score": 22277,
+          "charm_score": 18667,
+          "total_score": 96163,
+          "source": "mobinogi.net",
+          "updated_at": "2026-03-09T14:29:50.007+00:00"
+        },
+        {
+          "id": "9bd89817-8391-42ff-87c9-28894e68295a",
+          "name": "A5",
+          "rank": 1124,
+          "server": "라사",
+          "class": "대검전사",
+          "combat_score": 67651,
+          "life_score": 30585,
+          "charm_score": 49537,
+          "total_score": 147773,
+          "source": "mobinogi.net",
+          "updated_at": "2026-03-09T14:29:57.963+00:00"
+        },
+        {
+          "id": "cfad5f6c-68bf-43d8-93f5-ef7949e004c6",
+          "name": "여니는여니여니해",
+          "rank": 1332,
+          "server": "라사",
+          "class": "댄서",
+          "combat_score": 64143,
+          "life_score": 29427,
+          "charm_score": 42466,
+          "total_score": 136036,
+          "source": "mobinogi.net",
+          "updated_at": "2026-03-09T14:29:54.452+00:00"
+        },
+        {
+          "id": "07578120-b000-4d05-b377-d96e00a31b06",
+          "name": "플라시엘",
+          "rank": 511,
+          "server": "라사",
+          "class": "수도사",
+          "combat_score": 64476,
+          "life_score": 33459,
+          "charm_score": 44344,
+          "total_score": 142279,
+          "source": "mobinogi.net",
+          "updated_at": "2026-03-09T14:29:50.244+00:00"
+        },
+        {
+          "id": "b9ea4afe-6335-4957-b219-e5c771a384bd",
+          "name": "다큐",
+          "rank": 44278,
+          "server": "라사",
+          "class": "힐러",
+          "combat_score": 54535,
+          "life_score": 9006,
+          "charm_score": 17947,
+          "total_score": 81488,
+          "source": "mobinogi.net",
+          "updated_at": "2026-03-09T14:29:58.189+00:00"
+        },
+        {
+          "id": "5a1ff712-30b4-41a7-bbc9-360ae5111724",
+          "name": "빼주",
+          "rank": 2589,
+          "server": "라사",
+          "class": "석궁사수",
+          "combat_score": 63347,
+          "life_score": 25845,
+          "charm_score": 48901,
+          "total_score": 138093,
+          "source": "mobinogi.net",
+          "updated_at": "2026-03-09T14:29:50.483+00:00"
         },
         {
           "id": "622573f1-af63-4174-80df-613255a7e92c",
           "name": "유키노하라유키",
-          "rank": 8624,
+          "rank": 8859,
           "server": "라사",
           "class": "힐러",
-          "combat_score": 60512,
-          "life_score": 24582,
-          "charm_score": 25530,
-          "total_score": 110624,
+          "combat_score": 62380,
+          "life_score": 24510,
+          "charm_score": 25562,
+          "total_score": 112452,
           "source": "mobinogi.net",
-          "updated_at": "2026-02-07T14:10:17.7+00:00"
+          "updated_at": "2026-03-09T14:29:54.684+00:00"
+        },
+        {
+          "id": "1d433ae0-d56d-4f48-9100-18a0c05cebe3",
+          "name": "텐버거",
+          "rank": 24359,
+          "server": "라사",
+          "class": "장궁병",
+          "combat_score": 59954,
+          "life_score": 15280,
+          "charm_score": 26710,
+          "total_score": 101944,
+          "source": "mobinogi.net",
+          "updated_at": "2026-03-09T14:29:58.422+00:00"
+        },
+        {
+          "id": "4bb84619-a45a-4ca5-b22a-32695cdb7d6b",
+          "name": "빼주야",
+          "rank": 19827,
+          "server": "라사",
+          "class": "힐러",
+          "combat_score": 58448,
+          "life_score": 24118,
+          "charm_score": 23401,
+          "total_score": 105967,
+          "source": "mobinogi.net",
+          "updated_at": "2026-03-09T14:29:50.734+00:00"
+        },
+        {
+          "id": "e0beca88-f1a3-4e9e-a9f8-c69f465371b2",
+          "name": "고로정비",
+          "rank": 22233,
+          "server": "라사",
+          "class": "사제",
+          "combat_score": 58071,
+          "life_score": 18503,
+          "charm_score": 20391,
+          "total_score": 96965,
+          "source": "mobinogi.net",
+          "updated_at": "2026-03-09T14:29:58.648+00:00"
         },
         {
           "id": "8195fa6c-92b6-40dd-90c5-36154f8a9e63",
           "name": "카이릭스",
-          "rank": 5707,
+          "rank": 4622,
           "server": "라사",
           "class": "마법사",
-          "combat_score": 59378,
-          "life_score": 16664,
-          "charm_score": 41652,
-          "total_score": 117694,
+          "combat_score": 60502,
+          "life_score": 18163,
+          "charm_score": 44628,
+          "total_score": 123293,
           "source": "mobinogi.net",
-          "updated_at": "2026-02-07T14:10:17.871+00:00"
+          "updated_at": "2026-03-09T14:29:54.909+00:00"
         },
         {
-          "id": "eee72c47-6de4-41f5-9d47-a96a27a1d711",
-          "name": "준숙",
-          "rank": 21720,
+          "id": "253d12ff-cbcd-4b66-9b49-9265f3c1b7b6",
+          "name": "지유쓰",
+          "rank": 19112,
           "server": "라사",
-          "class": "전사",
-          "combat_score": 58049,
-          "life_score": 22695,
-          "charm_score": 22087,
-          "total_score": 102831,
+          "class": "힐러",
+          "combat_score": 56729,
+          "life_score": 15868,
+          "charm_score": 27028,
+          "total_score": 99625,
           "source": "mobinogi.net",
-          "updated_at": "2026-02-07T14:10:18.031+00:00"
+          "updated_at": "2026-03-09T14:29:58.874+00:00"
         },
         {
-          "id": "2322be88-2768-443c-b0f8-edf3a2f118c1",
-          "name": "이카러스",
-          "rank": 7174,
+          "id": "eec06a23-84f9-4bde-b7e5-a25f1e7da1d0",
+          "name": "빼주현",
+          "rank": 17868,
           "server": "라사",
-          "class": "빙결술사",
-          "combat_score": 59329,
-          "life_score": 25806,
-          "charm_score": 28669,
-          "total_score": 113804,
+          "class": "사제",
+          "combat_score": 60000,
+          "life_score": 23340,
+          "charm_score": 23651,
+          "total_score": 106991,
           "source": "mobinogi.net",
-          "updated_at": "2026-02-07T14:10:21.868+00:00"
+          "updated_at": "2026-03-09T14:29:50.989+00:00"
         },
         {
-          "id": "07965a24-03e2-4c42-ab88-3c355e00f6b2",
-          "name": "낭만감자",
-          "rank": 34442,
+          "id": "c2b4a5b1-78aa-4eb6-ba09-ee425f0fbb73",
+          "name": "꿀미호",
+          "rank": 249,
           "server": "라사",
-          "class": "검술사",
-          "combat_score": 51530,
-          "life_score": 16644,
-          "charm_score": 17842,
-          "total_score": 86016,
+          "class": "전격술사",
+          "combat_score": 64694,
+          "life_score": 32926,
+          "charm_score": 48176,
+          "total_score": 145796,
           "source": "mobinogi.net",
-          "updated_at": "2026-02-07T14:10:19.842+00:00"
+          "updated_at": "2026-03-09T14:29:57.5+00:00"
         },
         {
           "id": "6af5202e-908d-4f3e-a6a5-98492fbd662f",
@@ -691,12 +600,12 @@
           "charm_score": 22361,
           "total_score": 100568,
           "source": "mobinogi.net",
-          "updated_at": "2026-02-07T14:10:21.027+00:00"
+          "updated_at": "2026-03-09T14:29:59.106+00:00"
         },
         {
           "id": "3fedc5fa-1b29-41fc-b91c-586dc0d15996",
           "name": "Rabiatan",
-          "rank": 26370,
+          "rank": 29467,
           "server": "라사",
           "class": "대검전사",
           "combat_score": 54410,
@@ -704,38 +613,25 @@
           "charm_score": 20722,
           "total_score": 91577,
           "source": "mobinogi.net",
-          "updated_at": "2026-02-07T14:10:21.185+00:00"
+          "updated_at": "2026-03-09T14:29:59.345+00:00"
         },
         {
           "id": "f2e382a7-1e88-4e5f-ae5a-30ade80f19b8",
           "name": "낙서쟁이",
-          "rank": 28216,
+          "rank": 27463,
           "server": "라사",
           "class": "도적",
-          "combat_score": 54793,
-          "life_score": 16661,
-          "charm_score": 18876,
-          "total_score": 90330,
+          "combat_score": 55868,
+          "life_score": 17265,
+          "charm_score": 19902,
+          "total_score": 93035,
           "source": "mobinogi.net",
-          "updated_at": "2026-02-07T14:10:21.519+00:00"
-        },
-        {
-          "id": "fea174d4-d34b-4bf0-869f-273faf9ce5b4",
-          "name": "동동삼이",
-          "rank": 34342,
-          "server": "라사",
-          "class": "대검전사",
-          "combat_score": 49525,
-          "life_score": 14885,
-          "charm_score": 21665,
-          "total_score": 86075,
-          "source": "mobinogi.net",
-          "updated_at": "2026-02-07T14:10:22.201+00:00"
+          "updated_at": "2026-03-09T14:29:59.805+00:00"
         },
         {
           "id": "2fae5ca0-1126-46e3-8f15-896144d22611",
           "name": "첫사랑소녀",
-          "rank": 24096,
+          "rank": 27056,
           "server": "라사",
           "class": "힐러",
           "combat_score": 54709,
@@ -743,12 +639,12 @@
           "charm_score": 21898,
           "total_score": 93334,
           "source": "mobinogi.net",
-          "updated_at": "2026-02-07T14:10:22.373+00:00"
+          "updated_at": "2026-03-09T14:30:00.03+00:00"
         },
         {
           "id": "ec4c9cee-b5db-4700-a079-d72921eee710",
           "name": "설란",
-          "rank": 6054,
+          "rank": 6888,
           "server": "라사",
           "class": "화염술사",
           "combat_score": 56742,
@@ -756,90 +652,90 @@
           "charm_score": 40114,
           "total_score": 116820,
           "source": "mobinogi.net",
-          "updated_at": "2026-02-07T14:10:22.529+00:00"
+          "updated_at": "2026-03-09T14:30:00.279+00:00"
         },
         {
-          "id": "c2b4a5b1-78aa-4eb6-ba09-ee425f0fbb73",
-          "name": "꿀미호",
-          "rank": 224,
-          "server": "라사",
-          "class": "전격술사",
-          "combat_score": 64545,
-          "life_score": 32294,
-          "charm_score": 48082,
-          "total_score": 144921,
-          "source": "mobinogi.net",
-          "updated_at": "2026-02-07T14:10:22.699+00:00"
-        },
-        {
-          "id": "4429255d-b090-4a44-8f0c-4deef82b5330",
-          "name": "보노보노거인",
-          "rank": 31914,
+          "id": "07965a24-03e2-4c42-ab88-3c355e00f6b2",
+          "name": "낭만감자",
+          "rank": 37551,
           "server": "라사",
           "class": "검술사",
-          "combat_score": 53666,
-          "life_score": 16774,
-          "charm_score": 17254,
-          "total_score": 87694,
+          "combat_score": 51530,
+          "life_score": 16644,
+          "charm_score": 17842,
+          "total_score": 86016,
           "source": "mobinogi.net",
-          "updated_at": "2026-02-07T14:10:23.709+00:00"
+          "updated_at": "2026-03-09T14:30:00.507+00:00"
+        },
+        {
+          "id": "fea174d4-d34b-4bf0-869f-273faf9ce5b4",
+          "name": "동동삼이",
+          "rank": 37457,
+          "server": "라사",
+          "class": "대검전사",
+          "combat_score": 49525,
+          "life_score": 14885,
+          "charm_score": 21665,
+          "total_score": 86075,
+          "source": "mobinogi.net",
+          "updated_at": "2026-03-09T14:30:01.228+00:00"
         },
         {
           "id": "6da46857-254f-4bf7-baed-540d73325c83",
           "name": "여니는여니여니여니니니",
-          "rank": 12689,
+          "rank": 13025,
           "server": "라사",
           "class": "힐러",
-          "combat_score": 56634,
-          "life_score": 29132,
-          "charm_score": 18280,
-          "total_score": 104046,
+          "combat_score": 58225,
+          "life_score": 29304,
+          "charm_score": 18416,
+          "total_score": 105945,
           "source": "mobinogi.net",
-          "updated_at": "2026-02-07T14:10:23.868+00:00"
+          "updated_at": "2026-03-09T14:30:02.167+00:00"
         },
         {
           "id": "f8640872-6211-4d25-9724-af2b33dd7e99",
           "name": "여니는여니여니여니해",
-          "rank": 11226,
+          "rank": 11069,
           "server": "라사",
           "class": "사제",
-          "combat_score": 57790,
-          "life_score": 29241,
-          "charm_score": 19082,
-          "total_score": 106113,
+          "combat_score": 59869,
+          "life_score": 29519,
+          "charm_score": 19216,
+          "total_score": 108604,
           "source": "mobinogi.net",
-          "updated_at": "2026-02-07T14:10:24.04+00:00"
+          "updated_at": "2026-03-09T14:30:02.399+00:00"
         },
         {
           "id": "93cae8b0-550e-43ff-a408-e780ed224dab",
           "name": "여니는여니여니여니",
-          "rank": 15590,
+          "rank": 15981,
           "server": "라사",
           "class": "화염술사",
-          "combat_score": 58369,
-          "life_score": 28907,
-          "charm_score": 13582,
-          "total_score": 100858,
+          "combat_score": 59785,
+          "life_score": 29143,
+          "charm_score": 13708,
+          "total_score": 102636,
           "source": "mobinogi.net",
-          "updated_at": "2026-02-07T14:10:24.2+00:00"
+          "updated_at": "2026-03-09T14:30:02.63+00:00"
         },
         {
           "id": "ec4e2e4e-1e04-4c55-a325-184d923fc43b",
           "name": "여니는여니여니여니니",
-          "rank": 12276,
+          "rank": 11465,
           "server": "라사",
           "class": "도적",
-          "combat_score": 59301,
-          "life_score": 27281,
-          "charm_score": 18080,
-          "total_score": 104662,
+          "combat_score": 60818,
+          "life_score": 27520,
+          "charm_score": 19708,
+          "total_score": 108046,
           "source": "mobinogi.net",
-          "updated_at": "2026-02-07T14:10:24.379+00:00"
+          "updated_at": "2026-03-09T14:30:02.878+00:00"
         },
         {
           "id": "a444364a-34f9-4f18-9ee6-c2c30d1c98aa",
           "name": "yellosky",
-          "rank": 25418,
+          "rank": 28478,
           "server": "라사",
           "class": "힐러",
           "combat_score": 55967,
@@ -847,46 +743,7 @@
           "charm_score": 16974,
           "total_score": 92309,
           "source": "mobinogi.net",
-          "updated_at": "2026-02-07T14:10:21.357+00:00"
-        },
-        {
-          "id": "f1318324-7398-45e8-8329-36178f7f5e14",
-          "name": "낙화비검",
-          "rank": 45311,
-          "server": "라사",
-          "class": "검술사",
-          "combat_score": 51310,
-          "life_score": 19754,
-          "charm_score": 15557,
-          "total_score": 86621,
-          "source": "mobinogi.net",
-          "updated_at": "2026-02-07T14:10:21.703+00:00"
-        },
-        {
-          "id": "1c79e3c8-c214-4058-9cfa-f742c0971d87",
-          "name": "통통수현",
-          "rank": 24305,
-          "server": "라사",
-          "class": "사제",
-          "combat_score": 37041,
-          "life_score": 37218,
-          "charm_score": 18935,
-          "total_score": 93194,
-          "source": "mobinogi.net",
-          "updated_at": "2026-02-07T14:10:22.859+00:00"
-        },
-        {
-          "id": "fe545672-03bb-45de-852f-1653bf998cb1",
-          "name": "키타타",
-          "rank": 20564,
-          "server": "라사",
-          "class": "수도사",
-          "combat_score": 37595,
-          "life_score": 37126,
-          "charm_score": 21435,
-          "total_score": 96156,
-          "source": "mobinogi.net",
-          "updated_at": "2026-02-07T14:10:23.034+00:00"
+          "updated_at": "2026-03-09T14:29:59.579+00:00"
         },
         {
           "id": "a29f14a0-dd78-4abf-8df9-e72722d902b6",
@@ -899,52 +756,52 @@
           "charm_score": 16708,
           "total_score": 87264,
           "source": "mobinogi.net",
-          "updated_at": "2026-02-07T14:10:23.205+00:00"
+          "updated_at": "2026-03-09T14:30:01.457+00:00"
         },
         {
           "id": "f1365085-887d-41e5-8417-6e3ce9f5fc53",
           "name": "풀뱅라보",
-          "rank": 46531,
+          "rank": 34349,
           "server": "라사",
           "class": "빙결술사",
-          "combat_score": 47692,
-          "life_score": 24774,
-          "charm_score": 13361,
-          "total_score": 85827,
+          "combat_score": 47955,
+          "life_score": 25808,
+          "charm_score": 14458,
+          "total_score": 88221,
           "source": "mobinogi.net",
-          "updated_at": "2026-02-07T14:10:23.376+00:00"
+          "updated_at": "2026-03-09T14:30:01.704+00:00"
         },
         {
           "id": "b724fc2e-ed06-4a22-871e-5a514a16c35a",
           "name": "Aloy",
-          "rank": 21687,
+          "rank": 18884,
           "server": "라사",
           "class": "장궁병",
-          "combat_score": 55905,
-          "life_score": 22238,
-          "charm_score": 17080,
-          "total_score": 95223,
+          "combat_score": 56293,
+          "life_score": 22404,
+          "charm_score": 21112,
+          "total_score": 99809,
           "source": "mobinogi.net",
-          "updated_at": "2026-02-07T14:10:23.535+00:00"
+          "updated_at": "2026-03-09T14:30:01.934+00:00"
         },
         {
           "id": "f482d7c4-c51e-4eb5-9226-ae853a97a3c5",
           "name": "여니는여니여니여니여니여",
-          "rank": 19025,
+          "rank": 19078,
           "server": "라사",
           "class": "암흑술사",
-          "combat_score": 55368,
-          "life_score": 25871,
-          "charm_score": 16230,
-          "total_score": 97469,
+          "combat_score": 57169,
+          "life_score": 26120,
+          "charm_score": 16358,
+          "total_score": 99647,
           "source": "mobinogi.net",
-          "updated_at": "2026-02-07T14:10:24.544+00:00"
+          "updated_at": "2026-03-09T14:30:03.123+00:00"
         }
       ],
       "error": null
     },
     "member_profiles": {
-      "count": 60,
+      "count": 49,
       "data": [
         {
           "id": "25e15852-0558-4620-9348-79852a484c5e",
@@ -1047,24 +904,6 @@
           "main_character": ""
         },
         {
-          "id": "d0952fd8-814d-49c3-8ab3-7a325dfed78f",
-          "character_name": "루야쫑쫑",
-          "guild": "부엉국",
-          "preferred_times": [
-            {
-              "end": "23:30",
-              "tags": [
-                "무관"
-              ],
-              "start": "05:00"
-            }
-          ],
-          "created_at": "2026-01-06T11:47:01.908346+00:00",
-          "updated_at": "2026-01-06T11:47:01.908346+00:00",
-          "is_alt": false,
-          "main_character": ""
-        },
-        {
           "id": "1b4aae38-3308-4f86-aa6d-05b26ee9248a",
           "character_name": "깡설",
           "guild": "부엉국",
@@ -1081,31 +920,6 @@
           "preferred_times": [],
           "created_at": "2026-01-07T02:14:30.526084+00:00",
           "updated_at": "2026-01-07T02:14:30.526084+00:00",
-          "is_alt": false,
-          "main_character": null
-        },
-        {
-          "id": "0ec6359b-d6ee-4eda-ba2f-15b2e0a539ec",
-          "character_name": "시우쇠",
-          "guild": "부엉이",
-          "preferred_times": [
-            {
-              "end": "23:00",
-              "tags": [
-                "평일"
-              ],
-              "start": "19:00"
-            },
-            {
-              "end": "05:00",
-              "tags": [
-                "주말"
-              ],
-              "start": "17:00"
-            }
-          ],
-          "created_at": "2026-01-06T10:09:41.872269+00:00",
-          "updated_at": "2026-01-06T10:09:41.872269+00:00",
           "is_alt": false,
           "main_character": null
         },
@@ -1280,16 +1094,6 @@
           "main_character": null
         },
         {
-          "id": "d10d149a-6588-47dc-913c-34c68272339c",
-          "character_name": "불도저츄러스",
-          "guild": "부엉국",
-          "preferred_times": [],
-          "created_at": "2026-01-07T02:14:54.314492+00:00",
-          "updated_at": "2026-01-07T02:14:54.314492+00:00",
-          "is_alt": false,
-          "main_character": null
-        },
-        {
           "id": "4321fc15-ecde-43ab-a592-3aa330e1fed0",
           "character_name": "빵민",
           "guild": "부엉국",
@@ -1428,16 +1232,6 @@
           "main_character": null
         },
         {
-          "id": "640a50a0-e168-46dc-b649-e45a98110821",
-          "character_name": "차력거인",
-          "guild": "부엉국",
-          "preferred_times": [],
-          "created_at": "2026-01-07T02:16:24.527806+00:00",
-          "updated_at": "2026-01-07T02:16:24.527806+00:00",
-          "is_alt": true,
-          "main_character": "루야쫑쫑"
-        },
-        {
           "id": "d194f83d-f5a3-44af-a077-cb5c6e944a7a",
           "character_name": "번개술",
           "guild": "부엉이",
@@ -1496,52 +1290,6 @@
           "main_character": ""
         },
         {
-          "id": "8ffe43b5-9801-4f11-aeee-82a81bc1d806",
-          "character_name": "갑옷거인",
-          "guild": "부엉국",
-          "preferred_times": [
-            {
-              "end": "23:00",
-              "tags": [
-                "무관"
-              ],
-              "start": "06:00"
-            }
-          ],
-          "created_at": "2026-01-07T02:14:51.411405+00:00",
-          "updated_at": "2026-01-07T02:14:51.411405+00:00",
-          "is_alt": false,
-          "main_character": ""
-        },
-        {
-          "id": "906d6a2b-a3a9-4844-bdff-d9b5c88cd0fb",
-          "character_name": "낙화비검",
-          "guild": "부엉국",
-          "preferred_times": [],
-          "created_at": "2026-01-07T02:14:51.299332+00:00",
-          "updated_at": "2026-01-07T02:14:51.299332+00:00",
-          "is_alt": true,
-          "main_character": "전퇴의거인"
-        },
-        {
-          "id": "0ac472ad-5db6-4b57-9991-54bf301052e6",
-          "character_name": "전퇴의거인",
-          "guild": "부엉국",
-          "preferred_times": [
-            {
-              "end": "22:00",
-              "tags": [
-                "무관"
-              ],
-              "start": "06:00"
-            }
-          ],
-          "created_at": "2026-01-07T02:16:18.517731+00:00",
-          "updated_at": "2026-01-07T02:16:18.517731+00:00",
-          "is_alt": false,
-          "main_character": ""
-        },
-        {
           "id": "c3de456e-743f-4da1-a605-bdbb426c976c",
           "character_name": "여니는여니여니여니",
           "guild": "부엉이",
@@ -1582,45 +1330,6 @@
           "main_character": "여니는여니여니해"
         },
         {
-          "id": "4ba76192-bb3b-4b1f-923f-2be8c75b1b7d",
-          "character_name": "통통수현",
-          "guild": "부엉이",
-          "preferred_times": [],
-          "created_at": "2026-01-07T06:29:42.607871+00:00",
-          "updated_at": "2026-01-07T06:29:42.607871+00:00",
-          "is_alt": true,
-          "main_character": "시우쇠"
-        },
-        {
-          "id": "3c07448d-ed86-4391-a2b7-397d891129fc",
-          "character_name": "키타타",
-          "guild": "부엉이",
-          "preferred_times": [],
-          "created_at": "2026-01-07T06:30:19.203627+00:00",
-          "updated_at": "2026-01-07T06:30:19.203627+00:00",
-          "is_alt": true,
-          "main_character": "시우쇠"
-        },
-        {
-          "id": "e4da4995-030f-40d2-be86-30c4b8da0989",
-          "character_name": "보노보노거인",
-          "guild": "부엉국",
-          "preferred_times": [
-            {
-              "end": "18:30",
-              "tags": [
-                "평일",
-                "공휴일제외"
-              ],
-              "start": "10:30"
-            }
-          ],
-          "created_at": "2026-01-08T01:11:43.247812+00:00",
-          "updated_at": "2026-01-08T01:11:43.247812+00:00",
-          "is_alt": false,
-          "main_character": ""
-        },
-        {
           "id": "9e7e0fd7-3eff-4a50-bf73-f32067576ac3",
           "character_name": "시형",
           "guild": "부엉이",
@@ -1639,24 +1348,6 @@
           "main_character": ""
         },
         {
-          "id": "8601b827-39b7-4b66-9ce9-0919669ecb52",
-          "character_name": "로거니우스",
-          "guild": "부엉국",
-          "preferred_times": [
-            {
-              "end": "02:00",
-              "tags": [
-                "무관"
-              ],
-              "start": "18:00"
-            }
-          ],
-          "created_at": "2026-01-07T02:14:51.216433+00:00",
-          "updated_at": "2026-01-07T02:14:51.216433+00:00",
-          "is_alt": false,
-          "main_character": ""
-        },
-        {
           "id": "3497ed02-e389-49c6-a9c9-c38e276b23c4",
           "character_name": "여니는여니여니여니여니여",
           "guild": "부엉이",
@@ -1670,7 +1361,7 @@
       "error": null
     },
     "ranking_characters": {
-      "count": 73,
+      "count": 62,
       "data": [
         {
           "id": "cadfdec0-0f78-40b5-992e-f0188c5c5314",
@@ -1685,12 +1376,6 @@
           "visibility": 0
         },
         {
-          "id": "6220a59d-4ec2-45b0-98f6-cdf9745ff85d",
-          "name": "불도저츄러스",
-          "created_at": "2025-12-09T04:48:38.705344+00:00",
-          "visibility": 0
-        },
-        {
           "id": "02e4e500-01a0-445c-aaf3-959e834785b8",
           "name": "새벽숲부엉이",
           "created_at": "2025-12-09T04:23:42.111713+00:00",
@@ -1699,12 +1384,6 @@
         {
           "id": "4dae7361-8419-4cc7-a0be-19d3ca3af756",
           "name": "운정",
-          "created_at": "2025-12-09T04:23:42.111713+00:00",
-          "visibility": 0
-        },
-        {
-          "id": "8409e7ce-893f-45d1-a34b-347a0290e767",
-          "name": "차력거인",
           "created_at": "2025-12-09T04:23:42.111713+00:00",
           "visibility": 0
         },
@@ -1853,27 +1532,9 @@
           "visibility": 0
         },
         {
-          "id": "e0b627f3-c37e-414e-b36f-d021e5fc7956",
-          "name": "갑옷거인",
-          "created_at": "2025-12-09T04:23:42.111713+00:00",
-          "visibility": 0
-        },
-        {
           "id": "31ee1200-0084-41d3-8c3b-2d440cc41165",
           "name": "프네",
           "created_at": "2025-12-20T12:27:53.306245+00:00",
-          "visibility": 0
-        },
-        {
-          "id": "71936ef6-331e-4b5f-9ea5-a4b347eae044",
-          "name": "루야쫑쫑",
-          "created_at": "2025-12-09T04:23:42.111713+00:00",
-          "visibility": 0
-        },
-        {
-          "id": "ed0ef1e7-e77f-471a-994a-22c93f7ecdbc",
-          "name": "전퇴의거인",
-          "created_at": "2025-12-09T04:23:42.111713+00:00",
           "visibility": 0
         },
         {
@@ -1895,21 +1556,9 @@
           "visibility": 0
         },
         {
-          "id": "f196c32c-0420-4378-af1d-59c065c1a436",
-          "name": "시우쇠",
-          "created_at": "2025-12-09T11:21:32.528876+00:00",
-          "visibility": 0
-        },
-        {
           "id": "8476a50d-d14b-48fc-822c-1b7701f8c663",
           "name": "여니는여니여니해",
           "created_at": "2025-12-12T02:49:59.431838+00:00",
-          "visibility": 0
-        },
-        {
-          "id": "469dee22-fbed-4c99-8d21-04310fa51028",
-          "name": "로거니우스",
-          "created_at": "2025-12-09T04:23:42.111713+00:00",
           "visibility": 0
         },
         {
@@ -2057,12 +1706,6 @@
           "visibility": 0
         },
         {
-          "id": "f3c7b3a6-e030-4a53-9400-bd599d03d782",
-          "name": "낙화비검",
-          "created_at": "2026-01-07T02:07:50.247191+00:00",
-          "visibility": 0
-        },
-        {
           "id": "2f60b845-d3fe-4e2a-8633-38191d4916f6",
           "name": "Aloy",
           "created_at": "2026-01-07T04:02:09.809346+00:00",
@@ -2090,24 +1733,6 @@
           "id": "a285b542-c3f7-41e6-98cd-3e9c2edcee40",
           "name": "여니는여니여니여니니",
           "created_at": "2026-01-07T06:07:27.925678+00:00",
-          "visibility": 0
-        },
-        {
-          "id": "461fa9e7-5e53-46f9-a9fb-d90dea441b52",
-          "name": "통통수현",
-          "created_at": "2026-01-07T03:13:35.137194+00:00",
-          "visibility": 1
-        },
-        {
-          "id": "60638d94-ada2-4bd3-ac77-4317251d8a02",
-          "name": "키타타",
-          "created_at": "2026-01-07T03:13:46.918681+00:00",
-          "visibility": 1
-        },
-        {
-          "id": "ab4864cd-bf0b-4ad5-a58d-14a1b7e4f8b6",
-          "name": "보노보노거인",
-          "created_at": "2026-01-07T05:28:18.238781+00:00",
           "visibility": 0
         }
       ],
